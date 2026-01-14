@@ -1,4 +1,10 @@
+"use client"
+
+import { useTranslations } from "next-intl"
+
 export function PortfolioFooter() {
+  const t = useTranslations("footer")
+  
   return (
     <footer className="border-t-4 border-foreground bg-background">
       <div className="max-w-7xl mx-auto px-6 md:px-12 py-12 md:py-16">
@@ -8,9 +14,9 @@ export function PortfolioFooter() {
               SA_DEV
             </h3>
             <p className="text-lg md:text-xl font-bold">
-              SÉRGIO ALEXANDRE
+              {t("name")}
               <br />
-              SOFTWARE ENGINEER
+              {t("role")}
             </p>
           </div>
           
@@ -21,29 +27,29 @@ export function PortfolioFooter() {
               rel="noopener noreferrer"
               className="text-xl md:text-2xl font-bold hover:bg-foreground hover:text-background p-2 transition-colors inline-block"
             >
-              LINKEDIN →
+              {t("links.linkedin")}
             </a>
             <a
               href="mailto:sergioalexandre0716@gmail.com"
               className="text-xl md:text-2xl font-bold hover:bg-foreground hover:text-background p-2 transition-colors inline-block"
             >
-              EMAIL →
+              {t("links.email")}
             </a>
             <a
               href="tel:+5543988732020"
               className="text-xl md:text-2xl font-bold hover:bg-foreground hover:text-background p-2 transition-colors inline-block"
             >
-              PHONE →
+              {t("links.phone")}
             </a>
           </div>
         </div>
 
         <div className="border-t-4 border-foreground pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-base md:text-lg font-bold">
-            © {new Date().getFullYear()} ALL RIGHTS RESERVED
+            © {new Date().getFullYear()} {t("copyright")}
           </p>
           <p className="text-base md:text-lg font-bold">
-            DESIGNED & DEVELOPED WITH ❤️
+            {t("madeWith")}
           </p>
         </div>
       </div>

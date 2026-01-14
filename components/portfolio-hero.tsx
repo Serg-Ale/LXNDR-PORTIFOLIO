@@ -1,12 +1,14 @@
 "use client"
 
 import { useEffect, useRef } from "react"
+import { useTranslations } from "next-intl"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 
 gsap.registerPlugin(ScrollTrigger)
 
 export function PortfolioHero() {
+  const t = useTranslations("hero")
   const heroRef = useRef<HTMLDivElement>(null)
   const nameRef = useRef<HTMLHeadingElement>(null)
   const titleRef = useRef<HTMLHeadingElement>(null)
@@ -63,25 +65,21 @@ export function PortfolioHero() {
         <div className="space-y-8">
           <h1
             ref={nameRef}
-            className="text-[clamp(3rem,15vw,12rem)] font-black leading-none tracking-tighter text-brutalist"
+            className="text-[clamp(3rem,15vw,12rem)] font-black leading-none tracking-tighter text-brutalist whitespace-pre-line"
           >
-            SÉRGIO
-            <br />
-            ALEXANDRE
+            {t("name")}
           </h1>
           <h2
             ref={titleRef}
-            className="text-[clamp(2rem,8vw,6rem)] font-black leading-none tracking-tight border-l-8 border-foreground pl-6 md:pl-12"
+            className="text-[clamp(2rem,8vw,6rem)] font-black leading-none tracking-tight border-l-8 border-foreground pl-6 md:pl-12 whitespace-pre-line"
           >
-            SOFTWARE
-            <br />
-            ENGINEER
+            {t("title")}
           </h2>
           <p
             ref={descRef}
             className="text-xl md:text-3xl font-bold max-w-3xl border-4 border-foreground p-6 md:p-8 shadow-brutalist-lg"
           >
-            TURNING IDEAS INTO DIGITAL EXPERIENCES WITH NEXT.JS, REACT & TYPESCRIPT
+            {t("tagline")}
           </p>
         </div>
       </div>

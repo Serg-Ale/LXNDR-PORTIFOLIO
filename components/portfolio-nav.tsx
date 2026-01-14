@@ -1,9 +1,12 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
+import { useTranslations } from "next-intl"
 import gsap from "gsap"
+import { LanguageSwitcher } from "./language-switcher"
 
 export function PortfolioNav() {
+  const t = useTranslations("nav")
   const [isScrolled, setIsScrolled] = useState(false)
   const navRef = useRef<HTMLElement>(null)
 
@@ -45,7 +48,7 @@ export function PortfolioNav() {
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           className="text-2xl md:text-4xl font-black hover:opacity-70 transition-opacity"
         >
-          SA_DEV
+          {t("logo")}
         </button>
 
         <div className="flex gap-4 md:gap-8">
@@ -53,20 +56,21 @@ export function PortfolioNav() {
             onClick={() => scrollToSection("about")}
             className="text-lg md:text-xl font-bold hover:bg-foreground hover:text-background px-3 md:px-4 py-2 border-2 border-foreground transition-colors"
           >
-            ABOUT
+            {t("about")}
           </button>
           <button
             onClick={() => scrollToSection("experience")}
             className="text-lg md:text-xl font-bold hover:bg-foreground hover:text-background px-3 md:px-4 py-2 border-2 border-foreground transition-colors"
           >
-            EXPERIENCE
+            {t("experience")}
           </button>
           <button
             onClick={() => scrollToSection("contact")}
-            className="text-lg md:text-xl font-bold bg-foreground text-background px-3 md:px-4 py-2 hover:shadow-brutalist transition-shadow"
+            className="text-lg md:text-xl font-bold hover:bg-foreground hover:text-background px-3 md:px-4 py-2 border-2 border-foreground transition-colors"
           >
-            CONTACT
+            {t("contact")}
           </button>
+          <LanguageSwitcher />
         </div>
       </div>
     </nav>

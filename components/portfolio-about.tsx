@@ -1,19 +1,20 @@
 "use client"
 
 import { useEffect, useRef } from "react"
+import { useTranslations } from "next-intl"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 
 gsap.registerPlugin(ScrollTrigger)
 
 export function PortfolioAbout() {
+  const t = useTranslations("about")
   const sectionRef = useRef<HTMLDivElement>(null)
   const titleRef = useRef<HTMLHeadingElement>(null)
   const textRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Title animation from bottom
       gsap.from(titleRef.current, {
         scrollTrigger: {
           trigger: titleRef.current,
@@ -25,7 +26,6 @@ export function PortfolioAbout() {
         opacity: 0,
       })
 
-      // Text animation from top
       gsap.from(textRef.current, {
         scrollTrigger: {
           trigger: textRef.current,
@@ -51,31 +51,29 @@ export function PortfolioAbout() {
           ref={titleRef}
           className="text-[clamp(3rem,10vw,8rem)] font-black leading-none tracking-tighter text-brutalist mb-16"
         >
-          ABOUT_
+          {t("title")}
         </h2>
         
         <div ref={textRef} className="grid md:grid-cols-2 gap-8 md:gap-16">
           <div className="space-y-6">
             <p className="text-2xl md:text-4xl font-bold leading-tight">
-              MY JOURNEY IN TECHNOLOGY BEGAN WITH AN INSATIABLE CURIOSITY
+              {t("journey")}
             </p>
             <div className="border-4 border-foreground p-6 shadow-brutalist">
               <p className="text-lg md:text-xl font-semibold leading-relaxed">
-                While studying at UTFPR, I started diving deep into the web ecosystem. Today at Union, 
-                I work rebuilding MVPs from scratch, crafting interfaces that make sense — visually, 
-                technically, and for the people using them.
+                {t("description")}
               </p>
             </div>
             <div className="border-4 border-foreground p-6 bg-foreground text-background">
               <p className="text-lg md:text-xl font-bold">
-                IF THERE IS ONE WORD THAT DEFINES ME, IT IS <span className="text-2xl">EVOLUTION</span>
+                {t("evolution")} <span className="text-2xl">{t("evolutionWord")}</span>
               </p>
             </div>
           </div>
           
           <div className="space-y-6">
             <div className="bg-foreground text-background p-6 md:p-8">
-              <h3 className="text-2xl md:text-3xl font-black mb-4">TECH STACK</h3>
+              <h3 className="text-2xl md:text-3xl font-black mb-4">{t("techStack")}</h3>
               <ul className="space-y-3 text-lg md:text-xl font-bold">
                 <li>→ NEXT.JS (SSR/SSG/ISR)</li>
                 <li>→ REACT / TYPESCRIPT</li>
@@ -87,11 +85,9 @@ export function PortfolioAbout() {
               </ul>
             </div>
             <div className="border-4 border-foreground p-6">
-              <h3 className="text-xl md:text-2xl font-black mb-3">EDUCATION</h3>
-              <p className="text-base md:text-lg font-bold">
-                SYSTEMS ANALYSIS & DEVELOPMENT
-                <br />
-                UTFPR — Graduating Dec 2025
+              <h3 className="text-xl md:text-2xl font-black mb-3">{t("education")}</h3>
+              <p className="text-base md:text-lg font-bold whitespace-pre-line">
+                {t("educationContent")}
               </p>
             </div>
           </div>

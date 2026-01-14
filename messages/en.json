@@ -1,0 +1,115 @@
+{
+  "nav": {
+    "logo": "SA_DEV",
+    "about": "ABOUT",
+    "experience": "EXPERIENCE",
+    "contact": "CONTACT"
+  },
+  "hero": {
+    "name": "SÉRGIO\nALEXANDRE",
+    "title": "SOFTWARE\nENGINEER",
+    "tagline": "TURNING IDEAS INTO DIGITAL EXPERIENCES WITH NEXT.JS, REACT & TYPESCRIPT"
+  },
+  "about": {
+    "title": "ABOUT_",
+    "journey": "MY JOURNEY IN TECHNOLOGY BEGAN WITH AN INSATIABLE CURIOSITY",
+    "description": "While studying at UTFPR, I started diving deep into the web ecosystem. Today at Union, I work rebuilding MVPs from scratch, crafting interfaces that make sense — visually, technically, and for the people using them.",
+    "evolution": "IF THERE IS ONE WORD THAT DEFINES ME, IT IS",
+    "evolutionWord": "EVOLUTION",
+    "techStack": "TECH STACK",
+    "education": "EDUCATION",
+    "educationContent": "SYSTEMS ANALYSIS & DEVELOPMENT\nUTFPR — Graduating Dec 2025"
+  },
+  "experience": {
+    "title": "EXPERIENCE_",
+    "jobs": [
+      {
+        "period": "JAN 2025 — PRESENT",
+        "company": "UNION",
+        "role": "SOFTWARE ENGINEER (INTERN)",
+        "location": "REMOTE",
+        "highlights": [
+          "Rebuilt MVP front-end with Turborepo + Next.js",
+          "Reduced First Contentful Paint by 35% (1.2s)",
+          "Elevated mobile NPS by 20% with responsive UIs",
+          "Cut fetch errors by 40% using tRPC contracts",
+          "Increased test coverage from 60% to 90%"
+        ]
+      },
+      {
+        "period": "FEB 2023 — NOV 2023",
+        "company": "TATA CONSULTANCY SERVICES",
+        "role": "TRAINEE",
+        "location": "REMOTE",
+        "highlights": [
+          "Monitored 150+ nightly jobs for Carrefour logistics",
+          "Achieved 99.9% uptime over 10 months",
+          "Automated critical scripts, reducing manual work by 35%",
+          "Handled 95% of incidents within SLA"
+        ]
+      },
+      {
+        "period": "JUN 2022 — FEB 2023",
+        "company": "TATA CONSULTANCY SERVICES",
+        "role": "DEVELOPMENT INTERN",
+        "location": "LONDRINA, PR",
+        "highlights": [
+          "Built front-end (HTML/CSS/JS) and back-end (Spring Boot, Node.js)",
+          "Led back-end team in capstone project",
+          "Delivered RESTful APIs 2 weeks ahead of deadline",
+          "Implemented unit tests with 85% coverage"
+        ]
+      }
+    ]
+  },
+  "projects": {
+    "title": "PROJECTS_",
+    "list": [
+      {
+        "number": "01",
+        "title": "UNION MVP REBUILD",
+        "description": "Rebuilt front-end MVP with Turborepo + Next.js, reducing First Contentful Paint by 35% (1.2s improvement)",
+        "tech": ["NEXT.JS", "TURBOREPO", "tRPC", "TAILWIND", "PRISMA"]
+      },
+      {
+        "number": "02",
+        "title": "RESPONSIVE UI SYSTEM",
+        "description": "Implemented responsive UIs with Tailwind CSS and Class-Variance-Authority, elevating mobile NPS by 20%",
+        "tech": ["REACT", "TAILWIND", "CVA", "RADIX UI"]
+      },
+      {
+        "number": "03",
+        "title": "TYPE-SAFE API LAYER",
+        "description": "Developed typed contracts with tRPC and React Query (superjson), reducing fetch errors by 40%",
+        "tech": ["tRPC", "REACT QUERY", "TYPESCRIPT", "ZOD"]
+      },
+      {
+        "number": "04",
+        "title": "E2E TEST AUTOMATION",
+        "description": "Established Playwright E2E testing pipeline, increasing coverage from 60% to 90% and cutting regressions by 40%",
+        "tech": ["PLAYWRIGHT", "JEST", "CI/CD", "ESLINT"]
+      }
+    ]
+  },
+  "contact": {
+    "title": "CONTACT_",
+    "callToAction": "LET'S BUILD\nSOMETHING\nAMAZING",
+    "location": "LOCATION",
+    "locationValue": "CORNÉLIO PROCÓPIO, PR — BRASIL",
+    "english": "ENGLISH",
+    "englishValue": "C2 PROFICIENCY (EF SET 72/100)",
+    "availability": "AVAILABILITY",
+    "availabilityValue": "OPEN TO OPPORTUNITIES"
+  },
+  "footer": {
+    "name": "SÉRGIO ALEXANDRE",
+    "role": "SOFTWARE ENGINEER",
+    "links": {
+      "linkedin": "LINKEDIN →",
+      "email": "EMAIL →",
+      "phone": "PHONE →"
+    },
+    "copyright": "ALL RIGHTS RESERVED",
+    "madeWith": "DESIGNED & DEVELOPED WITH ❤️"
+  }
+}

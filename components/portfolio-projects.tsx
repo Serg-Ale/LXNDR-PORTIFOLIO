@@ -1,50 +1,22 @@
 "use client"
 
 import { useEffect, useRef } from "react"
+import { useTranslations } from "next-intl"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 
 gsap.registerPlugin(ScrollTrigger)
 
-const projects = [
-  {
-    number: "01",
-    title: "UNION MVP REBUILD",
-    description: "Rebuilt front-end MVP with Turborepo + Next.js, reducing First Contentful Paint by 35% (1.2s improvement)",
-    tech: ["NEXT.JS", "TURBOREPO", "tRPC", "TAILWIND", "PRISMA"],
-    link: "#",
-  },
-  {
-    number: "02",
-    title: "RESPONSIVE UI SYSTEM",
-    description: "Implemented responsive UIs with Tailwind CSS and Class-Variance-Authority, elevating mobile NPS by 20%",
-    tech: ["REACT", "TAILWIND", "CVA", "RADIX UI"],
-    link: "#",
-  },
-  {
-    number: "03",
-    title: "TYPE-SAFE API LAYER",
-    description: "Developed typed contracts with tRPC and React Query (superjson), reducing fetch errors by 40%",
-    tech: ["tRPC", "REACT QUERY", "TYPESCRIPT", "ZOD"],
-    link: "#",
-  },
-  {
-    number: "04",
-    title: "E2E TEST AUTOMATION",
-    description: "Established Playwright E2E testing pipeline, increasing coverage from 60% to 90% and cutting regressions by 40%",
-    tech: ["PLAYWRIGHT", "JEST", "CI/CD", "ESLINT"],
-    link: "#",
-  },
-]
-
 export function PortfolioProjects() {
+  const t = useTranslations("projects")
   const sectionRef = useRef<HTMLDivElement>(null)
   const titleRef = useRef<HTMLHeadingElement>(null)
   const projectRefs = useRef<(HTMLDivElement | null)[]>([])
 
+  const projects = t.raw("list")
+
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Title animation
       gsap.from(titleRef.current, {
         scrollTrigger: {
           trigger: titleRef.current,
@@ -56,7 +28,6 @@ export function PortfolioProjects() {
         opacity: 0,
       })
 
-      // Stagger project animations
       projectRefs.current.forEach((project, index) => {
         if (!project) return
 
@@ -88,11 +59,11 @@ export function PortfolioProjects() {
           ref={titleRef}
           className="text-[clamp(3rem,10vw,8rem)] font-black leading-none tracking-tighter text-brutalist mb-16"
         >
-          PROJECTS_
+          {t("title")}
         </h2>
 
         <div className="space-y-12">
-          {projects.map((project, index) => (
+          {projects.map((project: any, index: number) => (
             <div
               key={index}
               ref={(el) => {
@@ -113,7 +84,7 @@ export function PortfolioProjects() {
                     {project.description}
                   </p>
                   <div className="flex flex-wrap gap-2 md:gap-3">
-                    {project.tech.map((tech, techIndex) => (
+                    {project.tech.map((tech: string, techIndex: number) => (
                       <span
                         key={techIndex}
                         className="bg-foreground text-background px-3 md:px-4 py-1 md:py-2 text-sm md:text-base font-bold"
