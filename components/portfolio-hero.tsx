@@ -65,9 +65,9 @@ export function PortfolioHero() {
             ref={nameRef}
             className="text-[clamp(3rem,15vw,12rem)] font-black leading-none tracking-tighter text-brutalist"
           >
-            YOUR
+            SÉRGIO
             <br />
-            NAME
+            ALEXANDRE
           </h1>
           <h2
             ref={titleRef}
@@ -81,7 +81,7 @@ export function PortfolioHero() {
             ref={descRef}
             className="text-xl md:text-3xl font-bold max-w-3xl border-4 border-foreground p-6 md:p-8 shadow-brutalist-lg"
           >
-            BUILDING ROBUST, SCALABLE & INNOVATIVE DIGITAL SOLUTIONS THAT MAKE AN IMPACT
+            TURNING IDEAS INTO DIGITAL EXPERIENCES WITH NEXT.JS, REACT & TYPESCRIPT
           </p>
         </div>
       </div>

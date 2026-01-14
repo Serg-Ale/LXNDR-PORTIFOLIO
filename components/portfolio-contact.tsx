@@ -64,26 +64,24 @@ export function PortfolioContact() {
             
             <div className="space-y-4 md:space-y-6">
               <a
-                href="mailto:your.email@example.com"
+                href="mailto:sergioalexandre0716@gmail.com"
                 className="block text-xl md:text-3xl font-bold hover:bg-foreground hover:text-background p-4 transition-colors border-2 border-foreground"
               >
-                → YOUR.EMAIL@EXAMPLE.COM
+                → SERGIOALEXANDRE0716@GMAIL.COM
               </a>
               <a
-                href="https://github.com/yourusername"
+                href="https://linkedin.com/in/serg-alexandre"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block text-xl md:text-3xl font-bold hover:bg-foreground hover:text-background p-4 transition-colors border-2 border-foreground"
               >
-                → GITHUB.COM/YOURUSERNAME
+                → LINKEDIN.COM/IN/SERG-ALEXANDRE
               </a>
               <a
-                href="https://linkedin.com/in/yourusername"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="tel:+5543988732020"
                 className="block text-xl md:text-3xl font-bold hover:bg-foreground hover:text-background p-4 transition-colors border-2 border-foreground"
               >
-                → LINKEDIN.COM/IN/YOURUSERNAME
+                → +55 43 9 8873-2020
               </a>
             </div>
           </div>
@@ -91,15 +89,15 @@ export function PortfolioContact() {
           <div className="grid md:grid-cols-3 gap-4 md:gap-8">
             <div className="bg-foreground text-background p-6 md:p-8">
               <h3 className="text-2xl md:text-3xl font-black mb-2">LOCATION</h3>
-              <p className="text-lg md:text-xl font-bold">YOUR CITY, COUNTRY</p>
+              <p className="text-lg md:text-xl font-bold">CORNÉLIO PROCÓPIO, PR — BRASIL</p>
+            </div>
+            <div className="bg-foreground text-background p-6 md:p-8">
+              <h3 className="text-2xl md:text-3xl font-black mb-2">ENGLISH</h3>
+              <p className="text-lg md:text-xl font-bold">C2 PROFICIENCY (EF SET 72/100)</p>
             </div>
             <div className="bg-foreground text-background p-6 md:p-8">
               <h3 className="text-2xl md:text-3xl font-black mb-2">AVAILABILITY</h3>
               <p className="text-lg md:text-xl font-bold">OPEN TO OPPORTUNITIES</p>
-            </div>
-            <div className="bg-foreground text-background p-6 md:p-8">
-              <h3 className="text-2xl md:text-3xl font-black mb-2">RESPONSE</h3>
-              <p className="text-lg md:text-xl font-bold">WITHIN 24 HOURS</p>
             </div>
           </div>
         </div>

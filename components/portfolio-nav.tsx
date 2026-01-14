@@ -45,7 +45,7 @@ export function PortfolioNav() {
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           className="text-2xl md:text-4xl font-black hover:opacity-70 transition-opacity"
         >
-          &lt;DEV/&gt;
+          SA_DEV
         </button>
 
         <div className="flex gap-4 md:gap-8">
@@ -56,10 +56,10 @@ export function PortfolioNav() {
             ABOUT
           </button>
           <button
-            onClick={() => scrollToSection("projects")}
+            onClick={() => scrollToSection("experience")}
             className="text-lg md:text-xl font-bold hover:bg-foreground hover:text-background px-3 md:px-4 py-2 border-2 border-foreground transition-colors"
           >
-            WORK
+            EXPERIENCE
           </button>
           <button
             onClick={() => scrollToSection("contact")}

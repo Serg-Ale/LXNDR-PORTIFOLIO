@@ -57,26 +57,42 @@ export function PortfolioAbout() {
         <div ref={textRef} className="grid md:grid-cols-2 gap-8 md:gap-16">
           <div className="space-y-6">
             <p className="text-2xl md:text-4xl font-bold leading-tight">
-              PASSIONATE ABOUT CREATING CLEAN, EFFICIENT CODE
+              MY JOURNEY IN TECHNOLOGY BEGAN WITH AN INSATIABLE CURIOSITY
             </p>
             <div className="border-4 border-foreground p-6 shadow-brutalist">
-              <p className="text-lg md:text-xl font-semibold">
-                I specialize in full-stack development, turning complex problems into elegant solutions.
+              <p className="text-lg md:text-xl font-semibold leading-relaxed">
+                While studying at UTFPR, I started diving deep into the web ecosystem. Today at Union, 
+                I work rebuilding MVPs from scratch, crafting interfaces that make sense — visually, 
+                technically, and for the people using them.
+              </p>
+            </div>
+            <div className="border-4 border-foreground p-6 bg-foreground text-background">
+              <p className="text-lg md:text-xl font-bold">
+                IF THERE IS ONE WORD THAT DEFINES ME, IT IS <span className="text-2xl">EVOLUTION</span>
               </p>
             </div>
           </div>
           
           <div className="space-y-6">
             <div className="bg-foreground text-background p-6 md:p-8">
-              <h3 className="text-2xl md:text-3xl font-black mb-4">SKILLS</h3>
+              <h3 className="text-2xl md:text-3xl font-black mb-4">TECH STACK</h3>
               <ul className="space-y-3 text-lg md:text-xl font-bold">
-                <li>→ REACT / NEXT.JS</li>
-                <li>→ TYPESCRIPT / JAVASCRIPT</li>
-                <li>→ NODE.JS / EXPRESS</li>
-                <li>→ PYTHON / DJANGO</li>
-                <li>→ POSTGRESQL / MONGODB</li>
-                <li>→ AWS / DOCKER / K8S</li>
+                <li>→ NEXT.JS (SSR/SSG/ISR)</li>
+                <li>→ REACT / TYPESCRIPT</li>
+                <li>→ TAILWIND / RADIX UI</li>
+                <li>→ tRPC / REACT QUERY</li>
+                <li>→ PRISMA / NEXTAUTH</li>
+                <li>→ PLAYWRIGHT / JEST</li>
+                <li>→ TURBOREPO / CI/CD</li>
               </ul>
+            </div>
+            <div className="border-4 border-foreground p-6">
+              <h3 className="text-xl md:text-2xl font-black mb-3">EDUCATION</h3>
+              <p className="text-base md:text-lg font-bold">
+                SYSTEMS ANALYSIS & DEVELOPMENT
+                <br />
+                UTFPR — Graduating Dec 2025
+              </p>
             </div>
           </div>
         </div>
