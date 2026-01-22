@@ -1,6 +1,6 @@
 {
   "nav": {
-    "logo": "LXNDR",
+    "logo": "SA_DEV",
     "about": "SOBRE",
     "experience": "EXPERIÊNCIA",
     "contact": "CONTATO"
@@ -10,6 +10,13 @@
     "title": "ENGENHEIRO\nDE SOFTWARE",
     "tagline": "TRANSFORMANDO IDEIAS EM EXPERIÊNCIAS DIGITAIS COM NEXT.JS, REACT & TYPESCRIPT"
   },
+  "hypnotic": {
+    "phrase1": "CÓDIGO É\nA NOVA\nTELA",
+    "phrase2": "DESIGN\nENCONTRA\nLÓGICA",
+    "phrase3": "INFINITAS\nPOSSIBILIDADES",
+    "phrase4": "VAMOS\nCRIAR\nJUNTOS",
+    "cta": "VER TRABALHO"
+  },
   "about": {
     "title": "SOBRE_",
     "journey": "MINHA JORNADA NA TECNOLOGIA COMEÇOU COM UMA CURIOSIDADE INSACIÁVEL",
@@ -18,26 +25,13 @@
     "evolutionWord": "EVOLUÇÃO",
     "techStack": "STACK TÉCNICO",
     "education": "FORMAÇÃO",
-    "educationContent": "ANÁLISE E DESENVOLVIMENTO DE SISTEMAS\nUTFPR — Formatura em Jul 2026"
+    "educationContent": "ANÁLISE E DESENVOLVIMENTO DE SISTEMAS\nUTFPR — Formatura em Dez 2025"
   },
   "experience": {
     "title": "EXPERIÊNCIA_",
     "jobs": [
       {
-        "period": "SET 2025 — PRESENTE",
-        "company": "UNION",
-        "role": "ENGENHEIRO DE SOFTWARE JÚNIOR",
-        "location": "REMOTO",
-        "highlights": [
-          "Reconstruiu front-end do MVP com Turborepo + Next.js",
-          "Reduziu First Contentful Paint em 35% (1,2s)",
-          "Elevou NPS mobile em 20% com UIs responsivas",
-          "Cortou erros de fetch em 40% usando contratos tRPC",
-          "Aumentou cobertura de testes de 60% para 90%"
-        ]
-      },
-      {
-        "period": "JAN 2025 — SET 2025",
+        "period": "JAN 2025 — PRESENTE",
         "company": "UNION",
         "role": "ENGENHEIRO DE SOFTWARE (ESTAGIÁRIO)",
         "location": "REMOTO",
@@ -108,7 +102,7 @@
     "title": "CONTATO_",
     "callToAction": "VAMOS CONSTRUIR\nALGO\nINCRÍVEL",
     "location": "LOCALIZAÇÃO",
-    "locationValue": "LONDRINA, PR — BRASIL",
+    "locationValue": "CORNÉLIO PROCÓPIO, PR — BRASIL",
     "english": "INGLÊS",
     "englishValue": "C2 PROFICIÊNCIA (EF SET 72/100)",
     "availability": "DISPONIBILIDADE",
