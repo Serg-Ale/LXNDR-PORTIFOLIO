@@ -27,25 +27,27 @@ export async function getAllPosts(
       continue
     }
 
-    const files = fs.readdirSync(directory)
-    const mdxFiles = files.filter(
-      (file) => file.endsWith(`.${locale}.mdx`) || file.endsWith(`.${locale}.md`)
-    )
+    const subdirectories = fs.readdirSync(directory).filter((entry) => {
+      const fullPath = path.join(directory, entry)
+      return fs.statSync(fullPath).isDirectory()
+    })
 
-    for (const file of mdxFiles) {
-      const filePath = path.join(directory, file)
-      const fileContent = fs.readFileSync(filePath, "utf8")
-      const { frontmatter, content } = parseFrontmatter(fileContent)
+    for (const subdir of subdirectories) {
+      const filePath = path.join(directory, subdir, `index.${locale}.mdx`)
 
-      // Calcular reading time se não fornecido
-      const readingTime =
-        frontmatter.readingTime || calculateReadingTime(content)
+      if (fs.existsSync(filePath)) {
+        const fileContent = fs.readFileSync(filePath, "utf8")
+        const { frontmatter, content } = parseFrontmatter(fileContent)
 
-      posts.push({
-        ...frontmatter,
-        content,
-        readingTime,
-      })
+        const readingTime =
+          frontmatter.readingTime || calculateReadingTime(content)
+
+        posts.push({
+          ...frontmatter,
+          content,
+          readingTime,
+        })
+      }
     }
   }
 
@@ -66,14 +68,9 @@ export async function getPostBySlug(
       continue
     }
 
-    const files = fs.readdirSync(directory)
-    const file = files.find((f) => {
-      const withoutExt = f.replace(/\.(mdx?|md)$/, "")
-      return withoutExt === `${slug}.${locale}`
-    })
+    const filePath = path.join(directory, slug, `index.${locale}.mdx`)
 
-    if (file) {
-      const filePath = path.join(directory, file)
+    if (fs.existsSync(filePath)) {
       const fileContent = fs.readFileSync(filePath, "utf8")
       const { frontmatter, content } = parseFrontmatter(fileContent)
 

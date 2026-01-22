@@ -393,6 +393,44 @@ app/
 
 ---
 
+## Blog Content Structure
+
+Published posts live in `content/posts/` with each post in its own folder:
+
+```
+content/posts/
+├── post-name/
+│   ├── index.en.mdx      # English version
+│   ├── index.pt-BR.mdx   # Brazilian Portuguese version
+│   └── images/           # Post-specific assets (optional)
+```
+
+**Frontmatter format:**
+
+```yaml
+---
+title: "Post Title"
+date: "2024-01-22"
+description: "Brief description for SEO and previews"
+tags: ["tag1", "tag2"]
+draft: false
+---
+```
+
+### Drafts
+
+Work-in-progress posts in `content/drafts/`. Drafts are only visible in development mode. Move to `content/posts/` when both language versions are complete.
+
+### Adding Images
+
+Place images in the post's `images/` folder and reference in MDX:
+
+```markdown
+![Description](/images/diagram.png)
+```
+
+---
+
 ## Common Code Patterns
 
 ### Client Component with GSAP Animation
