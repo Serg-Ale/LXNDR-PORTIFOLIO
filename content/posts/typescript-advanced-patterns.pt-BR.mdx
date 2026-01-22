@@ -1,0 +1,231 @@
+---
+title: "TypeScript: Padrões Avançados de Tipos"
+description: "Descubra técnicas avançadas de TypeScript que vão elevar seu código para o próximo nível de type safety"
+date: "2026-01-18"
+tags: ["typescript", "programming", "web-dev", "type-safety"]
+author: "Sérgio Alexandre"
+locale: "pt-BR"
+slug: "typescript-advanced-patterns"
+---
+
+## Por Que TypeScript?
+
+TypeScript não é apenas JavaScript com tipos. É uma ferramenta poderosa que pode prevenir bugs antes mesmo do código rodar, melhorar a experiência de desenvolvimento e tornar refatorações mais seguras.
+
+Vamos explorar padrões avançados que todo desenvolvedor TypeScript deveria conhecer.
+
+## Generics: Poder e Flexibilidade
+
+Generics permitem criar componentes reutilizáveis que funcionam com qualquer tipo:
+
+```typescript
+function identity<T>(value: T): T {
+  return value
+}
+
+const num = identity(42)        // T = number
+const str = identity("hello")   // T = string
+```
+
+### Constraints em Generics
+
+Você pode restringir os tipos aceitos:
+
+```typescript
+interface HasLength {
+  length: number
+}
+
+function logLength<T extends HasLength>(value: T): void {
+  console.log(value.length)
+}
+
+logLength("hello")      // ✅ OK
+logLength([1, 2, 3])    // ✅ OK
+logLength(42)           // ❌ Error: number não tem length
+```
+
+## Utility Types: Ferramentas Poderosas
+
+TypeScript fornece utility types para transformações comuns:
+
+### Partial e Required
+
+```typescript
+interface User {
+  id: number
+  name: string
+  email: string
+}
+
+// Todos os campos opcionais
+type PartialUser = Partial<User>
+
+// Todos os campos obrigatórios
+type RequiredUser = Required<PartialUser>
+```
+
+### Pick e Omit
+
+```typescript
+// Selecionar apenas alguns campos
+type UserPreview = Pick<User, 'id' | 'name'>
+
+// Remover campos específicos
+type UserWithoutEmail = Omit<User, 'email'>
+```
+
+### Record
+
+```typescript
+type Theme = 'light' | 'dark' | 'auto'
+
+const themeColors: Record<Theme, string> = {
+  light: '#ffffff',
+  dark: '#000000',
+  auto: 'system',
+}
+```
+
+## Conditional Types: Lógica de Tipos
+
+Tipos condicionais permitem expressar lógica complexa:
+
+```typescript
+type IsString<T> = T extends string ? true : false
+
+type A = IsString<string>  // true
+type B = IsString<number>  // false
+```
+
+### Exemplo Prático: Unwrap Promise
+
+```typescript
+type Unwrap<T> = T extends Promise<infer U> ? U : T
+
+type A = Unwrap<Promise<string>>  // string
+type B = Unwrap<number>           // number
+```
+
+## Mapped Types: Transformações
+
+Mapped types permitem transformar propriedades de tipos existentes:
+
+```typescript
+type Readonly<T> = {
+  readonly [P in keyof T]: T[P]
+}
+
+type Nullable<T> = {
+  [P in keyof T]: T[P] | null
+}
+
+interface User {
+  name: string
+  age: number
+}
+
+type ReadonlyUser = Readonly<User>
+// { readonly name: string; readonly age: number }
+
+type NullableUser = Nullable<User>
+// { name: string | null; age: number | null }
+```
+
+## Template Literal Types
+
+Tipos literais de template permitem manipular strings no nível de tipos:
+
+```typescript
+type EventName = "click" | "focus" | "blur"
+type EventHandler = `on${Capitalize<EventName>}`
+
+// EventHandler = "onClick" | "onFocus" | "onBlur"
+
+interface Events {
+  onClick: () => void
+  onFocus: () => void
+  onBlur: () => void
+}
+```
+
+## Discriminated Unions
+
+Unions discriminadas são perfeitas para modelar estados mutuamente exclusivos:
+
+```typescript
+type LoadingState = 
+  | { status: 'idle' }
+  | { status: 'loading' }
+  | { status: 'success'; data: string }
+  | { status: 'error'; error: Error }
+
+function handleState(state: LoadingState) {
+  switch (state.status) {
+    case 'idle':
+      return 'Não iniciado'
+    case 'loading':
+      return 'Carregando...'
+    case 'success':
+      return state.data  // TypeScript sabe que data existe aqui
+    case 'error':
+      return state.error.message  // E que error existe aqui
+  }
+}
+```
+
+## Type Guards: Narrowing Manual
+
+Type guards permitem refinar tipos em runtime:
+
+```typescript
+function isString(value: unknown): value is string {
+  return typeof value === 'string'
+}
+
+function processValue(value: string | number) {
+  if (isString(value)) {
+    // TypeScript sabe que value é string aqui
+    console.log(value.toUpperCase())
+  } else {
+    // E que value é number aqui
+    console.log(value.toFixed(2))
+  }
+}
+```
+
+## Branded Types: Type Safety Extra
+
+Branded types previnem mistura acidental de valores:
+
+```typescript
+type UserId = number & { readonly brand: unique symbol }
+type ProductId = number & { readonly brand: unique symbol }
+
+function createUserId(id: number): UserId {
+  return id as UserId
+}
+
+function createProductId(id: number): ProductId {
+  return id as ProductId
+}
+
+function getUser(id: UserId) { /* ... */ }
+
+const userId = createUserId(123)
+const productId = createProductId(456)
+
+getUser(userId)     // ✅ OK
+getUser(productId)  // ❌ Error: tipos incompatíveis
+```
+
+## Conclusão
+
+TypeScript é uma ferramenta incrivelmente poderosa quando você domina seus recursos avançados. Estes padrões permitem:
+
+- **Type Safety**: Prevenir bugs em tempo de compilação
+- **Developer Experience**: Autocomplete e documentação inline
+- **Refatoração Segura**: Mudanças com confiança
+- **Expressividade**: Modelar domínios complexos com precisão
+
+Continue experimentando e lembre-se: tipos bem definidos são documentação que nunca fica desatualizada!

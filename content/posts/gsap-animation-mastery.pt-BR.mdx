@@ -1,0 +1,301 @@
+---
+title: "GSAP: Dominando Animações na Web"
+description: "Aprenda a criar animações incríveis e performáticas com GSAP, a biblioteca de animação mais poderosa para JavaScript"
+date: "2026-01-22"
+tags: ["gsap", "animations", "web-dev", "javascript", "performance"]
+author: "Sérgio Alexandre"
+locale: "pt-BR"
+slug: "gsap-animation-mastery"
+---
+
+## Por Que GSAP?
+
+GSAP (GreenSock Animation Platform) é simplesmente a melhor biblioteca de animação para a web. Ela oferece performance excepcional, API intuitiva e funciona em todos os navegadores.
+
+Se você quer criar animações que impressionam, GSAP é a ferramenta certa.
+
+## Começando com GSAP
+
+A API básica do GSAP é surpreendentemente simples:
+
+```javascript
+import gsap from "gsap"
+
+// Animar para valores específicos
+gsap.to(".box", {
+  x: 100,
+  duration: 1,
+  ease: "power2.out"
+})
+
+// Animar a partir de valores
+gsap.from(".box", {
+  opacity: 0,
+  y: 50,
+  duration: 1
+})
+
+// Definir valores iniciais e finais
+gsap.fromTo(".box", 
+  { opacity: 0, scale: 0.5 },
+  { opacity: 1, scale: 1, duration: 1 }
+)
+```
+
+## ScrollTrigger: Animações no Scroll
+
+ScrollTrigger é um plugin poderoso que sincroniza animações com o scroll:
+
+```javascript
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+
+gsap.registerPlugin(ScrollTrigger)
+
+gsap.from(".section", {
+  opacity: 0,
+  y: 100,
+  scrollTrigger: {
+    trigger: ".section",
+    start: "top 80%",
+    end: "top 20%",
+    scrub: true,
+    markers: true  // Para debug
+  }
+})
+```
+
+### Propriedades Úteis do ScrollTrigger
+
+- **trigger**: Elemento que ativa a animação
+- **start**: Quando a animação começa (`"top center"`, `"top 80%"`, etc)
+- **end**: Quando a animação termina
+- **scrub**: Sincroniza animação com scroll (true ou número para smoothing)
+- **pin**: Fixa elemento durante a animação
+- **toggleActions**: Controla comportamento (onEnter, onLeave, onEnterBack, onLeaveBack)
+
+## Timelines: Sequências Complexas
+
+Timelines permitem criar sequências de animações:
+
+```javascript
+const tl = gsap.timeline()
+
+tl.from(".hero-title", {
+    opacity: 0,
+    y: 50,
+    duration: 1
+  })
+  .from(".hero-subtitle", {
+    opacity: 0,
+    y: 30,
+    duration: 0.8
+  }, "-=0.5")  // Começa 0.5s antes do fim da anterior
+  .from(".hero-button", {
+    scale: 0,
+    duration: 0.5,
+    ease: "back.out"
+  })
+```
+
+### Controle de Timeline
+
+```javascript
+const tl = gsap.timeline({ paused: true })
+
+// Controles
+tl.play()
+tl.pause()
+tl.reverse()
+tl.restart()
+tl.seek(1.5)  // Pula para 1.5 segundos
+```
+
+## Easing: O Tempero das Animações
+
+Easing functions definem como a animação acelera e desacelera:
+
+```javascript
+// Easing pré-definidos
+gsap.to(".box", { x: 100, ease: "power2.out" })
+gsap.to(".box", { x: 100, ease: "elastic.out" })
+gsap.to(".box", { x: 100, ease: "bounce.out" })
+
+// Custom ease
+gsap.to(".box", { 
+  x: 100, 
+  ease: "steps(10)"  // Animação em steps
+})
+```
+
+**Tipos comuns:**
+- `power1, power2, power3, power4` - Aceleração suave
+- `back` - Ultrapassa e volta
+- `elastic` - Efeito de mola
+- `bounce` - Efeito de quique
+- `expo` - Aceleração exponencial
+
+## Context: Cleanup Automático
+
+Em React, use `gsap.context()` para cleanup automático:
+
+```typescript
+useEffect(() => {
+  const ctx = gsap.context(() => {
+    gsap.from(".element", {
+      opacity: 0,
+      y: 50,
+      stagger: 0.1
+    })
+    
+    ScrollTrigger.create({
+      trigger: ".section",
+      start: "top center",
+      // ...
+    })
+  }, containerRef)
+
+  return () => ctx.revert()  // Limpa todas as animações
+}, [])
+```
+
+## Stagger: Animações em Cascata
+
+Stagger anima múltiplos elementos em sequência:
+
+```javascript
+gsap.from(".card", {
+  opacity: 0,
+  y: 50,
+  stagger: 0.1,  // 0.1s de delay entre cada elemento
+  duration: 1
+})
+
+// Stagger avançado
+gsap.from(".card", {
+  opacity: 0,
+  y: 50,
+  stagger: {
+    each: 0.1,
+    from: "center",  // ou "start", "end", "edges"
+    grid: "auto",
+    ease: "power2.inOut"
+  }
+})
+```
+
+## Performance: Dicas Pro
+
+### 1. Use Transform e Opacity
+
+Propriedades GPU-accelerated são mais rápidas:
+
+```javascript
+// ✅ Rápido (GPU)
+gsap.to(".box", { x: 100, y: 100, scale: 1.5, rotation: 45 })
+
+// ❌ Lento (CPU)
+gsap.to(".box", { left: "100px", top: "100px" })
+```
+
+### 2. will-change CSS
+
+Para animações complexas:
+
+```css
+.animated-element {
+  will-change: transform, opacity;
+}
+```
+
+### 3. Force3D
+
+Força aceleração de GPU:
+
+```javascript
+gsap.to(".box", {
+  x: 100,
+  force3D: true
+})
+```
+
+## Split Text: Animando Texto
+
+Anime caracteres, palavras ou linhas individualmente:
+
+```javascript
+import SplitType from "split-type"
+
+const text = new SplitType(".title", { types: "chars,words" })
+
+gsap.from(text.chars, {
+  opacity: 0,
+  y: 20,
+  stagger: 0.02,
+  duration: 0.5
+})
+```
+
+## Exemplo Prático: Hero Section
+
+```typescript
+useEffect(() => {
+  const ctx = gsap.context(() => {
+    const tl = gsap.timeline()
+    
+    // Nome aparece com reveal
+    tl.from(".hero-name", {
+      opacity: 0,
+      y: 100,
+      duration: 1,
+      ease: "power4.out"
+    })
+    
+    // Título com split text
+    const titleChars = new SplitType(".hero-title", { types: "chars" })
+    tl.from(titleChars.chars, {
+      opacity: 0,
+      y: 50,
+      stagger: 0.03,
+      duration: 0.8,
+      ease: "back.out"
+    }, "-=0.5")
+    
+    // Botão com bounce
+    tl.from(".hero-button", {
+      scale: 0,
+      duration: 0.6,
+      ease: "back.out(1.7)"
+    })
+    
+    // Parallax no scroll
+    gsap.to(".hero-bg", {
+      y: 200,
+      scrollTrigger: {
+        trigger: ".hero",
+        start: "top top",
+        end: "bottom top",
+        scrub: true
+      }
+    })
+  }, heroRef)
+  
+  return () => ctx.revert()
+}, [])
+```
+
+## Conclusão
+
+GSAP é uma ferramenta incrivelmente poderosa que transforma animações complexas em código simples e performático. Com ScrollTrigger, você pode criar experiências de scroll imersivas que antes eram impossíveis.
+
+**Principais benefícios:**
+- Performance excepcional
+- API intuitiva
+- Compatibilidade total
+- Ecossistema rico de plugins
+
+Comece simples, experimente os exemplos e gradualmente adicione complexidade. Suas interfaces nunca mais serão as mesmas!
+
+**Recursos:**
+- [GSAP Docs](https://gsap.com/docs)
+- [GSAP Easing Visualizer](https://gsap.com/docs/v3/Eases)
+- [ScrollTrigger Demos](https://gsap.com/demos)

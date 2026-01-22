@@ -1,0 +1,231 @@
+---
+title: "TypeScript: Advanced Type Patterns"
+description: "Discover advanced TypeScript techniques that will elevate your code to the next level of type safety"
+date: "2026-01-18"
+tags: ["typescript", "programming", "web-dev", "type-safety"]
+author: "Sérgio Alexandre"
+locale: "en"
+slug: "typescript-advanced-patterns"
+---
+
+## Why TypeScript?
+
+TypeScript isn't just JavaScript with types. It's a powerful tool that can prevent bugs before code even runs, improve the development experience, and make refactoring safer.
+
+Let's explore advanced patterns every TypeScript developer should know.
+
+## Generics: Power and Flexibility
+
+Generics allow creating reusable components that work with any type:
+
+```typescript
+function identity<T>(value: T): T {
+  return value
+}
+
+const num = identity(42)        // T = number
+const str = identity("hello")   // T = string
+```
+
+### Constraints in Generics
+
+You can restrict accepted types:
+
+```typescript
+interface HasLength {
+  length: number
+}
+
+function logLength<T extends HasLength>(value: T): void {
+  console.log(value.length)
+}
+
+logLength("hello")      // ✅ OK
+logLength([1, 2, 3])    // ✅ OK
+logLength(42)           // ❌ Error: number doesn't have length
+```
+
+## Utility Types: Powerful Tools
+
+TypeScript provides utility types for common transformations:
+
+### Partial and Required
+
+```typescript
+interface User {
+  id: number
+  name: string
+  email: string
+}
+
+// All fields optional
+type PartialUser = Partial<User>
+
+// All fields required
+type RequiredUser = Required<PartialUser>
+```
+
+### Pick and Omit
+
+```typescript
+// Select only some fields
+type UserPreview = Pick<User, 'id' | 'name'>
+
+// Remove specific fields
+type UserWithoutEmail = Omit<User, 'email'>
+```
+
+### Record
+
+```typescript
+type Theme = 'light' | 'dark' | 'auto'
+
+const themeColors: Record<Theme, string> = {
+  light: '#ffffff',
+  dark: '#000000',
+  auto: 'system',
+}
+```
+
+## Conditional Types: Type Logic
+
+Conditional types allow expressing complex logic:
+
+```typescript
+type IsString<T> = T extends string ? true : false
+
+type A = IsString<string>  // true
+type B = IsString<number>  // false
+```
+
+### Practical Example: Unwrap Promise
+
+```typescript
+type Unwrap<T> = T extends Promise<infer U> ? U : T
+
+type A = Unwrap<Promise<string>>  // string
+type B = Unwrap<number>           // number
+```
+
+## Mapped Types: Transformations
+
+Mapped types allow transforming properties of existing types:
+
+```typescript
+type Readonly<T> = {
+  readonly [P in keyof T]: T[P]
+}
+
+type Nullable<T> = {
+  [P in keyof T]: T[P] | null
+}
+
+interface User {
+  name: string
+  age: number
+}
+
+type ReadonlyUser = Readonly<User>
+// { readonly name: string; readonly age: number }
+
+type NullableUser = Nullable<User>
+// { name: string | null; age: number | null }
+```
+
+## Template Literal Types
+
+Template literal types allow manipulating strings at the type level:
+
+```typescript
+type EventName = "click" | "focus" | "blur"
+type EventHandler = `on${Capitalize<EventName>}`
+
+// EventHandler = "onClick" | "onFocus" | "onBlur"
+
+interface Events {
+  onClick: () => void
+  onFocus: () => void
+  onBlur: () => void
+}
+```
+
+## Discriminated Unions
+
+Discriminated unions are perfect for modeling mutually exclusive states:
+
+```typescript
+type LoadingState = 
+  | { status: 'idle' }
+  | { status: 'loading' }
+  | { status: 'success'; data: string }
+  | { status: 'error'; error: Error }
+
+function handleState(state: LoadingState) {
+  switch (state.status) {
+    case 'idle':
+      return 'Not started'
+    case 'loading':
+      return 'Loading...'
+    case 'success':
+      return state.data  // TypeScript knows data exists here
+    case 'error':
+      return state.error.message  // And that error exists here
+  }
+}
+```
+
+## Type Guards: Manual Narrowing
+
+Type guards allow refining types at runtime:
+
+```typescript
+function isString(value: unknown): value is string {
+  return typeof value === 'string'
+}
+
+function processValue(value: string | number) {
+  if (isString(value)) {
+    // TypeScript knows value is string here
+    console.log(value.toUpperCase())
+  } else {
+    // And that value is number here
+    console.log(value.toFixed(2))
+  }
+}
+```
+
+## Branded Types: Extra Type Safety
+
+Branded types prevent accidental mixing of values:
+
+```typescript
+type UserId = number & { readonly brand: unique symbol }
+type ProductId = number & { readonly brand: unique symbol }
+
+function createUserId(id: number): UserId {
+  return id as UserId
+}
+
+function createProductId(id: number): ProductId {
+  return id as ProductId
+}
+
+function getUser(id: UserId) { /* ... */ }
+
+const userId = createUserId(123)
+const productId = createProductId(456)
+
+getUser(userId)     // ✅ OK
+getUser(productId)  // ❌ Error: incompatible types
+```
+
+## Conclusion
+
+TypeScript is an incredibly powerful tool when you master its advanced features. These patterns allow:
+
+- **Type Safety**: Prevent bugs at compile time
+- **Developer Experience**: Autocomplete and inline documentation
+- **Safe Refactoring**: Changes with confidence
+- **Expressiveness**: Model complex domains with precision
+
+Keep experimenting and remember: well-defined types are documentation that never goes out of date!

@@ -1,0 +1,166 @@
+---
+title: "React Hooks: A Deep Dive"
+description: "Exploring advanced concepts of React Hooks and when to use them to create more efficient and reusable components"
+date: "2026-01-20"
+tags: ["react", "hooks", "javascript", "web-dev"]
+author: "Sérgio Alexandre"
+locale: "en"
+slug: "react-hooks-deep-dive"
+---
+
+## Introduction
+
+React Hooks revolutionized how we write React components. Since their introduction in version 16.8, they've become the preferred way to manage state and side effects in functional components.
+
+In this post, we'll dive deep into the concepts behind hooks and understand when and how to use them efficiently.
+
+## useState: The Basics
+
+The most basic and widely used hook is `useState`. It allows adding local state to functional components:
+
+```tsx
+const [count, setCount] = useState(0)
+```
+
+But did you know that `useState` accepts a function as initial value? This is useful when the initial value calculation is expensive:
+
+```tsx
+const [data, setData] = useState(() => {
+  // Heavy computation that only runs once
+  return expensiveCalculation()
+})
+```
+
+## useEffect: Managing Side Effects
+
+To handle side effects, we use `useEffect`. This hook runs after every render:
+
+```tsx
+useEffect(() => {
+  document.title = `Count: ${count}`
+  
+  return () => {
+    // Cleanup function
+    document.title = 'React App'
+  }
+}, [count])
+```
+
+### When Does useEffect Run?
+
+- **No dependency array**: Runs after every render
+- **Empty array `[]`**: Runs only once (mount)
+- **With dependencies `[count]`**: Runs when `count` changes
+
+## useCallback and useMemo: Optimization
+
+These hooks are essential for performance optimization:
+
+```tsx
+const memoizedCallback = useCallback(() => {
+  doSomething(a, b)
+}, [a, b])
+
+const memoizedValue = useMemo(() => {
+  return expensiveComputation(a, b)
+}, [a, b])
+```
+
+**When to use?**
+- `useCallback`: When passing callbacks to optimized components with `React.memo`
+- `useMemo`: When the calculation is computationally expensive
+
+## Custom Hooks: Logic Reuse
+
+The real power of hooks lies in the ability to create custom hooks:
+
+```tsx
+function useLocalStorage(key: string, initialValue: any) {
+  const [value, setValue] = useState(() => {
+    const stored = localStorage.getItem(key)
+    return stored ? JSON.parse(stored) : initialValue
+  })
+  
+  useEffect(() => {
+    localStorage.setItem(key, JSON.stringify(value))
+  }, [key, value])
+  
+  return [value, setValue]
+}
+```
+
+Now you can use it in any component:
+
+```tsx
+function App() {
+  const [theme, setTheme] = useLocalStorage('theme', 'dark')
+  
+  return <div className={theme}>...</div>
+}
+```
+
+## useReducer: Complex State
+
+For managing complex state with multiple actions, `useReducer` is the right choice:
+
+```tsx
+const initialState = { count: 0, step: 1 }
+
+function reducer(state, action) {
+  switch (action.type) {
+    case 'increment':
+      return { ...state, count: state.count + state.step }
+    case 'decrement':
+      return { ...state, count: state.count - state.step }
+    case 'setStep':
+      return { ...state, step: action.payload }
+    default:
+      return state
+  }
+}
+
+function Counter() {
+  const [state, dispatch] = useReducer(reducer, initialState)
+  
+  return (
+    <div>
+      <p>Count: {state.count}</p>
+      <button onClick={() => dispatch({ type: 'increment' })}>+</button>
+      <button onClick={() => dispatch({ type: 'decrement' })}>-</button>
+    </div>
+  )
+}
+```
+
+## Rules of Hooks
+
+It's crucial to follow these rules:
+
+1. **Always call hooks at the top level**: Never inside loops, conditions, or nested functions
+2. **Only in React components**: Or in custom hooks
+
+```tsx
+// ❌ WRONG
+if (condition) {
+  const [value, setValue] = useState(0)
+}
+
+// ✅ CORRECT
+const [value, setValue] = useState(0)
+if (condition) {
+  setValue(newValue)
+}
+```
+
+## Conclusion
+
+React Hooks are powerful when used correctly. They allow:
+
+- Cleaner and more readable code
+- Better logic reuse
+- Simpler components
+- Performance optimizations when needed
+
+Keep practicing and experimenting with hooks. The more you use them, the more natural it becomes to think "hook-first" when developing React components.
+
+**Pro Tip:** Whenever you find yourself copying and pasting state logic between components, consider extracting it into a custom hook!

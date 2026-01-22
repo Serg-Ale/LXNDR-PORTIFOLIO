@@ -1,0 +1,166 @@
+---
+title: "React Hooks: Um Mergulho Profundo"
+description: "Explorando os conceitos avançados de React Hooks e quando usá-los para criar componentes mais eficientes e reutilizáveis"
+date: "2026-01-20"
+tags: ["react", "hooks", "javascript", "web-dev"]
+author: "Sérgio Alexandre"
+locale: "pt-BR"
+slug: "react-hooks-deep-dive"
+---
+
+## Introdução
+
+React Hooks revolucionaram a forma como escrevemos componentes em React. Desde sua introdução na versão 16.8, eles se tornaram a forma preferida de gerenciar estado e efeitos colaterais em componentes funcionais.
+
+Neste post, vamos mergulhar profundamente nos conceitos por trás dos hooks e entender quando e como usá-los de forma eficiente.
+
+## useState: O Básico
+
+O hook mais básico e amplamente utilizado é o `useState`. Ele permite adicionar estado local a componentes funcionais:
+
+```tsx
+const [count, setCount] = useState(0)
+```
+
+Mas você sabia que o `useState` aceita uma função como valor inicial? Isso é útil quando o cálculo do valor inicial é custoso:
+
+```tsx
+const [data, setData] = useState(() => {
+  // Cálculo pesado que só roda uma vez
+  return expensiveCalculation()
+})
+```
+
+## useEffect: Gerenciando Efeitos Colaterais
+
+Para lidar com side effects, usamos `useEffect`. Este hook é executado após cada renderização:
+
+```tsx
+useEffect(() => {
+  document.title = `Count: ${count}`
+  
+  return () => {
+    // Função de cleanup
+    document.title = 'React App'
+  }
+}, [count])
+```
+
+### Quando useEffect Executa?
+
+- **Sem array de dependências**: Executa após cada render
+- **Array vazio `[]`**: Executa apenas uma vez (mount)
+- **Com dependências `[count]`**: Executa quando `count` muda
+
+## useCallback e useMemo: Otimização
+
+Estes hooks são essenciais para otimização de performance:
+
+```tsx
+const memoizedCallback = useCallback(() => {
+  doSomething(a, b)
+}, [a, b])
+
+const memoizedValue = useMemo(() => {
+  return expensiveComputation(a, b)
+}, [a, b])
+```
+
+**Quando usar?**
+- `useCallback`: Quando passar callbacks para componentes otimizados com `React.memo`
+- `useMemo`: Quando o cálculo é computacionalmente custoso
+
+## Custom Hooks: Reutilização de Lógica
+
+O verdadeiro poder dos hooks está na capacidade de criar hooks customizados:
+
+```tsx
+function useLocalStorage(key: string, initialValue: any) {
+  const [value, setValue] = useState(() => {
+    const stored = localStorage.getItem(key)
+    return stored ? JSON.parse(stored) : initialValue
+  })
+  
+  useEffect(() => {
+    localStorage.setItem(key, JSON.stringify(value))
+  }, [key, value])
+  
+  return [value, setValue]
+}
+```
+
+Agora você pode usar em qualquer componente:
+
+```tsx
+function App() {
+  const [theme, setTheme] = useLocalStorage('theme', 'dark')
+  
+  return <div className={theme}>...</div>
+}
+```
+
+## useReducer: Estado Complexo
+
+Para gerenciar estado complexo com múltiplas ações, `useReducer` é a escolha certa:
+
+```tsx
+const initialState = { count: 0, step: 1 }
+
+function reducer(state, action) {
+  switch (action.type) {
+    case 'increment':
+      return { ...state, count: state.count + state.step }
+    case 'decrement':
+      return { ...state, count: state.count - state.step }
+    case 'setStep':
+      return { ...state, step: action.payload }
+    default:
+      return state
+  }
+}
+
+function Counter() {
+  const [state, dispatch] = useReducer(reducer, initialState)
+  
+  return (
+    <div>
+      <p>Count: {state.count}</p>
+      <button onClick={() => dispatch({ type: 'increment' })}>+</button>
+      <button onClick={() => dispatch({ type: 'decrement' })}>-</button>
+    </div>
+  )
+}
+```
+
+## Regras dos Hooks
+
+É crucial seguir estas regras:
+
+1. **Sempre chame hooks no top level**: Nunca dentro de loops, condições ou funções aninhadas
+2. **Apenas em componentes React**: Ou em custom hooks
+
+```tsx
+// ❌ ERRADO
+if (condition) {
+  const [value, setValue] = useState(0)
+}
+
+// ✅ CORRETO
+const [value, setValue] = useState(0)
+if (condition) {
+  setValue(newValue)
+}
+```
+
+## Conclusão
+
+React Hooks são poderosos quando usados corretamente. Eles permitem:
+
+- Código mais limpo e legível
+- Melhor reutilização de lógica
+- Componentes mais simples
+- Otimizações de performance quando necessário
+
+Continue praticando e experimentando com hooks. Quanto mais você os usa, mais natural se torna pensar de forma "hook-first" ao desenvolver componentes React.
+
+**Dica Pro:** Sempre que você se pegar copiando e colando lógica de estado entre componentes, considere extrair para um custom hook!

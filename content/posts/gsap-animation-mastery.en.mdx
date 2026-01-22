@@ -1,0 +1,301 @@
+---
+title: "GSAP: Mastering Web Animations"
+description: "Learn to create amazing and performant animations with GSAP, the most powerful animation library for JavaScript"
+date: "2026-01-22"
+tags: ["gsap", "animations", "web-dev", "javascript", "performance"]
+author: "Sérgio Alexandre"
+locale: "en"
+slug: "gsap-animation-mastery"
+---
+
+## Why GSAP?
+
+GSAP (GreenSock Animation Platform) is simply the best animation library for the web. It offers exceptional performance, intuitive API, and works across all browsers.
+
+If you want to create impressive animations, GSAP is the right tool.
+
+## Getting Started with GSAP
+
+GSAP's basic API is surprisingly simple:
+
+```javascript
+import gsap from "gsap"
+
+// Animate to specific values
+gsap.to(".box", {
+  x: 100,
+  duration: 1,
+  ease: "power2.out"
+})
+
+// Animate from values
+gsap.from(".box", {
+  opacity: 0,
+  y: 50,
+  duration: 1
+})
+
+// Set initial and final values
+gsap.fromTo(".box", 
+  { opacity: 0, scale: 0.5 },
+  { opacity: 1, scale: 1, duration: 1 }
+)
+```
+
+## ScrollTrigger: Scroll-based Animations
+
+ScrollTrigger is a powerful plugin that syncs animations with scroll:
+
+```javascript
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+
+gsap.registerPlugin(ScrollTrigger)
+
+gsap.from(".section", {
+  opacity: 0,
+  y: 100,
+  scrollTrigger: {
+    trigger: ".section",
+    start: "top 80%",
+    end: "top 20%",
+    scrub: true,
+    markers: true  // For debugging
+  }
+})
+```
+
+### Useful ScrollTrigger Properties
+
+- **trigger**: Element that triggers the animation
+- **start**: When animation starts (`"top center"`, `"top 80%"`, etc)
+- **end**: When animation ends
+- **scrub**: Syncs animation with scroll (true or number for smoothing)
+- **pin**: Pins element during animation
+- **toggleActions**: Controls behavior (onEnter, onLeave, onEnterBack, onLeaveBack)
+
+## Timelines: Complex Sequences
+
+Timelines allow creating animation sequences:
+
+```javascript
+const tl = gsap.timeline()
+
+tl.from(".hero-title", {
+    opacity: 0,
+    y: 50,
+    duration: 1
+  })
+  .from(".hero-subtitle", {
+    opacity: 0,
+    y: 30,
+    duration: 0.8
+  }, "-=0.5")  // Starts 0.5s before previous ends
+  .from(".hero-button", {
+    scale: 0,
+    duration: 0.5,
+    ease: "back.out"
+  })
+```
+
+### Timeline Control
+
+```javascript
+const tl = gsap.timeline({ paused: true })
+
+// Controls
+tl.play()
+tl.pause()
+tl.reverse()
+tl.restart()
+tl.seek(1.5)  // Jump to 1.5 seconds
+```
+
+## Easing: Animation Spice
+
+Easing functions define how animations accelerate and decelerate:
+
+```javascript
+// Predefined easings
+gsap.to(".box", { x: 100, ease: "power2.out" })
+gsap.to(".box", { x: 100, ease: "elastic.out" })
+gsap.to(".box", { x: 100, ease: "bounce.out" })
+
+// Custom ease
+gsap.to(".box", { 
+  x: 100, 
+  ease: "steps(10)"  // Stepped animation
+})
+```
+
+**Common types:**
+- `power1, power2, power3, power4` - Smooth acceleration
+- `back` - Overshoots and returns
+- `elastic` - Spring effect
+- `bounce` - Bounce effect
+- `expo` - Exponential acceleration
+
+## Context: Automatic Cleanup
+
+In React, use `gsap.context()` for automatic cleanup:
+
+```typescript
+useEffect(() => {
+  const ctx = gsap.context(() => {
+    gsap.from(".element", {
+      opacity: 0,
+      y: 50,
+      stagger: 0.1
+    })
+    
+    ScrollTrigger.create({
+      trigger: ".section",
+      start: "top center",
+      // ...
+    })
+  }, containerRef)
+
+  return () => ctx.revert()  // Cleans up all animations
+}, [])
+```
+
+## Stagger: Cascading Animations
+
+Stagger animates multiple elements in sequence:
+
+```javascript
+gsap.from(".card", {
+  opacity: 0,
+  y: 50,
+  stagger: 0.1,  // 0.1s delay between each element
+  duration: 1
+})
+
+// Advanced stagger
+gsap.from(".card", {
+  opacity: 0,
+  y: 50,
+  stagger: {
+    each: 0.1,
+    from: "center",  // or "start", "end", "edges"
+    grid: "auto",
+    ease: "power2.inOut"
+  }
+})
+```
+
+## Performance: Pro Tips
+
+### 1. Use Transform and Opacity
+
+GPU-accelerated properties are faster:
+
+```javascript
+// ✅ Fast (GPU)
+gsap.to(".box", { x: 100, y: 100, scale: 1.5, rotation: 45 })
+
+// ❌ Slow (CPU)
+gsap.to(".box", { left: "100px", top: "100px" })
+```
+
+### 2. will-change CSS
+
+For complex animations:
+
+```css
+.animated-element {
+  will-change: transform, opacity;
+}
+```
+
+### 3. Force3D
+
+Forces GPU acceleration:
+
+```javascript
+gsap.to(".box", {
+  x: 100,
+  force3D: true
+})
+```
+
+## Split Text: Animating Text
+
+Animate characters, words, or lines individually:
+
+```javascript
+import SplitType from "split-type"
+
+const text = new SplitType(".title", { types: "chars,words" })
+
+gsap.from(text.chars, {
+  opacity: 0,
+  y: 20,
+  stagger: 0.02,
+  duration: 0.5
+})
+```
+
+## Practical Example: Hero Section
+
+```typescript
+useEffect(() => {
+  const ctx = gsap.context(() => {
+    const tl = gsap.timeline()
+    
+    // Name appears with reveal
+    tl.from(".hero-name", {
+      opacity: 0,
+      y: 100,
+      duration: 1,
+      ease: "power4.out"
+    })
+    
+    // Title with split text
+    const titleChars = new SplitType(".hero-title", { types: "chars" })
+    tl.from(titleChars.chars, {
+      opacity: 0,
+      y: 50,
+      stagger: 0.03,
+      duration: 0.8,
+      ease: "back.out"
+    }, "-=0.5")
+    
+    // Button with bounce
+    tl.from(".hero-button", {
+      scale: 0,
+      duration: 0.6,
+      ease: "back.out(1.7)"
+    })
+    
+    // Parallax on scroll
+    gsap.to(".hero-bg", {
+      y: 200,
+      scrollTrigger: {
+        trigger: ".hero",
+        start: "top top",
+        end: "bottom top",
+        scrub: true
+      }
+    })
+  }, heroRef)
+  
+  return () => ctx.revert()
+}, [])
+```
+
+## Conclusion
+
+GSAP is an incredibly powerful tool that transforms complex animations into simple and performant code. With ScrollTrigger, you can create immersive scroll experiences that were previously impossible.
+
+**Main benefits:**
+- Exceptional performance
+- Intuitive API
+- Full compatibility
+- Rich plugin ecosystem
+
+Start simple, experiment with examples, and gradually add complexity. Your interfaces will never be the same!
+
+**Resources:**
+- [GSAP Docs](https://gsap.com/docs)
+- [GSAP Easing Visualizer](https://gsap.com/docs/v3/Eases)
+- [ScrollTrigger Demos](https://gsap.com/demos)
