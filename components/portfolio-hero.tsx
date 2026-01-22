@@ -3,7 +3,6 @@
 import { useEffect, useRef } from "react"
 import { useTranslations } from "next-intl"
 import gsap from "gsap"
-import { prefersReducedMotion } from "@/lib/gsap-config"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 
 gsap.registerPlugin(ScrollTrigger)
@@ -15,23 +14,7 @@ export function PortfolioHero() {
   const titleRef = useRef<HTMLHeadingElement>(null)
   const descRef = useRef<HTMLParagraphElement>(null)
 
-  
-
-useEffect(() => {
-    if (prefersReducedMotion()) {
-      gsap.set([nameRef.current, titleRef.current, descRef.current], {
-        opacity: 1,
-        y: 0,
-      });
-      return;
-    }
-    if (prefersReducedMotion()) {
-      gsap.set([nameRef.current, titleRef.current, descRef.current], {
-        opacity: 1,
-        y: 0,
-      });
-      return;
-    }
+  useEffect(() => {
     const ctx = gsap.context(() => {
       // Initial entrance animation
       gsap.from(nameRef.current, {

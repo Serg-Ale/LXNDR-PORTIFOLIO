@@ -1,30 +1,25 @@
 import { PortfolioNav } from "@/components/portfolio-nav"
-import { PortfolioHero } from "@/components/portfolio-hero"
-import { HypnoticSection } from "@/components/hypnotic-section"
-import { PortfolioAbout } from "@/components/portfolio-about"
-import { PortfolioExperience } from "@/components/portfolio-experience"
-import { PortfolioProjects } from "@/components/portfolio-projects"
-import { PortfolioContact } from "@/components/portfolio-contact"
 import { PortfolioFooter } from "@/components/portfolio-footer"
+import { PortfolioIntro } from "@/components/portfolio-intro"
+import { PortfolioJourney } from "@/components/portfolio-journey"
+import { PortfolioSkills } from "@/components/portfolio-skills"
+import { PortfolioImpact } from "@/components/portfolio-impact"
+import { PortfolioConnect } from "@/components/portfolio-connect"
+import { MagneticCursor } from "@/components/magnetic-cursor"
+import { ScrollProgress } from "@/components/scroll-progress"
 
 export default function Home() {
   return (
     <main className="min-h-screen">
       <PortfolioNav />
-      <PortfolioHero />
-      <HypnoticSection />
-      <div id="about">
-        <PortfolioAbout />
-      </div>
-      <div id="experience">
-        <PortfolioExperience />
-      </div>
-      <div id="projects">
-        <PortfolioProjects />
-      </div>
-      <div id="contact">
-        <PortfolioContact />
-      </div>
+      <MagneticCursor />
+      <ScrollProgress sections={["intro", "journey", "skills", "impact", "connect"]} />
+
+      <PortfolioIntro />
+      <PortfolioJourney />
+      <PortfolioSkills />
+      <PortfolioImpact />
+      <PortfolioConnect />
       <PortfolioFooter />
     </main>
   )

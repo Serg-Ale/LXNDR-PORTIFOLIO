@@ -9,7 +9,6 @@ import { GlitchText } from "./glitch-text";
 import { rgbSplitEffect, prefersReducedMotion } from "@/lib/gsap-config";
 
 gsap.registerPlugin(ScrollTrigger);
-
 export function PortfolioIntro() {
   const t = useTranslations("hero");
   const sectionRef = useRef<HTMLDivElement>(null);

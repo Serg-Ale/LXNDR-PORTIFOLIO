@@ -52,13 +52,12 @@ export function PortfolioExperience() {
   return (
     <section
       ref={sectionRef}
-      className="min-h-screen px-6 md:px-12 py-16 md:py-24 bg-foreground text-background relative overflow-hidden"
-      data-theme="dark"
+      className="min-h-screen px-6 md:px-12 py-24"
     >
       <div className="max-w-7xl mx-auto">
         <h2
           ref={titleRef}
-          className="text-[clamp(3rem,10vw,8rem)] font-bold leading-none tracking-tighter mb-16"
+          className="text-[clamp(3rem,10vw,8rem)] font-black leading-none tracking-tighter text-brutalist mb-16"
         >
           {t("title")}
         </h2>
@@ -70,36 +69,36 @@ export function PortfolioExperience() {
               ref={(el) => {
                 experienceRefs.current[index] = el
               }}
-              className="border border-background/20 p-6 md:p-8 rounded-lg shadow-modern-md hover:shadow-modern-lg hover:scale-[1.01] transition-all"
+              className="border-4 border-foreground p-6 md:p-8 hover:shadow-brutalist-lg transition-shadow"
             >
               <div className="space-y-4">
                 <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-2">
                   <div>
-                    <h3 className="text-3xl md:text-4xl font-bold leading-tight mb-2">
+                    <h3 className="text-3xl md:text-4xl font-black leading-tight mb-2">
                       {exp.company}
                     </h3>
-                    <p className="text-xl md:text-2xl font-semibold">
+                    <p className="text-xl md:text-2xl font-bold">
                       {exp.role}
                     </p>
                   </div>
                   <div className="text-right">
-                    <p className="text-base md:text-lg font-medium opacity-70">
+                    <p className="text-base md:text-lg font-bold opacity-70">
                       {exp.period}
                     </p>
-                    <p className="text-base md:text-lg font-medium opacity-70">
+                    <p className="text-base md:text-lg font-bold opacity-70">
                       {exp.location}
                     </p>
                   </div>
                 </div>
 
-                <div className="border-t border-background/20 pt-4">
+                <div className="border-t-2 border-foreground pt-4">
                   <ul className="space-y-2">
-                    {exp.highlights.map((highlight: string, idx: number) => (
+                    {exp.highlights.map((highlight, idx) => (
                       <li
                         key={idx}
-                        className="text-base md:text-lg font-medium flex items-start gap-3"
+                        className="text-base md:text-lg font-semibold flex items-start gap-3"
                       >
-                        <span className="text-xl font-bold mt-1">•</span>
+                        <span className="text-xl font-black mt-1">•</span>
                         <span>{highlight}</span>
                       </li>
                     ))}
