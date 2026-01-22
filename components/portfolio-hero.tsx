@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react"
 import { useTranslations } from "next-intl"
 import gsap from "gsap"
+import { prefersReducedMotion } from "@/lib/gsap-config"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 
 gsap.registerPlugin(ScrollTrigger)
@@ -14,7 +15,23 @@ export function PortfolioHero() {
   const titleRef = useRef<HTMLHeadingElement>(null)
   const descRef = useRef<HTMLParagraphElement>(null)
 
-  useEffect(() => {
+  
+
+useEffect(() => {
+    if (prefersReducedMotion()) {
+      gsap.set([nameRef.current, titleRef.current, descRef.current], {
+        opacity: 1,
+        y: 0,
+      });
+      return;
+    }
+    if (prefersReducedMotion()) {
+      gsap.set([nameRef.current, titleRef.current, descRef.current], {
+        opacity: 1,
+        y: 0,
+      });
+      return;
+    }
     const ctx = gsap.context(() => {
       // Initial entrance animation
       gsap.from(nameRef.current, {
@@ -59,34 +76,31 @@ export function PortfolioHero() {
   return (
     <section
       ref={heroRef}
-      className="min-h-screen flex items-center justify-center px-6 md:px-12 relative overflow-hidden"
+      className="min-h-screen flex items-center justify-center px-6 md:px-12 relative overflow-hidden bg-foreground text-background"
+      data-theme="dark"
     >
       <div className="max-w-7xl w-full">
         <div className="space-y-8">
           <h1
             ref={nameRef}
-            className="text-[clamp(3rem,15vw,12rem)] font-black leading-none tracking-tighter text-brutalist whitespace-pre-line"
+            className="text-[clamp(3rem,15vw,12rem)] font-bold leading-none tracking-tighter whitespace-pre-line"
           >
             {t("name")}
           </h1>
           <h2
             ref={titleRef}
-            className="text-[clamp(2rem,8vw,6rem)] font-black leading-none tracking-tight border-l-8 border-foreground pl-6 md:pl-12 whitespace-pre-line"
+            className="text-[clamp(2rem,8vw,6rem)] font-bold leading-none tracking-tight border-l-2 border-background/50 pl-6 md:pl-12 whitespace-pre-line"
           >
             {t("title")}
           </h2>
           <p
             ref={descRef}
-            className="text-xl md:text-3xl font-bold max-w-3xl border-4 border-foreground p-6 md:p-8 shadow-brutalist-lg"
+            className="text-xl md:text-3xl font-semibold max-w-3xl bg-background/10 backdrop-blur-sm p-6 md:p-8 rounded-lg shadow-modern-lg"
           >
             {t("tagline")}
           </p>
         </div>
       </div>
-      
-      {/* Decorative elements */}
-      <div className="absolute top-12 right-12 w-32 h-32 border-8 border-foreground hidden md:block" />
-      <div className="absolute bottom-12 left-12 w-24 h-24 bg-foreground hidden md:block" />
     </section>
   )
 }
