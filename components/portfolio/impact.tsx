@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react"
 import { useTranslations } from "next-intl"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
-import { SplitTextReveal } from "./split-text-reveal"
+import { SplitTextReveal } from "@/components/shared/split-text-reveal"
 import { prefersReducedMotion } from "@/lib/gsap-config"
 
 gsap.registerPlugin(ScrollTrigger)

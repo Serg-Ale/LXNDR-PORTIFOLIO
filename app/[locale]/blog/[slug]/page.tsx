@@ -5,8 +5,8 @@ import { BlogPostHeader } from "@/components/blog/blog-post-header"
 import { BlogPostContent } from "@/components/blog/blog-post-content"
 import { BlogShareButtons } from "@/components/blog/blog-share-buttons"
 import { BlogRelatedPosts } from "@/components/blog/blog-related-posts"
-import { PortfolioNav } from "@/components/portfolio-nav"
-import { PortfolioFooter } from "@/components/portfolio-footer"
+import { PortfolioNav } from "@/components/portfolio/nav"
+import { PortfolioFooter } from "@/components/portfolio/footer"
 
 interface PageProps {
   params: Promise<{

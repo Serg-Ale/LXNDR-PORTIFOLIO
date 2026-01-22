@@ -1,12 +1,12 @@
-import { PortfolioNav } from "@/components/portfolio-nav"
-import { PortfolioFooter } from "@/components/portfolio-footer"
-import { PortfolioIntro } from "@/components/portfolio-intro"
-import { PortfolioJourney } from "@/components/portfolio-journey"
-import { PortfolioSkills } from "@/components/portfolio-skills"
-import { PortfolioImpact } from "@/components/portfolio-impact"
-import { PortfolioConnect } from "@/components/portfolio-connect"
-import { MagneticCursor } from "@/components/magnetic-cursor"
-import { ScrollProgress } from "@/components/scroll-progress"
+import { PortfolioNav } from "@/components/portfolio/nav"
+import { PortfolioFooter } from "@/components/shared/footer"
+import { PortfolioIntro } from "@/components/portfolio/intro"
+import { PortfolioJourney } from "@/components/portfolio/journey"
+import { PortfolioSkills } from "@/components/portfolio/skills"
+import { PortfolioImpact } from "@/components/portfolio/impact"
+import { PortfolioConnect } from "@/components/portfolio/connect"
+import { MagneticCursor } from "@/components/shared/magnetic-cursor"
+import { ScrollProgress } from "@/components/shared/scroll-progress"
 
 export default function Home() {
   return (

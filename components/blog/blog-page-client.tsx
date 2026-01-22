@@ -4,8 +4,8 @@ import { useState, useMemo } from "react"
 import { useLocale, useTranslations } from "next-intl"
 import { BlogMasonry } from "./blog-masonry"
 import { BlogFilters } from "./blog-filters"
-import { PortfolioNav } from "@/components/portfolio-nav"
-import { PortfolioFooter } from "@/components/portfolio-footer"
+import { PortfolioNav } from "@/components/portfolio/nav"
+import { PortfolioFooter } from "@/components/portfolio/footer"
 import type { Post } from "@/lib/blog"
 
 interface BlogPageClientProps {

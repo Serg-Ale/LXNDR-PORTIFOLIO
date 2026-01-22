@@ -6,7 +6,7 @@ import { useTranslations, useLocale } from "next-intl"
 import { usePathname } from "@/i18n/routing"
 import gsap from "gsap"
 import { Link } from "@/i18n/routing"
-import { LanguageSwitcher } from "./language-switcher"
+import { LanguageSwitcher } from "@/components/shared/language-switcher"
 
 export function PortfolioNav() {
   const t = useTranslations("nav")
