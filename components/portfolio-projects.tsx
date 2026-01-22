@@ -52,12 +52,13 @@ export function PortfolioProjects() {
   return (
     <section
       ref={sectionRef}
-      className="min-h-screen px-6 md:px-12 py-24"
+      className="min-h-screen px-6 md:px-12 py-16 md:py-24 bg-foreground text-background overflow-hidden"
+      data-theme="dark"
     >
       <div className="max-w-7xl mx-auto">
         <h2
           ref={titleRef}
-          className="text-[clamp(3rem,10vw,8rem)] font-black leading-none tracking-tighter text-brutalist mb-16"
+          className="text-[clamp(3rem,10vw,8rem)] font-bold leading-none tracking-tighter mb-16"
         >
           {t("title")}
         </h2>
@@ -69,25 +70,25 @@ export function PortfolioProjects() {
               ref={(el) => {
                 projectRefs.current[index] = el
               }}
-              className="border-4 border-foreground p-6 md:p-8 hover:shadow-brutalist-lg transition-shadow cursor-pointer"
+              className="border border-background/20 p-6 md:p-8 rounded-lg shadow-modern-md hover:shadow-modern-xl hover:scale-[1.02] transition-all cursor-pointer"
             >
               <div className="flex flex-col md:flex-row md:items-start gap-6">
-                <div className="text-6xl md:text-8xl font-black opacity-20">
+                <div className="text-4xl md:text-6xl font-bold opacity-30">
                   {project.number}
                 </div>
                 
                 <div className="flex-1 space-y-4">
-                  <h3 className="text-3xl md:text-5xl font-black leading-tight">
+                  <h3 className="text-3xl md:text-5xl font-bold leading-tight">
                     {project.title}
                   </h3>
-                  <p className="text-lg md:text-xl font-semibold">
+                  <p className="text-lg md:text-xl font-medium">
                     {project.description}
                   </p>
                   <div className="flex flex-wrap gap-2 md:gap-3">
                     {project.tech.map((tech: string, techIndex: number) => (
                       <span
                         key={techIndex}
-                        className="bg-foreground text-background px-3 md:px-4 py-1 md:py-2 text-sm md:text-base font-bold"
+                        className="inline-block bg-background text-foreground px-3 py-1 text-sm font-semibold rounded-full"
                       >
                         {tech}
                       </span>
@@ -95,7 +96,7 @@ export function PortfolioProjects() {
                   </div>
                 </div>
 
-                <div className="text-4xl font-black self-center md:self-start">
+                <div className="text-4xl font-bold self-center md:self-start">
                   →
                 </div>
               </div>
