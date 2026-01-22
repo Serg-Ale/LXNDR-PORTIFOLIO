@@ -6,29 +6,31 @@ import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { SplitTextReveal } from "@/components/shared/split-text-reveal"
 import { GlitchText } from "@/components/shared/glitch-text"
-import { CopyButton } from "@/components/shared/copy-button"
 import { prefersReducedMotion } from "@/lib/gsap-config"
+import { FaLinkedin, FaGithub } from "react-icons/fa"
+import { HiEnvelope, HiArrowTopRightOnSquare } from "react-icons/hi2"
+import type { IconType } from "react-icons"
 
 gsap.registerPlugin(ScrollTrigger)
 
 const contactLinks = [
   {
     label: "LINKEDIN",
-    value: "linkedin.com/in/sergioalexandre-dev",
-    href: "https://linkedin.com/in/sergioalexandre-dev",
-    icon: "→",
+    value: "@serg-alexandre",
+    href: "https://www.linkedin.com/in/serg-alexandre/",
+    icon: FaLinkedin,
   },
   {
     label: "EMAIL",
-    value: "sergioalexandre.dev@gmail.com",
-    href: "mailto:sergioalexandre.dev@gmail.com",
-    icon: "→",
+    value: "sergioalexandre0716@gmail.com",
+    href: "mailto:sergioalexandre0716@gmail.com",
+    icon: HiEnvelope,
   },
   {
     label: "GITHUB",
-    value: "github.com/lxndroc",
-    href: "https://github.com/lxndroc",
-    icon: "→",
+    value: "@Serg-Ale",
+    href: "https://github.com/Serg-Ale",
+    icon: FaGithub,
   },
 ]
 
@@ -93,8 +95,7 @@ export function PortfolioConnect() {
     setHoveredCard(index)
 
     gsap.to(card, {
-      scale: 1.05,
-      rotation: gsap.utils.random(-3, 3),
+      scale: 1.02,
       duration: 0.3,
       ease: "power2.out",
     })
@@ -107,9 +108,8 @@ export function PortfolioConnect() {
 
     gsap.to(card, {
       scale: 1,
-      rotation: 0,
-      duration: 0.5,
-      ease: "elastic.out(1, 0.3)",
+      duration: 0.3,
+      ease: "power2.out",
     })
   }
 
@@ -162,40 +162,37 @@ export function PortfolioConnect() {
 
         {/* Contact Links */}
         <div className="grid md:grid-cols-3 gap-6 md:gap-8 mb-16">
-          {contactLinks.map((link, index) => (
-            <a
-              key={link.label}
-              ref={(el) => {
-                cardRefs.current[index] = el
-              }}
-              href={link.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              data-magnetic
-              onMouseEnter={(e) => handleCardHover(index, e.currentTarget)}
-              onMouseLeave={(e) => handleCardLeave(e.currentTarget)}
-              className="group bg-background text-foreground p-8 rounded-lg border-4 border-background hover:shadow-brutalist-inverted transition-shadow cursor-pointer hover-distort"
-            >
-              <div className="flex items-center justify-between mb-4">
-                <span className="text-sm font-black tracking-wider opacity-70">
-                  {link.label}
-                </span>
-                <span className="text-2xl font-black group-hover:translate-x-2 transition-transform">
-                  {link.icon}
-                </span>
-              </div>
-              <p className="text-xl md:text-2xl font-bold leading-tight break-all">
-                {link.value}
-              </p>
-              
-              {/* Copy button for email */}
-              {link.label === "EMAIL" && (
-                <div className="mt-4">
-                  <CopyButton value={link.value} displayText={link.value} theme="dark" />
+          {contactLinks.map((link, index) => {
+            const Icon = link.icon
+            return (
+              <a
+                key={link.label}
+                ref={(el) => {
+                  cardRefs.current[index] = el
+                }}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                data-magnetic
+                onMouseEnter={(e) => handleCardHover(index, e.currentTarget)}
+                onMouseLeave={(e) => handleCardLeave(e.currentTarget)}
+                className="group bg-background text-foreground p-8 rounded-lg border-4 border-background hover:shadow-brutalist-inverted transition-all cursor-pointer relative"
+              >
+                <div className="flex items-start justify-between mb-6">
+                  <div className="flex items-center gap-4">
+                    <Icon className="w-8 h-8 md:w-10 md:h-10" aria-hidden="true" />
+                    <span className="text-sm font-black tracking-wider opacity-70">
+                      {link.label}
+                    </span>
+                  </div>
+                  <HiArrowTopRightOnSquare className="w-6 h-6 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300" aria-hidden="true" />
                 </div>
-              )}
-            </a>
-          ))}
+                <p className="text-lg md:text-xl font-bold leading-tight break-all">
+                  {link.value}
+                </p>
+              </a>
+            )
+          })}
         </div>
 
         {/* Additional Info */}
