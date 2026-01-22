@@ -7,12 +7,14 @@ interface BlogCodeBlockProps {
   children: string
   language?: string
   highlightedCode?: string
+  className?: string
 }
 
 export function BlogCodeBlock({
   children,
   language = "text",
   highlightedCode,
+  className = "",
 }: BlogCodeBlockProps) {
   const [copied, setCopied] = useState(false)
 
@@ -27,18 +29,16 @@ export function BlogCodeBlock({
   }
 
   return (
-    <div className="relative group my-6">
-      {/* Language Label */}
+    <div className={`relative group my-6 theme-transition-rgb ${className}`}>
       {language && language !== "text" && (
-        <div className="absolute top-0 left-0 px-4 py-2 bg-foreground text-background text-xs md:text-sm font-bold uppercase z-10">
+        <div className="absolute top-0 left-0 px-4 py-2 bg-primary text-primary-foreground text-xs md:text-sm font-bold uppercase z-10">
           {language}
         </div>
       )}
 
-      {/* Copy Button */}
       <button
         onClick={handleCopy}
-        className="absolute top-2 right-2 p-2 bg-foreground/90 text-background hover:bg-foreground transition-colors z-10 opacity-0 group-hover:opacity-100"
+        className="absolute top-2 right-2 p-2 bg-primary/90 text-primary-foreground hover:bg-primary transition-colors z-10 opacity-0 group-hover:opacity-100"
         aria-label="Copy code"
       >
         {copied ? (
@@ -48,15 +48,14 @@ export function BlogCodeBlock({
         )}
       </button>
 
-      {/* Code Block */}
       {highlightedCode ? (
         <div
-          className="overflow-x-auto border-4 border-foreground"
+          className="overflow-x-auto border-4 border-border bg-card"
           dangerouslySetInnerHTML={{ __html: highlightedCode }}
         />
       ) : (
-        <pre className="overflow-x-auto border-4 border-foreground bg-foreground/5 p-6">
-          <code className="text-sm md:text-base font-mono">{children}</code>
+        <pre className="overflow-x-auto border-4 border-border bg-card p-6">
+          <code className="text-sm md:text-base font-mono text-card-foreground">{children}</code>
         </pre>
       )}
     </div>

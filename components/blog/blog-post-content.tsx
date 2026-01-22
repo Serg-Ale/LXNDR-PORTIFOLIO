@@ -8,7 +8,7 @@ interface BlogPostContentProps {
 
 export async function BlogPostContent({ content }: BlogPostContentProps) {
   return (
-    <article className="prose prose-lg max-w-none">
+    <article className="prose prose-lg max-w-none theme-transition-rgb">
       <MDXRemote source={content} components={getMdxComponents()} />
     </article>
   )

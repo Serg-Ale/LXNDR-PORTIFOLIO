@@ -23,8 +23,7 @@ export function BlogPostHeader({ post, locale }: BlogPostHeaderProps) {
   const t = useTranslations("blog")
 
   return (
-    <header className="mb-12 md:mb-16">
-      {/* Back Link */}
+    <header className="mb-12 md:mb-16 theme-transition-rgb">
       <Link
         href="/blog"
         className="inline-flex items-center gap-2 text-sm md:text-base font-bold mb-8 hover:opacity-70 transition-opacity"
@@ -32,30 +31,26 @@ export function BlogPostHeader({ post, locale }: BlogPostHeaderProps) {
         {t("backToBlog")}
       </Link>
 
-      {/* Tags */}
       <div className="flex flex-wrap gap-2 mb-6">
         {post.tags.map((tag) => (
           <span
             key={tag}
-            className="text-xs md:text-sm font-bold uppercase px-4 py-2 border-2 border-foreground bg-foreground/5"
+            className="text-xs md:text-sm font-bold uppercase px-4 py-2 border-2 border-border bg-accent text-accent-foreground"
           >
             {tag}
           </span>
         ))}
       </div>
 
-      {/* Title */}
       <h1 className="text-5xl md:text-8xl font-bebas font-black mb-6 leading-tight">
         {post.title}
       </h1>
 
-      {/* Description */}
       <p className="text-xl md:text-2xl text-muted-foreground mb-6 leading-relaxed">
         {post.description}
       </p>
 
-      {/* Meta */}
-      <div className="flex flex-wrap items-center gap-4 text-sm md:text-base text-muted-foreground border-t-2 border-foreground/20 pt-6">
+      <div className="flex flex-wrap items-center gap-4 text-sm md:text-base text-muted-foreground border-t-2 border-border pt-6">
         <div>
           <span className="font-bold">{t("publishedOn")}:</span>{" "}
           <time dateTime={post.date}>{formatDate(post.date, locale)}</time>

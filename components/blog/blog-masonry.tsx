@@ -42,7 +42,7 @@ export function BlogMasonry({ posts, locale }: BlogMasonryProps) {
   }
 
   return (
-    <div ref={containerRef}>
+    <div ref={containerRef} className="theme-transition-rgb">
       <Masonry
         breakpointCols={breakpointColumns}
         className="flex -ml-6 w-auto"
