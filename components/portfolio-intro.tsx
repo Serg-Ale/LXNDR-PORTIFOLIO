@@ -1,32 +1,32 @@
-"use client"
+"use client";
 
-import { useEffect, useRef } from "react"
-import { useTranslations } from "next-intl"
-import gsap from "gsap"
-import { ScrollTrigger } from "gsap/ScrollTrigger"
-import { SplitTextReveal } from "./split-text-reveal"
-import { GlitchText } from "./glitch-text"
-import { rgbSplitEffect, prefersReducedMotion } from "@/lib/gsap-config"
+import { useEffect, useRef } from "react";
+import { useTranslations } from "next-intl";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { SplitTextReveal } from "./split-text-reveal";
+import { GlitchText } from "./glitch-text";
+import { rgbSplitEffect, prefersReducedMotion } from "@/lib/gsap-config";
 
-gsap.registerPlugin(ScrollTrigger)
+gsap.registerPlugin(ScrollTrigger);
 
 export function PortfolioIntro() {
-  const t = useTranslations("hero")
-  const sectionRef = useRef<HTMLDivElement>(null)
-  const backgroundRef = useRef<HTMLDivElement>(null)
-  const scrollIndicatorRef = useRef<HTMLButtonElement>(null)
+  const t = useTranslations("hero");
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const backgroundRef = useRef<HTMLDivElement>(null);
+  const scrollIndicatorRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
-    const section = sectionRef.current
-    const background = backgroundRef.current
-    const scrollIndicator = scrollIndicatorRef.current
-    
-    if (!section || !background || !scrollIndicator) return
+    const section = sectionRef.current;
+    const background = backgroundRef.current;
+    const scrollIndicator = scrollIndicatorRef.current;
+
+    if (!section || !background || !scrollIndicator) return;
 
     const ctx = gsap.context(() => {
       if (prefersReducedMotion()) {
-        gsap.set([section, scrollIndicator], { opacity: 1 })
-        return
+        gsap.set([section, scrollIndicator], { opacity: 1 });
+        return;
       }
 
       // Parallax scroll effect on entire hero
@@ -39,7 +39,7 @@ export function PortfolioIntro() {
           end: "bottom top",
           scrub: 1,
         },
-      })
+      });
 
       // Scroll indicator pulsing animation
       gsap.to(scrollIndicator, {
@@ -49,7 +49,7 @@ export function PortfolioIntro() {
         repeat: -1,
         yoyo: true,
         ease: "power1.inOut",
-      })
+      });
 
       // Background grain animation (subtle)
       gsap.to(background, {
@@ -58,18 +58,18 @@ export function PortfolioIntro() {
         repeat: -1,
         yoyo: true,
         ease: "none",
-      })
-    }, section)
+      });
+    }, section);
 
-    return () => ctx.revert()
-  }, [])
+    return () => ctx.revert();
+  }, []);
 
   const handleScrollDown = () => {
-    const nextSection = document.getElementById("journey")
+    const nextSection = document.getElementById("journey");
     if (nextSection) {
-      nextSection.scrollIntoView({ behavior: "smooth" })
+      nextSection.scrollIntoView({ behavior: "smooth" });
     }
-  }
+  };
 
   return (
     <section
@@ -79,10 +79,7 @@ export function PortfolioIntro() {
       data-theme="dark"
     >
       {/* Grain texture background */}
-      <div
-        ref={backgroundRef}
-        className="grain-overlay absolute inset-0 z-0"
-      />
+      <div ref={backgroundRef} className="grain-overlay absolute inset-0 z-0" />
 
       {/* Parallax background layers */}
       <div className="absolute inset-0 z-0 opacity-10">
@@ -148,5 +145,5 @@ export function PortfolioIntro() {
         </div>
       </button>
     </section>
-  )
+  );
 }

@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
+import { usePathname } from "@/i18n/routing"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 
