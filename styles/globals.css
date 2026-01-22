@@ -4,8 +4,8 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
+  --background: oklch(0.98 0 0);
+  --foreground: oklch(0.20 0 0);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
@@ -77,6 +77,8 @@
 @theme inline {
   --font-sans: 'Geist', 'Geist Fallback';
   --font-mono: 'Geist Mono', 'Geist Mono Fallback';
+  --font-bebas: var(--font-bebas);
+  --font-space: var(--font-space);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -121,5 +123,344 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  /* Brutalist outlined text utilities */
+  .text-outlined {
+    -webkit-text-stroke: 4px theme('colors.foreground');
+    -webkit-text-fill-color: transparent;
+    paint-order: stroke fill;
+  }
+  
+  .text-outlined-thick {
+    -webkit-text-stroke: 6px theme('colors.foreground');
+    -webkit-text-fill-color: transparent;
+    paint-order: stroke fill;
+  }
+  
+  .text-outlined-thin {
+    -webkit-text-stroke: 2px theme('colors.foreground');
+    -webkit-text-fill-color: transparent;
+    paint-order: stroke fill;
+  }
+  
+  /* Hover effect to fill outlined text */
+  .text-outlined-hover {
+    transition: -webkit-text-fill-color 0.3s ease;
+  }
+  
+  .text-outlined-hover:hover {
+    -webkit-text-fill-color: theme('colors.foreground');
+  }
+  
+  /* Font family utilities */
+  .font-bebas {
+    font-family: var(--font-bebas), sans-serif;
+  }
+  
+  .font-space {
+    font-family: var(--font-space), sans-serif;
+  }
+  
+  /* Brutalist shadow variations */
+  .shadow-brutalist {
+    box-shadow: 8px 8px 0 theme('colors.foreground');
+  }
+  
+  .shadow-brutalist-lg {
+    box-shadow: 12px 12px 0 theme('colors.foreground');
+  }
+  
+  .shadow-brutalist-sm {
+    box-shadow: 4px 4px 0 theme('colors.foreground');
+  }
+  
+  /* Modern shadcn-style shadows with blur */
+  .shadow-modern-sm {
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  }
+  
+  .shadow-modern-md {
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  }
+  
+  .shadow-modern-lg {
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  }
+  
+  .shadow-modern-xl {
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  }
+  
+  /* Inverted brutalist shadows for dark backgrounds */
+  .shadow-brutalist-inverted {
+    box-shadow: 8px 8px 0 theme('colors.background');
+  }
+  
+  .shadow-brutalist-lg-inverted {
+    box-shadow: 12px 12px 0 theme('colors.background');
+  }
+  
+  .shadow-brutalist-sm-inverted {
+    box-shadow: 4px 4px 0 theme('colors.background');
+  }
+  
+  /* Outlined text for dark backgrounds */
+  .text-outlined-dark {
+    -webkit-text-stroke: 4px theme('colors.background');
+    -webkit-text-fill-color: transparent;
+    paint-order: stroke fill;
+  }
+  
+  .text-outlined-thick-dark {
+    -webkit-text-stroke: 6px theme('colors.background');
+    -webkit-text-fill-color: transparent;
+    paint-order: stroke fill;
+  }
+  
+  .text-outlined-thin-dark {
+    -webkit-text-stroke: 2px theme('colors.background');
+    -webkit-text-fill-color: transparent;
+    paint-order: stroke fill;
+  }
+  
+  /* Hover effect for dark outlined text */
+  .text-outlined-hover-dark {
+    transition: -webkit-text-fill-color 0.7s ease;
+  }
+  
+  .text-outlined-hover-dark:hover {
+    -webkit-text-fill-color: theme('colors.background');
+  }
+
+  /* Glitch effect utilities */
+  .glitch-text {
+    position: relative;
+    display: inline-block;
+  }
+
+  .glitch-text::before,
+  .glitch-text::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.8;
+  }
+
+  @keyframes glitch-anim-1 {
+    0%, 100% {
+      transform: translate(0);
+      opacity: 0;
+    }
+    50% {
+      transform: translate(-2px, 2px);
+      opacity: 0.8;
+    }
+  }
+
+  @keyframes glitch-anim-2 {
+    0%, 100% {
+      transform: translate(0);
+      opacity: 0;
+    }
+    50% {
+      transform: translate(2px, -2px);
+      opacity: 0.8;
+    }
+  }
+
+  .glitch-text:hover::before {
+    animation: glitch-anim-1 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    color: #ff0000;
+    z-index: -1;
+  }
+
+  .glitch-text:hover::after {
+    animation: glitch-anim-2 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    color: #00ffff;
+    z-index: -1;
+  }
+
+  /* Magnetic cursor - hide default cursor on desktop */
+  @media (min-width: 768px) {
+    body {
+      cursor: none;
+    }
+    
+    a, button, [data-magnetic], [role="button"] {
+      cursor: none;
+    }
+  }
+
+  /* Grain texture overlay */
+  .grain-overlay {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .grain-overlay::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.03;
+    pointer-events: none;
+    animation: grain 8s steps(10) infinite;
+  }
+
+  @keyframes grain {
+    0%, 100% { transform: translate(0, 0); }
+    10% { transform: translate(-5%, -10%); }
+    20% { transform: translate(-15%, 5%); }
+    30% { transform: translate(7%, -25%); }
+    40% { transform: translate(-5%, 25%); }
+    50% { transform: translate(-15%, 10%); }
+    60% { transform: translate(15%, 0%); }
+    70% { transform: translate(0%, 15%); }
+    80% { transform: translate(3%, 35%); }
+    90% { transform: translate(-10%, 10%); }
+  }
+
+  /* Parallax layers */
+  .parallax-layer {
+    will-change: transform;
+  }
+
+  /* Hover distortion effect */
+  .hover-distort {
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .hover-distort:hover {
+    transform: scale(1.05) rotate(1deg);
+  }
+
+  /* Pulsing dot animation */
+  .pulse-dot {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
+
+  /* 3D card tilt effect */
+  .card-3d {
+    transform-style: preserve-3d;
+    transition: transform 0.3s ease;
+  }
+
+  /* Scroll indicator bounce */
+  .scroll-indicator {
+    animation: bounce 2s infinite;
+  }
+
+  @keyframes bounce {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(10px);
+    }
+  }
+
+  /* RGB split text effect */
+  .rgb-split {
+    position: relative;
+  }
+
+  .rgb-split::before,
+  .rgb-split::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .rgb-split::before {
+    color: #ff0000;
+    z-index: -1;
+    animation: rgb-before 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  }
+
+  .rgb-split::after {
+    color: #00ffff;
+    z-index: -1;
+    animation: rgb-after 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  }
+
+  @keyframes rgb-before {
+    0% {
+      transform: translate(0);
+    }
+    20% {
+      transform: translate(-2px, 2px);
+    }
+    40% {
+      transform: translate(-2px, -2px);
+    }
+    60% {
+      transform: translate(2px, 2px);
+    }
+    80% {
+      transform: translate(2px, -2px);
+    }
+    100% {
+      transform: translate(0);
+    }
+  }
+
+  @keyframes rgb-after {
+    0% {
+      transform: translate(0);
+    }
+    20% {
+      transform: translate(2px, -2px);
+    }
+    40% {
+      transform: translate(2px, 2px);
+    }
+    60% {
+      transform: translate(-2px, -2px);
+    }
+    80% {
+      transform: translate(-2px, 2px);
+    }
+    100% {
+      transform: translate(0);
+    }
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .glitch-text::before,
+  .glitch-text::after,
+  .grain-overlay::before,
+  .pulse-dot,
+  .scroll-indicator {
+    animation: none !important;
   }
 }

@@ -127,7 +127,7 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground overflow-x-hidden;
+    @apply bg-background text-foreground;
   }
 }
 
@@ -150,5 +150,26 @@
   
   .shadow-brutalist-lg {
     box-shadow: 12px 12px 0 0 currentColor;
+  }
+  
+  /* Hide scrollbar but keep functionality */
+  .scrollbar-hide {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;     /* Firefox */
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;             /* Chrome, Safari, Opera */
+  }
+  
+  /* Fade indicators for horizontal scroll */
+  .scroll-fade-left {
+    background: linear-gradient(to right, currentColor 0%, transparent 100%);
+    opacity: 0.2;
+  }
+  
+  .scroll-fade-right {
+    background: linear-gradient(to left, currentColor 0%, transparent 100%);
+    opacity: 0.2;
   }
 }
