@@ -1,0 +1,46 @@
+# LXNDR Portfolio - Robots.txt
+# https://lxndr.dev
+
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /_next/
+Disallow: /*.map$
+
+# Crawl-delay for polite crawling (10 seconds between requests)
+Crawl-delay: 10
+
+# Sitemap location
+Sitemap: https://lxndr.dev/sitemap.xml
+
+# Host declaration
+Host: https://lxndr.dev
+
+# Google-specific
+User-agent: Googlebot
+Allow: /
+Disallow: /api/
+
+User-agent: Googlebot-Image
+Allow: /images/
+
+# Bing-specific
+User-agent: Bingbot
+Allow: /
+Disallow: /api/
+
+# Twitter
+User-agent: Twitterbot
+Allow: /
+
+# Facebook
+User-agent: facebookexternalhit
+Allow: /
+
+# LinkedIn
+User-agent: LinkedInBot
+Allow: /
+
+# Slack
+User-agent: Slackbot
+Allow: /
