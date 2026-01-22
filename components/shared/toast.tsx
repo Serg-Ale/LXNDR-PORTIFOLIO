@@ -69,7 +69,7 @@ export function Toast({ message, isVisible, onClose, theme = "dark" }: ToastProp
     >
       <div className="flex items-center gap-3">
         <div className="flex-shrink-0 text-green-500">
-          {HiCheckCircle({ className: "w-6 h-6" })}
+          <HiCheckCircle className="w-6 h-6" />
         </div>
         <p className="text-base md:text-lg font-semibold">{message}</p>
       </div>

@@ -1,50 +1,66 @@
 "use client"
 
-import { useEffect, useState } from "react"
-import { usePathname } from "@/i18n/routing"
+import { useEffect, useRef, useState } from "react"
+import { useTheme } from "next-themes"
+import { cn } from "@/lib/utils"
 
 type ScrollProgressProps = {
-  sections: string[]
+  sections?: string[]
 }
 
 export function ScrollProgress({ sections }: ScrollProgressProps) {
-  const [activeSection, setActiveSection] = useState<string | null>(null)
+  const [scrollPercent, setScrollPercent] = useState(0)
+  const [isScrolling, setIsScrolling] = useState(false)
+  const { resolvedTheme } = useTheme()
+  const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null)
 
   useEffect(() => {
     const handleScroll = () => {
-      let newActiveSection: string | null = null
+      const scrollTop = window.scrollY
+      const docHeight = document.documentElement.scrollHeight
+      const winHeight = window.innerHeight
+      const scrollableHeight = docHeight - winHeight
 
-      for (const sectionId of sections) {
-        const section = document.getElementById(sectionId)
-        if (!section) continue
-
-        const rect = section.getBoundingClientRect()
-        if (rect.top < window.innerHeight / 2 && rect.bottom > window.innerHeight / 2) {
-          newActiveSection = sectionId
-          break
-        }
+      if (scrollableHeight > 0) {
+        const percent = (scrollTop / scrollableHeight) * 100
+        setScrollPercent(Math.min(100, Math.max(0, percent)))
+      } else {
+        setScrollPercent(0)
       }
 
-      setActiveSection(newActiveSection)
+      setIsScrolling(true)
+
+      if (scrollTimeoutRef.current) {
+        clearTimeout(scrollTimeoutRef.current)
+      }
+
+      scrollTimeoutRef.current = setTimeout(() => {
+        setIsScrolling(false)
+      }, 150)
     }
 
     window.addEventListener("scroll", handleScroll)
-    handleScroll() // Initialize on mount
+    handleScroll()
 
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [sections])
-
-  const pathname = usePathname()
+    return () => {
+      window.removeEventListener("scroll", handleScroll)
+      if (scrollTimeoutRef.current) {
+        clearTimeout(scrollTimeoutRef.current)
+      }
+    }
+  }, [])
 
   return (
-    <div className="fixed top-0 left-0 w-full h-1 bg-gray-100 z-50">
+    <div
+      className={cn(
+        "fixed top-0 left-0 w-full h-1 z-50 transition-opacity duration-500 ease-in-out",
+        isScrolling ? "opacity-100" : "opacity-0"
+      )}
+    >
+      <div className="absolute inset-0 bg-border/50" />
       <div
-        className="h-full bg-blue-500 transition-transform"
-        style={{
-          width: `${
-            activeSection ? (sections.indexOf(activeSection) + 1) / sections.length * 100 : 0
-          }%`,
-        }}
+        className="h-full bg-foreground origin-left"
+        style={{ width: `${scrollPercent}%` }}
       />
     </div>
   )

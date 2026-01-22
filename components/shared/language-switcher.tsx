@@ -22,9 +22,9 @@ export function LanguageSwitcher() {
       onClick={toggleLocale}
       disabled={isPending}
       className="text-lg md:text-xl font-bold bg-foreground text-background px-3 md:px-4 py-2 hover:opacity-80 transition-opacity disabled:opacity-50"
-      title={locale === "en" ? "Switch to Português" : "Mudar para English"}
+      title={locale === "en" ? "English" : "Português"}
     >
-      {locale === "en" ? "PT" : "EN"}
+      {locale === "en" ? "EN" : "PT"}
     </button>
   )
 }
