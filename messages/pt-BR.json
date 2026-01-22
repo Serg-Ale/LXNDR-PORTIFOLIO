@@ -19,10 +19,22 @@
     "evolutionWord": "EVOLUÇÃO",
     "techStack": "STACK TÉCNICO",
     "education": "FORMAÇÃO",
-    "educationContent": "ANÁLISE E DESENVOLVIMENTO DE SISTEMAS\nUTFPR — Formatura em Jul 2026"
+    "educationContent": "ANÁLISE E DESENVOLVIMENTO DE SISTEMAS\nUTFPR — Formatura em Jul 2026",
+    "journeyTitle": "MINHA JORNADA_",
+    "journeyLabels": {
+      "beginning": "→ O COMEÇO",
+      "evolution": "→ EVOLUÇÃO"
+    },
+    "stats": {
+      "years": "ANOS",
+      "projects": "PROJETOS",
+      "commits": "COMMITS"
+    }
   },
   "experience": {
     "title": "EXPERIÊNCIA_",
+    "impactTitle": "IMPACTO_",
+    "tagline": "Onde a experiência encontra a execução",
     "jobs": [
       {
         "period": "SET 2025 — PRESENTE",
@@ -140,15 +152,16 @@
     "readingTime": "{minutes} MIN DE LEITURA",
     "publishedOn": "PUBLICADO EM",
     "tags": "TAGS",
-    "shareOn": "COMPARTILHAR NO",
+    "shareOn": "COMPARTILHAR EM",
     "copyLink": "COPIAR LINK",
     "tableOfContents": "ÍNDICE",
     "backToBlog": "← VOLTAR AO BLOG",
     "notFound": "POST NÃO ENCONTRADO",
-    "noPosts": "NENHUM POST AINDA",
+    "noPosts": "AINDA NÃO HÁ POSTS",
     "noResults": "NENHUM POST CORRESPONDE À SUA BUSCA",
     "allTags": "TODAS AS TAGS",
     "relatedPosts": "POSTS RELACIONADOS",
-    "recentPosts": "POSTS RECENTES"
+    "recentPosts": "POSTS RECENTES",
+    "viewAllPosts": "VER TODOS OS POSTS"
   }
 }

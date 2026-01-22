@@ -19,10 +19,22 @@
     "evolutionWord": "EVOLUTION",
     "techStack": "TECH STACK",
     "education": "EDUCATION",
-    "educationContent": "SYSTEMS ANALYSIS & DEVELOPMENT\nUTFPR — Graduating Jul 2026"
+    "educationContent": "SYSTEMS ANALYSIS & DEVELOPMENT\nUTFPR — Graduating Jul 2026",
+    "journeyTitle": "MY JOURNEY_",
+    "journeyLabels": {
+      "beginning": "→ THE BEGINNING",
+      "evolution": "→ EVOLUTION"
+    },
+    "stats": {
+      "years": "YEARS",
+      "projects": "PROJECTS",
+      "commits": "COMMITS"
+    }
   },
   "experience": {
     "title": "EXPERIENCE_",
+    "impactTitle": "IMPACT_",
+    "tagline": "Where experience meets execution",
     "jobs": [
       {
         "period": "SEP 2025 — PRESENT",
@@ -149,6 +161,7 @@
     "noResults": "NO POSTS MATCH YOUR SEARCH",
     "allTags": "ALL TAGS",
     "relatedPosts": "RELATED POSTS",
-    "recentPosts": "RECENT POSTS"
+    "recentPosts": "RECENT POSTS",
+    "viewAllPosts": "VIEW ALL POSTS"
   }
 }
