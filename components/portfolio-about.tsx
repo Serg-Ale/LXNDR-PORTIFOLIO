@@ -53,7 +53,7 @@ export function PortfolioAbout() {
         >
           {t("title")}
         </h2>
-        
+
         <div ref={textRef} className="grid md:grid-cols-2 gap-8 md:gap-16">
           <div className="space-y-6">
             <p className="text-2xl md:text-4xl font-bold leading-tight">
@@ -66,26 +66,31 @@ export function PortfolioAbout() {
             </div>
             <div className="border-4 border-foreground p-6 bg-foreground text-background">
               <p className="text-lg md:text-xl font-bold">
-                {t("evolution")} <span className="text-2xl">{t("evolutionWord")}</span>
+                {t("evolution")}{" "}
+                <span className="text-2xl">{t("evolutionWord")}</span>
               </p>
             </div>
           </div>
-          
+
           <div className="space-y-6">
             <div className="bg-foreground text-background p-6 md:p-8">
-              <h3 className="text-2xl md:text-3xl font-black mb-4">{t("techStack")}</h3>
+              <h3 className="text-2xl md:text-3xl font-black mb-4">
+                {t("techStack")}
+              </h3>
               <ul className="space-y-3 text-lg md:text-xl font-bold">
                 <li>→ NEXT.JS (SSR/SSG/ISR)</li>
                 <li>→ REACT / TYPESCRIPT</li>
                 <li>→ TAILWIND / RADIX UI</li>
-                <li>→ tRPC / REACT QUERY</li>
+                <li>→ GSAP / FRAMER MOTION </li>
                 <li>→ PRISMA / NEXTAUTH</li>
                 <li>→ PLAYWRIGHT / JEST</li>
                 <li>→ TURBOREPO / CI/CD</li>
               </ul>
             </div>
             <div className="border-4 border-foreground p-6">
-              <h3 className="text-xl md:text-2xl font-black mb-3">{t("education")}</h3>
+              <h3 className="text-xl md:text-2xl font-black mb-3">
+                {t("education")}
+              </h3>
               <p className="text-base md:text-lg font-bold whitespace-pre-line">
                 {t("educationContent")}
               </p>
