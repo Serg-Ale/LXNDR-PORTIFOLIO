@@ -116,10 +116,10 @@ export function PortfolioImpact() {
             triggerOnScroll
             staggerFrom="start"
           >
-            IMPACT_
+            {t("impactTitle")}
           </SplitTextReveal>
           <p className="text-xl md:text-2xl font-bold mt-6 opacity-70">
-            Where experience meets execution
+            {t("tagline")}
           </p>
         </div>
 

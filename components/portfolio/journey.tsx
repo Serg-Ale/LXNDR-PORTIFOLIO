@@ -102,7 +102,7 @@ export function PortfolioJourney() {
             triggerOnScroll
             staggerFrom="start"
           >
-            MY JOURNEY_
+            {t("journeyTitle")}
           </SplitTextReveal>
         </div>
 
@@ -122,7 +122,7 @@ export function PortfolioJourney() {
             className="parallax-layer space-y-6 md:text-right"
           >
             <div className="inline-block bg-foreground text-background px-4 py-2 rounded-full text-sm font-bold mb-4">
-              → THE BEGINNING
+              {t("journeyLabels.beginning")}
             </div>
             <p className="text-2xl md:text-4xl font-bold leading-tight">
               {t("journey")}
@@ -142,7 +142,7 @@ export function PortfolioJourney() {
             className="parallax-layer space-y-6 md:col-start-2"
           >
             <div className="inline-block bg-foreground text-background px-4 py-2 rounded-full text-sm font-bold mb-4">
-              → EVOLUTION
+              {t("journeyLabels.evolution")}
             </div>
             <div className="bg-gradient-to-br from-foreground/10 to-foreground/5 p-8 rounded-lg border border-foreground/20 hover-distort">
               <p className="text-xl md:text-2xl font-bold mb-4">

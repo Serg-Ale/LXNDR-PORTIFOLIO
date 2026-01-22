@@ -176,10 +176,10 @@ export function PortfolioSkills() {
         {/* Stats section */}
         <div className="mt-16 md:mt-24 grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
           {[
-            { label: "YEARS", value: "2+" },
-            { label: "PROJECTS", value: "10+" },
-            { label: "TECH STACK", value: techStack.length },
-            { label: "COMMITS", value: "500+" },
+            { label: t("stats.years"), value: "2+" },
+            { label: t("stats.projects"), value: "10+" },
+            { label: t("techStack"), value: techStack.length },
+            { label: t("stats.commits"), value: "500+" },
           ].map((stat, index) => (
             <div
               key={stat.label}

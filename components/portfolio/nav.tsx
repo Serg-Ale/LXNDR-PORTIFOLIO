@@ -4,23 +4,25 @@ import { useEffect, useRef, useState } from "react"
 import { createPortal } from "react-dom"
 import { useTranslations, useLocale } from "next-intl"
 import { usePathname } from "@/i18n/routing"
+import { useTheme } from "next-themes"
 import gsap from "gsap"
 import { Link } from "@/i18n/routing"
 import { LanguageSwitcher } from "@/components/shared/language-switcher"
+import { ThemeToggle } from "@/components/shared/theme-toggle"
 
 export function PortfolioNav() {
   const t = useTranslations("nav")
   const locale = useLocale()
   const pathname = usePathname()
+  const { resolvedTheme } = useTheme()
   const [isScrolled, setIsScrolled] = useState(false)
-  const [currentTheme, setCurrentTheme] = useState<"light" | "dark">("dark")
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [navHeight, setNavHeight] = useState(0)
   const [mounted, setMounted] = useState(false)
   const navRef = useRef<HTMLElement>(null)
   const mobileMenuRef = useRef<HTMLDivElement>(null)
   
-  // Check if we're on the homepage
+  const isDark = resolvedTheme === "dark"
   const isHomePage = pathname === "/" || pathname === ""
 
   useEffect(() => {
@@ -36,7 +38,6 @@ export function PortfolioNav() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  // Calculate navbar height dynamically with ResizeObserver
   useEffect(() => {
     if (!navRef.current) return
 
@@ -47,17 +48,14 @@ export function PortfolioNav() {
       }
     }
 
-    // Initial calculation with a delay to account for GSAP animations
     const timer = setTimeout(updateNavHeight, 100)
 
-    // Use ResizeObserver to track size changes
     const resizeObserver = new ResizeObserver(() => {
       updateNavHeight()
     })
 
     resizeObserver.observe(navRef.current)
 
-    // Also listen to window resize
     window.addEventListener("resize", updateNavHeight)
 
     return () => {
@@ -67,7 +65,6 @@ export function PortfolioNav() {
     }
   }, [])
 
-  // Close mobile menu when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -93,30 +90,6 @@ export function PortfolioNav() {
   }, [isMobileMenuOpen])
 
   useEffect(() => {
-    const sections = document.querySelectorAll("[data-theme]")
-    
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && entry.intersectionRatio > 0.5) {
-            const theme = entry.target.getAttribute("data-theme") as "light" | "dark"
-            setCurrentTheme(theme || "light")
-          }
-        })
-      },
-      {
-        threshold: [0.5],
-        rootMargin: "-100px 0px -100px 0px",
-      }
-    )
-
-    sections.forEach((section) => observer.observe(section))
-
-    return () => observer.disconnect()
-  }, [])
-
-  useEffect(() => {
-    // Only animate on initial mount, check if this is the first render
     const hasAnimated = sessionStorage.getItem("nav-animated")
     
     if (!hasAnimated && navRef.current) {
@@ -129,21 +102,18 @@ export function PortfolioNav() {
       })
       sessionStorage.setItem("nav-animated", "true")
     } else if (navRef.current) {
-      // Ensure nav is visible if already animated
       gsap.set(navRef.current, { y: 0, opacity: 1 })
     }
   }, [])
 
   const scrollToSection = (id: string) => {
     if (isHomePage) {
-      // If on homepage, scroll to section
       const element = document.getElementById(id)
       if (element) {
         element.scrollIntoView({ behavior: "smooth" })
         setIsMobileMenuOpen(false)
       }
     } else {
-      // If on another page, navigate to homepage with hash
       window.location.href = `/${locale}#${id}`
     }
   }
@@ -156,55 +126,36 @@ export function PortfolioNav() {
         transform: 'translateZ(0)',
         willChange: 'auto'
       }}
-      className={`fixed left-0 right-0 md:hidden border-t ${
-        currentTheme === "dark"
-          ? "bg-foreground/95 border-background/20 text-background"
-          : "bg-background/95 border-foreground/20 text-foreground"
-      } backdrop-blur-sm shadow-modern-lg z-40`}
+      className="fixed left-0 right-0 md:hidden border-t border-border bg-background/95 backdrop-blur-sm text-foreground shadow-modern-lg z-40"
     >
       <div className="max-w-7xl mx-auto w-full px-6 py-4 flex flex-col gap-3">
             <button
               onClick={() => scrollToSection("journey")}
-              className={`text-lg font-semibold px-4 py-3 rounded-md transition-all text-left ${
-                currentTheme === "dark"
-                  ? "hover:bg-background/10"
-                  : "hover:bg-foreground/5"
-              }`}
+              className="text-lg font-semibold px-4 py-3 rounded-md transition-all text-left hover:bg-accent/10"
             >
               {t("about")}
             </button>
             <button
               onClick={() => scrollToSection("impact")}
-              className={`text-lg font-semibold px-4 py-3 rounded-md transition-all text-left ${
-                currentTheme === "dark"
-                  ? "hover:bg-background/10"
-                  : "hover:bg-foreground/5"
-              }`}
+              className="text-lg font-semibold px-4 py-3 rounded-md transition-all text-left hover:bg-accent/10"
             >
               {t("experience")}
             </button>
             <Link
               href="/blog"
-              className={`text-lg font-semibold px-4 py-3 rounded-md transition-all text-left block ${
-                currentTheme === "dark"
-                  ? "hover:bg-background/10"
-                  : "hover:bg-foreground/5"
-              }`}
+              className="text-lg font-semibold px-4 py-3 rounded-md transition-all text-left block hover:bg-accent/10"
             >
               {t("blog")}
             </Link>
             <button
               onClick={() => scrollToSection("connect")}
-              className={`text-lg font-semibold px-4 py-3 rounded-md transition-all text-left ${
-                currentTheme === "dark"
-                  ? "hover:bg-background/10"
-                  : "hover:bg-foreground/5"
-              }`}
+              className="text-lg font-semibold px-4 py-3 rounded-md transition-all text-left hover:bg-accent/10"
             >
               {t("contact")}
             </button>
-        <div className="px-4 py-2">
-          <LanguageSwitcher theme={currentTheme} />
+        <div className="px-4 py-2 flex items-center gap-4">
+          <LanguageSwitcher />
+          <ThemeToggle className="w-10 h-10 md:w-12 md:h-12" />
         </div>
       </div>
     </div>
@@ -214,12 +165,8 @@ export function PortfolioNav() {
     <>
       <nav
         ref={navRef}
-        className={`fixed top-0 left-0 right-0 z-50 ${
-          currentTheme === "dark"
-            ? "bg-foreground/95 text-background backdrop-blur-sm"
-            : "bg-background/95 text-foreground backdrop-blur-sm"
-        } ${
-          isScrolled ? "shadow-modern-md border-b" : ""
+        className={`fixed top-0 left-0 right-0 z-50 bg-background/95 text-foreground backdrop-blur-sm border-b ${
+          isScrolled ? "shadow-modern-md" : ""
         }`}
       >
         <div className="max-w-7xl mx-auto w-full px-6 md:px-12 py-4 md:py-6 flex justify-between items-center gap-4">
@@ -230,65 +177,47 @@ export function PortfolioNav() {
             {t("logo")}
           </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex gap-4 md:gap-8 flex-shrink-0">
+          <div className="hidden md:flex gap-4 md:gap-8 flex-shrink-0 items-center">
             <button
               onClick={() => scrollToSection("journey")}
-              className={`text-lg md:text-xl font-semibold px-4 py-2 rounded-md transition-all ${
-                currentTheme === "dark"
-                  ? "hover:bg-background/10 hover:scale-105"
-                  : "hover:bg-foreground/5 hover:scale-105"
-              }`}
+              className="text-lg md:text-xl font-semibold px-4 py-2 rounded-md transition-all hover:bg-accent/10 hover:scale-105"
             >
               {t("about")}
             </button>
             <button
               onClick={() => scrollToSection("impact")}
-              className={`text-lg md:text-xl font-semibold px-4 py-2 rounded-md transition-all ${
-                currentTheme === "dark"
-                  ? "hover:bg-background/10 hover:scale-105"
-                  : "hover:bg-foreground/5 hover:scale-105"
-              }`}
+              className="text-lg md:text-xl font-semibold px-4 py-2 rounded-md transition-all hover:bg-accent/10 hover:scale-105"
             >
               {t("experience")}
             </button>
             <Link
               href="/blog"
-              className={`text-lg md:text-xl font-semibold px-4 py-2 rounded-md transition-all ${
-                currentTheme === "dark"
-                  ? "hover:bg-background/10 hover:scale-105"
-                  : "hover:bg-foreground/5 hover:scale-105"
-              }`}
+              className="text-lg md:text-xl font-semibold px-4 py-2 rounded-md transition-all hover:bg-accent/10 hover:scale-105"
             >
               {t("blog")}
             </Link>
             <button
               onClick={() => scrollToSection("connect")}
-              className={`text-lg md:text-xl font-semibold px-4 py-2 rounded-md transition-all ${
-                currentTheme === "dark"
-                  ? "hover:bg-background/10 hover:scale-105"
-                  : "hover:bg-foreground/5 hover:scale-105"
-              }`}
+              className="text-lg md:text-xl font-semibold px-4 py-2 rounded-md transition-all hover:bg-accent/10 hover:scale-105"
             >
               {t("contact")}
             </button>
-            <LanguageSwitcher theme={currentTheme} />
+            <LanguageSwitcher />
+            <ThemeToggle />
           </div>
 
-          {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="md:hidden flex flex-col gap-1.5 p-2 flex-shrink-0"
             aria-label="Toggle menu"
           >
-            <span className={`block w-6 h-0.5 transition-all ${currentTheme === "dark" ? "bg-background" : "bg-foreground"} ${isMobileMenuOpen ? "rotate-45 translate-y-2" : ""}`}></span>
-            <span className={`block w-6 h-0.5 transition-all ${currentTheme === "dark" ? "bg-background" : "bg-foreground"} ${isMobileMenuOpen ? "opacity-0" : ""}`}></span>
-            <span className={`block w-6 h-0.5 transition-all ${currentTheme === "dark" ? "bg-background" : "bg-foreground"} ${isMobileMenuOpen ? "-rotate-45 -translate-y-2" : ""}`}></span>
+            <span className={`block w-6 h-0.5 bg-foreground transition-all ${isMobileMenuOpen ? "rotate-45 translate-y-2" : ""}`}></span>
+            <span className={`block w-6 h-0.5 bg-foreground transition-all ${isMobileMenuOpen ? "opacity-0" : ""}`}></span>
+            <span className={`block w-6 h-0.5 bg-foreground transition-all ${isMobileMenuOpen ? "-rotate-45 -translate-y-2" : ""}`}></span>
           </button>
         </div>
       </nav>
       
-      {/* Mobile Menu Portal */}
       {mounted && mobileMenu && createPortal(mobileMenu, document.body)}
     </>
   )
