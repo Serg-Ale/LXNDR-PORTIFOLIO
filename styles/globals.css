@@ -368,10 +368,131 @@
     animation: bounce 2s infinite;
   }
 
-  @keyframes bounce {
+@keyframes bounce {
     0%, 100% {
       transform: translateY(0);
     }
+    50% {
+      transform: translateY(10px);
+    }
+  }
+
+  /* Theme transition glitch effect */
+  .theme-glitch-overlay {
+    position: fixed;
+    inset: 0;
+    background: var(--foreground);
+    z-index: 9998;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .theme-glitch-active .theme-glitch-overlay {
+    animation: glitch-wipe 0.35s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+  }
+
+  @keyframes glitch-wipe {
+    0% {
+      opacity: 0.08;
+      clip-path: inset(0 0 0 0);
+    }
+    20% {
+      opacity: 0.12;
+      clip-path: inset(15% 0 65% 0);
+    }
+    40% {
+      opacity: 0.06;
+      clip-path: inset(55% 0 25% 0);
+    }
+    60% {
+      opacity: 0.1;
+      clip-path: inset(25% 0 70% 0);
+    }
+    80% {
+      opacity: 0.08;
+      clip-path: inset(70% 0 10% 0);
+    }
+    100% {
+      opacity: 0;
+      clip-path: inset(0 0 0 0);
+    }
+  }
+
+  /* RGB split effect during theme transition */
+  .theme-transition-rgb {
+    animation: theme-rgb-shift 0.4s ease-out;
+  }
+
+  @keyframes theme-rgb-shift {
+    0%, 100% {
+      filter: none;
+    }
+    25% {
+      filter: drop-shadow(2px 0 var(--primary)) drop-shadow(-2px 0 var(--accent));
+    }
+    50% {
+      filter: drop-shadow(0 2px var(--primary)) drop-shadow(0 -2px var(--accent));
+    }
+    75% {
+      filter: drop-shadow(-2px 0 var(--primary)) drop-shadow(2px 0 var(--accent));
+    }
+  }
+
+  /* Blur reveal effect for theme transitions */
+  .theme-blur-reveal {
+    animation: theme-blur-in 0.4s ease-out forwards;
+  }
+
+  @keyframes theme-blur-in {
+    0% {
+      filter: blur(8px);
+      opacity: 0.7;
+      transform: scale(0.99);
+    }
+    100% {
+      filter: blur(0);
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  /* Scanline effect for theme transition */
+  .theme-scanline {
+    position: fixed;
+    inset: 0;
+    z-index: 9997;
+    pointer-events: none;
+    opacity: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.03) 2px,
+      rgba(0, 0, 0, 0.03) 4px
+    );
+  }
+
+  .theme-glitch-active .theme-scanline {
+    animation: scanline-sweep 0.5s ease-out forwards;
+  }
+
+  @keyframes scanline-sweep {
+    0% {
+      opacity: 0;
+      transform: translateY(-100%);
+    }
+    20% {
+      opacity: 1;
+    }
+    80% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(100%);
+    }
+  }
+}
     50% {
       transform: translateY(10px);
     }
