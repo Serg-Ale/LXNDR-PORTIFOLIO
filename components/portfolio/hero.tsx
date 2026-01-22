@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react"
 import { useTranslations } from "next-intl"
+import { useTheme } from "next-themes"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 
@@ -9,14 +10,16 @@ gsap.registerPlugin(ScrollTrigger)
 
 export function PortfolioHero() {
   const t = useTranslations("hero")
+  const { resolvedTheme } = useTheme()
   const heroRef = useRef<HTMLDivElement>(null)
   const nameRef = useRef<HTMLHeadingElement>(null)
   const titleRef = useRef<HTMLHeadingElement>(null)
   const descRef = useRef<HTMLParagraphElement>(null)
 
+  const isDark = resolvedTheme === "dark"
+
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Initial entrance animation
       gsap.from(nameRef.current, {
         y: 100,
         opacity: 0,
@@ -40,7 +43,6 @@ export function PortfolioHero() {
         ease: "power4.out",
       })
 
-      // Scroll animation
       gsap.to(heroRef.current, {
         scrollTrigger: {
           trigger: heroRef.current,
@@ -59,8 +61,9 @@ export function PortfolioHero() {
   return (
     <section
       ref={heroRef}
-      className="min-h-screen flex items-center justify-center px-6 md:px-12 relative overflow-hidden bg-foreground text-background"
-      data-theme="dark"
+      className={`min-h-screen flex items-center justify-center px-6 md:px-12 relative overflow-hidden theme-transition-rgb ${
+        isDark ? "bg-foreground text-background" : "bg-background text-foreground"
+      }`}
     >
       <div className="max-w-7xl w-full">
         <div className="space-y-8">
@@ -72,13 +75,13 @@ export function PortfolioHero() {
           </h1>
           <h2
             ref={titleRef}
-            className="text-[clamp(2rem,8vw,6rem)] font-bold leading-none tracking-tight border-l-2 border-background/50 pl-6 md:pl-12 whitespace-pre-line"
+            className="text-[clamp(2rem,8vw,6rem)] font-bold leading-none tracking-tight border-l-2 border-current/50 pl-6 md:pl-12 whitespace-pre-line opacity-90"
           >
             {t("title")}
           </h2>
           <p
             ref={descRef}
-            className="text-xl md:text-3xl font-semibold max-w-3xl bg-background/10 backdrop-blur-sm p-6 md:p-8 rounded-lg shadow-modern-lg"
+            className="text-xl md:text-3xl font-semibold max-w-3xl bg-current/10 backdrop-blur-sm p-6 md:p-8 rounded-lg shadow-modern-lg"
           >
             {t("tagline")}
           </p>
