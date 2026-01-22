@@ -1,5 +1,6 @@
 import { PortfolioNav } from "@/components/portfolio-nav"
 import { PortfolioHero } from "@/components/portfolio-hero"
+import { HypnoticSection } from "@/components/hypnotic-section"
 import { PortfolioAbout } from "@/components/portfolio-about"
 import { PortfolioExperience } from "@/components/portfolio-experience"
 import { PortfolioProjects } from "@/components/portfolio-projects"
@@ -11,6 +12,7 @@ export default function Home() {
     <main className="min-h-screen">
       <PortfolioNav />
       <PortfolioHero />
+      <HypnoticSection />
       <div id="about">
         <PortfolioAbout />
       </div>
