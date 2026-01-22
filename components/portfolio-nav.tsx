@@ -2,12 +2,16 @@
 
 import { useEffect, useRef, useState } from "react"
 import { createPortal } from "react-dom"
-import { useTranslations } from "next-intl"
+import { useTranslations, useLocale } from "next-intl"
+import { usePathname } from "@/i18n/routing"
 import gsap from "gsap"
+import { Link } from "@/i18n/routing"
 import { LanguageSwitcher } from "./language-switcher"
 
 export function PortfolioNav() {
   const t = useTranslations("nav")
+  const locale = useLocale()
+  const pathname = usePathname()
   const [isScrolled, setIsScrolled] = useState(false)
   const [currentTheme, setCurrentTheme] = useState<"light" | "dark">("dark")
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
@@ -15,6 +19,9 @@ export function PortfolioNav() {
   const [mounted, setMounted] = useState(false)
   const navRef = useRef<HTMLElement>(null)
   const mobileMenuRef = useRef<HTMLDivElement>(null)
+  
+  // Check if we're on the homepage
+  const isHomePage = pathname === "/" || pathname === ""
 
   useEffect(() => {
     setMounted(true)
@@ -128,10 +135,16 @@ export function PortfolioNav() {
   }, [])
 
   const scrollToSection = (id: string) => {
-    const element = document.getElementById(id)
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" })
-      setIsMobileMenuOpen(false) // Close mobile menu after navigation
+    if (isHomePage) {
+      // If on homepage, scroll to section
+      const element = document.getElementById(id)
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" })
+        setIsMobileMenuOpen(false)
+      }
+    } else {
+      // If on another page, navigate to homepage with hash
+      window.location.href = `/${locale}#${id}`
     }
   }
 
@@ -170,6 +183,16 @@ export function PortfolioNav() {
             >
               {t("experience")}
             </button>
+            <Link
+              href="/blog"
+              className={`text-lg font-semibold px-4 py-3 rounded-md transition-all text-left block ${
+                currentTheme === "dark"
+                  ? "hover:bg-background/10"
+                  : "hover:bg-foreground/5"
+              }`}
+            >
+              {t("blog")}
+            </Link>
             <button
               onClick={() => scrollToSection("connect")}
               className={`text-lg font-semibold px-4 py-3 rounded-md transition-all text-left ${
@@ -200,12 +223,12 @@ export function PortfolioNav() {
         }`}
       >
         <div className="max-w-7xl mx-auto w-full px-6 md:px-12 py-4 md:py-6 flex justify-between items-center gap-4">
-          <button
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          <Link
+            href="/"
             className="text-xl md:text-4xl font-bold hover:opacity-70 transition-opacity flex-shrink-0"
           >
             {t("logo")}
-          </button>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex gap-4 md:gap-8 flex-shrink-0">
@@ -229,6 +252,16 @@ export function PortfolioNav() {
             >
               {t("experience")}
             </button>
+            <Link
+              href="/blog"
+              className={`text-lg md:text-xl font-semibold px-4 py-2 rounded-md transition-all ${
+                currentTheme === "dark"
+                  ? "hover:bg-background/10 hover:scale-105"
+                  : "hover:bg-foreground/5 hover:scale-105"
+              }`}
+            >
+              {t("blog")}
+            </Link>
             <button
               onClick={() => scrollToSection("connect")}
               className={`text-lg md:text-xl font-semibold px-4 py-2 rounded-md transition-all ${

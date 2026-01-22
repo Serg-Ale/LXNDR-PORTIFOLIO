@@ -11,7 +11,7 @@ export function PortfolioFooter() {
         <div className="grid md:grid-cols-2 gap-8 mb-12">
           <div>
             <h3 className="text-4xl md:text-6xl font-black mb-4">
-              SA_DEV
+              LXNDR
             </h3>
             <p className="text-lg md:text-xl font-bold">
               {t("name")}
@@ -21,6 +21,14 @@ export function PortfolioFooter() {
           </div>
           
           <div className="flex flex-col md:items-end space-y-4">
+            <a
+              href="https://github.com/Serg-Ale"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xl md:text-2xl font-bold hover:bg-foreground hover:text-background p-2 transition-colors inline-block"
+            >
+              {t("links.github")}
+            </a>
             <a
               href="https://linkedin.com/in/serg-alexandre"
               target="_blank"

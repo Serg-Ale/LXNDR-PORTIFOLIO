@@ -3,6 +3,7 @@
     "logo": "LXNDR",
     "about": "SOBRE",
     "experience": "EXPERIÊNCIA",
+    "blog": "BLOG",
     "contact": "CONTATO"
   },
   "hero": {
@@ -118,11 +119,36 @@
     "name": "SÉRGIO ALEXANDRE",
     "role": "ENGENHEIRO DE SOFTWARE",
     "links": {
+      "github": "GITHUB →",
       "linkedin": "LINKEDIN →",
       "email": "EMAIL →",
       "phone": "TELEFONE →"
     },
     "copyright": "TODOS OS DIREITOS RESERVADOS",
     "madeWith": "PROJETADO & DESENVOLVIDO COM ❤️"
+  },
+  "blog": {
+    "title": "BLOG_",
+    "subtitle": "PENSAMENTOS, IDEIAS & PESQUISAS",
+    "search": "BUSCAR POSTS...",
+    "filterByTag": "FILTRAR POR TAG",
+    "sortBy": "ORDENAR POR",
+    "newest": "MAIS RECENTE",
+    "oldest": "MAIS ANTIGO",
+    "clearFilters": "LIMPAR FILTROS",
+    "resultsCount": "{count} POSTS ENCONTRADOS",
+    "readingTime": "{minutes} MIN DE LEITURA",
+    "publishedOn": "PUBLICADO EM",
+    "tags": "TAGS",
+    "shareOn": "COMPARTILHAR NO",
+    "copyLink": "COPIAR LINK",
+    "tableOfContents": "ÍNDICE",
+    "backToBlog": "← VOLTAR AO BLOG",
+    "notFound": "POST NÃO ENCONTRADO",
+    "noPosts": "NENHUM POST AINDA",
+    "noResults": "NENHUM POST CORRESPONDE À SUA BUSCA",
+    "allTags": "TODAS AS TAGS",
+    "relatedPosts": "POSTS RELACIONADOS",
+    "recentPosts": "POSTS RECENTES"
   }
 }
