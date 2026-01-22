@@ -13,6 +13,20 @@ A modern, interactive portfolio showcasing full-stack development expertise with
 
 [View Portfolio](https://lxndr-portifolio.vercel.app/) • [LinkedIn](https://linkedin.com/in/serg-alexandre) • [Email](mailto:sergioalexandre0716@gmail.com)
 
+## 📸 Preview
+
+### Hero Section
+![Portfolio Hero](./public/assets/intro.png)
+
+### Journey Section
+![Portfolio Journey](./public/assets/journey.png)
+
+### Skills Section
+![Portfolio Skills](./public/assets/skills.png)
+
+### Impact Section
+![Portfolio Impact](./public/assets/impact.png)
+
 ## 🛠️ Tech Stack
 
 ### Core Framework & Runtime
