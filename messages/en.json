@@ -1,6 +1,6 @@
 {
   "nav": {
-    "logo": "SA_DEV",
+    "logo": "LXNDR",
     "about": "ABOUT",
     "experience": "EXPERIENCE",
     "contact": "CONTACT"
@@ -18,13 +18,26 @@
     "evolutionWord": "EVOLUTION",
     "techStack": "TECH STACK",
     "education": "EDUCATION",
-    "educationContent": "SYSTEMS ANALYSIS & DEVELOPMENT\nUTFPR — Graduating Dec 2025"
+    "educationContent": "SYSTEMS ANALYSIS & DEVELOPMENT\nUTFPR — Graduating Jul 2026"
   },
   "experience": {
     "title": "EXPERIENCE_",
     "jobs": [
       {
-        "period": "JAN 2025 — PRESENT",
+        "period": "SEP 2025 — PRESENT",
+        "company": "UNION",
+        "role": "JUNIOR SOFTWARE ENGINEER",
+        "location": "REMOTE",
+        "highlights": [
+          "Rebuilt MVP front-end with Turborepo + Next.js",
+          "Reduced First Contentful Paint by 35% (1.2s)",
+          "Elevated mobile NPS by 20% with responsive UIs",
+          "Cut fetch errors by 40% using tRPC contracts",
+          "Increased test coverage from 60% to 90%"
+        ]
+      },
+      {
+        "period": "JAN 2025 — SEP 2025",
         "company": "UNION",
         "role": "SOFTWARE ENGINEER (INTERN)",
         "location": "REMOTE",
@@ -95,7 +108,7 @@
     "title": "CONTACT_",
     "callToAction": "LET'S BUILD\nSOMETHING\nAMAZING",
     "location": "LOCATION",
-    "locationValue": "CORNÉLIO PROCÓPIO, PR — BRASIL",
+    "locationValue": "LONDRINA, PR — BRASIL",
     "english": "ENGLISH",
     "englishValue": "C2 PROFICIENCY (EF SET 72/100)",
     "availability": "AVAILABILITY",

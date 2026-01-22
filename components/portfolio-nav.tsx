@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
+import { createPortal } from "react-dom"
 import { useTranslations } from "next-intl"
 import gsap from "gsap"
 import { LanguageSwitcher } from "./language-switcher"
@@ -8,7 +9,16 @@ import { LanguageSwitcher } from "./language-switcher"
 export function PortfolioNav() {
   const t = useTranslations("nav")
   const [isScrolled, setIsScrolled] = useState(false)
+  const [currentTheme, setCurrentTheme] = useState<"light" | "dark">("dark")
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [navHeight, setNavHeight] = useState(0)
+  const [mounted, setMounted] = useState(false)
   const navRef = useRef<HTMLElement>(null)
+  const mobileMenuRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,60 +29,234 @@ export function PortfolioNav() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
+  // Calculate navbar height dynamically with ResizeObserver
   useEffect(() => {
-    gsap.from(navRef.current, {
-      y: -100,
-      opacity: 0,
-      duration: 1,
-      delay: 0.5,
-      ease: "power4.out",
+    if (!navRef.current) return
+
+    const updateNavHeight = () => {
+      if (navRef.current) {
+        const rect = navRef.current.getBoundingClientRect()
+        setNavHeight(rect.height)
+      }
+    }
+
+    // Initial calculation with a delay to account for GSAP animations
+    const timer = setTimeout(updateNavHeight, 100)
+
+    // Use ResizeObserver to track size changes
+    const resizeObserver = new ResizeObserver(() => {
+      updateNavHeight()
     })
+
+    resizeObserver.observe(navRef.current)
+
+    // Also listen to window resize
+    window.addEventListener("resize", updateNavHeight)
+
+    return () => {
+      clearTimeout(timer)
+      resizeObserver.disconnect()
+      window.removeEventListener("resize", updateNavHeight)
+    }
+  }, [])
+
+  // Close mobile menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        isMobileMenuOpen && 
+        navRef.current && 
+        mobileMenuRef.current &&
+        !navRef.current.contains(event.target as Node) &&
+        !mobileMenuRef.current.contains(event.target as Node)
+      ) {
+        setIsMobileMenuOpen(false)
+      }
+    }
+
+    if (isMobileMenuOpen) {
+      document.addEventListener("mousedown", handleClickOutside)
+      document.addEventListener("touchstart", handleClickOutside as any)
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside)
+      document.removeEventListener("touchstart", handleClickOutside as any)
+    }
+  }, [isMobileMenuOpen])
+
+  useEffect(() => {
+    const sections = document.querySelectorAll("[data-theme]")
+    
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && entry.intersectionRatio > 0.5) {
+            const theme = entry.target.getAttribute("data-theme") as "light" | "dark"
+            setCurrentTheme(theme || "light")
+          }
+        })
+      },
+      {
+        threshold: [0.5],
+        rootMargin: "-100px 0px -100px 0px",
+      }
+    )
+
+    sections.forEach((section) => observer.observe(section))
+
+    return () => observer.disconnect()
+  }, [])
+
+  useEffect(() => {
+    // Only animate on initial mount, check if this is the first render
+    const hasAnimated = sessionStorage.getItem("nav-animated")
+    
+    if (!hasAnimated && navRef.current) {
+      gsap.from(navRef.current, {
+        y: -100,
+        opacity: 0,
+        duration: 1,
+        delay: 0.5,
+        ease: "power4.out",
+      })
+      sessionStorage.setItem("nav-animated", "true")
+    } else if (navRef.current) {
+      // Ensure nav is visible if already animated
+      gsap.set(navRef.current, { y: 0, opacity: 1 })
+    }
   }, [])
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id)
     if (element) {
       element.scrollIntoView({ behavior: "smooth" })
+      setIsMobileMenuOpen(false) // Close mobile menu after navigation
     }
   }
 
-  return (
-    <nav
-      ref={navRef}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "bg-background border-b-4 border-foreground" : ""
-      }`}
+  const mobileMenu = mounted && isMobileMenuOpen && (
+    <div 
+      ref={mobileMenuRef}
+      style={{ 
+        top: `${navHeight}px`,
+        transform: 'translateZ(0)',
+        willChange: 'auto'
+      }}
+      className={`fixed left-0 right-0 md:hidden border-t ${
+        currentTheme === "dark"
+          ? "bg-foreground/95 border-background/20 text-background"
+          : "bg-background/95 border-foreground/20 text-foreground"
+      } backdrop-blur-sm shadow-modern-lg z-40`}
     >
-      <div className="max-w-7xl mx-auto px-6 md:px-12 py-6 flex justify-between items-center">
-        <button
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="text-2xl md:text-4xl font-black hover:opacity-70 transition-opacity"
-        >
-          {t("logo")}
-        </button>
-
-        <div className="flex gap-4 md:gap-8">
-          <button
-            onClick={() => scrollToSection("about")}
-            className="text-lg md:text-xl font-bold hover:bg-foreground hover:text-background px-3 md:px-4 py-2 border-2 border-foreground transition-colors"
-          >
-            {t("about")}
-          </button>
-          <button
-            onClick={() => scrollToSection("experience")}
-            className="text-lg md:text-xl font-bold hover:bg-foreground hover:text-background px-3 md:px-4 py-2 border-2 border-foreground transition-colors"
-          >
-            {t("experience")}
-          </button>
-          <button
-            onClick={() => scrollToSection("contact")}
-            className="text-lg md:text-xl font-bold hover:bg-foreground hover:text-background px-3 md:px-4 py-2 border-2 border-foreground transition-colors"
-          >
-            {t("contact")}
-          </button>
-          <LanguageSwitcher />
+      <div className="max-w-7xl mx-auto w-full px-6 py-4 flex flex-col gap-3">
+            <button
+              onClick={() => scrollToSection("journey")}
+              className={`text-lg font-semibold px-4 py-3 rounded-md transition-all text-left ${
+                currentTheme === "dark"
+                  ? "hover:bg-background/10"
+                  : "hover:bg-foreground/5"
+              }`}
+            >
+              {t("about")}
+            </button>
+            <button
+              onClick={() => scrollToSection("impact")}
+              className={`text-lg font-semibold px-4 py-3 rounded-md transition-all text-left ${
+                currentTheme === "dark"
+                  ? "hover:bg-background/10"
+                  : "hover:bg-foreground/5"
+              }`}
+            >
+              {t("experience")}
+            </button>
+            <button
+              onClick={() => scrollToSection("connect")}
+              className={`text-lg font-semibold px-4 py-3 rounded-md transition-all text-left ${
+                currentTheme === "dark"
+                  ? "hover:bg-background/10"
+                  : "hover:bg-foreground/5"
+              }`}
+            >
+              {t("contact")}
+            </button>
+        <div className="px-4 py-2">
+          <LanguageSwitcher theme={currentTheme} />
         </div>
       </div>
-    </nav>
+    </div>
+  )
+
+  return (
+    <>
+      <nav
+        ref={navRef}
+        className={`fixed top-0 left-0 right-0 z-50 ${
+          currentTheme === "dark"
+            ? "bg-foreground/95 text-background backdrop-blur-sm"
+            : "bg-background/95 text-foreground backdrop-blur-sm"
+        } ${
+          isScrolled ? "shadow-modern-md border-b" : ""
+        }`}
+      >
+        <div className="max-w-7xl mx-auto w-full px-6 md:px-12 py-4 md:py-6 flex justify-between items-center gap-4">
+          <button
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            className="text-xl md:text-4xl font-bold hover:opacity-70 transition-opacity flex-shrink-0"
+          >
+            {t("logo")}
+          </button>
+
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex gap-4 md:gap-8 flex-shrink-0">
+            <button
+              onClick={() => scrollToSection("journey")}
+              className={`text-lg md:text-xl font-semibold px-4 py-2 rounded-md transition-all ${
+                currentTheme === "dark"
+                  ? "hover:bg-background/10 hover:scale-105"
+                  : "hover:bg-foreground/5 hover:scale-105"
+              }`}
+            >
+              {t("about")}
+            </button>
+            <button
+              onClick={() => scrollToSection("impact")}
+              className={`text-lg md:text-xl font-semibold px-4 py-2 rounded-md transition-all ${
+                currentTheme === "dark"
+                  ? "hover:bg-background/10 hover:scale-105"
+                  : "hover:bg-foreground/5 hover:scale-105"
+              }`}
+            >
+              {t("experience")}
+            </button>
+            <button
+              onClick={() => scrollToSection("connect")}
+              className={`text-lg md:text-xl font-semibold px-4 py-2 rounded-md transition-all ${
+                currentTheme === "dark"
+                  ? "hover:bg-background/10 hover:scale-105"
+                  : "hover:bg-foreground/5 hover:scale-105"
+              }`}
+            >
+              {t("contact")}
+            </button>
+            <LanguageSwitcher theme={currentTheme} />
+          </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="md:hidden flex flex-col gap-1.5 p-2 flex-shrink-0"
+            aria-label="Toggle menu"
+          >
+            <span className={`block w-6 h-0.5 transition-all ${currentTheme === "dark" ? "bg-background" : "bg-foreground"} ${isMobileMenuOpen ? "rotate-45 translate-y-2" : ""}`}></span>
+            <span className={`block w-6 h-0.5 transition-all ${currentTheme === "dark" ? "bg-background" : "bg-foreground"} ${isMobileMenuOpen ? "opacity-0" : ""}`}></span>
+            <span className={`block w-6 h-0.5 transition-all ${currentTheme === "dark" ? "bg-background" : "bg-foreground"} ${isMobileMenuOpen ? "-rotate-45 -translate-y-2" : ""}`}></span>
+          </button>
+        </div>
+      </nav>
+      
+      {/* Mobile Menu Portal */}
+      {mounted && mobileMenu && createPortal(mobileMenu, document.body)}
+    </>
   )
 }

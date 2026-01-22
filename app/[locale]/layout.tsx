@@ -1,14 +1,29 @@
 import type React from "react"
 import { NextIntlClientProvider } from "next-intl"
 import { getMessages } from "next-intl/server"
-import { Geist, Geist_Mono } from "next/font/google"
+import { Geist, Geist_Mono, Bebas_Neue, Space_Grotesk } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { routing } from "@/i18n/routing"
 import { notFound } from "next/navigation"
 import "./globals.css"
 
-const _geist = Geist({ subsets: ["latin"] })
-const _geistMono = Geist_Mono({ subsets: ["latin"] })
+const geist = Geist({ 
+  subsets: ["latin"],
+  variable: "--font-geist",
+})
+const geistMono = Geist_Mono({ 
+  subsets: ["latin"],
+  variable: "--font-geist-mono",
+})
+const bebasNeue = Bebas_Neue({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-bebas",
+})
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-space",
+})
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }))
@@ -72,7 +87,7 @@ export default async function RootLayout({
 
   return (
     <html lang={locale}>
-      <body className={`font-sans antialiased`}>
+      <body className={`${geist.variable} ${geistMono.variable} ${bebasNeue.variable} ${spaceGrotesk.variable} font-sans antialiased`}>
         <NextIntlClientProvider messages={messages}>
           {children}
         </NextIntlClientProvider>
