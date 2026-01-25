@@ -43,7 +43,7 @@ export function BlogRelatedPosts({ posts, locale }: BlogRelatedPostsProps) {
                 {post.tags.slice(0, 2).map((tag) => (
                   <span
                     key={tag}
-                    className="text-xs font-bold uppercase px-3 py-1 border-2 border-foreground bg-foreground/5"
+                    className="text-xs font-bold uppercase px-3 py-1 border-2 border-border bg-accent text-accent-foreground"
                   >
                     {tag}
                   </span>
