@@ -5,7 +5,7 @@ export function getMdxComponents() {
   return {
     h1: ({ children, ...props }) => (
       <h1
-        className="text-5xl md:text-7xl font-bebas font-black mb-8 mt-12 scroll-mt-24 theme-transition-rgb"
+        className="text-5xl md:text-7xl font-bebas font-black mb-8 mt-12 scroll-mt-24 theme-transition-rgb text-invert-magnetic hover-text-shimmer"
         {...props}
       >
         {children}
@@ -13,7 +13,7 @@ export function getMdxComponents() {
     ),
     h2: ({ children, ...props }) => (
       <h2
-        className="text-4xl md:text-6xl font-bebas font-bold mb-6 mt-10 scroll-mt-24 theme-transition-rgb"
+        className="text-4xl md:text-6xl font-bebas font-bold mb-6 mt-10 scroll-mt-24 theme-transition-rgb text-invert-magnetic hover-text-shimmer"
         {...props}
       >
         {children}
@@ -21,7 +21,7 @@ export function getMdxComponents() {
     ),
     h3: ({ children, ...props }) => (
       <h3
-        className="text-3xl md:text-5xl font-bebas font-bold mb-4 mt-8 scroll-mt-24 theme-transition-rgb"
+        className="text-3xl md:text-5xl font-bebas font-bold mb-4 mt-8 scroll-mt-24 theme-transition-rgb text-invert-magnetic hover-text-shimmer"
         {...props}
       >
         {children}
@@ -29,7 +29,7 @@ export function getMdxComponents() {
     ),
     h4: ({ children, ...props }) => (
       <h4
-        className="text-2xl md:text-4xl font-bebas font-bold mb-3 mt-6 scroll-mt-24 theme-transition-rgb"
+        className="text-2xl md:text-4xl font-bebas font-bold mb-3 mt-6 scroll-mt-24 theme-transition-rgb text-invert-magnetic hover-text-shimmer"
         {...props}
       >
         {children}
@@ -38,7 +38,7 @@ export function getMdxComponents() {
 
     p: ({ children, ...props }) => (
       <p
-        className="text-base md:text-lg mb-6 leading-relaxed blog-paragraph theme-transition-rgb"
+        className="text-base md:text-lg mb-6 leading-relaxed blog-paragraph theme-transition-rgb text-invert-magnetic"
         {...props}
       >
         {children}
@@ -48,10 +48,11 @@ export function getMdxComponents() {
     a: ({ children, href, ...props }) => (
       <a
         href={href}
-        className="text-foreground font-bold underline decoration-4 underline-offset-4 hover:text-primary transition-colors"
+        className="text-foreground font-bold underline decoration-4 underline-offset-4 hover:text-primary transition-all duration-300 hover-glow text-invert-hover data-magnetic relative group"
         {...props}
       >
-        {children}
+        <span className="relative z-10">{children}</span>
+        <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 ease-out"></span>
       </a>
     ),
 

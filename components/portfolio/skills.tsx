@@ -313,6 +313,7 @@ export function PortfolioSkills() {
   const animationRef = useRef<number>(0);
   const cardsRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLElement>(null);
+  const titleRef = useRef<HTMLDivElement>(null);
   const { theme } = useTheme();
   const [isMobile, setIsMobile] = useState(false);
 
@@ -373,15 +374,16 @@ export function PortfolioSkills() {
 
       const screenHeight = canvas.height;
 
-      // Clear canvas with black background
-      ctx.fillStyle = "#000000";
+      // Clear canvas with theme-aware background
+      const isDark = theme === 'dark';
+      ctx.fillStyle = isDark ? "#000000" : "#ffffff";
       ctx.fillRect(0, 0, canvas.width, screenHeight);
 
       // Draw streams
       streams.forEach((stream) => {
         stream.characters.forEach((char) => {
-          // All characters are white in the skills section
-          ctx.fillStyle = "rgba(255, 255, 255, 1)";
+          // Characters use theme-aware color
+          ctx.fillStyle = isDark ? "rgba(255, 255, 255, 1)" : "rgba(0, 0, 0, 1)";
           ctx.globalAlpha = char.opacity;
           ctx.fillText(char.char, stream.x, char.y);
 
@@ -468,42 +470,63 @@ export function PortfolioSkills() {
         }
       );
 
-      // Group title animations
-      gsap.fromTo(
-        "[data-skill-group]",
-        {
-          opacity: 0,
-          x: -50,
-        },
-        {
-          opacity: 1,
-          x: 0,
-          duration: 0.6,
-          stagger: 0.2,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: cardsRef.current,
-            start: "top center+=50",
-            end: "bottom center",
-            toggleActions: "play none none reverse",
-          },
-        }
-      );
+       // Group title animations
+       gsap.fromTo(
+         "[data-skill-group]",
+         {
+           opacity: 0,
+           x: -50,
+         },
+         {
+           opacity: 1,
+           x: 0,
+           duration: 0.6,
+           stagger: 0.2,
+           ease: "power2.out",
+           scrollTrigger: {
+             trigger: cardsRef.current,
+             start: "top center+=50",
+             end: "bottom center",
+             toggleActions: "play none none reverse",
+           },
+         }
+       );
+
+       // Parallax effect for vertical title
+       if (titleRef.current && !isMobile) {
+         gsap.fromTo(titleRef.current, {
+           y: 50, // start slightly below
+         }, {
+           y: -50, // end slightly above
+           ease: "none",
+           scrollTrigger: {
+             trigger: sectionRef.current,
+             start: "top center",
+             end: "bottom center",
+             scrub: 1, // smooth scrubbing
+           }
+         });
+       }
     }, cardsRef);
 
     return () => ctx.revert();
   }, []);
 
   return (
-    <section ref={sectionRef} id="skills" className="relative min-h-screen w-screen bg-black text-white overflow-hidden">
+    <section ref={sectionRef} id="skills" className="relative min-h-screen w-screen bg-background text-foreground overflow-hidden">
       {/* Matrix Background Canvas */}
-      <canvas ref={canvasRef} className="absolute inset-0 -z-10 pointer-events-none" />
+      <canvas ref={canvasRef} className="absolute inset-0 z-0 pointer-events-none" />
 
       {/* Skills Cards */}
       <div ref={cardsRef} className="relative z-10 py-24 md:py-32">
+        {/* Vertical title for desktop */}
+        <div ref={titleRef} className="hidden md:flex items-center absolute left-8 top-1/2 transform -translate-y-1/2 rotate-90 text-4xl md:text-6xl font-black whitespace-nowrap z-20">
+          TECHNICAL SKILLS
+        </div>
+
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-6xl font-black mb-4">TECHNICAL SKILLS</h2>
+            <h2 className="text-4xl md:text-6xl font-black mb-4 md:hidden">TECHNICAL SKILLS</h2>
             <p className="text-lg md:text-xl opacity-80 max-w-2xl mx-auto">
               Technologies and tools I use to build exceptional digital experiences
             </p>
@@ -521,7 +544,7 @@ export function PortfolioSkills() {
                         <Card
                           key={skill.name}
                           data-skill-card
-                          className="border-4 border-foreground bg-card/90 backdrop-blur-sm text-card-foreground p-6 shadow-brutalist hover:shadow-brutalist-lg transition-all duration-300 hover:-translate-y-2 data-magnetic group flex-shrink-0 w-full md:w-80"
+                           className="border-4 border-foreground bg-card/90 backdrop-blur-sm text-card-foreground p-6 transition-all duration-300 hover:shadow-brutalist hover:-translate-y-2 hover:scale-[1.02] hover:rotate-[0.5deg] hover-glow hover-rotate data-magnetic group flex-shrink-0 w-full md:w-80"
                         >
                           <CardHeader className="pb-4">
                             <div className="flex items-center gap-4">
@@ -555,11 +578,11 @@ export function PortfolioSkills() {
                           <Card
                             key={skill.name}
                             data-skill-card
-                            className="border-4 border-foreground bg-card/90 backdrop-blur-sm text-card-foreground p-6 shadow-brutalist hover:shadow-brutalist-lg transition-all duration-300 hover:-translate-y-2 data-magnetic group flex-shrink-0 w-full"
+                             className="border-4 border-foreground bg-card/90 backdrop-blur-sm text-card-foreground p-6 transition-all duration-300 hover:shadow-brutalist hover:-translate-y-2 hover:scale-[1.02] hover:rotate-[0.5deg] hover-glow hover-rotate data-magnetic group flex-shrink-0 w-full"
                           >
                             <CardHeader className="pb-4">
                               <div className="flex items-center gap-4">
-                                <Icon className="w-12 h-12 text-foreground group-hover:scale-110 transition-transform" />
+                                 <Icon className="w-12 h-12 text-foreground group-hover:scale-110 transition-transform" />
                                 <CardTitle className="text-xl font-bold">{skill.name}</CardTitle>
                               </div>
                             </CardHeader>
@@ -574,9 +597,9 @@ export function PortfolioSkills() {
                 )}
               </div>
             ))}
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
   );
 }

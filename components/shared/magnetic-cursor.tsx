@@ -52,24 +52,44 @@ export function MagneticCursor() {
     return 'light' // Default fallback
   }
 
-  // Update cursor colors based on theme with smooth transition
-  const updateCursorColors = (theme: 'light' | 'dark') => {
+  // Enhanced element detection for different cursor modes
+  const getElementType = (element: Element): 'text' | 'interactive' | 'magnetic' | 'default' => {
+    if (element.hasAttribute('data-magnetic')) return 'magnetic'
+    if (element.tagName === 'A' || element.tagName === 'BUTTON' || element.hasAttribute('role')) return 'interactive'
+    if (element.tagName === 'P' || element.tagName === 'H1' || element.tagName === 'H2' || 
+        element.tagName === 'H3' || element.tagName === 'H4' || element.tagName === 'SPAN') return 'text'
+    return 'default'
+  }
+
+  // Update cursor colors with smooth transition and element type awareness
+  const updateCursorColors = (theme: 'light' | 'dark', elementType: 'text' | 'interactive' | 'magnetic' | 'default' = 'default') => {
     if (currentTheme.current === theme) return // No change needed
 
     currentTheme.current = theme
     const isDark = theme === 'dark'
     
+    // Adjust cursor size based on element type for better UX
+    let scale = 1
+    switch (elementType) {
+      case 'magnetic': scale = 2.2; break
+      case 'interactive': scale = 1.8; break
+      case 'text': scale = 0.8; break
+      default: scale = 1
+    }
+
     // Update main cursor with smooth transition
     gsap.to(cursorRef.current, {
       borderColor: isDark ? '#ffffff' : '#000000',
-      duration: 0.3,
+      scale: scale,
+      duration: 0.4,
       ease: "power2.out"
     })
     
     // Update dot cursor with smooth transition
     gsap.to(cursorDotRef.current, {
       backgroundColor: isDark ? '#ffffff' : '#000000',
-      duration: 0.3,
+      scale: scale * 0.5,
+      duration: 0.4,
       ease: "power2.out"
     })
   }
@@ -92,18 +112,43 @@ export function MagneticCursor() {
       const elementAtCursor = document.elementFromPoint(e.clientX, e.clientY)
       if (elementAtCursor) {
         const theme = getThemeFromElement(elementAtCursor)
-        updateCursorColors(theme)
+        const elementType = getElementType(elementAtCursor)
+        updateCursorColors(theme, elementType)
+        
+        // Apply text inversion to text elements
+        if (elementType === 'text' && elementAtCursor.classList.contains('text-invert-magnetic')) {
+          gsap.to(elementAtCursor, {
+            filter: 'invert(1)',
+            duration: 0.3,
+            ease: "power2.out"
+          })
+        }
       }
+
+      // Reset text inversion for elements no longer under cursor
+      document.querySelectorAll('.text-invert-magnetic').forEach((el) => {
+        const rect = el.getBoundingClientRect()
+        const isUnderCursor = e.clientX >= rect.left && e.clientX <= rect.right && 
+                             e.clientY >= rect.top && e.clientY <= rect.bottom
+        
+        if (!isUnderCursor) {
+          gsap.to(el, {
+            filter: 'invert(0)',
+            duration: 0.3,
+            ease: "power2.out"
+          })
+        }
+      })
     }
 
-    // Smooth cursor follow with lerp
+    // Smooth cursor follow with improved lerp for more responsive feel
     const lerp = (start: number, end: number, factor: number) => {
       return start + (end - start) * factor
     }
 
     const updateCursor = () => {
-      cursorPos.current.x = lerp(cursorPos.current.x, mousePos.current.x, 0.15)
-      cursorPos.current.y = lerp(cursorPos.current.y, mousePos.current.y, 0.15)
+      cursorPos.current.x = lerp(cursorPos.current.x, mousePos.current.x, 0.12) // Smoother: 0.15 → 0.12
+      cursorPos.current.y = lerp(cursorPos.current.y, mousePos.current.y, 0.12)
 
       gsap.set(cursor, {
         x: cursorPos.current.x,
@@ -118,30 +163,58 @@ export function MagneticCursor() {
       requestAnimationFrame(updateCursor)
     }
 
-    // Magnetic attraction to interactive elements
+    // Enhanced magnetic attraction with different behaviors
     const magneticElements = document.querySelectorAll("[data-magnetic]")
     
     magneticElements.forEach((el) => {
       const element = el as HTMLElement
+      const elementType = getElementType(element)
       
       element.addEventListener("mouseenter", () => {
+        // Different scale effects based on element type
+        let scale = 2
+        switch (elementType) {
+          case 'magnetic': scale = 2.5; break
+          case 'interactive': scale = 2.2; break
+          default: scale = 2
+        }
+        
         gsap.to(cursor, {
-          scale: 2,
-          duration: 0.3,
+          scale: scale,
+          duration: 0.4,
           ease: "power2.out",
         })
+        
+        // Add glow effect for enhanced elements
+        if (element.classList.contains('hover-glow')) {
+          gsap.to(element, {
+            boxShadow: '0 0 20px rgba(0, 255, 255, 0.5), 12px 12px 0 currentColor',
+            duration: 0.3,
+            ease: "power2.out"
+          })
+        }
       })
 
       element.addEventListener("mouseleave", () => {
         gsap.to(cursor, {
           scale: 1,
-          duration: 0.3,
+          duration: 0.4,
           ease: "power2.out",
         })
+        
+        // Reset glow effect
+        if (element.classList.contains('hover-glow')) {
+          gsap.to(element, {
+            boxShadow: '8px 8px 0 currentColor',
+            duration: 0.3,
+            ease: "power2.out"
+          })
+        }
+        
         gsap.to(element, {
           x: 0,
           y: 0,
-          duration: 0.5,
+          duration: 0.6,
           ease: "elastic.out(1, 0.3)",
         })
       })
@@ -151,10 +224,15 @@ export function MagneticCursor() {
         const x = e.clientX - rect.left - rect.width / 2
         const y = e.clientY - rect.top - rect.height / 2
         
-        // Apply magnetic pull
+        // Enhanced magnetic pull with different strengths
+        let pullStrength = 0.3
+        if (element.classList.contains('hover-magnetic-enhanced')) {
+          pullStrength = 0.5
+        }
+        
         gsap.to(element, {
-          x: x * 0.3,
-          y: y * 0.3,
+          x: x * pullStrength,
+          y: y * pullStrength,
           duration: 0.3,
           ease: "power2.out",
         })

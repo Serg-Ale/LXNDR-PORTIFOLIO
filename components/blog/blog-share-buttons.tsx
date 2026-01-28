@@ -43,7 +43,7 @@ export function BlogShareButtons({ title, url }: BlogShareButtonsProps) {
         href={shareUrls.twitter}
         target="_blank"
         rel="noopener noreferrer"
-        className="p-3 bg-foreground text-background hover:bg-foreground/80 hover:scale-110 transition-all duration-300 border-2 border-foreground shadow-brutalist-sm"
+        className="p-3 bg-foreground text-background hover:bg-foreground/80 hover:scale-110 transition-all duration-300 border-2 border-foreground shadow-brutalist-sm hover-glow hover-magnetic-enhanced"
         aria-label="Share on Twitter"
         data-magnetic
       >
@@ -55,7 +55,7 @@ export function BlogShareButtons({ title, url }: BlogShareButtonsProps) {
         href={shareUrls.linkedin}
         target="_blank"
         rel="noopener noreferrer"
-        className="p-3 bg-foreground text-background hover:bg-foreground/80 hover:scale-110 transition-all duration-300 border-2 border-foreground shadow-brutalist-sm"
+        className="p-3 bg-foreground text-background hover:bg-foreground/80 hover:scale-110 transition-all duration-300 border-2 border-foreground shadow-brutalist-sm hover-glow hover-magnetic-enhanced"
         aria-label="Share on LinkedIn"
         data-magnetic
       >
@@ -67,7 +67,7 @@ export function BlogShareButtons({ title, url }: BlogShareButtonsProps) {
         href={shareUrls.facebook}
         target="_blank"
         rel="noopener noreferrer"
-        className="p-3 bg-foreground text-background hover:bg-foreground/80 hover:scale-110 transition-all duration-300 border-2 border-foreground shadow-brutalist-sm"
+        className="p-3 bg-foreground text-background hover:bg-foreground/80 hover:scale-110 transition-all duration-300 border-2 border-foreground shadow-brutalist-sm hover-glow hover-magnetic-enhanced"
         aria-label="Share on Facebook"
         data-magnetic
       >
@@ -79,7 +79,7 @@ export function BlogShareButtons({ title, url }: BlogShareButtonsProps) {
         href={shareUrls.whatsapp}
         target="_blank"
         rel="noopener noreferrer"
-        className="p-3 bg-foreground text-background hover:bg-foreground/80 transition-colors border-2 border-foreground shadow-brutalist-sm md:block hidden"
+        className="p-3 bg-foreground text-background hover:bg-foreground/80 hover:scale-110 transition-all duration-300 border-2 border-foreground shadow-brutalist-sm hover-glow hover-magnetic-enhanced"
         aria-label="Share on WhatsApp"
         data-magnetic
       >
@@ -89,8 +89,8 @@ export function BlogShareButtons({ title, url }: BlogShareButtonsProps) {
       {/* Copy Link */}
       <button
         onClick={handleCopyLink}
-        className="p-3 bg-foreground text-background hover:bg-foreground/80 hover:scale-110 transition-all duration-300 border-2 border-foreground shadow-brutalist-sm"
-        aria-label={t("copyLink")}
+        className="p-3 bg-foreground text-background hover:bg-foreground/80 hover:scale-110 transition-all duration-300 border-2 border-foreground shadow-brutalist-sm hover-glow hover-magnetic-enhanced"
+        aria-label="Copy link"
         data-magnetic
       >
         {copied ? (

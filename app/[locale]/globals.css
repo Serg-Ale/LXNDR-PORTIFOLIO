@@ -35,9 +35,14 @@
   --sidebar-primary-foreground: #ffffff;
   --sidebar-accent: #f5f5f5;
   --sidebar-accent-foreground: #000000;
-  --sidebar-border: #000000;
-  --sidebar-ring: #000000;
+  /* Evangelion-inspired neon colors */
+  --neon-blue: #00ffff;
+  --neon-orange: #ff6600;
+  --neon-purple: #9900ff;
+  --evangelion-bg: #0a0a0a;
+  --evangelion-fg: #ffffff;
 }
+
 
 .dark {
   --background: #000000;
@@ -72,6 +77,13 @@
   --sidebar-accent-foreground: #ffffff;
   --sidebar-border: #ffffff;
   --sidebar-ring: #ffffff;
+
+  /* Evangelion-inspired neon colors for dark theme */
+  --neon-blue: #00ffff;
+  --neon-orange: #ff6600;
+  --neon-purple: #9900ff;
+  --evangelion-bg: #0a0a0a;
+  --evangelion-fg: #ffffff;
 }
 
 
@@ -245,13 +257,119 @@
   box-shadow: 8px 8px 0 #ffffff !important;
 }
 
-.shadow-brutalist-lg {
-  box-shadow: 12px 12px 0 #000000 !important;
-}
+  .shadow-brutalist-inverted {
+    box-shadow: 8px 8px 0 #ffffff !important;
+  }
 
-.dark .shadow-brutalist-lg {
-  box-shadow: 12px 12px 0 #ffffff !important;
-}
+  .dark .shadow-brutalist-inverted {
+    box-shadow: 8px 8px 0 #000000 !important;
+  }
+
+  /* Enhanced hover effect utilities */
+  .hover-glow {
+    transition: all 0.3s ease;
+  }
+
+  .hover-glow:hover {
+    box-shadow: 
+      0 0 20px rgba(0, 0, 0, 0.3),
+      0 0 40px rgba(0, 0, 0, 0.2),
+      8px 8px 0 currentColor;
+  }
+
+  .dark .hover-glow:hover {
+    box-shadow: 
+      0 0 20px rgba(255, 255, 255, 0.3),
+      0 0 40px rgba(255, 255, 255, 0.2),
+      8px 8px 0 currentColor;
+  }
+
+  .hover-rotate {
+    transition: transform 0.3s ease;
+  }
+
+  .hover-rotate:hover {
+    transform: rotate(1deg) scale(1.02);
+  }
+
+  .hover-border-pulse {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hover-border-pulse::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 2px solid transparent;
+    border-radius: inherit;
+    transition: border-color 0.3s ease;
+    z-index: -1;
+  }
+
+  .hover-border-pulse:hover::before {
+    border-color: currentColor;
+    animation: border-pulse 1s ease-in-out infinite;
+  }
+
+  @keyframes border-pulse {
+    0%, 100% { transform: scale(1); opacity: 0.8; }
+    50% { transform: scale(1.05); opacity: 1; }
+  }
+
+  .hover-text-shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hover-text-shimmer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.8),
+      transparent
+    );
+    transition: left 0.5s ease;
+  }
+
+  .hover-text-shimmer:hover::before {
+    left: 100%;
+  }
+
+  .hover-text-shimmer:hover {
+    filter: invert(1);
+  }
+
+  .hover-magnetic-enhanced {
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .hover-magnetic-enhanced:hover {
+    transform: scale(1.05) rotate(0.5deg);
+    box-shadow: 12px 12px 0 currentColor;
+  }
+
+  /* Text color inversion utilities */
+  .text-invert-hover {
+    transition: color 0.3s ease, filter 0.3s ease;
+  }
+
+  .text-invert-hover:hover {
+    filter: invert(1);
+  }
+
+  .text-invert-magnetic {
+    transition: color 0.3s ease, filter 0.3s ease;
+  }
 
 /* Additional utility classes for portfolio components */
 .hover-distort {
@@ -510,4 +628,162 @@
 @keyframes binary-flicker {
   0%, 100% { opacity: 0; }
   50% { opacity: 1; }
+}
+
+/* Evangelion Advanced Glitch Effects */
+.evangelion-glitch {
+  position: relative;
+  text-shadow: 0 0 10px var(--neon-blue), 0 0 20px var(--neon-blue), 0 0 30px var(--neon-blue);
+  animation: evangelion-glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes evangelion-glow {
+  0% { text-shadow: 0 0 10px var(--neon-blue), 0 0 20px var(--neon-blue), 0 0 30px var(--neon-blue); }
+  100% { text-shadow: 0 0 15px var(--neon-orange), 0 0 25px var(--neon-orange), 0 0 35px var(--neon-orange); }
+}
+
+.evangelion-glitch::before,
+.evangelion-glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.evangelion-glitch::before {
+  color: var(--neon-blue);
+  animation: rgb-red-shift 0.3s ease-in-out infinite;
+  z-index: -1;
+}
+
+.evangelion-glitch::after {
+  color: var(--neon-orange);
+  animation: rgb-blue-shift 0.3s ease-in-out infinite;
+  z-index: -2;
+}
+
+@keyframes rgb-red-shift {
+  0%, 100% { transform: translate(0); }
+  25% { transform: translate(-2px, 1px); }
+  50% { transform: translate(1px, -1px); }
+  75% { transform: translate(-1px, 0.5px); }
+}
+
+@keyframes rgb-blue-shift {
+  0%, 100% { transform: translate(0); }
+  25% { transform: translate(2px, -1px); }
+  50% { transform: translate(-1px, 1px); }
+  75% { transform: translate(1px, -0.5px); }
+}
+
+.evangelion-bg {
+  background: linear-gradient(135deg, var(--evangelion-bg) 0%, #1a1a2e 50%, #16213e 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.evangelion-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(0, 255, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(255, 102, 0, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(153, 0, 255, 0.05) 0%, transparent 50%);
+  animation: evangelion-bg-anim 8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes evangelion-bg-anim {
+  0%, 100% { opacity: 0.3; transform: scale(1) rotate(0deg); }
+  50% { opacity: 0.6; transform: scale(1.1) rotate(1deg); }
+}
+
+.evangelion-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.evangelion-particle {
+  position: absolute;
+  background: var(--neon-blue);
+  border-radius: 50%;
+  animation: particle-float 6s ease-in-out infinite;
+}
+
+.evangelion-particle:nth-child(2n) {
+  background: var(--neon-orange);
+  animation-delay: 1s;
+}
+
+.evangelion-particle:nth-child(3n) {
+  background: var(--neon-purple);
+  animation-delay: 2s;
+}
+
+@keyframes particle-float {
+  0%, 100% { 
+    transform: translateY(100vh) scale(0); 
+    opacity: 0; 
+  }
+  50% { 
+    transform: translateY(50vh) scale(1); 
+    opacity: 0.6; 
+  }
+}
+
+.evangelion-shapes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.evangelion-shape {
+  position: absolute;
+  border: 2px solid var(--neon-blue);
+  background: rgba(0, 255, 255, 0.1);
+  animation: shape-morph 4s ease-in-out infinite;
+}
+
+.evangelion-shape:nth-child(2n) {
+  border-color: var(--neon-orange);
+  background: rgba(255, 102, 0, 0.1);
+  animation-delay: 1s;
+}
+
+@keyframes shape-morph {
+  0%, 100% { 
+    transform: rotate(0deg) scale(1); 
+    border-radius: 0; 
+    opacity: 0.3; 
+  }
+  25% { 
+    transform: rotate(90deg) scale(1.2); 
+    border-radius: 50%; 
+    opacity: 0.6; 
+  }
+  50% { 
+    transform: rotate(180deg) scale(0.8); 
+    border-radius: 20px; 
+    opacity: 0.4; 
+  }
+  75% { 
+    transform: rotate(270deg) scale(1.1); 
+    border-radius: 10px; 
+    opacity: 0.5; 
+  }
 }

@@ -44,7 +44,7 @@ export function BlogCard({ post, locale }: BlogCardProps) {
       ref={cardRef}
       className="block group theme-transition-rgb"
     >
-      <article className="border-4 border-border bg-card text-card-foreground p-6 md:p-8 transition-all duration-300 hover:long-shadow hover:-translate-y-1 h-full">
+      <article className="border-4 border-border bg-card text-card-foreground p-6 md:p-8 transition-all duration-300 hover:shadow-brutalist hover:-translate-y-2 hover:scale-[1.02] hover:rotate-[0.5deg] hover-glow hover-rotate h-full data-magnetic">
         <div className="flex flex-wrap gap-2 mb-4">
           {post.tags.slice(0, 3).map((tag) => (
             <span

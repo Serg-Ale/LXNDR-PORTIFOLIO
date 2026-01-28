@@ -5,6 +5,8 @@ import { useTranslations } from "next-intl"
 import { useTheme } from "next-themes"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
+import { EvangelionBackground } from "./evangelion-background"
+import { GlitchText } from "@/components/shared/glitch-text"
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -12,46 +14,31 @@ export function PortfolioHero() {
   const t = useTranslations("hero")
   const { resolvedTheme } = useTheme()
   const heroRef = useRef<HTMLDivElement>(null)
-  const nameRef = useRef<HTMLHeadingElement>(null)
-  const titleRef = useRef<HTMLHeadingElement>(null)
-  const descRef = useRef<HTMLParagraphElement>(null)
 
   const isDark = resolvedTheme === "dark"
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from(nameRef.current, {
-        y: 100,
-        opacity: 0,
-        duration: 1,
-        ease: "power4.out",
-      })
-
-      gsap.from(titleRef.current, {
-        y: 100,
-        opacity: 0,
-        duration: 1,
-        delay: 0.2,
-        ease: "power4.out",
-      })
-
-      gsap.from(descRef.current, {
-        y: 50,
-        opacity: 0,
-        duration: 1,
-        delay: 0.4,
-        ease: "power4.out",
-      })
-
+      // Evangelion-style scroll parallax with more dramatic effect
       gsap.to(heroRef.current, {
         scrollTrigger: {
           trigger: heroRef.current,
           start: "top top",
           end: "bottom top",
-          scrub: 1,
+          scrub: 1.5,
         },
-        y: -100,
-        opacity: 0.8,
+        y: -150,
+        opacity: 0.7,
+        scale: 0.95,
+      })
+
+      // Add subtle background animation
+      gsap.to(".evangelion-bg", {
+        backgroundPosition: "60% 40%",
+        duration: 15,
+        ease: "none",
+        repeat: -1,
+        yoyo: true,
       })
     }, heroRef)
 
@@ -61,30 +48,39 @@ export function PortfolioHero() {
   return (
     <section
       ref={heroRef}
-      className={`min-h-screen flex items-center justify-center px-6 md:px-12 relative overflow-hidden theme-transition-rgb ${
-        isDark ? "bg-foreground text-background" : "bg-background text-foreground"
-      }`}
+      className="min-h-screen flex items-center justify-center px-6 md:px-12 relative overflow-hidden"
     >
-      <div className="max-w-7xl w-full">
-        <div className="space-y-8">
-          <h1
-            ref={nameRef}
-            className="text-[clamp(3rem,15vw,12rem)] font-bold leading-none tracking-tighter whitespace-pre-line"
+      <EvangelionBackground className="absolute inset-0 -z-10" />
+
+      <div className="max-w-7xl w-full relative z-10">
+        <div className="space-y-12 text-center">
+          <GlitchText
+            as="h1"
+            className="text-[clamp(4rem,18vw,14rem)] font-black leading-none tracking-tighter whitespace-pre-line text-white"
+            delay={0.2}
+            intensity={8}
+            evangelionMode={true}
           >
             {t("name")}
-          </h1>
-          <h2
-            ref={titleRef}
-            className="text-[clamp(2rem,8vw,6rem)] font-bold leading-none tracking-tight border-l-2 border-current/50 pl-6 md:pl-12 whitespace-pre-line opacity-90"
+          </GlitchText>
+
+          <GlitchText
+            as="h2"
+            className="text-[clamp(2.5rem,10vw,7rem)] font-bold leading-none tracking-tight text-cyan-400 border-l-4 border-cyan-400/50 pl-8 md:pl-16 whitespace-pre-line"
+            delay={0.6}
+            intensity={6}
+            evangelionMode={true}
           >
             {t("title")}
-          </h2>
-          <p
-            ref={descRef}
-            className="text-xl md:text-3xl font-semibold max-w-3xl bg-current/10 backdrop-blur-sm p-6 md:p-8 rounded-lg shadow-modern-lg"
-          >
-            {t("tagline")}
-          </p>
+          </GlitchText>
+
+          <div className="max-w-4xl mx-auto">
+            <p
+              className="text-xl md:text-4xl font-semibold bg-black/60 backdrop-blur-md p-8 md:p-12 rounded-xl border border-cyan-400/30 shadow-2xl text-white leading-relaxed"
+            >
+              {t("tagline")}
+            </p>
+          </div>
         </div>
       </div>
     </section>

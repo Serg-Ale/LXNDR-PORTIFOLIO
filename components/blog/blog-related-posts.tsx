@@ -38,7 +38,7 @@ export function BlogRelatedPosts({ posts, locale }: BlogRelatedPostsProps) {
             className="block group"
             data-magnetic
           >
-            <article className="border-4 border-foreground bg-background p-6 transition-all duration-300 hover:shadow-brutalist hover:-translate-y-2 hover:scale-[1.02] hover:rotate-[0.5deg]">
+            <article className="border-4 border-foreground bg-background p-6 transition-all duration-300 hover:shadow-brutalist hover:-translate-y-2 hover:scale-[1.02] hover:rotate-[0.5deg] hover-glow hover-rotate">
               {/* Tags */}
               <div className="flex flex-wrap gap-2 mb-4">
                 {post.tags.slice(0, 2).map((tag) => (
