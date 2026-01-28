@@ -1,12 +1,15 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useTheme } from "next-themes";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { SiNextdotjs, SiReact, SiTypescript, SiJavascript, SiTailwindcss, SiNodedotjs, SiPrisma, SiGit, SiGithub, SiFigma, SiJira, SiBitbucket, SiJest, SiExpress, SiSpring, SiPostgresql, SiMysql } from "react-icons/si";
 import { Box, Zap, Shield, Brain, Terminal, Code, Database, GitBranch, CheckCircle, Server, Globe } from "lucide-react";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay } from 'swiper/modules';
+import 'swiper/css';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -309,7 +312,9 @@ export function PortfolioSkills() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const animationRef = useRef<number>(0);
   const cardsRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
   const { theme } = useTheme();
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -328,7 +333,7 @@ export function PortfolioSkills() {
 
     // Optimize canvas
     ctx.imageSmoothingEnabled = false;
-    ctx.font = `${CHAR_HEIGHT}px 'Monaco', 'Menlo', 'Ubuntu Mono', monospace`;
+    ctx.font = `${CHAR_HEIGHT}px 'Courier New', monospace`;
 
     const isMobile = window.innerWidth < 768;
     const maxStreams = isMobile ? 10 : 15; // Dramatically reduced density
@@ -372,19 +377,11 @@ export function PortfolioSkills() {
       ctx.fillStyle = "#000000";
       ctx.fillRect(0, 0, canvas.width, screenHeight);
 
-      // Calculate section boundaries for color reversal
-      const skillsSection = document.getElementById('skills');
-      const skillsBottom = (skillsSection?.getBoundingClientRect().bottom || 0) + 100; // 100px offset
-
-      // Draw streams with color reversal
+      // Draw streams
       streams.forEach((stream) => {
         stream.characters.forEach((char) => {
-          // Determine if character is in impact section (beyond skills section + offset)
-          const charScreenY = char.y + (canvas.offsetTop || 0);
-          const isInImpactSection = charScreenY > skillsBottom;
-
-          // Set character color based on section
-          ctx.fillStyle = isInImpactSection ? "rgba(0, 0, 0, 1)" : "rgba(255, 255, 255, 1)";
+          // All characters are white in the skills section
+          ctx.fillStyle = "rgba(255, 255, 255, 1)";
           ctx.globalAlpha = char.opacity;
           ctx.fillText(char.char, stream.x, char.y);
 
@@ -407,36 +404,41 @@ export function PortfolioSkills() {
     };
 
     const resizeCanvas = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-      initializeStreams();
+      const section = sectionRef.current;
+      if (section) {
+        canvas.width = section.clientWidth;
+        canvas.height = section.clientHeight;
+      } else {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
     };
 
-    // Intersection Observer to pause when not visible
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          animationRef.current = requestAnimationFrame(draw);
-        } else {
-          cancelAnimationFrame(animationRef.current);
-        }
-      },
-      { threshold: 0.1 }
-    );
+    // Start animation immediately and continuously
+    const startAnimation = () => {
+      if (!animationRef.current) {
+        animationRef.current = requestAnimationFrame(draw);
+      }
+    };
 
-    if (canvas.parentElement) {
-      observer.observe(canvas.parentElement);
-    }
-
-    resizeCanvas();
+    resizeCanvas(); // Set initial dimensions
     window.addEventListener("resize", resizeCanvas);
+
+    // Start animation immediately without scroll-based controls
+    startAnimation();
 
     return () => {
       cancelAnimationFrame(animationRef.current);
       window.removeEventListener("resize", resizeCanvas);
-      observer.disconnect();
     };
   }, [theme]);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   useEffect(() => {
     // GSAP card entrance animations
@@ -493,9 +495,9 @@ export function PortfolioSkills() {
   }, []);
 
   return (
-    <section id="skills" className="relative min-h-screen w-screen bg-black text-white overflow-hidden">
-      {/* Matrix Background Canvas - Fixed positioning for multi-section coverage */}
-      <canvas ref={canvasRef} className="fixed inset-0 -z-10 pointer-events-none" />
+    <section ref={sectionRef} id="skills" className="relative min-h-screen w-screen bg-black text-white overflow-hidden">
+      {/* Matrix Background Canvas */}
+      <canvas ref={canvasRef} className="absolute inset-0 -z-10 pointer-events-none" />
 
       {/* Skills Cards */}
       <div ref={cardsRef} className="relative z-10 py-24 md:py-32">
@@ -511,28 +513,65 @@ export function PortfolioSkills() {
             {skillGroups.map((group, groupIndex) => (
               <div key={group.title} data-skill-group className="space-y-8">
                 <h3 className="text-2xl md:text-3xl font-bold text-center">{group.title}</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-                  {group.skills.map((skill, skillIndex) => {
-                    const Icon = skill.icon;
-                    return (
-                      <Card
-                        key={skill.name}
-                        data-skill-card
-                        className="border-4 border-foreground bg-card/90 backdrop-blur-sm text-card-foreground p-6 shadow-brutalist hover:shadow-brutalist-lg transition-all duration-300 hover:-translate-y-2 data-magnetic group"
-                      >
-                        <CardHeader className="pb-4">
-                          <div className="flex items-center gap-4">
-                            <Icon className="w-12 h-12 text-foreground group-hover:scale-110 transition-transform" />
-                            <CardTitle className="text-xl font-bold">{skill.name}</CardTitle>
-                          </div>
-                        </CardHeader>
-                        <CardContent>
-                          <p className="text-sm leading-relaxed opacity-80">{skill.description}</p>
-                        </CardContent>
-                      </Card>
-                    );
-                  })}
-                </div>
+                {group.skills.length <= 2 || isMobile ? (
+                  <div className="flex flex-col md:flex-row md:justify-center gap-4 md:gap-6">
+                    {group.skills.map((skill, skillIndex) => {
+                      const Icon = skill.icon;
+                      return (
+                        <Card
+                          key={skill.name}
+                          data-skill-card
+                          className="border-4 border-foreground bg-card/90 backdrop-blur-sm text-card-foreground p-6 shadow-brutalist hover:shadow-brutalist-lg transition-all duration-300 hover:-translate-y-2 data-magnetic group flex-shrink-0 w-full md:w-80"
+                        >
+                          <CardHeader className="pb-4">
+                            <div className="flex items-center gap-4">
+                              <Icon className="w-12 h-12 text-foreground group-hover:scale-110 transition-transform" />
+                              <CardTitle className="text-xl font-bold">{skill.name}</CardTitle>
+                            </div>
+                          </CardHeader>
+                          <CardContent>
+                            <p className="text-sm leading-relaxed opacity-80">{skill.description}</p>
+                          </CardContent>
+                        </Card>
+                      );
+                    })}
+                  </div>
+                ) : (
+                  <Swiper
+                    modules={[Autoplay]}
+                    spaceBetween={24}
+                    slidesPerView={2}
+                    breakpoints={{
+                      1024: { slidesPerView: 3 },
+                    }}
+                    loop={true}
+                    autoplay={{ delay: 2500, disableOnInteraction: false }}
+                    className="w-full"
+                  >
+                    {group.skills.map((skill, skillIndex) => {
+                      const Icon = skill.icon;
+                      return (
+                        <SwiperSlide key={skill.name}>
+                          <Card
+                            key={skill.name}
+                            data-skill-card
+                            className="border-4 border-foreground bg-card/90 backdrop-blur-sm text-card-foreground p-6 shadow-brutalist hover:shadow-brutalist-lg transition-all duration-300 hover:-translate-y-2 data-magnetic group flex-shrink-0 w-full"
+                          >
+                            <CardHeader className="pb-4">
+                              <div className="flex items-center gap-4">
+                                <Icon className="w-12 h-12 text-foreground group-hover:scale-110 transition-transform" />
+                                <CardTitle className="text-xl font-bold">{skill.name}</CardTitle>
+                              </div>
+                            </CardHeader>
+                            <CardContent>
+                              <p className="text-sm leading-relaxed opacity-80">{skill.description}</p>
+                            </CardContent>
+                          </Card>
+                        </SwiperSlide>
+                      );
+                    })}
+                  </Swiper>
+                )}
               </div>
             ))}
           </div>
