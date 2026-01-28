@@ -1,0 +1,9 @@
+Audit Report - Tailwind CSS Usage:
+
+1. Found multiple instances of className usage across components:
+   - Possible redundancy in defining styles for cards, grids, etc.
+2. Dark mode styles are in use but toggling consistency can be improved.
+
+Immediate actionable steps:
+1. Consolidate @apply usage in global CSS.
+2. Revisit the theme config to optimize reusable classes for specific patterns.

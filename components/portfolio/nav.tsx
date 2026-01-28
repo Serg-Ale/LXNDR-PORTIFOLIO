@@ -19,6 +19,7 @@ export function PortfolioNav() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [navHeight, setNavHeight] = useState(0)
   const [mounted, setMounted] = useState(false)
+  const [currentSectionTheme, setCurrentSectionTheme] = useState<'light' | 'dark'>('light')
   const navRef = useRef<HTMLElement>(null)
   const mobileMenuRef = useRef<HTMLDivElement>(null)
   
@@ -32,11 +33,28 @@ export function PortfolioNav() {
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 100)
+      
+      // Detect current section theme
+      const sections = document.querySelectorAll('[data-theme]')
+      const scrollY = window.scrollY + navHeight + 50 // Account for nav height
+      
+      for (const section of sections) {
+        const rect = section.getBoundingClientRect()
+        const sectionTop = rect.top + window.scrollY
+        const sectionBottom = sectionTop + rect.height
+        
+        if (scrollY >= sectionTop && scrollY < sectionBottom) {
+          const theme = section.getAttribute('data-theme') as 'light' | 'dark'
+          setCurrentSectionTheme(theme || 'light')
+          break
+        }
+      }
     }
 
     window.addEventListener("scroll", handleScroll)
+    handleScroll() // Initial check
     return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+  }, [navHeight])
 
   useEffect(() => {
     if (!navRef.current) return
@@ -126,7 +144,11 @@ export function PortfolioNav() {
         transform: 'translateZ(0)',
         willChange: 'auto'
       }}
-      className="fixed left-0 right-0 md:hidden border-t border-border bg-background/95 backdrop-blur-sm text-foreground shadow-modern-lg z-40"
+      className={`fixed left-0 right-0 md:hidden border-t ${
+        currentSectionTheme === 'dark' 
+          ? 'border-white/20 bg-black/90 text-white' 
+          : 'border-black/20 bg-white/90 text-black'
+      } backdrop-blur-sm shadow-modern-lg z-40`}
     >
       <div className="max-w-7xl mx-auto w-full px-6 py-4 flex flex-col gap-3">
             <button
@@ -165,9 +187,11 @@ export function PortfolioNav() {
     <>
       <nav
         ref={navRef}
-        className={`fixed top-0 left-0 right-0 z-50 bg-background/95 text-foreground backdrop-blur-sm border-b ${
-          isScrolled ? "shadow-modern-md" : ""
-        }`}
+        className={`fixed top-0 left-0 right-0 z-50 backdrop-blur-sm border-b ${
+          currentSectionTheme === 'dark' 
+            ? 'bg-black/80 text-white border-white/20' 
+            : 'bg-white/80 text-black border-black/20'
+        } ${isScrolled ? "shadow-modern-md" : ""}`}
       >
         <div className="max-w-7xl mx-auto w-full px-6 md:px-12 py-4 md:py-6 flex justify-between items-center gap-4">
           <Link

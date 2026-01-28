@@ -13,23 +13,109 @@
   },
   "about": {
     "title": "SOBRE_",
-    "journey": "MINHA JORNADA NA TECNOLOGIA COMEÇOU COM UMA CURIOSIDADE INSACIÁVEL",
-    "description": "Enquanto estudava na UTFPR, comecei a mergulhar profundamente no ecossistema web. Hoje na Union, trabalho reconstruindo MVPs do zero, criando interfaces que fazem sentido — visualmente, tecnicamente e para as pessoas que as usam.",
-    "evolution": "SE EXISTE UMA PALAVRA QUE ME DEFINE, É",
+    "paragraph1": "Minha jornada na tecnologia começou com uma curiosidade insaciável de entender como as coisas funcionam por trás da tela. Enquanto estudava Análise e Desenvolvimento de Sistemas na UTFPR, comecei a mergulhar profundamente no ecossistema web — e desde então, transformar ideias em experiências digitais se tornou minha paixão.",
+    "paragraph2": "Hoje, trabalho como Engenheiro de Software na Union, onde reconstruímos um MVP do zero usando Next.js, Turborepo, tRPC e outras tecnologias que me desafiaram a pensar não apenas em código, mas também em performance, acessibilidade e na experiência das pessoas que usam o produto. Gosto de criar interfaces que fazem sentido — visualmente, tecnicamente e para a pessoa do outro lado da tela.",
+    "paragraph3": "Antes disso, tive uma experiência intensa e prática em suporte de infraestrutura na TCS e me desafiei liderando a equipe de back-end em um projeto de estágio, onde aprendi que adaptabilidade e trabalho em equipe são tão importantes quanto conhecimento técnico.",
+    "paragraph4": "Agora, a poucos meses da formatura, me vejo como um desenvolvedor que não apenas trabalha com confiança com ferramentas como TypeScript, React, Tailwind e Playwright para testes, mas também entende o valor de uma comunicação clara, colaboração e fazer as perguntas certas antes de buscar qualquer resposta.",
+    "evolutionIntro": "SE EXISTE UMA PALAVRA QUE ME DEFINE, É",
     "evolutionWord": "EVOLUÇÃO",
+    "evolutionQuote": "Estou sempre aprendendo, experimentando e refinando, porque para mim, boa tecnologia é aquela que transforma pessoas, processos e ideias.",
     "techStack": "STACK TÉCNICO",
     "education": "FORMAÇÃO",
     "educationContent": "ANÁLISE E DESENVOLVIMENTO DE SISTEMAS\nUTFPR — Formatura em Jul 2026",
-    "journeyTitle": "MINHA JORNADA_",
-    "journeyLabels": {
-      "beginning": "→ O COMEÇO",
-      "evolution": "→ EVOLUÇÃO"
-    },
     "stats": {
       "years": "ANOS",
       "projects": "PROJETOS",
       "commits": "COMMITS"
     }
+  },
+  "certifications": {
+    "title": "CERTIFICAÇÕES_",
+    "list": [
+      {
+        "name": "CERTIFICADO DE INGLÊS EF SET",
+        "issuer": "EF SET",
+        "details": "C2 — Proficiência Completa · Pontuação: 72/100",
+        "date": "Dez 2024",
+        "featured": true
+      },
+      {
+        "name": "SPRING BOOT 3 & SPRING FRAMEWORK 6",
+        "issuer": "Udemy",
+        "details": null,
+        "date": null,
+        "featured": false
+      },
+      {
+        "name": "PROGRAMA JAVA DEVELOPER",
+        "issuer": "Digital Innovation One (DIO)",
+        "details": null,
+        "date": null,
+        "featured": false
+      },
+      {
+        "name": "TYPESCRIPT FULL-STACK DEVELOPER",
+        "issuer": "Digital Innovation One (DIO)",
+        "details": null,
+        "date": null,
+        "featured": false
+      },
+      {
+        "name": "REACT DEVELOPER & NEXT.JS",
+        "issuer": "Digital Innovation One (DIO)",
+        "details": null,
+        "date": null,
+        "featured": false
+      }
+    ]
+  },
+  "timeline": {
+    "title": "MINHA JORNADA_",
+    "conclusion": "A EVOLUÇÃO CONTINUA...",
+    "milestones": [
+      {
+        "period": "JUN 2022 — FEV 2023",
+        "company": "TATA CONSULTANCY SERVICES",
+        "role": "Estagiário de Desenvolvimento",
+        "location": "Londrina, PR",
+        "description": "Onde tudo começou. Primeira experiência profissional construindo aplicações full-stack e descobrindo o poder do trabalho em equipe.",
+        "highlights": [
+          "Desenvolveu ferramentas full-stack (HTML/CSS/JS + Spring Boot/Node.js/MySQL)",
+          "Liderou equipe de back-end em projeto capstone",
+          "Entregou APIs RESTful 2 semanas antes do prazo",
+          "Implementou testes unitários com 85% de cobertura"
+        ]
+      },
+      {
+        "period": "FEV 2023 — NOV 2023",
+        "company": "TATA CONSULTANCY SERVICES",
+        "role": "Trainee",
+        "location": "Remoto",
+        "description": "Mudou de desenvolvimento para operações, descobrindo a importância crítica da confiabilidade de sistemas em escala.",
+        "highlights": [
+          "Monitorou 150+ jobs noturnos para logística Carrefour",
+          "Atingiu 99,9% de uptime ao longo de 10 meses",
+          "Automatizou scripts críticos (-35% de intervenção manual)",
+          "Tratou 95% dos incidentes dentro do SLA usando Jira, Control-M, Zabbix"
+        ]
+      },
+      {
+        "period": "JAN 2025 — PRESENTE",
+        "company": "UNION AUDIO",
+        "role": "Engenheiro de Software (Estagiário)",
+        "location": "Remoto",
+        "description": "Construindo o futuro da colaboração musical — uma plataforma de feedback conectando DJs e produtores na cena de música eletrônica do Brasil.",
+        "highlights": [
+          "Reconstruiu MVP com Turborepo + Next.js (–35% FCP, melhoria de 1,2s)",
+          "Implementou UIs responsivas com Tailwind CSS & CVA (+20% NPS mobile)",
+          "Desenvolveu API type-safe com tRPC & React Query (–40% erros de fetch)",
+          "Projetou schemas Prisma com migrações zero-downtime (100% disponibilidade)",
+          "Configurou NextAuth + Prisma Adapter (–90% vulnerabilidades de segurança)",
+          "Estabeleceu pipeline E2E com Playwright (60% → 90% cobertura, –40% regressões)",
+          "Conduziu code reviews via GitFlow em sprints Kanban"
+        ]
+      }
+    ]
   },
   "experience": {
     "title": "EXPERIÊNCIA_",
@@ -37,23 +123,11 @@
     "tagline": "Onde a experiência encontra a execução",
     "jobs": [
       {
-        "period": "SET 2025 — PRESENTE",
-        "company": "UNION",
-        "role": "ENGENHEIRO DE SOFTWARE JÚNIOR",
-        "location": "REMOTO",
-        "highlights": [
-          "Reconstruiu front-end do MVP com Turborepo + Next.js",
-          "Reduziu First Contentful Paint em 35% (1,2s)",
-          "Elevou NPS mobile em 20% com UIs responsivas",
-          "Cortou erros de fetch em 40% usando contratos tRPC",
-          "Aumentou cobertura de testes de 60% para 90%"
-        ]
-      },
-      {
-        "period": "JAN 2025 — SET 2025",
-        "company": "UNION",
+        "period": "JAN 2025 — PRESENTE",
+        "company": "UNION AUDIO",
         "role": "ENGENHEIRO DE SOFTWARE (ESTAGIÁRIO)",
         "location": "REMOTO",
+        "description": "Construindo uma plataforma de feedback para DJs e produtores musicais na cena de música eletrônica do Brasil.",
         "highlights": [
           "Reconstruiu front-end do MVP com Turborepo + Next.js",
           "Reduziu First Contentful Paint em 35% (1,2s)",
@@ -114,6 +188,12 @@
         "title": "AUTOMAÇÃO DE TESTES E2E",
         "description": "Estabeleceu pipeline de testes E2E com Playwright, aumentando cobertura de 60% para 90% e cortando regressões em 40%",
         "tech": ["PLAYWRIGHT", "JEST", "CI/CD", "ESLINT"]
+      },
+      {
+        "number": "05",
+        "title": "PORTFÓLIO LXNDR",
+        "description": "Um portfólio com design brutalista mostrando a interseção entre engenharia e storytelling. Construído com Next.js 16, apresentando animações de scroll com GSAP, i18n completo (en/pt-BR) e um sistema de blog MDX personalizado. Meta-projeto demonstrando práticas modernas de desenvolvimento web.",
+        "tech": ["NEXT.JS 16", "REACT 19", "GSAP", "NEXT-INTL", "MDX", "TAILWIND V4"]
       }
     ]
   },

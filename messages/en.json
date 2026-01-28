@@ -13,23 +13,109 @@
   },
   "about": {
     "title": "ABOUT_",
-    "journey": "MY JOURNEY IN TECHNOLOGY BEGAN WITH AN INSATIABLE CURIOSITY",
-    "description": "While studying at UTFPR, I started diving deep into the web ecosystem. Today at Union, I work rebuilding MVPs from scratch, crafting interfaces that make sense — visually, technically, and for the people using them.",
-    "evolution": "IF THERE IS ONE WORD THAT DEFINES ME, IT IS",
+    "paragraph1": "My journey in technology began with an insatiable curiosity to understand how things work behind the screen. While studying Systems Analysis and Development at UTFPR, I started diving deep into the web ecosystem — and since then, turning ideas into digital experiences has become my passion.",
+    "paragraph2": "Today, I work as a Software Engineer at Union, where we rebuilt an MVP from scratch using Next.js, Turborepo, tRPC, and other technologies that pushed me to think not only about code, but also about performance, accessibility, and the experience of the people using the product. I enjoy crafting interfaces that make sense — visually, technically, and for the person on the other side of the screen.",
+    "paragraph3": "Before that, I had intense hands-on experience in infrastructure support at TCS and challenged myself by leading the back-end team in an internship project, where I learned that adaptability and teamwork are just as important as technical knowledge.",
+    "paragraph4": "Now, just a few months away from graduation, I see myself as a developer who not only works confidently with tools like TypeScript, React, Tailwind, and Playwright for testing, but also understands the value of clear communication, collaboration, and asking the right questions before searching for any answer.",
+    "evolutionIntro": "IF THERE IS ONE WORD THAT DEFINES ME, IT IS",
     "evolutionWord": "EVOLUTION",
+    "evolutionQuote": "I am always learning, experimenting, and refining, because to me, good technology is the kind that transforms people, processes, and ideas.",
     "techStack": "TECH STACK",
     "education": "EDUCATION",
     "educationContent": "SYSTEMS ANALYSIS & DEVELOPMENT\nUTFPR — Graduating Jul 2026",
-    "journeyTitle": "MY JOURNEY_",
-    "journeyLabels": {
-      "beginning": "→ THE BEGINNING",
-      "evolution": "→ EVOLUTION"
-    },
     "stats": {
       "years": "YEARS",
       "projects": "PROJECTS",
       "commits": "COMMITS"
     }
+  },
+  "certifications": {
+    "title": "CERTIFICATIONS_",
+    "list": [
+      {
+        "name": "EF SET ENGLISH CERTIFICATE",
+        "issuer": "EF SET",
+        "details": "C2 — Full Proficiency · Score: 72/100",
+        "date": "Dec 2024",
+        "featured": true
+      },
+      {
+        "name": "SPRING BOOT 3 & SPRING FRAMEWORK 6",
+        "issuer": "Udemy",
+        "details": null,
+        "date": null,
+        "featured": false
+      },
+      {
+        "name": "JAVA DEVELOPER PROGRAM",
+        "issuer": "Digital Innovation One (DIO)",
+        "details": null,
+        "date": null,
+        "featured": false
+      },
+      {
+        "name": "TYPESCRIPT FULL-STACK DEVELOPER",
+        "issuer": "Digital Innovation One (DIO)",
+        "details": null,
+        "date": null,
+        "featured": false
+      },
+      {
+        "name": "REACT DEVELOPER & NEXT.JS",
+        "issuer": "Digital Innovation One (DIO)",
+        "details": null,
+        "date": null,
+        "featured": false
+      }
+    ]
+  },
+  "timeline": {
+    "title": "MY JOURNEY_",
+    "conclusion": "THE EVOLUTION CONTINUES...",
+    "milestones": [
+      {
+        "period": "JUN 2022 — FEB 2023",
+        "company": "TATA CONSULTANCY SERVICES",
+        "role": "Development Intern",
+        "location": "Londrina, PR",
+        "description": "Where it all began. First professional experience building full-stack applications and discovering the power of teamwork.",
+        "highlights": [
+          "Built full-stack tools (HTML/CSS/JS + Spring Boot/Node.js/MySQL)",
+          "Led back-end team in capstone project",
+          "Delivered RESTful APIs 2 weeks ahead of deadline",
+          "Implemented unit tests with 85% coverage"
+        ]
+      },
+      {
+        "period": "FEB 2023 — NOV 2023",
+        "company": "TATA CONSULTANCY SERVICES",
+        "role": "Trainee",
+        "location": "Remote",
+        "description": "Shifted from development to operations, discovering the critical importance of system reliability at scale.",
+        "highlights": [
+          "Monitored 150+ nightly jobs for Carrefour logistics",
+          "Achieved 99.9% uptime over 10 months",
+          "Automated critical scripts (-35% manual intervention)",
+          "Handled 95% of incidents within SLA using Jira, Control-M, Zabbix"
+        ]
+      },
+      {
+        "period": "JAN 2025 — PRESENT",
+        "company": "UNION AUDIO",
+        "role": "Software Engineer (Intern)",
+        "location": "Remote",
+        "description": "Building the future of music collaboration — a feedback platform connecting DJs and producers in Brazil's electronic music scene.",
+        "highlights": [
+          "Rebuilt MVP with Turborepo + Next.js (–35% FCP, 1.2s improvement)",
+          "Implemented responsive UIs with Tailwind CSS & CVA (+20% mobile NPS)",
+          "Developed type-safe API with tRPC & React Query (–40% fetch errors)",
+          "Designed Prisma schemas with zero-downtime migrations (100% availability)",
+          "Configured NextAuth + Prisma Adapter (–90% security vulnerabilities)",
+          "Established Playwright E2E pipeline (60% → 90% coverage, –40% regressions)",
+          "Conducted code reviews via GitFlow in Kanban sprints"
+        ]
+      }
+    ]
   },
   "experience": {
     "title": "EXPERIENCE_",
@@ -37,23 +123,11 @@
     "tagline": "Where experience meets execution",
     "jobs": [
       {
-        "period": "SEP 2025 — PRESENT",
-        "company": "UNION",
-        "role": "JUNIOR SOFTWARE ENGINEER",
-        "location": "REMOTE",
-        "highlights": [
-          "Rebuilt MVP front-end with Turborepo + Next.js",
-          "Reduced First Contentful Paint by 35% (1.2s)",
-          "Elevated mobile NPS by 20% with responsive UIs",
-          "Cut fetch errors by 40% using tRPC contracts",
-          "Increased test coverage from 60% to 90%"
-        ]
-      },
-      {
-        "period": "JAN 2025 — SEP 2025",
-        "company": "UNION",
+        "period": "JAN 2025 — PRESENT",
+        "company": "UNION AUDIO",
         "role": "SOFTWARE ENGINEER (INTERN)",
         "location": "REMOTE",
+        "description": "Building a feedback platform for DJs and music producers in Brazil's electronic music scene.",
         "highlights": [
           "Rebuilt MVP front-end with Turborepo + Next.js",
           "Reduced First Contentful Paint by 35% (1.2s)",
@@ -114,6 +188,12 @@
         "title": "E2E TEST AUTOMATION",
         "description": "Established Playwright E2E testing pipeline, increasing coverage from 60% to 90% and cutting regressions by 40%",
         "tech": ["PLAYWRIGHT", "JEST", "CI/CD", "ESLINT"]
+      },
+      {
+        "number": "05",
+        "title": "LXNDR PORTFOLIO",
+        "description": "A brutalist design portfolio showcasing the intersection of engineering and storytelling. Built with Next.js 16, featuring GSAP scroll animations, full i18n (en/pt-BR), and a custom MDX blog system. Meta-project demonstrating modern web development practices.",
+        "tech": ["NEXT.JS 16", "REACT 19", "GSAP", "NEXT-INTL", "MDX", "TAILWIND V4"]
       }
     ]
   },

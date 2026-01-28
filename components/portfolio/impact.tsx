@@ -173,6 +173,18 @@ export function PortfolioImpact() {
                       </li>
                     ))}
                   </ul>
+
+                  {/* Union Audio link */}
+                  {job.company === "UNION AUDIO" && (
+                    <a
+                      href="https://mvp-union-audio-frontend.vercel.app/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 bg-background text-foreground px-4 py-2 rounded-full font-bold text-sm hover:shadow-brutalist transition-all mt-6"
+                    >
+                      VISIT UNION AUDIO →
+                    </a>
+                  )}
                 </div>
               </div>
             </div>
@@ -186,47 +198,71 @@ export function PortfolioImpact() {
           </h3>
           
           <div className="grid md:grid-cols-2 gap-6 md:gap-8">
-            {projects.map((project: any, index: number) => (
-              <div
-                key={project.number}
-                ref={(el) => {
-                  cardRefs.current[jobs.length + index] = el
-                }}
-                data-magnetic
-                onMouseMove={(e) => handle3DTilt(e, e.currentTarget)}
-                onMouseLeave={(e) => resetCard(e.currentTarget)}
-                className="card-3d group bg-foreground/5 p-6 md:p-8 rounded-lg border-2 border-foreground/20 hover:border-foreground hover:bg-foreground/10 transition-all cursor-pointer parallax-layer"
-                style={{ transformStyle: "preserve-3d" }}
-              >
-                <div className="space-y-4">
-                  <div className="flex items-start justify-between gap-4">
-                    <span className="text-6xl font-black opacity-20 group-hover:opacity-40 transition-opacity">
-                      {project.number}
-                    </span>
-                    <div className="w-3 h-3 bg-foreground rounded-full pulse-dot" />
-                  </div>
-                  
-                  <h4 className="text-2xl md:text-3xl font-black leading-tight">
-                    {project.title}
-                  </h4>
-                  
-                  <p className="text-base md:text-lg font-medium opacity-80 leading-relaxed">
-                    {project.description}
-                  </p>
-                  
-                  <div className="flex flex-wrap gap-2 pt-2">
-                    {project.tech.map((tech: string) => (
-                      <span
-                        key={tech}
-                        className="inline-block bg-foreground text-background px-3 py-1 rounded-full text-xs font-bold"
-                      >
-                        {tech}
+            {projects.map((project: any, index: number) => {
+              const isPortfolioProject = project.number === "05"
+              
+              return (
+                <div
+                  key={project.number}
+                  ref={(el) => {
+                    cardRefs.current[jobs.length + index] = el
+                  }}
+                  data-magnetic
+                  onMouseMove={(e) => handle3DTilt(e, e.currentTarget)}
+                  onMouseLeave={(e) => resetCard(e.currentTarget)}
+                  className={`card-3d group p-6 md:p-8 rounded-lg border-2 transition-all cursor-pointer parallax-layer relative ${
+                    isPortfolioProject
+                      ? "bg-foreground text-background border-foreground hover:shadow-brutalist-lg"
+                      : "bg-foreground/5 border-foreground/20 hover:border-foreground hover:bg-foreground/10"
+                  }`}
+                  style={{ transformStyle: "preserve-3d" }}
+                >
+                  {isPortfolioProject && (
+                    <div className="absolute top-4 right-4 bg-background text-foreground px-3 py-1 rounded-full text-xs font-black">
+                      META
+                    </div>
+                  )}
+
+                  <div className="space-y-4">
+                    <div className="flex items-start justify-between gap-4">
+                      <span className={`text-6xl font-black transition-opacity ${
+                        isPortfolioProject ? "opacity-40 group-hover:opacity-60" : "opacity-20 group-hover:opacity-40"
+                      }`}>
+                        {project.number}
                       </span>
-                    ))}
+                      {!isPortfolioProject && (
+                        <div className="w-3 h-3 bg-foreground rounded-full pulse-dot" />
+                      )}
+                    </div>
+                    
+                    <h4 className="text-2xl md:text-3xl font-black leading-tight">
+                      {project.title}
+                    </h4>
+                    
+                    <p className={`text-base md:text-lg font-medium leading-relaxed ${
+                      isPortfolioProject ? "opacity-90" : "opacity-80"
+                    }`}>
+                      {project.description}
+                    </p>
+                    
+                    <div className="flex flex-wrap gap-2 pt-2">
+                      {project.tech.map((tech: string) => (
+                        <span
+                          key={tech}
+                          className={`inline-block px-3 py-1 rounded-full text-xs font-bold ${
+                            isPortfolioProject
+                              ? "bg-background text-foreground"
+                              : "bg-foreground text-background"
+                          }`}
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              )
+            })}
           </div>
         </div>
       </div>

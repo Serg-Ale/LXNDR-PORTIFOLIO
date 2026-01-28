@@ -17,6 +17,8 @@ export function ThemeToggle({ className }: { className?: string }) {
     setIsAnimating(true)
     const nextTheme = resolvedTheme === "dark" ? "light" : "dark"
     setTheme(nextTheme)
+    const root = document.documentElement;
+    root.classList.toggle('dark', nextTheme === 'dark');
     setTimeout(() => setIsAnimating(false), 400)
   }
 
@@ -25,7 +27,7 @@ export function ThemeToggle({ className }: { className?: string }) {
       <button
         className={cn(
           "w-12 h-12 md:w-14 md:h-14 border-2 border-foreground bg-transparent",
-          "shadow-brutalist hover:shadow-brutalist-lg hover:-translate-y-0.5",
+          "long-shadow hover:long-shadow-lg hover:-translate-y-0.5",
           "transition-all duration-200 flex items-center justify-center",
           className
         )}
@@ -43,8 +45,8 @@ export function ThemeToggle({ className }: { className?: string }) {
       onClick={toggleTheme}
       className={cn(
         "group relative w-12 h-12 md:w-14 md:h-14",
-        "border-2 border-foreground bg-transparent",
-        "shadow-brutalist hover:shadow-brutalist-lg",
+        `border-2 ${isDark ? 'border-foreground' : 'border-white'} bg-transparent`,
+        "long-shadow hover:long-shadow-lg",
         "hover:-translate-y-0.5 active:translate-y-0",
         "transition-all duration-200 ease-out overflow-hidden",
         isAnimating && "animate-pulse",

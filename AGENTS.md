@@ -360,16 +360,30 @@ project/
 ├── app/
 │   └── [locale]/          # Internationalized routes
 │       ├── page.tsx       # Home page (default export)
-│       └── layout.tsx     # Root layout (default export)
+│       ├── layout.tsx     # Root layout (default export)
+│       └── blog/          # Blog routes
 ├── components/            # All React components (named exports)
-│   ├── ui/               # shadcn/ui components
-│   │   ├── button.tsx
-│   │   └── card.tsx
-│   ├── portfolio-hero.tsx
-│   ├── portfolio-nav.tsx
-│   └── language-switcher.tsx
+│   ├── ui/               # shadcn/ui components (button, card, input, etc.)
+│   ├── portfolio/        # Portfolio-specific components
+│   │   ├── intro.tsx
+│   │   ├── nav.tsx
+│   │   └── skills.tsx
+│   ├── shared/           # Shared components across features
+│   │   ├── glitch-text.tsx
+│   │   ├── magnetic-cursor.tsx
+│   │   └── language-switcher.tsx
+│   ├── blog/             # Blog-specific components
+│   │   ├── blog-card.tsx
+│   │   └── blog-mdx-components.tsx
+│   └── features/         # Feature-specific components
 ├── lib/                   # Utility functions
-│   └── utils.ts          # Contains cn() utility
+│   ├── utils.ts          # cn() utility, helpers
+│   ├── gsap-config.ts    # GSAP animation utilities
+│   ├── constants.ts      # App-wide constants
+│   └── blog/             # Blog utilities
+│       ├── server.ts     # Server-side blog functions
+│       ├── types.ts      # Blog type definitions
+│       └── get-posts.ts  # Post fetching logic
 ├── messages/              # Translation files
 │   ├── en.json
 │   └── pt-BR.json
@@ -377,19 +391,15 @@ project/
 │   └── routing.ts
 ├── styles/                # Global styles
 │   └── globals.css
+├── content/               # Blog content
+│   ├── posts/            # Published posts
+│   └── drafts/           # Work-in-progress posts
 └── public/                # Static assets
 
 # Path alias: @/* maps to ./* (root directory)
 ```
 
-**Optional pattern**: Use `_folder` for route-specific code inside `app/`:
-```
-app/
-  blog/
-    page.tsx
-    _components/     # Blog-specific components (not routable)
-    _lib/            # Blog-specific utilities (not routable)
-```
+**Component organization**: Group by feature/domain (`portfolio/`, `blog/`, `shared/`, `ui/`)
 
 ---
 

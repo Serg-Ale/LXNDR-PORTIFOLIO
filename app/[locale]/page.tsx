@@ -1,7 +1,9 @@
 import { PortfolioNav } from "@/components/portfolio/nav";
 import { PortfolioFooter } from "@/components/portfolio/footer";
 import { PortfolioIntro } from "@/components/portfolio/intro";
-import { PortfolioJourney } from "@/components/portfolio/journey";
+import { PortfolioAbout } from "@/components/portfolio/about";
+import { PortfolioCertifications } from "@/components/portfolio/certifications";
+import { PortfolioTimeline } from "@/components/portfolio/timeline";
 import { PortfolioSkills } from "@/components/portfolio/skills";
 import { PortfolioImpact } from "@/components/portfolio/impact";
 import { PortfolioBlogShowcase } from "@/components/portfolio/blog-showcase";
@@ -120,11 +122,13 @@ export default async function Home({ params }: PageProps) {
         <PortfolioNav />
         <MagneticCursor />
         <ScrollProgress
-          sections={["intro", "journey", "skills", "impact", "blog", "connect"]}
+          sections={["intro", "about", "certifications", "timeline", "skills", "impact", "blog", "connect"]}
         />
 
         <PortfolioIntro />
-        <PortfolioJourney />
+        <PortfolioAbout />
+        <PortfolioCertifications />
+        <PortfolioTimeline />
         <PortfolioSkills />
         <PortfolioImpact />
         <PortfolioBlogShowcase posts={recentPosts} locale={locale} />

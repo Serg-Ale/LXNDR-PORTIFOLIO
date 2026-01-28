@@ -1,5 +1,3 @@
-"use client"
-
 import { useEffect, useRef } from "react"
 import { Link } from "@/i18n/routing"
 import { useTheme } from "next-themes"
@@ -46,7 +44,7 @@ export function BlogCard({ post, locale }: BlogCardProps) {
       ref={cardRef}
       className="block group theme-transition-rgb"
     >
-      <article className="border-4 border-border bg-card text-card-foreground p-6 md:p-8 transition-all duration-300 hover:shadow-brutalist hover:-translate-y-1 h-full">
+      <article className="border-4 border-border bg-card text-card-foreground p-6 md:p-8 transition-all duration-300 hover:long-shadow hover:-translate-y-1 h-full">
         <div className="flex flex-wrap gap-2 mb-4">
           {post.tags.slice(0, 3).map((tag) => (
             <span

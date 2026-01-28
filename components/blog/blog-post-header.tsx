@@ -27,6 +27,7 @@ export function BlogPostHeader({ post, locale }: BlogPostHeaderProps) {
       <Link
         href="/blog"
         className="inline-flex items-center gap-2 text-sm md:text-base font-bold mb-8 hover:opacity-70 transition-opacity"
+        data-magnetic
       >
         {t("backToBlog")}
       </Link>

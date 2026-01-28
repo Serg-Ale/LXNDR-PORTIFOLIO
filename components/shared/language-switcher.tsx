@@ -3,6 +3,7 @@
 import { usePathname, useRouter } from "@/i18n/routing"
 import { useLocale } from "next-intl"
 import { useTransition } from "react"
+import { cn } from "@/lib/utils"
 
 export function LanguageSwitcher() {
   const locale = useLocale()
@@ -21,7 +22,17 @@ export function LanguageSwitcher() {
     <button
       onClick={toggleLocale}
       disabled={isPending}
-      className="text-lg md:text-xl font-bold bg-foreground text-background px-3 md:px-4 py-2 hover:opacity-80 transition-opacity disabled:opacity-50"
+      className={cn(
+        "w-12 h-12 md:w-14 md:h-14",
+        "border-2 border-foreground bg-background text-foreground",
+        "long-shadow hover:long-shadow-lg",
+        "hover:-translate-y-0.5 active:translate-y-0",
+        "transition-all duration-200 ease-out",
+        "font-bold text-sm md:text-base",
+        "flex items-center justify-center",
+        "disabled:opacity-50"
+      )}
+      aria-label={locale === "en" ? "Switch to Portuguese" : "Switch to English"}
       title={locale === "en" ? "English" : "Português"}
     >
       {locale === "en" ? "EN" : "PT"}
