@@ -4,26 +4,24 @@ import { useEffect, useRef, useState } from "react"
 import { createPortal } from "react-dom"
 import { useTranslations, useLocale } from "next-intl"
 import { usePathname } from "@/i18n/routing"
-import { useTheme } from "next-themes"
 import gsap from "gsap"
 import { Link } from "@/i18n/routing"
 import { LanguageSwitcher } from "@/components/shared/language-switcher"
 import { ThemeToggle } from "@/components/shared/theme-toggle"
+import { useSectionBackground } from "@/lib/use-section-background"
 
 export function PortfolioNav() {
   const t = useTranslations("nav")
   const locale = useLocale()
   const pathname = usePathname()
-  const { resolvedTheme } = useTheme()
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [navHeight, setNavHeight] = useState(0)
   const [mounted, setMounted] = useState(false)
-  const [currentSectionTheme, setCurrentSectionTheme] = useState<'light' | 'dark'>('light')
   const navRef = useRef<HTMLElement>(null)
   const mobileMenuRef = useRef<HTMLDivElement>(null)
   
-  const isDark = resolvedTheme === "dark"
+  const sectionBg = useSectionBackground(navHeight)
   const isHomePage = pathname === "/" || pathname === ""
 
   useEffect(() => {
@@ -33,28 +31,12 @@ export function PortfolioNav() {
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 100)
-      
-      // Detect current section theme
-      const sections = document.querySelectorAll('[data-theme]')
-      const scrollY = window.scrollY + navHeight + 50 // Account for nav height
-      
-      for (const section of sections) {
-        const rect = section.getBoundingClientRect()
-        const sectionTop = rect.top + window.scrollY
-        const sectionBottom = sectionTop + rect.height
-        
-        if (scrollY >= sectionTop && scrollY < sectionBottom) {
-          const theme = section.getAttribute('data-theme') as 'light' | 'dark'
-          setCurrentSectionTheme(theme || 'light')
-          break
-        }
-      }
     }
 
     window.addEventListener("scroll", handleScroll)
     handleScroll() // Initial check
     return () => window.removeEventListener("scroll", handleScroll)
-  }, [navHeight])
+  }, [])
 
   useEffect(() => {
     if (!navRef.current) return
@@ -141,14 +123,16 @@ export function PortfolioNav() {
       ref={mobileMenuRef}
       style={{ 
         top: `${navHeight}px`,
+        backgroundColor: sectionBg.backgroundColor,
+        color: sectionBg.textColor,
         transform: 'translateZ(0)',
         willChange: 'auto'
       }}
       className={`fixed left-0 right-0 md:hidden border-t ${
-        currentSectionTheme === 'dark' 
-          ? 'border-white/20 bg-black/90 text-white' 
-          : 'border-black/20 bg-white/90 text-black'
-      } backdrop-blur-sm shadow-modern-lg z-40`}
+        sectionBg.theme === 'dark' 
+          ? 'border-white/20' 
+          : 'border-black/20'
+      } shadow-modern-lg z-40 transition-colors duration-300`}
     >
       <div className="max-w-7xl mx-auto w-full px-6 py-4 flex flex-col gap-3">
             <button
@@ -187,11 +171,15 @@ export function PortfolioNav() {
     <>
       <nav
         ref={navRef}
-        className={`fixed top-0 left-0 right-0 z-50 backdrop-blur-sm border-b ${
-          currentSectionTheme === 'dark' 
-            ? 'bg-black/80 text-white border-white/20' 
-            : 'bg-white/80 text-black border-black/20'
-        } ${isScrolled ? "shadow-modern-md" : ""}`}
+        style={{
+          backgroundColor: sectionBg.backgroundColor,
+          color: sectionBg.textColor
+        }}
+        className={`fixed top-0 left-0 right-0 z-50 border-b ${
+          sectionBg.theme === 'dark' 
+            ? 'border-white/20' 
+            : 'border-black/20'
+        } ${isScrolled ? "shadow-modern-md" : ""} transition-colors duration-300`}
       >
         <div className="max-w-7xl mx-auto w-full px-6 md:px-12 py-4 md:py-6 flex justify-between items-center gap-4">
           <Link
