@@ -7,9 +7,146 @@
     "contact": "CONTACT"
   },
   "hero": {
-    "name": "SÉRGIO\nALEXANDRE",
+    "firstName": "SÉRGIO",
+    "lastName": "ALEXANDRE",
+    "name": "SÉRGIO ALEXANDRE",
     "title": "SOFTWARE\nENGINEER",
-    "tagline": "TURNING IDEAS INTO DIGITAL EXPERIENCES WITH NEXT.JS, REACT & TYPESCRIPT"
+    "tagline": "I build production systems that scale — 19K+ lines of code, 308 automated tests, and counting.",
+    "role": "SOFTWARE ENGINEER",
+    "location": "LONDRINA, BR",
+    "manifesto": {
+      "word1": "I",
+      "word2": "build",
+      "word3": "production",
+      "word4": "systems",
+      "word5": "that",
+      "highlight": "SCALE",
+      "metrics": "— 19K+ lines, 308 tests, and counting."
+    },
+    "stats": {
+      "years": "3+",
+      "yearsLabel": "YEARS",
+      "loc": "19K+",
+      "locLabel": "LINES",
+      "tests": "308",
+      "testsLabel": "TESTS",
+      "uptime": "99.8%",
+      "uptimeLabel": "UPTIME"
+    },
+    "scrollDown": "Scroll to explore"
+  },
+  "origin": {
+    "title": "THE ORIGIN_",
+    "card1": {
+      "title": "THE QUESTION",
+      "quote": "How does this work behind the screen?"
+    },
+    "card2": {
+      "title": "THE OBSESSION",
+      "quote": "Not just making it work — making it right."
+    },
+    "card3": {
+      "title": "THE EVOLUTION",
+      "description": "From curiosity to craft. Every line of code I write is driven by a simple belief: good technology transforms people, processes, and ideas. I'm not here to just ship features — I'm here to build systems that last."
+    },
+    "education": {
+      "label": "EDUCATION",
+      "value": "Systems Analysis & Development",
+      "institution": "UTFPR — Graduating 2026"
+    },
+    "english": {
+      "label": "ENGLISH",
+      "level": "C2 Full Proficiency",
+      "certification": "EF SET 72/100"
+    },
+    "experience": {
+      "label": "EXPERIENCE",
+      "value": "3+ Years",
+      "context": "Agile & Monorepo"
+    }
+  },
+  "journey": {
+    "title": "THE JOURNEY_",
+    "milestones": [
+      {
+        "role": "Development Intern",
+        "metric": "4",
+        "metricLabel": "DEVS LED"
+      },
+      {
+        "role": "Ops & Support Trainee",
+        "metric": "99.8%",
+        "metricLabel": "UPTIME"
+      },
+      {
+        "role": "Software Dev Intern",
+        "metric": "100+",
+        "metricLabel": "COMPONENTS"
+      },
+      {
+        "role": "Software Engineer",
+        "metric": "19K+",
+        "metricLabel": "LINES OF CODE"
+      }
+    ],
+    "conclusion": "The evolution continues — every project is an opportunity to grow, learn, and build something meaningful."
+  },
+  "skills": {
+    "title": "THE STACK_",
+    "core": {
+      "label": "CORE — WHAT I USE DAILY"
+    },
+    "architecture": {
+      "label": "ARCHITECTURE — HOW I BUILD SYSTEMS"
+    },
+    "testing": {
+      "label": "TESTING — HOW I ENSURE QUALITY"
+    },
+    "also": {
+      "label": "ALSO PROFICIENT"
+    }
+  },
+  "proof": {
+    "title": "THE PROOF_",
+    "projects": [
+      {
+        "title": "UNION AUDIO",
+        "tagline": "Feedback platform for DJs and music producers in Brazil's electronic scene",
+        "metrics": [
+          { "label": "COMPONENTS" },
+          { "label": "LINES OF CODE" },
+          { "label": "SHIPPED" }
+        ]
+      },
+      {
+        "title": "BARBER APP",
+        "tagline": "SaaS for barbershops — scheduling, automation, and role-based auth",
+        "metrics": [
+          { "label": "LINES OF CODE" },
+          { "label": "TESTS" },
+          { "label": "PASS RATE" }
+        ]
+      },
+      {
+        "title": "THIS PORTFOLIO",
+        "tagline": "Brutalist design meets engineering — scroll animations, i18n, MDX blog",
+        "metrics": [
+          { "label": "LANGUAGES" },
+          { "label": "ANIMATIONS" },
+          { "label": "BLOG SYSTEM" }
+        ]
+      }
+    ]
+  },
+  "vision": {
+    "title": "THE VISION_",
+    "quote": "I believe in building systems that not only work — but work beautifully, scale gracefully, and empower the people who use them.",
+    "lookingFor": {
+      "title": "WHAT I'M LOOKING FOR",
+      "item1": "Teams that value craftsmanship over shortcuts — where quality matters.",
+      "item2": "Challenging problems that push me to grow as an engineer and as a person.",
+      "item3": "Opportunities to build products that make a real impact in people's lives."
+    }
   },
   "about": {
     "title": "ABOUT_",
@@ -235,7 +372,7 @@
   },
   "contact": {
     "title": "CONTACT_",
-    "callToAction": "LET'S BUILD\nSOMETHING\nAMAZING",
+    "callToAction": "READY TO SHIP\nYOUR NEXT\nPRODUCTION SYSTEM?",
     "location": "LOCATION",
     "locationValue": "LONDRINA, PR — BRASIL",
     "english": "ENGLISH",

@@ -7,6 +7,7 @@ import { Analytics } from "@vercel/analytics/next"
 import { routing } from "@/i18n/routing"
 import { notFound } from "next/navigation"
 import { ThemeProvider } from "@/components/shared/theme-provider"
+import { MagneticCursor } from "@/components/shared/magnetic-cursor"
 import "./globals.css"
 
 const geist = Geist({ 
@@ -172,6 +173,7 @@ export default async function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <MagneticCursor />
           <NextIntlClientProvider messages={messages}>
             {children}
           </NextIntlClientProvider>

@@ -7,7 +7,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { SplitTextReveal } from "@/components/shared/split-text-reveal"
 import { GlitchText } from "@/components/shared/glitch-text"
 import { prefersReducedMotion } from "@/lib/gsap-config"
-import { FaLinkedin, FaGithub } from "react-icons/fa"
+import { FaLinkedin } from "react-icons/fa"
 import { HiEnvelope, HiArrowTopRightOnSquare } from "react-icons/hi2"
 import type { IconType } from "react-icons"
 
@@ -15,22 +15,16 @@ gsap.registerPlugin(ScrollTrigger)
 
 const contactLinks = [
   {
-    label: "LINKEDIN",
-    value: "@serg-alexandre",
-    href: "https://www.linkedin.com/in/serg-alexandre/",
-    icon: FaLinkedin,
-  },
-  {
     label: "EMAIL",
     value: "sergioalexandre0716@gmail.com",
     href: "mailto:sergioalexandre0716@gmail.com",
     icon: HiEnvelope,
   },
   {
-    label: "GITHUB",
-    value: "@Serg-Ale",
-    href: "https://github.com/Serg-Ale",
-    icon: FaGithub,
+    label: "LINKEDIN",
+    value: "@serg-alexandre",
+    href: "https://www.linkedin.com/in/serg-alexandre/",
+    icon: FaLinkedin,
   },
 ]
 
@@ -161,7 +155,7 @@ export function PortfolioConnect() {
         </div>
 
         {/* Contact Links */}
-        <div className="grid md:grid-cols-3 gap-6 md:gap-8 mb-16">
+        <div className="grid md:grid-cols-2 gap-6 md:gap-8 mb-16 max-w-4xl mx-auto">
           {contactLinks.map((link, index) => {
             const Icon = link.icon
             return (
@@ -176,7 +170,7 @@ export function PortfolioConnect() {
                 data-magnetic
                 onMouseEnter={(e) => handleCardHover(index, e.currentTarget)}
                 onMouseLeave={(e) => handleCardLeave(e.currentTarget)}
-                className="group bg-background text-foreground p-8 rounded-lg border-4 border-background hover:shadow-brutalist-inverted transition-all cursor-pointer relative"
+                className="group bg-background text-foreground p-8 border-4 border-background hover:shadow-brutalist-inverted transition-shadow cursor-pointer relative focus-visible:ring-2 focus-visible:ring-background focus-visible:ring-offset-2 focus-visible:ring-offset-foreground focus-visible:outline-none touch-action-manipulation"
               >
                 <div className="flex items-start justify-between mb-6">
                   <div className="flex items-center gap-4">
@@ -201,7 +195,7 @@ export function PortfolioConnect() {
             ref={(el) => {
               cardRefs.current[3] = el
             }}
-            className="bg-background/10 backdrop-blur-sm p-6 rounded-lg border border-background/20"
+            className="bg-background/10 backdrop-blur-sm p-6 border-4 border-background/20"
           >
             <h4 className="text-sm font-black tracking-wider mb-2 opacity-70">
               {t("location")}
@@ -215,7 +209,7 @@ export function PortfolioConnect() {
             ref={(el) => {
               cardRefs.current[4] = el
             }}
-            className="bg-background/10 backdrop-blur-sm p-6 rounded-lg border border-background/20"
+            className="bg-background/10 backdrop-blur-sm p-6 border-4 border-background/20"
           >
             <h4 className="text-sm font-black tracking-wider mb-2 opacity-70">
               {t("english")}
@@ -229,7 +223,7 @@ export function PortfolioConnect() {
             ref={(el) => {
               cardRefs.current[5] = el
             }}
-            className="bg-background/10 backdrop-blur-sm p-6 rounded-lg border border-background/20 relative overflow-hidden"
+            className="bg-background/10 backdrop-blur-sm p-6 border-4 border-background/20 relative overflow-hidden"
           >
             <div className="absolute top-3 right-3 w-3 h-3 bg-green-400 rounded-full pulse-dot" />
             <h4 className="text-sm font-black tracking-wider mb-2 opacity-70">

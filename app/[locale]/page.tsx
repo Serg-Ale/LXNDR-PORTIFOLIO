@@ -1,12 +1,13 @@
 import { PortfolioNav } from "@/components/portfolio/nav";
 import { PortfolioFooter } from "@/components/portfolio/footer";
 import { PortfolioIntro } from "@/components/portfolio/intro";
-import { PortfolioAbout } from "@/components/portfolio/about";
+import { PortfolioOrigin } from "@/components/portfolio/origin";
+import { PortfolioJourney } from "@/components/portfolio/journey";
 import { PortfolioSkills } from "@/components/portfolio/skills";
-import { PortfolioImpact } from "@/components/portfolio/impact";
+import { PortfolioProof } from "@/components/portfolio/proof";
+import { PortfolioVision } from "@/components/portfolio/vision";
 import { PortfolioBlogShowcase } from "@/components/portfolio/blog-showcase";
 import { PortfolioConnect } from "@/components/portfolio/connect";
-import { MagneticCursor } from "@/components/shared/magnetic-cursor";
 import { ScrollProgress } from "@/components/shared/scroll-progress";
 import { getAllPosts } from "@/lib/blog/server";
 import { BASE_URL } from "@/lib/constants";
@@ -116,17 +117,25 @@ export default async function Home({ params }: PageProps) {
           __html: JSON.stringify([personSchema, websiteSchema]),
         }}
       />
-      <main className="min-h-screen">
+      {/* Skip to main content link for accessibility */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-foreground focus:text-background focus:font-bold focus:border-2 focus:border-background"
+      >
+        Skip to main content
+      </a>
+      <main id="main-content" className="min-h-screen">
         <PortfolioNav />
-        <MagneticCursor />
         <ScrollProgress
-          sections={["intro", "about", "skills", "impact", "blog", "connect"]}
+          sections={["intro", "origin", "journey", "skills", "proof", "vision", "blog", "connect"]}
         />
 
         <PortfolioIntro />
-        <PortfolioAbout />
+        <PortfolioOrigin />
+        <PortfolioJourney />
         <PortfolioSkills />
-        <PortfolioImpact />
+        <PortfolioProof />
+        <PortfolioVision />
         <PortfolioBlogShowcase posts={recentPosts} locale={locale} />
         <PortfolioConnect />
         <PortfolioFooter />

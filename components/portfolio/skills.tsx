@@ -1,645 +1,350 @@
-"use client";
+"use client"
 
-import { useEffect, useRef, useState } from "react";
-import { useTheme } from "next-themes";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { SiNextdotjs, SiReact, SiTypescript, SiJavascript, SiTailwindcss, SiNodedotjs, SiPrisma, SiGit, SiGithub, SiFigma, SiJira, SiBitbucket, SiJest, SiExpress, SiSpring, SiPostgresql, SiMysql, SiDocker, SiPython } from "react-icons/si";
-import { Box, Zap, Shield, Brain, Terminal, Code, Database, GitBranch, CheckCircle, Server, Globe, Workflow } from "lucide-react";
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay } from 'swiper/modules';
-import 'swiper/css';
+import { useEffect, useRef, useState } from "react"
+import { useTranslations } from "next-intl"
+import { useTheme } from "next-themes"
+import gsap from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+import { SplitTextReveal } from "@/components/shared/split-text-reveal"
+import { prefersReducedMotion } from "@/lib/gsap-config"
+import {
+  SiNextdotjs,
+  SiReact,
+  SiTypescript,
+  SiTailwindcss,
+  SiPrisma,
+  SiJest,
+} from "react-icons/si"
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger)
 
-interface Skill {
-  name: string;
-  icon: React.ComponentType<{ className?: string }>;
-  description: string;
-}
+// Core Stack - What I use daily
+const coreStack = [
+  { name: "NEXT.JS", icon: SiNextdotjs },
+  { name: "REACT", icon: SiReact },
+  { name: "TYPESCRIPT", icon: SiTypescript },
+]
 
-interface SkillGroup {
-  title: string;
-  skills: Skill[];
-}
-
-const skillGroups: SkillGroup[] = [
-  {
-    title: "Frontend Frameworks",
-    skills: [
-      {
-        name: "NEXT.JS",
-        icon: SiNextdotjs as React.ComponentType<{ className?: string }>,
-        description: "A React framework for production-grade web applications with server-side rendering and static site generation."
-      },
-      {
-        name: "REACT",
-        icon: SiReact as React.ComponentType<{ className?: string }>,
-        description: "A JavaScript library for building user interfaces with reusable components and efficient rendering."
-      },
-      {
-        name: "REACT QUERY",
-        icon: Zap,
-        description: "Powerful data synchronization for React applications with caching, background updates, and error handling."
-      },
-      {
-        name: "WEB COMPONENTS",
-        icon: Code,
-        description: "Reusable custom elements for building web applications with native browser support."
-      }
-    ]
-  },
-  {
-    title: "Programming Languages",
-    skills: [
-      {
-        name: "TYPESCRIPT",
-        icon: SiTypescript as React.ComponentType<{ className?: string }>,
-        description: "A strongly typed superset of JavaScript that adds static typing for better code reliability."
-      },
-      {
-        name: "JAVASCRIPT",
-        icon: SiJavascript as React.ComponentType<{ className?: string }>,
-        description: "The programming language of the web, enabling interactive and dynamic web applications."
-      },
-      {
-        name: "JAVA",
-        icon: Code,
-        description: "A versatile, object-oriented programming language for enterprise applications and Android development."
-      },
-      {
-        name: "PYTHON",
-        icon: SiPython as React.ComponentType<{ className?: string }>,
-        description: "A versatile programming language used for automation, scripting, and backend development."
-      },
-      {
-        name: "SQL",
-        icon: Database,
-        description: "Structured Query Language for managing and querying relational databases."
-      }
-    ]
-  },
-  {
-    title: "Styling & UI",
-    skills: [
-      {
-        name: "TAILWIND CSS",
-        icon: SiTailwindcss as React.ComponentType<{ className?: string }>,
-        description: "A utility-first CSS framework for rapidly building custom user interfaces."
-      },
-      {
-        name: "RADIX UI",
-        icon: Box,
-        description: "A headless UI component library that provides accessible and customizable building blocks."
-      }
-    ]
-  },
-  {
-    title: "Animation",
-    skills: [
-      {
-        name: "GSAP",
-        icon: Zap,
-        description: "A powerful JavaScript animation library for creating high-performance, professional-grade animations."
-      },
-      {
-        name: "FRAMER MOTION",
-        icon: Zap,
-        description: "A production-ready motion library for React with declarative animations and gestures."
-      }
-    ]
-  },
-  {
-    title: "Backend & Runtime",
-    skills: [
-      {
-        name: "NODE.JS",
-        icon: SiNodedotjs as React.ComponentType<{ className?: string }>,
-        description: "A JavaScript runtime built on Chrome's V8 engine for server-side development."
-      },
-      {
-        name: "NESTJS",
-        icon: Server,
-        description: "A progressive Node.js framework for building efficient, scalable server-side applications."
-      },
-      {
-        name: "EXPRESS.JS",
-        icon: SiExpress as React.ComponentType<{ className?: string }>,
-        description: "A minimal and flexible Node.js web application framework for building APIs and web applications."
-      },
-      {
-        name: "SPRING BOOT",
-        icon: SiSpring as React.ComponentType<{ className?: string }>,
-        description: "A Java framework for building production-ready applications with dependency injection and microservices support."
-      },
-      {
-        name: "TRPC",
-        icon: Code,
-        description: "End-to-end type-safe APIs for TypeScript applications with automatic code generation."
-      },
-      {
-        name: "REST APIs",
-        icon: Globe,
-        description: "Designing and implementing RESTful APIs for scalable web services and data exchange."
-      }
-    ]
-  },
-  {
-    title: "Auth & Security",
-    skills: [
-      {
-        name: "NEXTAUTH",
-        icon: Shield,
-        description: "Complete open source authentication solution for Next.js applications."
-      },
-      {
-        name: "JWT",
-        icon: Shield,
-        description: "Token-based authentication for secure API access and user session management."
-      }
-    ]
-  },
-  {
-    title: "Databases",
-    skills: [
-      {
-        name: "POSTGRESQL",
-        icon: SiPostgresql as React.ComponentType<{ className?: string }>,
-        description: "An advanced open-source relational database with robust features and extensibility."
-      },
-      {
-        name: "MYSQL",
-        icon: SiMysql as React.ComponentType<{ className?: string }>,
-        description: "A popular open-source relational database management system for web applications."
-      },
-      {
-        name: "PRISMA ORM",
-        icon: SiPrisma as React.ComponentType<{ className?: string }>,
-        description: "A next-generation ORM for TypeScript and Node.js with type-safe database access."
-      },
-      {
-        name: "TYPEORM",
-        icon: Database,
-        description: "An ORM for TypeScript and JavaScript that supports multiple database systems and migrations."
-      }
-    ]
-  },
-  {
-    title: "Testing & Quality",
-    skills: [
-      {
-        name: "JEST",
-        icon: SiJest as React.ComponentType<{ className?: string }>,
-        description: "A JavaScript testing framework with a focus on simplicity and support for large web applications."
-      },
-      {
-        name: "REACT TESTING LIBRARY",
-        icon: CheckCircle,
-        description: "Testing utilities for React that encourage testing best practices and user-centric testing."
-      },
-      {
-        name: "TDD",
-        icon: CheckCircle,
-        description: "Test-Driven Development methodology for writing tests before code implementation."
-      },
-      {
-        name: "SOLID DESIGN PRINCIPLES",
-        icon: Shield,
-        description: "Object-oriented design principles for writing maintainable, scalable, and robust software."
-      }
-    ]
-  },
-  {
-    title: "Tools & Collaboration",
-    skills: [
-      {
-        name: "GIT",
-        icon: SiGit as React.ComponentType<{ className?: string }>,
-        description: "Distributed version control system for tracking changes in source code during software development."
-      },
-      {
-        name: "GITHUB",
-        icon: SiGithub as React.ComponentType<{ className?: string }>,
-        description: "Web-based platform for version control, collaboration, and code hosting using Git."
-      },
-      {
-        name: "GITFLOW",
-        icon: GitBranch,
-        description: "A Git workflow model for managing branches and releases in software development teams."
-      },
-      {
-        name: "JIRA",
-        icon: SiJira as React.ComponentType<{ className?: string }>,
-        description: "Project management tool for tracking issues, bugs, and agile development workflows."
-      },
-      {
-        name: "BITBUCKET",
-        icon: SiBitbucket as React.ComponentType<{ className?: string }>,
-        description: "Git repository management solution with integrated CI/CD and collaboration features."
-      },
-      {
-        name: "FIGMA",
-        icon: SiFigma as React.ComponentType<{ className?: string }>,
-        description: "Collaborative interface design tool for creating, prototyping, and sharing user interfaces."
-      },
-      {
-        name: "DOCKER",
-        icon: SiDocker as React.ComponentType<{ className?: string }>,
-        description: "Platform for developing, shipping, and running applications in containers."
-      },
-      {
-        name: "N8N",
-        icon: Workflow,
-        description: "Workflow automation tool for connecting apps and automating business processes."
-      },
-      {
-        name: "CI/CD PIPELINES",
-        icon: GitBranch,
-        description: "Continuous Integration and Deployment pipelines for automated testing and deployment."
-      }
-    ]
-  },
-  {
-    title: "Methodologies",
-    skills: [
-      {
-        name: "SCRUM",
-        icon: CheckCircle,
-        description: "Agile framework for managing complex projects with sprints, roles, and ceremonies."
-      },
-      {
-        name: "KANBAN",
-        icon: CheckCircle,
-        description: "Visual workflow management method for optimizing team processes and limiting work-in-progress."
-      },
-      {
-        name: "CLEAN CODE",
-        icon: Code,
-        description: "Writing readable, maintainable, and well-structured code that follows best practices."
-      }
-    ]
-  },
-  {
-    title: "AI & Development Tools",
-    skills: [
-      {
-        name: "GITHUB COPILOT",
-        icon: Brain,
-        description: "AI-powered coding assistant that suggests code completions and entire functions in real-time."
-      },
-      {
-        name: "NEOVIM",
-        icon: Terminal,
-        description: "An extensible text editor built on Vim, optimized for productivity and customization."
-      },
-      {
-        name: "OPENCODE",
-        icon: Code,
-        description: "An interactive CLI tool for software engineering tasks, powered by advanced AI models."
-      }
-    ]
-  }
-];
-
-const techStack = [
-  "NEXT.JS",
-  "REACT",
-  "TYPESCRIPT",
-  "JAVASCRIPT",
-  "TAILWIND CSS",
-  "RADIX UI",
-  "SHADCN/UI",
-  "GSAP",
-  "FRAMER MOTION",
-  "NODE.JS",
+// Architecture - How I build systems
+const architectureStack = [
+  "TURBOREPO",
   "PRISMA ORM",
   "NEXTAUTH",
+  "REACT QUERY",
+  "TRPC",
+  "REST APIS",
+]
+
+// Testing - How I ensure quality
+const testingStack = {
+  tools: ["JEST", "REACT TESTING LIBRARY", "TDD"],
+  metrics: [
+    { value: "308", label: "AUTOMATED TESTS" },
+    { value: "98%", label: "PASS RATE" },
+  ],
+}
+
+// Also Proficient - Other skills
+const otherSkills = [
   "JAVA",
   "PYTHON",
-  "SQL",
-  "REACT QUERY",
-  "NESTJS",
-  "EXPRESS.JS",
-  "SPRING BOOT",
-  "TRPC",
-  "REST APIs",
-  "JWT",
+  "TAILWIND CSS",
+  "GSAP",
+  "NODE.JS",
   "POSTGRESQL",
-  "MYSQL",
-  "TYPEORM",
-  "JEST",
-  "RTL",
-  "TDD",
-  "SOLID",
-  "GIT",
-  "GITHUB",
-  "GITFLOW",
-  "JIRA",
-  "BITBUCKET",
-  "FIGMA",
-  "DOCKER",
+  "GIT FLOW",
   "N8N",
-  "CI/CD",
+  "DOCKER",
   "SCRUM",
-  "KANBAN",
-  "GITHUB COPILOT",
-  "NEOVIM",
-  "OPENCODE",
-];
+]
+
+// Tech terms for Matrix rain
+const techTerms = [
+  "NEXT.JS", "REACT", "TYPESCRIPT", "TAILWIND", "PRISMA", "JEST",
+  "NODE", "API", "AUTH", "TEST", "CODE", "BUILD", "SHIP",
+]
 
 export function PortfolioSkills() {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  const animationRef = useRef<number>(0);
-  const cardsRef = useRef<HTMLDivElement>(null);
-  const sectionRef = useRef<HTMLElement>(null);
-  const titleRef = useRef<HTMLDivElement>(null);
-  const { theme } = useTheme();
-  const [isMobile, setIsMobile] = useState(false);
+  const t = useTranslations("skills")
+  const canvasRef = useRef<HTMLCanvasElement>(null)
+  const animationRef = useRef<number>(0)
+  const sectionRef = useRef<HTMLElement>(null)
+  const contentRef = useRef<HTMLDivElement>(null)
+  const { theme } = useTheme()
+  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
-    const canvas = canvasRef.current;
-    const streams: { x: number; characters: { char: string; y: number; opacity: number; speed: number }[] }[] = [];
-    const CHAR_WIDTH = 12;
-    const CHAR_HEIGHT = 14;
-    const CHARS_PER_STREAM = 12; // Reduced from 25
-    const TARGET_FPS = 60;
-    const FRAME_INTERVAL = 1000 / TARGET_FPS;
-    let lastFrameTime = 0;
+    setMounted(true)
+  }, [])
 
-    if (!canvas) return;
+  // Matrix Rain Effect
+  useEffect(() => {
+    const canvas = canvasRef.current
+    if (!canvas || !mounted) return
 
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
+    const ctx = canvas.getContext("2d")
+    if (!ctx) return
 
-    // Optimize canvas
-    ctx.imageSmoothingEnabled = false;
-    ctx.font = `${CHAR_HEIGHT}px 'Courier New', monospace`;
+    const streams: {
+      x: number
+      characters: { char: string; y: number; opacity: number; speed: number }[]
+    }[] = []
 
-    const isMobile = window.innerWidth < 768;
-    const maxStreams = isMobile ? 10 : 15; // Dramatically reduced density
+    const CHAR_HEIGHT = 14
+    const CHARS_PER_STREAM = 12
+    const TARGET_FPS = 60
+    const FRAME_INTERVAL = 1000 / TARGET_FPS
+    let lastFrameTime = 0
+
+    ctx.imageSmoothingEnabled = false
+    ctx.font = `${CHAR_HEIGHT}px 'Courier New', monospace`
+
+    const isMobile = window.innerWidth < 768
+    const maxStreams = isMobile ? 8 : 12
 
     const initializeStreams = () => {
-      streams.length = 0;
-      const screenWidth = canvas.width;
-      const screenHeight = canvas.height;
-      const streamSpacing = Math.max(CHAR_WIDTH, Math.floor(screenWidth / maxStreams));
+      streams.length = 0
+      const screenWidth = canvas.width
+      const screenHeight = canvas.height
+      const streamSpacing = Math.floor(screenWidth / maxStreams)
 
       for (let i = 0; i < maxStreams; i++) {
         const stream = {
-          x: i * streamSpacing,
-          characters: [] as { char: string; y: number; opacity: number; speed: number }[],
-        };
-
-        for (let j = 0; j < CHARS_PER_STREAM; j++) {
-          const skill = techStack[Math.floor(Math.random() * techStack.length)];
-          stream.characters.push({
-            char: skill.charAt(Math.floor(Math.random() * skill.length)),
-            y: -j * CHAR_HEIGHT + Math.random() * CHAR_HEIGHT,
-            opacity: Math.random() * 0.8 + 0.2,
-            speed: isMobile ? 1.5 + Math.random() : 3 + Math.random() * 2, // Optimized speed
-          });
+          x: i * streamSpacing + Math.random() * 20,
+          characters: [] as {
+            char: string
+            y: number
+            opacity: number
+            speed: number
+          }[],
         }
 
-        streams.push(stream);
+        for (let j = 0; j < CHARS_PER_STREAM; j++) {
+          const term = techTerms[Math.floor(Math.random() * techTerms.length)]
+          stream.characters.push({
+            char: term.charAt(Math.floor(Math.random() * term.length)),
+            y: -j * CHAR_HEIGHT + Math.random() * screenHeight,
+            opacity: Math.random() * 0.6 + 0.2,
+            speed: isMobile ? 1 + Math.random() : 2 + Math.random() * 2,
+          })
+        }
+
+        streams.push(stream)
       }
-    };
+    }
 
     const draw = (timestamp: number) => {
       if (timestamp - lastFrameTime < FRAME_INTERVAL) {
-        animationRef.current = requestAnimationFrame(draw);
-        return;
+        animationRef.current = requestAnimationFrame(draw)
+        return
       }
-      lastFrameTime = timestamp;
+      lastFrameTime = timestamp
 
-      const screenHeight = canvas.height;
+      const screenHeight = canvas.height
+      const isDark = theme === "dark"
 
-      // Clear canvas with theme-aware background
-      const isDark = theme === 'dark';
-      ctx.fillStyle = isDark ? "#000000" : "#ffffff";
-      ctx.fillRect(0, 0, canvas.width, screenHeight);
+      ctx.fillStyle = isDark ? "#000000" : "#ffffff"
+      ctx.fillRect(0, 0, canvas.width, screenHeight)
 
-      // Draw streams
       streams.forEach((stream) => {
         stream.characters.forEach((char) => {
-          // Characters use theme-aware color
-          ctx.fillStyle = isDark ? "rgba(255, 255, 255, 1)" : "rgba(0, 0, 0, 1)";
-          ctx.globalAlpha = char.opacity;
-          ctx.fillText(char.char, stream.x, char.y);
+          ctx.fillStyle = isDark
+            ? "rgba(255, 255, 255, 1)"
+            : "rgba(0, 0, 0, 1)"
+          ctx.globalAlpha = char.opacity * 0.3
+          ctx.fillText(char.char, stream.x, char.y)
 
-          // Update position
-          char.y += char.speed;
-          char.opacity *= 0.995; // Gradual fade
+          char.y += char.speed
+          char.opacity *= 0.998
 
-          // Reset when off screen
           if (char.y > screenHeight + CHAR_HEIGHT || char.opacity < 0.1) {
-            const skill = techStack[Math.floor(Math.random() * techStack.length)];
-            char.char = skill.charAt(Math.floor(Math.random() * skill.length));
-            char.y = -CHAR_HEIGHT;
-            char.opacity = Math.random() * 0.8 + 0.2;
+            const term = techTerms[Math.floor(Math.random() * techTerms.length)]
+            char.char = term.charAt(Math.floor(Math.random() * term.length))
+            char.y = -CHAR_HEIGHT
+            char.opacity = Math.random() * 0.6 + 0.2
           }
-        });
-      });
+        })
+      })
 
-      ctx.globalAlpha = 1; // Reset alpha
-      animationRef.current = requestAnimationFrame(draw);
-    };
+      ctx.globalAlpha = 1
+      animationRef.current = requestAnimationFrame(draw)
+    }
 
     const resizeCanvas = () => {
-      const section = sectionRef.current;
+      const section = sectionRef.current
       if (section) {
-        canvas.width = section.clientWidth;
-        canvas.height = section.clientHeight;
-      } else {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+        canvas.width = section.clientWidth
+        canvas.height = section.clientHeight
+        initializeStreams()
       }
-    };
+    }
 
-    // Start animation immediately and continuously
-    const startAnimation = () => {
-      if (!animationRef.current) {
-        animationRef.current = requestAnimationFrame(draw);
-      }
-    };
-
-    resizeCanvas(); // Set initial dimensions
-    window.addEventListener("resize", resizeCanvas);
-
-    // Start animation immediately without scroll-based controls
-    startAnimation();
+    resizeCanvas()
+    window.addEventListener("resize", resizeCanvas)
+    animationRef.current = requestAnimationFrame(draw)
 
     return () => {
-      cancelAnimationFrame(animationRef.current);
-      window.removeEventListener("resize", resizeCanvas);
-    };
-  }, [theme]);
+      cancelAnimationFrame(animationRef.current)
+      window.removeEventListener("resize", resizeCanvas)
+    }
+  }, [theme, mounted])
 
+  // GSAP Animations
   useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 768);
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
-
-  useEffect(() => {
-    // GSAP card entrance animations
-    if (!cardsRef.current) return;
+    const content = contentRef.current
+    if (!content) return
 
     const ctx = gsap.context(() => {
-      gsap.fromTo(
-        "[data-skill-card]",
-        {
-          opacity: 0,
-          y: 100,
-          scale: 0.8,
+      if (prefersReducedMotion()) {
+        gsap.set("[data-skill-item]", { opacity: 1, y: 0 })
+        return
+      }
+
+      gsap.from("[data-skill-item]", {
+        y: 50,
+        opacity: 0,
+        duration: 0.6,
+        stagger: 0.05,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: content,
+          start: "top bottom-=100",
+          toggleActions: "play none none reverse",
         },
-        {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          duration: 0.8,
-          stagger: 0.1,
-          ease: "back.out(1.7)",
-          scrollTrigger: {
-            trigger: cardsRef.current,
-            start: "top center+=100",
-            end: "bottom center",
-            toggleActions: "play none none reverse",
-          },
-        }
-      );
+      })
+    }, content)
 
-       // Group title animations
-       gsap.fromTo(
-         "[data-skill-group]",
-         {
-           opacity: 0,
-           x: -50,
-         },
-         {
-           opacity: 1,
-           x: 0,
-           duration: 0.6,
-           stagger: 0.2,
-           ease: "power2.out",
-           scrollTrigger: {
-             trigger: cardsRef.current,
-             start: "top center+=50",
-             end: "bottom center",
-             toggleActions: "play none none reverse",
-           },
-         }
-       );
-
-       // Parallax effect for vertical title
-       if (titleRef.current && !isMobile) {
-         gsap.fromTo(titleRef.current, {
-           y: 50, // start slightly below
-         }, {
-           y: -50, // end slightly above
-           ease: "none",
-           scrollTrigger: {
-             trigger: sectionRef.current,
-             start: "top center",
-             end: "bottom center",
-             scrub: 1, // smooth scrubbing
-           }
-         });
-       }
-    }, cardsRef);
-
-    return () => ctx.revert();
-  }, []);
+    return () => ctx.revert()
+  }, [])
 
   return (
-    <section ref={sectionRef} id="skills" className="relative min-h-screen w-screen bg-background text-foreground overflow-hidden">
+    <section
+      ref={sectionRef}
+      id="skills"
+      className="relative min-h-screen w-full bg-background text-foreground overflow-hidden"
+      data-theme="light"
+    >
       {/* Matrix Background Canvas */}
-      <canvas ref={canvasRef} className="absolute inset-0 z-0 pointer-events-none" />
+      <canvas
+        ref={canvasRef}
+        className="absolute inset-0 z-0 pointer-events-none"
+      />
 
-      {/* Skills Cards */}
-      <div ref={cardsRef} className="relative z-10 py-24 md:py-32">
-        {/* Vertical title for desktop */}
-        <div ref={titleRef} className="hidden md:flex items-center absolute left-8 top-1/2 transform -translate-y-1/2 rotate-90 text-4xl md:text-6xl font-black whitespace-nowrap z-20">
-          TECHNICAL SKILLS
-        </div>
-
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-6xl font-black mb-4 md:hidden">TECHNICAL SKILLS</h2>
-            <p className="text-lg md:text-xl opacity-80 max-w-2xl mx-auto">
-              Technologies and tools I use to build exceptional digital experiences
-            </p>
+      {/* Content */}
+      <div
+        ref={contentRef}
+        className="relative z-10 py-24 md:py-32 px-6 md:px-12"
+      >
+        <div className="max-w-7xl mx-auto">
+          {/* Title */}
+          <div className="mb-16 md:mb-24">
+            <SplitTextReveal
+              as="h2"
+              className="text-[clamp(3rem,10vw,8rem)] font-black leading-none tracking-tighter"
+              triggerOnScroll
+              staggerFrom="start"
+            >
+              {t("title")}
+            </SplitTextReveal>
           </div>
 
-          <div className="space-y-16">
-            {skillGroups.map((group, groupIndex) => (
-              <div key={group.title} data-skill-group className="space-y-8">
-                <h3 className="text-2xl md:text-3xl font-bold text-center">{group.title}</h3>
-                {group.skills.length <= 2 || isMobile ? (
-                  <div className="flex flex-col md:flex-row md:justify-center gap-4 md:gap-6">
-                    {group.skills.map((skill, skillIndex) => {
-                      const Icon = skill.icon;
-                      return (
-                        <Card
-                          key={skill.name}
-                          data-skill-card
-                           className="border-4 border-foreground bg-card/90 backdrop-blur-sm text-card-foreground p-6 transition-all duration-300 hover:shadow-brutalist hover:-translate-y-2 hover:scale-[1.02] hover:rotate-[0.5deg] hover-glow hover-rotate data-magnetic group flex-shrink-0 w-full md:w-80"
-                        >
-                          <CardHeader className="pb-4">
-                            <div className="flex items-center gap-4">
-                              <Icon className="w-12 h-12 text-foreground group-hover:scale-110 transition-transform" />
-                              <CardTitle className="text-xl font-bold">{skill.name}</CardTitle>
-                            </div>
-                          </CardHeader>
-                          <CardContent>
-                            <p className="text-sm leading-relaxed opacity-80">{skill.description}</p>
-                          </CardContent>
-                        </Card>
-                      );
-                    })}
-                  </div>
-                ) : (
-                  <Swiper
-                    modules={[Autoplay]}
-                    spaceBetween={24}
-                    slidesPerView={2}
-                    breakpoints={{
-                      1024: { slidesPerView: 3 },
-                    }}
-                    loop={true}
-                    autoplay={{ delay: 2500, disableOnInteraction: false }}
-                    className="w-full"
+          {/* CORE Stack - Primary Focus */}
+          <div className="mb-16 md:mb-20" data-skill-item>
+            <h3 className="text-sm font-black tracking-widest opacity-60 mb-6">
+              {t("core.label")}
+            </h3>
+            <div className="flex flex-wrap gap-4 md:gap-6">
+              {coreStack.map((skill, index) => {
+                const Icon = skill.icon
+                return (
+                  <div
+                    key={skill.name}
+                    className="bg-foreground text-background px-8 py-6 md:px-12 md:py-8 flex items-center gap-4 md:gap-6 shadow-brutalist-inverted hover:shadow-brutalist-lg transition-shadow duration-300"
                   >
-                    {group.skills.map((skill, skillIndex) => {
-                      const Icon = skill.icon;
-                      return (
-                        <SwiperSlide key={skill.name}>
-                          <Card
-                            key={skill.name}
-                            data-skill-card
-                             className="border-4 border-foreground bg-card/90 backdrop-blur-sm text-card-foreground p-6 transition-all duration-300 hover:shadow-brutalist hover:-translate-y-2 hover:scale-[1.02] hover:rotate-[0.5deg] hover-glow hover-rotate data-magnetic group flex-shrink-0 w-full"
-                          >
-                            <CardHeader className="pb-4">
-                              <div className="flex items-center gap-4">
-                                 <Icon className="w-12 h-12 text-foreground group-hover:scale-110 transition-transform" />
-                                <CardTitle className="text-xl font-bold">{skill.name}</CardTitle>
-                              </div>
-                            </CardHeader>
-                            <CardContent>
-                              <p className="text-sm leading-relaxed opacity-80">{skill.description}</p>
-                            </CardContent>
-                          </Card>
-                        </SwiperSlide>
-                      );
-                    })}
-                  </Swiper>
-                )}
+                    <Icon className="w-10 h-10 md:w-14 md:h-14" />
+                    <span className="text-2xl md:text-4xl font-black tracking-tight">
+                      {skill.name}
+                    </span>
+                  </div>
+                )
+              })}
+            </div>
+          </div>
+
+          {/* Architecture + Testing Grid */}
+          <div className="grid md:grid-cols-2 gap-8 md:gap-12 mb-16 md:mb-20">
+            {/* Architecture */}
+            <div
+              className="border-4 border-foreground p-6 md:p-8 shadow-brutalist"
+              data-skill-item
+            >
+              <h3 className="text-sm font-black tracking-widest opacity-60 mb-6">
+                {t("architecture.label")}
+              </h3>
+              <div className="flex flex-wrap gap-3">
+                {architectureStack.map((skill) => (
+                  <span
+                    key={skill}
+                    className="border-2 border-foreground px-4 py-2 text-sm md:text-base font-bold hover:bg-foreground hover:text-background transition-colors duration-200"
+                  >
+                    {skill}
+                  </span>
+                ))}
               </div>
-            ))}
+            </div>
+
+            {/* Testing */}
+            <div
+              className="border-4 border-foreground p-6 md:p-8 shadow-brutalist"
+              data-skill-item
+            >
+              <h3 className="text-sm font-black tracking-widest opacity-60 mb-6">
+                {t("testing.label")}
+              </h3>
+              <div className="flex flex-wrap gap-3 mb-6">
+                {testingStack.tools.map((tool) => (
+                  <span
+                    key={tool}
+                    className="border-2 border-foreground px-4 py-2 text-sm md:text-base font-bold hover:bg-foreground hover:text-background transition-colors duration-200"
+                  >
+                    {tool}
+                  </span>
+                ))}
+              </div>
+              {/* Testing Metrics */}
+              <div className="flex gap-6 pt-4 border-t-2 border-foreground/20">
+                {testingStack.metrics.map((metric) => (
+                  <div key={metric.label}>
+                    <p className="text-3xl md:text-4xl font-black tracking-tight">
+                      {metric.value}
+                    </p>
+                    <p className="text-xs font-semibold tracking-wider opacity-70">
+                      {metric.label}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Also Proficient */}
+          <div data-skill-item>
+            <h3 className="text-sm font-black tracking-widest opacity-60 mb-6">
+              {t("also.label")}
+            </h3>
+            <div className="flex flex-wrap gap-3">
+              {otherSkills.map((skill) => (
+                <span
+                  key={skill}
+                  className="border-2 border-foreground/50 px-4 py-2 text-sm font-semibold opacity-70 hover:opacity-100 hover:border-foreground transition-all duration-200"
+                >
+                  {skill}
+                </span>
+              ))}
             </div>
           </div>
         </div>
-      </section>
-  );
+      </div>
+    </section>
+  )
 }

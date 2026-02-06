@@ -7,9 +7,146 @@
     "contact": "CONTATO"
   },
   "hero": {
-    "name": "SÉRGIO\nALEXANDRE",
+    "firstName": "SÉRGIO",
+    "lastName": "ALEXANDRE",
+    "name": "SÉRGIO ALEXANDRE",
     "title": "ENGENHEIRO\nDE SOFTWARE",
-    "tagline": "TRANSFORMANDO IDEIAS EM EXPERIÊNCIAS DIGITAIS COM NEXT.JS, REACT & TYPESCRIPT"
+    "tagline": "Construo sistemas de produção que escalam — 19K+ linhas de código, 308 testes automatizados, e contando.",
+    "role": "ENGENHEIRO DE SOFTWARE",
+    "location": "LONDRINA, BR",
+    "manifesto": {
+      "word1": "Eu",
+      "word2": "construo",
+      "word3": "sistemas",
+      "word4": "de produção",
+      "word5": "que",
+      "highlight": "ESCALAM",
+      "metrics": "— 19K+ linhas, 308 testes, e contando."
+    },
+    "stats": {
+      "years": "3+",
+      "yearsLabel": "ANOS",
+      "loc": "19K+",
+      "locLabel": "LINHAS",
+      "tests": "308",
+      "testsLabel": "TESTES",
+      "uptime": "99,8%",
+      "uptimeLabel": "UPTIME"
+    },
+    "scrollDown": "Role para explorar"
+  },
+  "origin": {
+    "title": "A ORIGEM_",
+    "card1": {
+      "title": "A PERGUNTA",
+      "quote": "Como isso funciona por trás da tela?"
+    },
+    "card2": {
+      "title": "A OBSESSÃO",
+      "quote": "Não apenas fazer funcionar — fazer direito."
+    },
+    "card3": {
+      "title": "A EVOLUÇÃO",
+      "description": "Da curiosidade ao ofício. Cada linha de código que escrevo é guiada por uma crença simples: boa tecnologia transforma pessoas, processos e ideias. Não estou aqui apenas para entregar funcionalidades — estou aqui para construir sistemas que duram."
+    },
+    "education": {
+      "label": "FORMAÇÃO",
+      "value": "Análise e Desenvolvimento de Sistemas",
+      "institution": "UTFPR — Formatura 2026"
+    },
+    "english": {
+      "label": "INGLÊS",
+      "level": "C2 Proficiência Completa",
+      "certification": "EF SET 72/100"
+    },
+    "experience": {
+      "label": "EXPERIÊNCIA",
+      "value": "3+ Anos",
+      "context": "Ágil & Monorepo"
+    }
+  },
+  "journey": {
+    "title": "A JORNADA_",
+    "milestones": [
+      {
+        "role": "Estagiário de Desenvolvimento",
+        "metric": "4",
+        "metricLabel": "DEVS LIDERADOS"
+      },
+      {
+        "role": "Trainee Ops & Suporte",
+        "metric": "99,8%",
+        "metricLabel": "UPTIME"
+      },
+      {
+        "role": "Estagiário de Software",
+        "metric": "100+",
+        "metricLabel": "COMPONENTES"
+      },
+      {
+        "role": "Engenheiro de Software",
+        "metric": "19K+",
+        "metricLabel": "LINHAS DE CÓDIGO"
+      }
+    ],
+    "conclusion": "A evolução continua — cada projeto é uma oportunidade de crescer, aprender e construir algo significativo."
+  },
+  "skills": {
+    "title": "A STACK_",
+    "core": {
+      "label": "CORE — O QUE USO DIARIAMENTE"
+    },
+    "architecture": {
+      "label": "ARQUITETURA — COMO CONSTRUO SISTEMAS"
+    },
+    "testing": {
+      "label": "TESTES — COMO GARANTO QUALIDADE"
+    },
+    "also": {
+      "label": "TAMBÉM PROFICIENTE EM"
+    }
+  },
+  "proof": {
+    "title": "A PROVA_",
+    "projects": [
+      {
+        "title": "UNION AUDIO",
+        "tagline": "Plataforma de feedback para DJs e produtores na cena eletrônica do Brasil",
+        "metrics": [
+          { "label": "COMPONENTES" },
+          { "label": "LINHAS DE CÓDIGO" },
+          { "label": "ENTREGUE" }
+        ]
+      },
+      {
+        "title": "BARBER APP",
+        "tagline": "SaaS para barbearias — agendamento, automação e autenticação por roles",
+        "metrics": [
+          { "label": "LINHAS DE CÓDIGO" },
+          { "label": "TESTES" },
+          { "label": "TAXA DE APROVAÇÃO" }
+        ]
+      },
+      {
+        "title": "ESTE PORTFÓLIO",
+        "tagline": "Design brutalista + engenharia — animações de scroll, i18n, blog MDX",
+        "metrics": [
+          { "label": "IDIOMAS" },
+          { "label": "ANIMAÇÕES" },
+          { "label": "SISTEMA DE BLOG" }
+        ]
+      }
+    ]
+  },
+  "vision": {
+    "title": "A VISÃO_",
+    "quote": "Acredito em construir sistemas que não apenas funcionam — mas funcionam lindamente, escalam graciosamente e empoderam as pessoas que os usam.",
+    "lookingFor": {
+      "title": "O QUE ESTOU BUSCANDO",
+      "item1": "Times que valorizam o ofício sobre atalhos — onde qualidade importa.",
+      "item2": "Problemas desafiadores que me empurram a crescer como engenheiro e como pessoa.",
+      "item3": "Oportunidades de construir produtos que causam impacto real na vida das pessoas."
+    }
   },
   "about": {
     "title": "SOBRE_",
@@ -235,7 +372,7 @@
   },
   "contact": {
     "title": "CONTATO_",
-    "callToAction": "VAMOS CONSTRUIR\nALGO\nINCRÍVEL",
+    "callToAction": "PRONTO PARA\nENTREGAR SEU\nPRÓXIMO SISTEMA?",
     "location": "LOCALIZAÇÃO",
     "locationValue": "LONDRINA, PR — BRASIL",
     "english": "INGLÊS",

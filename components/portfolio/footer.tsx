@@ -55,9 +55,9 @@ export function PortfolioFooter() {
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group flex items-center gap-3 px-4 py-3 border-2 border-foreground shadow-brutalist-sm hover:shadow-brutalist hover:translate-x-1 transition-all"
+                    className="group flex items-center gap-3 px-4 py-3 border-2 border-foreground shadow-brutalist-sm hover:shadow-brutalist hover:translate-x-1 transition-all focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:outline-none touch-action-manipulation"
                   >
-                    <Icon className="w-6 h-6 flex-shrink-0" />
+                    <Icon className="w-6 h-6 flex-shrink-0" aria-hidden="true" />
                     <span className="text-base md:text-lg font-bold whitespace-nowrap">
                       {link.label}
                     </span>
@@ -70,7 +70,7 @@ export function PortfolioFooter() {
 
         <div className="border-t-4 border-foreground pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-base md:text-lg font-bold">
-            © {new Date().getFullYear()} {t("copyright")}
+            <span suppressHydrationWarning>© {new Date().getFullYear()}</span> {t("copyright")}
           </p>
           <p className="text-base md:text-lg font-bold">
             {t("madeWith")}

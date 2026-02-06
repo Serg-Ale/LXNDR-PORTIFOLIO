@@ -8,7 +8,6 @@ import { BlogRelatedPosts } from "@/components/blog/blog-related-posts"
 import { PortfolioNav } from "@/components/portfolio/nav"
 import { PortfolioFooter } from "@/components/portfolio/footer"
 import { BlogArticleContainer } from "@/components/blog/blog-article-container"
-import { MagneticCursor } from "@/components/shared/magnetic-cursor"
 import { BASE_URL } from "@/lib/constants"
 import { Metadata } from "next"
 
@@ -161,7 +160,6 @@ export default async function BlogPostPage({ params }: PageProps) {
       />
       <main className="min-h-screen bg-background">
         <PortfolioNav />
-        <MagneticCursor />
 
         <article className="pt-32 pb-20 px-6 md:px-12">
           <div className="max-w-4xl mx-auto">

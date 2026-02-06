@@ -153,25 +153,25 @@ export function PortfolioNav() {
       <div className="max-w-7xl mx-auto w-full px-6 py-4 flex flex-col gap-3">
             <button
               onClick={() => scrollToSection("journey")}
-              className="text-lg font-semibold px-4 py-3 rounded-md transition-all text-left hover:bg-accent/10"
+              className="text-lg font-semibold px-4 py-3 rounded-md transition-all text-left hover:bg-accent/10 focus-visible:ring-2 focus-visible:ring-current focus-visible:ring-offset-2 focus-visible:outline-none touch-action-manipulation"
             >
               {t("about")}
             </button>
             <button
               onClick={() => scrollToSection("impact")}
-              className="text-lg font-semibold px-4 py-3 rounded-md transition-all text-left hover:bg-accent/10"
+              className="text-lg font-semibold px-4 py-3 rounded-md transition-all text-left hover:bg-accent/10 focus-visible:ring-2 focus-visible:ring-current focus-visible:ring-offset-2 focus-visible:outline-none touch-action-manipulation"
             >
               {t("experience")}
             </button>
             <Link
               href="/blog"
-              className="text-lg font-semibold px-4 py-3 rounded-md transition-all text-left block hover:bg-accent/10"
+              className="text-lg font-semibold px-4 py-3 rounded-md transition-all text-left block hover:bg-accent/10 focus-visible:ring-2 focus-visible:ring-current focus-visible:ring-offset-2 focus-visible:outline-none touch-action-manipulation"
             >
               {t("blog")}
             </Link>
             <button
               onClick={() => scrollToSection("connect")}
-              className="text-lg font-semibold px-4 py-3 rounded-md transition-all text-left hover:bg-accent/10"
+              className="text-lg font-semibold px-4 py-3 rounded-md transition-all text-left hover:bg-accent/10 focus-visible:ring-2 focus-visible:ring-current focus-visible:ring-offset-2 focus-visible:outline-none touch-action-manipulation"
             >
               {t("contact")}
             </button>
@@ -204,25 +204,25 @@ export function PortfolioNav() {
           <div className="hidden md:flex gap-4 md:gap-8 flex-shrink-0 items-center">
             <button
               onClick={() => scrollToSection("journey")}
-              className="text-lg md:text-xl font-semibold px-4 py-2 rounded-md transition-all hover:bg-accent/10 hover:scale-105"
+              className="text-lg md:text-xl font-semibold px-4 py-2 rounded-md transition-all hover:bg-accent/10 hover:scale-105 focus-visible:ring-2 focus-visible:ring-current focus-visible:ring-offset-2 focus-visible:outline-none touch-action-manipulation"
             >
               {t("about")}
             </button>
             <button
               onClick={() => scrollToSection("impact")}
-              className="text-lg md:text-xl font-semibold px-4 py-2 rounded-md transition-all hover:bg-accent/10 hover:scale-105"
+              className="text-lg md:text-xl font-semibold px-4 py-2 rounded-md transition-all hover:bg-accent/10 hover:scale-105 focus-visible:ring-2 focus-visible:ring-current focus-visible:ring-offset-2 focus-visible:outline-none touch-action-manipulation"
             >
               {t("experience")}
             </button>
             <Link
               href="/blog"
-              className="text-lg md:text-xl font-semibold px-4 py-2 rounded-md transition-all hover:bg-accent/10 hover:scale-105"
+              className="text-lg md:text-xl font-semibold px-4 py-2 rounded-md transition-all hover:bg-accent/10 hover:scale-105 focus-visible:ring-2 focus-visible:ring-current focus-visible:ring-offset-2 focus-visible:outline-none touch-action-manipulation"
             >
               {t("blog")}
             </Link>
             <button
               onClick={() => scrollToSection("connect")}
-              className="text-lg md:text-xl font-semibold px-4 py-2 rounded-md transition-all hover:bg-accent/10 hover:scale-105"
+              className="text-lg md:text-xl font-semibold px-4 py-2 rounded-md transition-all hover:bg-accent/10 hover:scale-105 focus-visible:ring-2 focus-visible:ring-current focus-visible:ring-offset-2 focus-visible:outline-none touch-action-manipulation"
             >
               {t("contact")}
             </button>
@@ -232,8 +232,9 @@ export function PortfolioNav() {
 
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden flex flex-col gap-1.5 p-2 flex-shrink-0"
+            className="md:hidden flex flex-col gap-1.5 p-2 flex-shrink-0 focus-visible:ring-2 focus-visible:ring-current focus-visible:ring-offset-2 focus-visible:outline-none touch-action-manipulation"
             aria-label="Toggle menu"
+            aria-expanded={isMobileMenuOpen}
           >
             <span className={`block w-6 h-0.5 bg-foreground transition-all ${isMobileMenuOpen ? "rotate-45 translate-y-2" : ""}`}></span>
             <span className={`block w-6 h-0.5 bg-foreground transition-all ${isMobileMenuOpen ? "opacity-0" : ""}`}></span>

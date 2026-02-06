@@ -4,6 +4,7 @@ import fs from "fs"
 import path from "path"
 import { parseFrontmatter } from "./parse-frontmatter"
 import { calculateReadingTime } from "./reading-time"
+import { highlightCodeBlocks } from "./syntax-highlighter"
 import type { Post } from "./types"
 
 const postsDirectory = path.join(process.cwd(), "content/posts")
@@ -42,9 +43,12 @@ export async function getAllPosts(
         const readingTime =
           frontmatter.readingTime || calculateReadingTime(content)
 
+        // Process code blocks with syntax highlighting
+        const highlightedContent = await highlightCodeBlocks(content)
+
         posts.push({
           ...frontmatter,
-          content,
+          content: highlightedContent,
           readingTime,
         })
       }
@@ -77,9 +81,12 @@ export async function getPostBySlug(
       const readingTime =
         frontmatter.readingTime || calculateReadingTime(content)
 
+      // Process code blocks with syntax highlighting
+      const highlightedContent = await highlightCodeBlocks(content)
+
       return {
         ...frontmatter,
-        content,
+        content: highlightedContent,
         readingTime,
       }
     }

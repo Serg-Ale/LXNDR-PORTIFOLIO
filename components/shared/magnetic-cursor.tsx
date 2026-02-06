@@ -9,89 +9,16 @@ export function MagneticCursor() {
   const cursorDotRef = useRef<HTMLDivElement>(null)
   const mousePos = useRef({ x: 0, y: 0 })
   const cursorPos = useRef({ x: 0, y: 0 })
-  const currentTheme = useRef<'light' | 'dark'>('light')
+  const isHoveringInteractive = useRef(false)
 
-  // Get theme from element background color brightness
-  const getThemeFromElement = (element: Element): 'light' | 'dark' => {
-    let currentElement: Element | null = element
-    let depth = 0
-    
-    // Go up the DOM tree to find a non-transparent background (max 5 levels)
-    while (currentElement && depth < 5) {
-      const computedStyle = window.getComputedStyle(currentElement)
-      const backgroundColor = computedStyle.backgroundColor
-      
-      // Skip transparent backgrounds
-      if (backgroundColor !== 'rgba(0, 0, 0, 0)' && backgroundColor !== 'transparent') {
-        // Convert RGB/RGBA to brightness
-        const rgb = backgroundColor.match(/\d+/g)
-        if (rgb && rgb.length >= 3) {
-          const [r, g, b] = rgb.map(Number)
-          const brightness = (r * 299 + g * 587 + b * 114) / 1000
-          
-          // Add some tolerance for edge cases
-          if (brightness > 140) return 'light'  // Lighter threshold
-          if (brightness < 100) return 'dark'   // Darker threshold
-          
-          // For middle values, check if it's closer to white or black
-          return brightness > 180 ? 'light' : 'dark'
-        }
-      }
-      
-      currentElement = currentElement.parentElement
-      depth++
-    }
-    
-    // If we can't find a background, check if we're in a dark section
-    const section = element.closest('[data-theme]')
-    if (section) {
-      const theme = section.getAttribute('data-theme') as 'light' | 'dark'
-      return theme || 'light'
-    }
-    
-    return 'light' // Default fallback
-  }
-
-  // Enhanced element detection for different cursor modes
-  const getElementType = (element: Element): 'text' | 'interactive' | 'magnetic' | 'default' => {
-    if (element.hasAttribute('data-magnetic')) return 'magnetic'
-    if (element.tagName === 'A' || element.tagName === 'BUTTON' || element.hasAttribute('role')) return 'interactive'
-    if (element.tagName === 'P' || element.tagName === 'H1' || element.tagName === 'H2' || 
-        element.tagName === 'H3' || element.tagName === 'H4' || element.tagName === 'SPAN') return 'text'
-    return 'default'
-  }
-
-  // Update cursor colors with smooth transition and element type awareness
-  const updateCursorColors = (theme: 'light' | 'dark', elementType: 'text' | 'interactive' | 'magnetic' | 'default' = 'default') => {
-    if (currentTheme.current === theme) return // No change needed
-
-    currentTheme.current = theme
-    const isDark = theme === 'dark'
-    
-    // Adjust cursor size based on element type for better UX
-    let scale = 1
-    switch (elementType) {
-      case 'magnetic': scale = 2.2; break
-      case 'interactive': scale = 1.8; break
-      case 'text': scale = 0.8; break
-      default: scale = 1
-    }
-
-    // Update main cursor with smooth transition
-    gsap.to(cursorRef.current, {
-      borderColor: isDark ? '#ffffff' : '#000000',
-      scale: scale,
-      duration: 0.4,
-      ease: "power2.out"
-    })
-    
-    // Update dot cursor with smooth transition
-    gsap.to(cursorDotRef.current, {
-      backgroundColor: isDark ? '#ffffff' : '#000000',
-      scale: scale * 0.5,
-      duration: 0.4,
-      ease: "power2.out"
-    })
+  // Check if element is interactive
+  const isInteractiveElement = (element: Element): boolean => {
+    return element.tagName === 'A' || element.tagName === 'BUTTON' || 
+           element.tagName === 'INPUT' || element.tagName === 'TEXTAREA' || 
+           element.tagName === 'SELECT' || element.hasAttribute('role') ||
+           element.hasAttribute('onclick') || element.getAttribute('tabindex') === '0' ||
+           element.hasAttribute('data-magnetic') ||
+           element.closest('a') !== null || element.closest('button') !== null
   }
 
   useEffect(() => {
@@ -104,51 +31,19 @@ export function MagneticCursor() {
     const cursorDot = cursorDotRef.current
     if (!cursor || !cursorDot) return
 
-    // Track mouse position and update cursor colors
+    // Track mouse position
     const handleMouseMove = (e: MouseEvent) => {
       mousePos.current = { x: e.clientX, y: e.clientY }
-      
-      // Get element at cursor position and update theme
-      const elementAtCursor = document.elementFromPoint(e.clientX, e.clientY)
-      if (elementAtCursor) {
-        const theme = getThemeFromElement(elementAtCursor)
-        const elementType = getElementType(elementAtCursor)
-        updateCursorColors(theme, elementType)
-        
-        // Apply text inversion to text elements
-        if (elementType === 'text' && elementAtCursor.classList.contains('text-invert-magnetic')) {
-          gsap.to(elementAtCursor, {
-            filter: 'invert(1)',
-            duration: 0.3,
-            ease: "power2.out"
-          })
-        }
-      }
-
-      // Reset text inversion for elements no longer under cursor
-      document.querySelectorAll('.text-invert-magnetic').forEach((el) => {
-        const rect = el.getBoundingClientRect()
-        const isUnderCursor = e.clientX >= rect.left && e.clientX <= rect.right && 
-                             e.clientY >= rect.top && e.clientY <= rect.bottom
-        
-        if (!isUnderCursor) {
-          gsap.to(el, {
-            filter: 'invert(0)',
-            duration: 0.3,
-            ease: "power2.out"
-          })
-        }
-      })
     }
 
-    // Smooth cursor follow with improved lerp for more responsive feel
+    // Smooth cursor follow with lerp for fluid movement
     const lerp = (start: number, end: number, factor: number) => {
       return start + (end - start) * factor
     }
 
     const updateCursor = () => {
-      cursorPos.current.x = lerp(cursorPos.current.x, mousePos.current.x, 0.12) // Smoother: 0.15 → 0.12
-      cursorPos.current.y = lerp(cursorPos.current.y, mousePos.current.y, 0.12)
+      cursorPos.current.x = lerp(cursorPos.current.x, mousePos.current.x, 0.15)
+      cursorPos.current.y = lerp(cursorPos.current.y, mousePos.current.y, 0.15)
 
       gsap.set(cursor, {
         x: cursorPos.current.x,
@@ -163,36 +58,61 @@ export function MagneticCursor() {
       requestAnimationFrame(updateCursor)
     }
 
-    // Enhanced magnetic attraction with different behaviors
+    // Handle hover effects for all interactive elements
+    const handleInteractiveHover = (e: MouseEvent, isEntering: boolean) => {
+      const element = e.target as Element
+      if (!isInteractiveElement(element)) return
+
+      isHoveringInteractive.current = isEntering
+      
+      if (isEntering) {
+        // Expand outer ring on hover with smooth animation
+        gsap.to(cursor, {
+          scale: 1.8,
+          duration: 0.3,
+          ease: "power2.out",
+        })
+        
+        gsap.to(cursorDot, {
+          scale: 1.5,
+          duration: 0.3,
+          ease: "power2.out",
+        })
+      } else {
+        // Reset to normal size
+        gsap.to(cursor, {
+          scale: 1,
+          duration: 0.3,
+          ease: "power2.out",
+        })
+        
+        gsap.to(cursorDot, {
+          scale: 1,
+          duration: 0.3,
+          ease: "power2.out",
+        })
+      }
+    }
+
+    // Enhanced magnetic attraction for data-magnetic elements
     const magneticElements = document.querySelectorAll("[data-magnetic]")
     
     magneticElements.forEach((el) => {
       const element = el as HTMLElement
-      const elementType = getElementType(element)
       
       element.addEventListener("mouseenter", () => {
-        // Different scale effects based on element type
-        let scale = 2
-        switch (elementType) {
-          case 'magnetic': scale = 2.5; break
-          case 'interactive': scale = 2.2; break
-          default: scale = 2
-        }
-        
+        // Extra scale for magnetic elements
         gsap.to(cursor, {
-          scale: scale,
+          scale: 2.5,
           duration: 0.4,
           ease: "power2.out",
         })
         
-        // Add glow effect for enhanced elements
-        if (element.classList.contains('hover-glow')) {
-          gsap.to(element, {
-            boxShadow: '0 0 20px rgba(0, 255, 255, 0.5), 12px 12px 0 currentColor',
-            duration: 0.3,
-            ease: "power2.out"
-          })
-        }
+        gsap.to(cursorDot, {
+          scale: 2,
+          duration: 0.4,
+          ease: "power2.out",
+        })
       })
 
       element.addEventListener("mouseleave", () => {
@@ -202,15 +122,13 @@ export function MagneticCursor() {
           ease: "power2.out",
         })
         
-        // Reset glow effect
-        if (element.classList.contains('hover-glow')) {
-          gsap.to(element, {
-            boxShadow: '8px 8px 0 currentColor',
-            duration: 0.3,
-            ease: "power2.out"
-          })
-        }
+        gsap.to(cursorDot, {
+          scale: 1,
+          duration: 0.4,
+          ease: "power2.out",
+        })
         
+        // Reset element position with elastic bounce
         gsap.to(element, {
           x: 0,
           y: 0,
@@ -224,11 +142,8 @@ export function MagneticCursor() {
         const x = e.clientX - rect.left - rect.width / 2
         const y = e.clientY - rect.top - rect.height / 2
         
-        // Enhanced magnetic pull with different strengths
-        let pullStrength = 0.3
-        if (element.classList.contains('hover-magnetic-enhanced')) {
-          pullStrength = 0.5
-        }
+        // Magnetic pull effect
+        const pullStrength = element.classList.contains('hover-magnetic-enhanced') ? 0.5 : 0.3
         
         gsap.to(element, {
           x: x * pullStrength,
@@ -239,12 +154,16 @@ export function MagneticCursor() {
       })
     })
 
-    // Start animation loop
+    // Start animation loop and event listeners
     window.addEventListener("mousemove", handleMouseMove)
+    window.addEventListener("mouseover", (e) => handleInteractiveHover(e, true))
+    window.addEventListener("mouseout", (e) => handleInteractiveHover(e, false))
     requestAnimationFrame(updateCursor)
 
     return () => {
       window.removeEventListener("mousemove", handleMouseMove)
+      window.removeEventListener("mouseover", (e) => handleInteractiveHover(e, true))
+      window.removeEventListener("mouseout", (e) => handleInteractiveHover(e, false))
     }
   }, [])
 
@@ -255,22 +174,32 @@ export function MagneticCursor() {
 
   return (
     <>
+      {/* Outer ring - inverts colors using mix-blend-mode */}
       <div
         ref={cursorRef}
-        className="custom-cursor pointer-events-none fixed top-0 left-0 z-[9999] w-8 h-8 border-2 rounded-full hidden md:block"
+        className="custom-cursor pointer-events-none fixed top-0 left-0 z-[9999] hidden md:block"
         style={{ 
+          width: '32px',
+          height: '32px',
+          border: '2px solid white',
+          borderRadius: '50%',
           transform: "translate(-50%, -50%)",
-          borderColor: '#000000', // Initial black color
-          transition: 'none' // Let GSAP handle transitions
+          mixBlendMode: 'difference',
+          transition: 'none',
         }}
       />
+      {/* Inner dot - also inverts colors */}
       <div
         ref={cursorDotRef}
-        className="custom-cursor-dot pointer-events-none fixed top-0 left-0 z-[9999] w-2 h-2 rounded-full hidden md:block"
+        className="custom-cursor-dot pointer-events-none fixed top-0 left-0 z-[9999] hidden md:block"
         style={{ 
+          width: '6px',
+          height: '6px',
+          backgroundColor: 'white',
+          borderRadius: '50%',
           transform: "translate(-50%, -50%)",
-          backgroundColor: '#000000', // Initial black color
-          transition: 'none' // Let GSAP handle transitions
+          mixBlendMode: 'difference',
+          transition: 'none',
         }}
       />
     </>

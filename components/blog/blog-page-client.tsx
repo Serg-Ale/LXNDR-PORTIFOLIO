@@ -6,7 +6,6 @@ import { BlogMasonry } from "./blog-masonry"
 import { BlogFilters } from "./blog-filters"
 import { PortfolioNav } from "@/components/portfolio/nav"
 import { PortfolioFooter } from "@/components/portfolio/footer"
-import { MagneticCursor } from "@/components/shared/magnetic-cursor"
 import { ScrollProgress } from "@/components/shared/scroll-progress"
 import type { Post } from "@/lib/blog"
 
@@ -58,7 +57,6 @@ export function BlogPageClient({ initialPosts, allTags }: BlogPageClientProps) {
   return (
     <main className="min-h-screen bg-background">
       <PortfolioNav />
-      <MagneticCursor />
       <ScrollProgress />
 
       <section className="pt-32 pb-20 px-6 md:px-12">
@@ -99,7 +97,6 @@ export function BlogPageClient({ initialPosts, allTags }: BlogPageClientProps) {
       </section>
 
       <PortfolioFooter />
-      <MagneticCursor />
     </main>
   )
 }

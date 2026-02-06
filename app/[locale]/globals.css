@@ -105,6 +105,307 @@
     letter-spacing: -0.05em;
     text-transform: uppercase;
   }
+
+  /* Touch action for faster tap response */
+  .touch-action-manipulation {
+    touch-action: manipulation;
+  }
+
+  /* Text balance for headings (prevents widows) */
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Text pretty for paragraphs */
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
+  /* Font family utilities */
+  .font-bebas {
+    font-family: var(--font-bebas), system-ui, sans-serif;
+  }
+
+  .font-space {
+    font-family: var(--font-space), system-ui, sans-serif;
+  }
+
+  .font-mono {
+    font-family: var(--font-geist-mono), ui-monospace, monospace;
+  }
+
+  /* Text outlined (stroke only, no fill) */
+  .text-outlined {
+    -webkit-text-stroke: 2px currentColor;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .text-outlined-thick {
+    -webkit-text-stroke: 3px currentColor;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* For dark sections with light text */
+  .text-outlined-light {
+    -webkit-text-stroke: 2px var(--background);
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Text highlight block - inverted colors */
+  .text-highlight-block {
+    background: var(--foreground);
+    color: var(--background);
+    padding: 0.25em 0.5em;
+    display: inline-block;
+  }
+
+  /* Manifesto word positioning utilities */
+  .manifesto-word {
+    display: block;
+    will-change: transform, opacity;
+  }
+
+  .manifesto-left {
+    text-align: left;
+  }
+
+  .manifesto-center {
+    text-align: center;
+  }
+
+  .manifesto-right {
+    text-align: right;
+  }
+
+  .manifesto-indent-1 {
+    padding-left: 10%;
+  }
+
+  .manifesto-indent-2 {
+    padding-left: 20%;
+  }
+
+  .manifesto-indent-3 {
+    padding-left: 30%;
+  }
+
+  /* ============================================
+     EXPRESSIVE TYPOGRAPHY - Manifesto System
+     ============================================ */
+
+  /* Weight variations */
+  .typo-thin {
+    font-weight: 100;
+  }
+
+  .typo-light {
+    font-weight: 300;
+  }
+
+  .typo-medium {
+    font-weight: 500;
+  }
+
+  .typo-bold {
+    font-weight: 700;
+  }
+
+  .typo-black {
+    font-weight: 900;
+  }
+
+  /* Style variations */
+  .typo-italic {
+    font-style: italic;
+    transform: skewX(-6deg);
+  }
+
+  .typo-italic-extreme {
+    font-style: italic;
+    transform: skewX(-12deg);
+  }
+
+  /* Tracking/Letter-spacing */
+  .typo-tight {
+    letter-spacing: -0.08em;
+  }
+
+  .typo-normal {
+    letter-spacing: 0;
+  }
+
+  .typo-wide {
+    letter-spacing: 0.15em;
+  }
+
+  .typo-ultra-wide {
+    letter-spacing: 0.35em;
+  }
+
+  /* Case transformations */
+  .typo-uppercase {
+    text-transform: uppercase;
+  }
+
+  .typo-lowercase {
+    text-transform: lowercase;
+  }
+
+  .typo-capitalize {
+    text-transform: capitalize;
+  }
+
+  .typo-small-caps {
+    font-variant: small-caps;
+    letter-spacing: 0.1em;
+  }
+
+  /* Visual treatments */
+  .typo-outlined {
+    -webkit-text-stroke: 2px currentColor;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .typo-outlined-thin {
+    -webkit-text-stroke: 1px currentColor;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .typo-outlined-thick {
+    -webkit-text-stroke: 4px currentColor;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .typo-shadow {
+    text-shadow: 4px 4px 0 currentColor;
+    -webkit-text-stroke: 1px currentColor;
+  }
+
+  .typo-glow {
+    text-shadow: 0 0 20px currentColor, 0 0 40px currentColor;
+  }
+
+  /* Rotations for drama */
+  .typo-rotate-slight {
+    transform: rotate(-2deg);
+    display: inline-block;
+  }
+
+  .typo-rotate-medium {
+    transform: rotate(-5deg);
+    display: inline-block;
+  }
+
+  /* Highlight block - inverted with padding */
+  .typo-highlight-block {
+    background: var(--background);
+    color: var(--foreground);
+    padding: 0.15em 0.4em;
+    transform: rotate(-1deg);
+  }
+
+  .typo-highlight-block-large {
+    background: var(--background);
+    color: var(--foreground);
+    padding: 0.2em 0.5em;
+    transform: rotate(-2deg) scale(1.05);
+    box-shadow: 8px 8px 0 var(--background);
+  }
+
+  /* Make manifesto words with highlight use flexbox for positioning */
+  .manifesto-word.typo-highlight-block,
+  .manifesto-word.typo-highlight-block-large {
+    display: flex;
+    width: fit-content;
+  }
+
+  .manifesto-word.typo-highlight-block.manifesto-right,
+  .manifesto-word.typo-highlight-block-large.manifesto-right {
+    margin-left: auto;
+    margin-right: 0;
+  }
+
+  .manifesto-word.typo-highlight-block.manifesto-center,
+  .manifesto-word.typo-highlight-block-large.manifesto-center {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .manifesto-word.typo-highlight-block.manifesto-left,
+  .manifesto-word.typo-highlight-block-large.manifesto-left {
+    margin-left: 0;
+    margin-right: auto;
+  }
+
+  /* Underline treatments */
+  .typo-underline-thick {
+    text-decoration: underline;
+    text-decoration-thickness: 0.15em;
+    text-underline-offset: 0.15em;
+  }
+
+  .typo-underline-offset {
+    border-bottom: 4px solid currentColor;
+    padding-bottom: 0.1em;
+  }
+
+  /* Strikethrough for effect */
+  .typo-strike {
+    text-decoration: line-through;
+    text-decoration-thickness: 3px;
+  }
+
+  /* Condensed/Extended feel via transform */
+  .typo-condensed {
+    transform: scaleX(0.85);
+    transform-origin: left;
+  }
+
+  .typo-extended {
+    transform: scaleX(1.15);
+    transform-origin: left;
+  }
+
+  /* Vertical text for accent */
+  .typo-vertical {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+  }
+
+  /* Opacity variations */
+  .typo-muted {
+    opacity: 0.5;
+  }
+
+  .typo-faded {
+    opacity: 0.3;
+  }
+
+  /* Combined dramatic effects */
+  .typo-hero {
+    font-weight: 900;
+    letter-spacing: -0.05em;
+    line-height: 0.85;
+  }
+
+  .typo-whisper {
+    font-weight: 300;
+    letter-spacing: 0.2em;
+    opacity: 0.7;
+    text-transform: uppercase;
+  }
+
+  .typo-scream {
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    transform: scaleY(1.1);
+  }
+
+  .typo-technical {
+    font-family: var(--font-geist-mono), ui-monospace, monospace;
+    letter-spacing: 0.05em;
+    font-weight: 400;
+  }
   
   .border-brutalist {
     border: 4px solid currentColor;
@@ -267,7 +568,7 @@
 
   /* Enhanced hover effect utilities */
   .hover-glow {
-    transition: all 0.3s ease;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
   }
 
   .hover-glow:hover {
@@ -786,4 +1087,391 @@
     border-radius: 10px; 
     opacity: 0.5; 
   }
+}
+
+/* ============================================
+   BRUTALIST BLOG COMPONENTS - Utilities
+   ============================================ */
+
+/* Brutalist Badge Utilities */
+.badge-brutalist {
+  @apply font-bebas uppercase tracking-wide;
+  @apply border-3 transition-all duration-200;
+}
+
+.badge-brutalist-sm {
+  @apply text-xs md:text-sm px-3 py-1.5;
+}
+
+.badge-brutalist-md {
+  @apply text-sm md:text-base px-3 py-1.5;
+}
+
+.badge-brutalist-lg {
+  @apply text-base md:text-lg px-3 py-1.5;
+}
+
+.badge-brutalist-primary {
+  @apply bg-foreground text-background;
+  @apply border-foreground;
+  box-shadow: 4px 4px 0 theme('colors.foreground');
+}
+
+.badge-brutalist-primary:hover {
+  @apply scale-105;
+  box-shadow: 6px 6px 0 theme('colors.foreground');
+}
+
+/* Dark mode shadow adjustment for badges */
+.dark .badge-brutalist-primary {
+  box-shadow: 4px 4px 0 theme('colors.foreground');
+}
+
+.dark .badge-brutalist-primary:hover {
+  box-shadow: 6px 6px 0 theme('colors.foreground');
+}
+
+/* Inline Code Brutalist Utilities - Inline Style */
+.inline-code-brutalist {
+  @apply font-mono font-bold;
+  @apply bg-foreground text-background;
+  @apply border-2 border-foreground;
+  @apply px-2 py-0.5;
+  @apply transition-all duration-200;
+  @apply rounded-none; /* Brutalist: no border-radius */
+  @apply inline-block; /* Inline display - mantém no fluxo do texto */
+  @apply align-middle;
+  box-shadow: 2px 2px 0 theme('colors.foreground');
+}
+
+.inline-code-brutalist:hover {
+  box-shadow: 3px 3px 0 theme('colors.foreground');
+  @apply scale-[1.02];
+}
+
+.dark .inline-code-brutalist {
+  box-shadow: 2px 2px 0 theme('colors.foreground');
+}
+
+.dark .inline-code-brutalist:hover {
+  box-shadow: 3px 3px 0 theme('colors.foreground');
+}
+
+/* Code Block Enhancements */
+.code-block-brutalist {
+  @apply border-[6px] border-foreground;
+  @apply transition-all duration-300;
+  @apply rounded-none;
+  @apply block; /* Ensure block display for full width */
+  
+  /* Full width of container */
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box; /* Include border in width calculation */
+  
+  /* Theme-aware background - INVERSÃO TOTAL */
+  /* Light mode: fundo preto/escuro com shadow branca */
+  background: #0a0a0a;
+  color: #ffffff;
+  border-color: #ffffff;
+  box-shadow: 6px 6px 0 #ffffff !important;
+}
+
+/* Dark mode: fundo branco/claro com shadow preta (inversão) */
+.dark .code-block-brutalist {
+  background: #fafafa;
+  color: #000000;
+  border-color: #000000;
+  box-shadow: 6px 6px 0 #000000 !important;
+}
+
+/* Override prose styles for code blocks to ensure full width */
+.prose pre,
+.prose .code-block-brutalist,
+article pre,
+article .code-block-brutalist {
+  max-width: 100% !important;
+  width: 100% !important;
+}
+
+/* Keep inline code inline within text flow */
+.prose code:not(pre code),
+.prose .inline-code-brutalist {
+  display: inline-block !important;
+  max-width: none !important;
+  width: auto !important;
+}
+
+article code:not(pre code),
+article .inline-code-brutalist {
+  display: inline-block !important;
+  max-width: none !important;
+  width: auto !important;
+}
+
+/* Ensure code inside pre doesn't inherit inline code styles */
+pre code,
+.code-block-brutalist code,
+.code-block-brutalist pre {
+  display: block !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  color: inherit !important;
+  font-weight: normal !important;
+}
+
+/* Light mode: código branco em fundo preto */
+.code-block-brutalist code {
+  color: #ffffff;
+}
+
+/* Dark mode: código preto em fundo branco */
+.dark .code-block-brutalist code {
+  color: #000000;
+}
+
+.code-block-brutalist:hover {
+  box-shadow: 8px 8px 0 #ffffff !important;
+}
+
+.dark .code-block-brutalist:hover {
+  box-shadow: 8px 8px 0 #000000 !important;
+}
+
+/* Code Block Header - Barra integrada acima do código */
+.code-block-header {
+  @apply relative w-full;
+  @apply flex items-center justify-between;
+  @apply px-4 md:px-6;
+  @apply h-12 md:h-14;
+  @apply mb-0;
+  
+  /* Thin separator line between header and code */
+  border-bottom: 3px solid #ffffff;
+}
+
+.dark .code-block-header {
+  border-bottom: 3px solid #000000;
+}
+
+/* Badge inside header - flat/integrated style */
+.code-block-header .language-badge-brutalist {
+  @apply static;
+  @apply border-0 shadow-none;
+  @apply px-0 py-0;
+  color: inherit !important;
+  background: transparent !important;
+}
+
+/* Force SVG icons in badge to inherit color */
+.code-block-header .language-badge-brutalist svg {
+  color: inherit !important;
+}
+
+/* Button inside header - flat/integrated style */
+.code-block-header .copy-button-brutalist {
+  @apply static;
+  @apply border-0 shadow-none;
+  @apply p-2;
+  @apply transition-all duration-200;
+  @apply hover:scale-110 hover:opacity-70;
+  color: inherit !important;
+  background: transparent !important;
+}
+
+/* Force SVG icons in button to inherit color */
+.code-block-header .copy-button-brutalist svg {
+  color: inherit !important;
+}
+
+/* ========================================
+   SYNTAX HIGHLIGHTING - MIN THEME
+   ======================================== */
+
+/* Theme switching for highlighted code */
+.code-highlighted {
+  position: relative;
+  width: 100%;
+}
+
+/* Show light version by default, hide dark */
+.code-highlighted .code-light {
+  display: block;
+}
+
+.code-highlighted .code-dark {
+  display: none;
+}
+
+/* In dark mode, show dark version, hide light */
+.dark .code-highlighted .code-light {
+  display: none;
+}
+
+.dark .code-highlighted .code-dark {
+  display: block;
+}
+
+/* Override Shiki's inline background (we use our own brutalist bg) */
+.code-highlighted pre,
+.code-highlighted pre.shiki,
+.code-highlighted-content pre,
+.code-highlighted-content pre.shiki {
+  background: transparent !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  overflow: visible !important;
+}
+
+.code-highlighted code,
+.code-highlighted-content code {
+  background: transparent !important;
+  display: block !important;
+  width: 100% !important;
+}
+
+/* Ensure Shiki styles integrate with brutalist styling */
+.code-block-brutalist .shiki,
+.code-block-brutalist .shiki code,
+.code-block-brutalist .shiki span {
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace !important;
+  font-size: inherit !important;
+  line-height: 1.7 !important;
+}
+
+/* Make sure highlighted code preserves whitespace */
+.code-highlighted pre code,
+.code-highlighted-content pre code {
+  white-space: pre !important;
+  word-break: normal !important;
+  overflow-wrap: normal !important;
+}
+
+/* Highlighted content container */
+.code-highlighted-content {
+  width: 100%;
+}
+
+.code-highlighted-content .shiki {
+  width: 100%;
+}
+
+/* Brutalist scrollbar for code blocks */
+.code-block-brutalist::-webkit-scrollbar {
+  height: 12px;
+  background: theme('colors.background');
+  border-top: 3px solid theme('colors.foreground');
+}
+
+.code-block-brutalist::-webkit-scrollbar-thumb {
+  background: theme('colors.foreground');
+  border: 2px solid theme('colors.background');
+}
+
+.code-block-brutalist::-webkit-scrollbar-thumb:hover {
+  background: theme('colors.primary');
+}
+
+/* Firefox scrollbar */
+.code-block-brutalist {
+  scrollbar-width: thin;
+  scrollbar-color: theme('colors.foreground') theme('colors.background');
+}
+
+/* Ensure pre and code elements inside take full width */
+.code-block-brutalist pre {
+  @apply w-full block;
+  min-width: 100%;
+}
+
+.code-block-brutalist code {
+  @apply w-full block;
+  min-width: 100%;
+  display: block !important;
+}
+
+/* Language Badge for Code Blocks */
+.language-badge-brutalist {
+  @apply absolute top-0 left-0;
+  @apply px-4 py-2;
+  @apply font-bebas font-bold uppercase;
+  @apply text-sm md:text-base;
+  @apply flex items-center gap-2;
+  @apply z-10;
+  @apply border-b-[3px] border-r-[3px];
+  
+  /* Light mode: fundo branco, texto preto (contrasta com code block preto) */
+  background: #ffffff;
+  color: #000000;
+  border-color: #000000;
+}
+
+.dark .language-badge-brutalist {
+  /* Dark mode: fundo preto, texto branco (contrasta com code block branco) */
+  background: #000000;
+  color: #ffffff;
+  border-color: #ffffff;
+}
+
+/* Copy Button Brutalist */
+.copy-button-brutalist {
+  @apply absolute top-2 right-2;
+  @apply p-3 md:p-2.5;
+  @apply border-2;
+  @apply transition-all duration-200;
+  @apply z-10;
+  @apply hover:scale-110;
+  
+  /* Light mode: fundo branco, texto/border preto */
+  background: #ffffff;
+  color: #000000;
+  border-color: #000000;
+  box-shadow: 2px 2px 0 #ffffff;
+}
+
+.dark .copy-button-brutalist {
+  /* Dark mode: fundo preto, texto/border branco */
+  background: #000000;
+  color: #ffffff;
+  border-color: #ffffff;
+  box-shadow: 2px 2px 0 #000000;
+}
+
+.copy-button-brutalist:hover {
+  box-shadow: 3px 3px 0 #ffffff;
+}
+
+.dark .copy-button-brutalist:hover {
+  box-shadow: 3px 3px 0 #000000;
+}
+
+.copy-button-brutalist:active {
+  box-shadow: 1px 1px 0 #ffffff;
+  @apply translate-x-[1px] translate-y-[1px];
+}
+
+.dark .copy-button-brutalist:active {
+  box-shadow: 1px 1px 0 #000000;
+  @apply translate-x-[1px] translate-y-[1px];
+}
+
+/* Additional border utilities */
+.border-3 {
+  border-width: 3px;
+}
+
+.border-6 {
+  border-width: 6px;
+}
+
+/* Shadow variants for blog */
+.shadow-brutalist-sm {
+  box-shadow: 4px 4px 0 #ffffff !important;  /* Shadow branca em light mode */
+}
+
+.dark .shadow-brutalist-sm {
+  box-shadow: 4px 4px 0 #000000 !important;  /* Shadow preta em dark mode */
 }
