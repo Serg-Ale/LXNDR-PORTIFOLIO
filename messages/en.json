@@ -14,15 +14,15 @@
   "about": {
     "title": "ABOUT_",
     "paragraph1": "My journey in technology began with an insatiable curiosity to understand how things work behind the screen. While studying Systems Analysis and Development at UTFPR, I started diving deep into the web ecosystem — and since then, turning ideas into digital experiences has become my passion.",
-    "paragraph2": "Today, I work as a Software Engineer at Union, where we rebuilt an MVP from scratch using Next.js, Turborepo, tRPC, and other technologies that pushed me to think not only about code, but also about performance, accessibility, and the experience of the people using the product. I enjoy crafting interfaces that make sense — visually, technically, and for the person on the other side of the screen.",
-    "paragraph3": "Before that, I had intense hands-on experience in infrastructure support at TCS and challenged myself by leading the back-end team in an internship project, where I learned that adaptability and teamwork are just as important as technical knowledge.",
-    "paragraph4": "Now, just a few months away from graduation, I see myself as a developer who not only works confidently with tools like TypeScript, React, Tailwind, and Playwright for testing, but also understands the value of clear communication, collaboration, and asking the right questions before searching for any answer.",
+    "paragraph2": "Today, I work as a Software Engineer at Union Audio / Union Tech. After being promoted from intern in September 2025, I now lead the development of the Barber App, a SaaS product I'm architecting with Next.js 16, Prisma ORM, and NextAuth. I also contributed to the Union Audio MVP with over 19,000 lines of code, migrating from tRPC to React Query and building a test suite with 308 automated cases.",
+    "paragraph3": "Before Union, I had intense hands-on experience at TCS — first as a development intern where I led a 4-person backend team, then as a trainee monitoring 150+ batch jobs for Carrefour logistics with 99.8% uptime. These experiences taught me that adaptability and teamwork are just as important as technical knowledge.",
+    "paragraph4": "With 3 years of experience in agile environments and monorepo architectures, I see myself as a developer who not only works confidently with Next.js, React, TypeScript, and modern testing tools, but also understands the value of clear communication, collaboration, and asking the right questions before searching for any answer.",
     "evolutionIntro": "IF THERE IS ONE WORD THAT DEFINES ME, IT IS",
     "evolutionWord": "EVOLUTION",
     "evolutionQuote": "I am always learning, experimenting, and refining, because to me, good technology is the kind that transforms people, processes, and ideas.",
     "techStack": "TECH STACK",
     "education": "EDUCATION",
-    "educationContent": "SYSTEMS ANALYSIS & DEVELOPMENT\nUTFPR — Graduating Jul 2026",
+    "educationContent": "SYSTEMS ANALYSIS & DEVELOPMENT\nUTFPR — Graduating 2026",
     "stats": {
       "years": "YEARS",
       "projects": "PROJECTS",
@@ -74,45 +74,58 @@
     "conclusion": "THE EVOLUTION CONTINUES...",
     "milestones": [
       {
-        "period": "JUN 2022 — FEB 2023",
+        "period": "JUN 2022 — JAN 2023",
         "company": "TATA CONSULTANCY SERVICES",
         "role": "Development Intern",
         "location": "Londrina, PR",
         "description": "Where it all began. First professional experience building full-stack applications and discovering the power of teamwork.",
         "highlights": [
-          "Built full-stack tools (HTML/CSS/JS + Spring Boot/Node.js/MySQL)",
-          "Led back-end team in capstone project",
-          "Delivered RESTful APIs 2 weeks ahead of deadline",
-          "Implemented unit tests with 85% coverage"
+          "Led a team of 4 backend developers on capstone project",
+          "Delivered complete application 2 weeks ahead of deadline",
+          "Developed RESTful APIs with Spring Boot and MySQL",
+          "Implemented JWT authentication, data validation, and exception handling"
         ]
       },
       {
         "period": "FEB 2023 — NOV 2023",
         "company": "TATA CONSULTANCY SERVICES",
-        "role": "Trainee",
+        "role": "Trainee - Operations & Support",
         "location": "Remote",
         "description": "Shifted from development to operations, discovering the critical importance of system reliability at scale.",
         "highlights": [
-          "Monitored 150+ nightly jobs for Carrefour logistics",
-          "Achieved 99.9% uptime over 10 months",
-          "Automated critical scripts (-35% manual intervention)",
-          "Handled 95% of incidents within SLA using Jira, Control-M, Zabbix"
+          "Monitored 150+ critical batch jobs for Carrefour logistics",
+          "Maintained 99.8% availability over 10 consecutive months",
+          "Developed automation scripts in Business Support Group (GAN)",
+          "Documented operational procedures and resolved incidents within SLAs"
         ]
       },
       {
-        "period": "JAN 2025 — PRESENT",
+        "period": "JAN 2025 — SEP 2025",
         "company": "UNION AUDIO",
-        "role": "Software Engineer (Intern)",
+        "role": "Software Development Intern",
         "location": "Remote",
         "description": "Building the future of music collaboration — a feedback platform connecting DJs and producers in Brazil's electronic music scene.",
         "highlights": [
-          "Rebuilt MVP with Turborepo + Next.js (–35% FCP, 1.2s improvement)",
-          "Implemented responsive UIs with Tailwind CSS & CVA (+20% mobile NPS)",
-          "Developed type-safe API with tRPC & React Query (–40% fetch errors)",
-          "Designed Prisma schemas with zero-downtime migrations (100% availability)",
-          "Configured NextAuth + Prisma Adapter (–90% security vulnerabilities)",
-          "Established Playwright E2E pipeline (60% → 90% coverage, –40% regressions)",
-          "Conducted code reviews via GitFlow in Kanban sprints"
+          "Developed MVP frontend with Next.js 16, React 19, and TypeScript in Turborepo",
+          "Contributed to 100+ reusable components in component library",
+          "Built responsive UI system with Tailwind CSS and Radix UI (WCAG compliant)",
+          "Collaborated with other interns using Git Flow and Bitbucket Pipelines",
+          "Established test foundation with Jest and React Testing Library"
+        ]
+      },
+      {
+        "period": "SEP 2025 — PRESENT",
+        "company": "UNION AUDIO / UNION TECH",
+        "role": "Software Engineer",
+        "location": "Remote",
+        "description": "Leading development of SaaS products and contributing to the Union Audio platform as a full-stack engineer.",
+        "highlights": [
+          "Leading development of Barber App SaaS with Next.js 16, Prisma ORM, and NextAuth",
+          "Architected full-stack solution totaling 19,000+ lines of code",
+          "Implemented n8n integration for WhatsApp chatbot appointment automation",
+          "Migrated state management from tRPC to React Query (TanStack)",
+          "Expanded test suite to 308 automated cases (98% pass rate)",
+          "Contributing to client projects using Scrum and Kanban methodologies"
         ]
       }
     ]
@@ -123,41 +136,54 @@
     "tagline": "Where experience meets execution",
     "jobs": [
       {
-        "period": "JAN 2025 — PRESENT",
+        "period": "SEP 2025 — PRESENT",
+        "company": "UNION AUDIO / UNION TECH",
+        "role": "SOFTWARE ENGINEER",
+        "location": "REMOTE",
+        "description": "Leading development of SaaS products and contributing to the Union Audio platform.",
+        "highlights": [
+          "Leading Barber App development with Next.js 16, Prisma, NextAuth",
+          "Architected full-stack solution with 19,000+ lines of code",
+          "Implemented n8n WhatsApp chatbot for appointment automation",
+          "Migrated from tRPC to React Query (TanStack)",
+          "Expanded test suite to 308 cases (98% pass rate)"
+        ]
+      },
+      {
+        "period": "JAN 2025 — SEP 2025",
         "company": "UNION AUDIO",
-        "role": "SOFTWARE ENGINEER (INTERN)",
+        "role": "SOFTWARE DEVELOPMENT INTERN",
         "location": "REMOTE",
         "description": "Building a feedback platform for DJs and music producers in Brazil's electronic music scene.",
         "highlights": [
-          "Rebuilt MVP front-end with Turborepo + Next.js",
-          "Reduced First Contentful Paint by 35% (1.2s)",
-          "Elevated mobile NPS by 20% with responsive UIs",
-          "Cut fetch errors by 40% using tRPC contracts",
-          "Increased test coverage from 60% to 90%"
+          "Developed MVP frontend with Next.js 16 and React 19",
+          "Contributed to 100+ reusable components",
+          "Built WCAG-compliant responsive UI with Tailwind CSS and Radix UI",
+          "Established test foundation with Jest and React Testing Library"
         ]
       },
       {
         "period": "FEB 2023 — NOV 2023",
         "company": "TATA CONSULTANCY SERVICES",
-        "role": "TRAINEE",
+        "role": "TRAINEE - OPERATIONS & SUPPORT",
         "location": "REMOTE",
         "highlights": [
-          "Monitored 150+ nightly jobs for Carrefour logistics",
-          "Achieved 99.9% uptime over 10 months",
-          "Automated critical scripts, reducing manual work by 35%",
-          "Handled 95% of incidents within SLA"
+          "Monitored 150+ critical batch jobs for Carrefour logistics",
+          "Maintained 99.8% availability over 10 consecutive months",
+          "Developed automation scripts reducing manual interventions",
+          "Documented procedures and resolved incidents within SLAs"
         ]
       },
       {
-        "period": "JUN 2022 — FEB 2023",
+        "period": "JUN 2022 — JAN 2023",
         "company": "TATA CONSULTANCY SERVICES",
         "role": "DEVELOPMENT INTERN",
         "location": "LONDRINA, PR",
         "highlights": [
-          "Built front-end (HTML/CSS/JS) and back-end (Spring Boot, Node.js)",
-          "Led back-end team in capstone project",
-          "Delivered RESTful APIs 2 weeks ahead of deadline",
-          "Implemented unit tests with 85% coverage"
+          "Led team of 4 backend developers on capstone project",
+          "Delivered application 2 weeks ahead of deadline",
+          "Developed RESTful APIs with Spring Boot and MySQL",
+          "Implemented JWT authentication and data validation"
         ]
       }
     ]
@@ -167,33 +193,43 @@
     "list": [
       {
         "number": "01",
-        "title": "UNION MVP REBUILD",
-        "description": "Rebuilt front-end MVP with Turborepo + Next.js, reducing First Contentful Paint by 35% (1.2s improvement)",
-        "tech": ["NEXT.JS", "TURBOREPO", "tRPC", "TAILWIND", "PRISMA"]
+        "title": "UNION AUDIO",
+        "description": "Contributed to the frontend of a feedback platform for DJs and music producers, building 100+ reusable components in a Turborepo architecture with comprehensive testing.",
+        "tech": ["NEXT.JS 16", "REACT 19", "REACT QUERY", "TAILWIND", "JEST", "RTL"],
+        "url": "https://www.unionaudio.com.br"
       },
       {
         "number": "02",
-        "title": "RESPONSIVE UI SYSTEM",
-        "description": "Implemented responsive UIs with Tailwind CSS and Class-Variance-Authority, elevating mobile NPS by 20%",
-        "tech": ["REACT", "TAILWIND", "CVA", "RADIX UI"]
+        "title": "BARBER APP (SAAS)",
+        "description": "Leading development of a SaaS product for barbershops, featuring appointment scheduling, n8n workflow automation, and role-based authentication. Full-stack solution with 19,000+ lines of code.",
+        "tech": ["NEXT.JS 16", "PRISMA", "NEXTAUTH", "REACT QUERY", "N8N", "SHADCN/UI"],
+        "url": null
       },
       {
         "number": "03",
-        "title": "TYPE-SAFE API LAYER",
-        "description": "Developed typed contracts with tRPC and React Query (superjson), reducing fetch errors by 40%",
-        "tech": ["tRPC", "REACT QUERY", "TYPESCRIPT", "ZOD"]
+        "title": "MATRIX RAIN",
+        "description": "A terminal-based Matrix digital rain animation featuring authentic Japanese characters (Katakana), 8-shade color gradients, 7 color themes plus rainbow mode, and adjustable speed/density controls. Built with Python using the curses library.",
+        "tech": ["PYTHON", "CURSES", "CLI", "TERMINAL ANIMATION"],
+        "url": "https://github.com/Serg-Ale/matrix-rain"
       },
       {
         "number": "04",
-        "title": "E2E TEST AUTOMATION",
-        "description": "Established Playwright E2E testing pipeline, increasing coverage from 60% to 90% and cutting regressions by 40%",
-        "tech": ["PLAYWRIGHT", "JEST", "CI/CD", "ESLINT"]
+        "title": "LXNDR PORTFOLIO",
+        "description": "A brutalist design portfolio showcasing the intersection of engineering and storytelling. Built with Next.js 16, featuring GSAP scroll animations, full i18n (en/pt-BR), and a custom MDX blog system.",
+        "tech": ["NEXT.JS 16", "REACT 19", "GSAP", "NEXT-INTL", "MDX", "TAILWIND V4"],
+        "url": "https://lxndr-portifolio.vercel.app"
       },
       {
         "number": "05",
-        "title": "LXNDR PORTFOLIO",
-        "description": "A brutalist design portfolio showcasing the intersection of engineering and storytelling. Built with Next.js 16, featuring GSAP scroll animations, full i18n (en/pt-BR), and a custom MDX blog system. Meta-project demonstrating modern web development practices.",
-        "tech": ["NEXT.JS 16", "REACT 19", "GSAP", "NEXT-INTL", "MDX", "TAILWIND V4"]
+        "title": "TEST AUTOMATION SUITE",
+        "description": "Established comprehensive testing infrastructure with 308 automated test cases achieving 98% pass rate, covering unit tests with Jest and React Testing Library.",
+        "tech": ["JEST", "REACT TESTING LIBRARY", "TDD", "CI/CD", "ESLINT"]
+      },
+      {
+        "number": "06",
+        "title": "N8N WORKFLOW AUTOMATION",
+        "description": "Designed and implemented workflow automation solutions using n8n, connecting business applications with external APIs for seamless process automation and data integration.",
+        "tech": ["N8N", "WORKFLOW AUTOMATION", "REST APIS", "INTEGRATIONS"]
       }
     ]
   },

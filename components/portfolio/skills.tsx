@@ -5,8 +5,8 @@ import { useTheme } from "next-themes";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { SiNextdotjs, SiReact, SiTypescript, SiJavascript, SiTailwindcss, SiNodedotjs, SiPrisma, SiGit, SiGithub, SiFigma, SiJira, SiBitbucket, SiJest, SiExpress, SiSpring, SiPostgresql, SiMysql } from "react-icons/si";
-import { Box, Zap, Shield, Brain, Terminal, Code, Database, GitBranch, CheckCircle, Server, Globe } from "lucide-react";
+import { SiNextdotjs, SiReact, SiTypescript, SiJavascript, SiTailwindcss, SiNodedotjs, SiPrisma, SiGit, SiGithub, SiFigma, SiJira, SiBitbucket, SiJest, SiExpress, SiSpring, SiPostgresql, SiMysql, SiDocker, SiPython } from "react-icons/si";
+import { Box, Zap, Shield, Brain, Terminal, Code, Database, GitBranch, CheckCircle, Server, Globe, Workflow } from "lucide-react";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper/modules';
 import 'swiper/css';
@@ -69,9 +69,14 @@ const skillGroups: SkillGroup[] = [
         description: "A versatile, object-oriented programming language for enterprise applications and Android development."
       },
       {
-        name: "C",
-        icon: Code,
-        description: "A low-level programming language for system programming, embedded systems, and performance-critical applications."
+        name: "PYTHON",
+        icon: SiPython as React.ComponentType<{ className?: string }>,
+        description: "A versatile programming language used for automation, scripting, and backend development."
+      },
+      {
+        name: "SQL",
+        icon: Database,
+        description: "Structured Query Language for managing and querying relational databases."
       }
     ]
   },
@@ -97,6 +102,11 @@ const skillGroups: SkillGroup[] = [
         name: "GSAP",
         icon: Zap,
         description: "A powerful JavaScript animation library for creating high-performance, professional-grade animations."
+      },
+      {
+        name: "FRAMER MOTION",
+        icon: Zap,
+        description: "A production-ready motion library for React with declarative animations and gestures."
       }
     ]
   },
@@ -167,6 +177,11 @@ const skillGroups: SkillGroup[] = [
         name: "PRISMA ORM",
         icon: SiPrisma as React.ComponentType<{ className?: string }>,
         description: "A next-generation ORM for TypeScript and Node.js with type-safe database access."
+      },
+      {
+        name: "TYPEORM",
+        icon: Database,
+        description: "An ORM for TypeScript and JavaScript that supports multiple database systems and migrations."
       }
     ]
   },
@@ -174,19 +189,19 @@ const skillGroups: SkillGroup[] = [
     title: "Testing & Quality",
     skills: [
       {
-        name: "JUNIT",
-        icon: CheckCircle,
-        description: "A unit testing framework for Java applications to ensure code reliability and quality."
-      },
-      {
         name: "JEST",
         icon: SiJest as React.ComponentType<{ className?: string }>,
         description: "A JavaScript testing framework with a focus on simplicity and support for large web applications."
       },
       {
-        name: "UNIT TESTING",
+        name: "REACT TESTING LIBRARY",
         icon: CheckCircle,
-        description: "Writing and maintaining automated tests to verify individual units of code functionality."
+        description: "Testing utilities for React that encourage testing best practices and user-centric testing."
+      },
+      {
+        name: "TDD",
+        icon: CheckCircle,
+        description: "Test-Driven Development methodology for writing tests before code implementation."
       },
       {
         name: "SOLID DESIGN PRINCIPLES",
@@ -229,10 +244,25 @@ const skillGroups: SkillGroup[] = [
         description: "Collaborative interface design tool for creating, prototyping, and sharing user interfaces."
       },
       {
-        name: "AGILE METHODOLOGIES",
-        icon: CheckCircle,
-        description: "Iterative development approach focusing on flexibility, collaboration, and customer feedback."
+        name: "DOCKER",
+        icon: SiDocker as React.ComponentType<{ className?: string }>,
+        description: "Platform for developing, shipping, and running applications in containers."
       },
+      {
+        name: "N8N",
+        icon: Workflow,
+        description: "Workflow automation tool for connecting apps and automating business processes."
+      },
+      {
+        name: "CI/CD PIPELINES",
+        icon: GitBranch,
+        description: "Continuous Integration and Deployment pipelines for automated testing and deployment."
+      }
+    ]
+  },
+  {
+    title: "Methodologies",
+    skills: [
       {
         name: "SCRUM",
         icon: CheckCircle,
@@ -242,6 +272,11 @@ const skillGroups: SkillGroup[] = [
         name: "KANBAN",
         icon: CheckCircle,
         description: "Visual workflow management method for optimizing team processes and limiting work-in-progress."
+      },
+      {
+        name: "CLEAN CODE",
+        icon: Code,
+        description: "Writing readable, maintainable, and well-structured code that follows best practices."
       }
     ]
   },
@@ -274,14 +309,16 @@ const techStack = [
   "JAVASCRIPT",
   "TAILWIND CSS",
   "RADIX UI",
+  "SHADCN/UI",
   "GSAP",
+  "FRAMER MOTION",
   "NODE.JS",
   "PRISMA ORM",
   "NEXTAUTH",
   "JAVA",
-  "C",
+  "PYTHON",
+  "SQL",
   "REACT QUERY",
-  "WEB COMPONENTS",
   "NESTJS",
   "EXPRESS.JS",
   "SPRING BOOT",
@@ -290,9 +327,10 @@ const techStack = [
   "JWT",
   "POSTGRESQL",
   "MYSQL",
-  "JUNIT",
+  "TYPEORM",
   "JEST",
-  "UNIT TESTING",
+  "RTL",
+  "TDD",
   "SOLID",
   "GIT",
   "GITHUB",
@@ -300,7 +338,9 @@ const techStack = [
   "JIRA",
   "BITBUCKET",
   "FIGMA",
-  "AGILE",
+  "DOCKER",
+  "N8N",
+  "CI/CD",
   "SCRUM",
   "KANBAN",
   "GITHUB COPILOT",
