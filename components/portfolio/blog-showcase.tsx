@@ -89,6 +89,7 @@ export function PortfolioBlogShowcase({
       ref={sectionRef}
       id="blog"
       className="relative min-h-screen px-6 md:px-12 py-24 md:py-32 bg-accent text-accent-foreground overflow-hidden"
+      data-theme="dark"
     >
       {/* Grain overlay for texture */}
       <div className="grain-overlay absolute inset-0 opacity-30" />

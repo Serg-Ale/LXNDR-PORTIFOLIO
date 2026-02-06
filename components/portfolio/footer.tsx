@@ -31,7 +31,7 @@ export function PortfolioFooter() {
   const t = useTranslations("footer")
   
   return (
-    <footer className="border-t-4 border-foreground bg-background">
+    <footer className="border-t-4 border-foreground bg-background" data-theme="light">
       <div className="max-w-7xl mx-auto px-6 md:px-12 py-12 md:py-16">
         <div className="grid md:grid-cols-2 gap-8 mb-12">
           <div>
