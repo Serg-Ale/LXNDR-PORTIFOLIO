@@ -25,15 +25,20 @@ export function PortfolioOrigin() {
         return
       }
 
-      // Animate manifesto cards with stagger
+      // DRAMATIC PARALLAX: Cards move at different speeds
       cardRefs.current.forEach((card, index) => {
         if (!card) return
 
+        // Each card has slightly different parallax speed
+        const speed = 0.85 - (index * 0.05) // Speeds: 0.85, 0.80, 0.75
+        const movement = 80 * (1 - speed)
+
         gsap.from(card, {
-          y: 80,
+          y: movement,
           opacity: 0,
-          rotation: index % 2 === 0 ? -2 : 2,
-          duration: 1,
+          rotation: index % 2 === 0 ? -3 : 3,
+          scale: 0.95,
+          duration: 1.2,
           ease: "power4.out",
           scrollTrigger: {
             trigger: card,
@@ -44,16 +49,17 @@ export function PortfolioOrigin() {
         })
       })
 
-      // Animate badges with faster entrance
+      // Badges with faster entrance and slight zoom
       badgeRefs.current.forEach((badge, index) => {
         if (!badge) return
 
         gsap.from(badge, {
-          scale: 0.8,
+          scale: 0.7,
           opacity: 0,
-          duration: 0.6,
-          delay: index * 0.1,
-          ease: "back.out(1.7)",
+          y: 30,
+          duration: 0.8,
+          delay: index * 0.15,
+          ease: "back.out(2)",
           scrollTrigger: {
             trigger: badge,
             start: "top bottom-=50",
@@ -70,10 +76,10 @@ export function PortfolioOrigin() {
     <section
       ref={sectionRef}
       id="origin"
-      className="relative min-h-screen px-6 md:px-12 py-24 md:py-32 bg-background text-foreground"
+      className="relative min-h-screen flex items-center px-6 md:px-12 py-32 md:py-48 text-foreground"
       data-theme="light"
     >
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-7xl mx-auto w-full">
         {/* Title */}
         <div className="mb-16 md:mb-24">
           <SplitTextReveal
@@ -93,7 +99,7 @@ export function PortfolioOrigin() {
             ref={(el) => {
               cardRefs.current[0] = el
             }}
-            className="border-4 border-foreground p-8 md:p-12 shadow-brutalist hover:shadow-brutalist-lg transition-shadow duration-300 cursor-pointer"
+            className="bg-background border-4 border-foreground p-8 md:p-12 shadow-brutalist hover:shadow-brutalist-lg transition-shadow duration-300 cursor-pointer"
           >
             <span className="text-sm font-black tracking-widest opacity-60 mb-4 block">
               01
@@ -130,7 +136,7 @@ export function PortfolioOrigin() {
           ref={(el) => {
             cardRefs.current[2] = el
           }}
-          className="border-4 border-foreground p-8 md:p-12 shadow-brutalist mb-16 md:mb-24 cursor-pointer hover:shadow-brutalist-lg transition-shadow duration-300"
+          className="bg-background border-4 border-foreground p-8 md:p-12 shadow-brutalist mb-16 md:mb-24 cursor-pointer hover:shadow-brutalist-lg transition-shadow duration-300"
         >
           <span className="text-sm font-black tracking-widest opacity-60 mb-4 block">
             03
@@ -166,7 +172,7 @@ export function PortfolioOrigin() {
             ref={(el) => {
               badgeRefs.current[1] = el
             }}
-            className="border-4 border-foreground px-6 py-4 md:px-8 md:py-5"
+            className="bg-background border-4 border-foreground px-6 py-4 md:px-8 md:py-5"
           >
             <p className="text-xs md:text-sm font-black tracking-widest opacity-70 mb-1">
               {t("english.label")}
@@ -183,7 +189,7 @@ export function PortfolioOrigin() {
             ref={(el) => {
               badgeRefs.current[2] = el
             }}
-            className="border-4 border-foreground px-6 py-4 md:px-8 md:py-5"
+            className="bg-background border-4 border-foreground px-6 py-4 md:px-8 md:py-5"
           >
             <p className="text-xs md:text-sm font-black tracking-widest opacity-70 mb-1">
               {t("experience.label")}

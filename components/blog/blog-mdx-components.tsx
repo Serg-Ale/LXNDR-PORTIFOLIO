@@ -58,11 +58,14 @@ export function getMdxComponents() {
     a: ({ children, href, ...props }) => (
       <a
         href={href}
-        className="text-foreground font-bold underline decoration-4 underline-offset-4 hover:text-primary transition-all duration-300 hover-glow text-invert-hover data-magnetic relative group"
+        className="font-bold underline decoration-4 underline-offset-4 transition-colors duration-300 text-invert-hover data-magnetic relative group focus:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2"
         {...props}
       >
         <span className="relative z-10">{children}</span>
-        <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 ease-out"></span>
+        <span 
+          className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 ease-out motion-reduce:transition-none motion-reduce:group-hover:translate-x-[-100%]"
+          aria-hidden="true"
+        />
       </a>
     ),
 
@@ -122,11 +125,14 @@ export function getMdxComponents() {
       return <pre {...props}>{children}</pre>
     },
 
-    img: ({ src, alt, ...props }) => (
+    img: ({ src, alt, width, height, ...props }) => (
       <img
         src={src}
-        alt={alt || ""}
-        className="w-full border-[6px] border-foreground my-8 theme-transition-rgb shadow-brutalist-sm hover:shadow-brutalist transition-all duration-300"
+        alt={alt || "Blog post image"}
+        width={width || 800}
+        height={height || 450}
+        loading="lazy"
+        className="w-full border-[6px] border-foreground my-8 theme-transition-rgb shadow-brutalist-sm hover:shadow-brutalist transition-shadow duration-300 motion-reduce:transition-none"
         {...props}
       />
     ),

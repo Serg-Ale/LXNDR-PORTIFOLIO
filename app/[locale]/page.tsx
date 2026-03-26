@@ -9,6 +9,7 @@ import { PortfolioVision } from "@/components/portfolio/vision";
 import { PortfolioBlogShowcase } from "@/components/portfolio/blog-showcase";
 import { PortfolioConnect } from "@/components/portfolio/connect";
 import { ScrollProgress } from "@/components/shared/scroll-progress";
+import { MatrixZone } from "@/components/shared/matrix-zone";
 import { getAllPosts } from "@/lib/blog/server";
 import { BASE_URL } from "@/lib/constants";
 import { Metadata } from "next";
@@ -131,10 +132,12 @@ export default async function Home({ params }: PageProps) {
         />
 
         <PortfolioIntro />
-        <PortfolioOrigin />
-        <PortfolioJourney />
-        <PortfolioSkills />
-        <PortfolioProof />
+        <MatrixZone>
+          <PortfolioOrigin />
+          <PortfolioJourney />
+          <PortfolioSkills />
+          <PortfolioProof />
+        </MatrixZone>
         <PortfolioVision />
         <PortfolioBlogShowcase posts={recentPosts} locale={locale} />
         <PortfolioConnect />

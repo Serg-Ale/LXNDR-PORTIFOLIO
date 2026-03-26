@@ -108,9 +108,10 @@ export function PortfolioProof() {
         card.addEventListener("mousemove", handleMouseMove)
         card.addEventListener("mouseleave", handleMouseLeave)
 
-        // Scroll animation
+        // Entrance animation with scale
         gsap.from(card, {
           y: 100,
+          scale: 0.95,
           opacity: 0,
           duration: 1,
           ease: "power4.out",
@@ -118,6 +119,31 @@ export function PortfolioProof() {
             trigger: card,
             start: "top bottom-=100",
             toggleActions: "play none none reverse",
+          },
+        })
+
+        // Parallax scroll effect - each card moves at different speed
+        const parallaxSpeed = 0.85 - index * 0.05 // 0.85, 0.80, 0.75
+        gsap.to(card, {
+          y: -80,
+          ease: "none",
+          scrollTrigger: {
+            trigger: card,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: 1,
+          },
+        })
+
+        // Slight scale down as it scrolls out
+        gsap.to(card, {
+          scale: 0.92,
+          ease: "none",
+          scrollTrigger: {
+            trigger: card,
+            start: "top top",
+            end: "bottom top",
+            scrub: 1,
           },
         })
       })
@@ -130,12 +156,9 @@ export function PortfolioProof() {
     <section
       ref={sectionRef}
       id="proof"
-      className="relative px-6 md:px-12 py-24 md:py-32 bg-background text-foreground"
+      className="relative min-h-screen flex items-center px-6 md:px-12 py-32 md:py-48 text-foreground"
       data-theme="light"
     >
-      {/* Subtle gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-foreground/[0.02] to-transparent" />
-
       <div className="relative z-10 max-w-7xl mx-auto">
         {/* Title */}
         <div className="mb-16 md:mb-24">

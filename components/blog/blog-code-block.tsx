@@ -74,7 +74,7 @@ export function BlogCodeBlock({
           {/* Copy Button - Top Right */}
           <button
             onClick={handleCopy}
-            className="copy-button-brutalist"
+            className="copy-button-brutalist focus:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2"
             aria-label={copied ? "Copied!" : "Copy code to clipboard"}
             title={copied ? "Copied!" : "Copy code"}
           >

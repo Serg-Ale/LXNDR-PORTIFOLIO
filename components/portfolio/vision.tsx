@@ -29,7 +29,7 @@ export function PortfolioVision() {
         return
       }
 
-      // Quote entrance with scale
+      // Quote entrance with scale and parallax
       if (quote) {
         gsap.from(quote, {
           scale: 0.95,
@@ -42,9 +42,21 @@ export function PortfolioVision() {
             toggleActions: "play none none reverse",
           },
         })
+
+        // Parallax on quote - slower movement
+        gsap.to(quote, {
+          y: -60,
+          ease: "none",
+          scrollTrigger: {
+            trigger: quote,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: 1,
+          },
+        })
       }
 
-      // List items stagger animation
+      // List items stagger animation with parallax
       if (list) {
         gsap.from(list.children, {
           x: -50,
@@ -57,6 +69,21 @@ export function PortfolioVision() {
             start: "top bottom-=50",
             toggleActions: "play none none reverse",
           },
+        })
+
+        // Each list item moves at slightly different speeds
+        Array.from(list.children).forEach((child, index) => {
+          const speed = 0.9 - index * 0.05 // 0.9, 0.85, 0.80
+          gsap.to(child, {
+            y: -40 * speed,
+            ease: "none",
+            scrollTrigger: {
+              trigger: list,
+              start: "top bottom",
+              end: "bottom top",
+              scrub: 1,
+            },
+          })
         })
       }
     }, section)
@@ -74,7 +101,7 @@ export function PortfolioVision() {
     <section
       ref={sectionRef}
       id="vision"
-      className="relative px-6 md:px-12 py-24 md:py-32 bg-foreground text-background overflow-hidden"
+      className="relative min-h-screen flex items-center px-6 md:px-12 py-32 md:py-48 bg-foreground text-background overflow-hidden"
       data-theme="dark"
     >
       {/* Grain overlay */}

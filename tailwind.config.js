@@ -63,10 +63,18 @@ module.exports = {
           "paint-order": "stroke fill",
         },
         ".text-outlined-hover": {
-          transition: "-webkit-text-fill-color 0.3s ease",
+          "-webkit-text-stroke": `2px ${theme("colors.foreground")}`,
+          "-webkit-text-fill-color": "transparent",
+          "transition": "-webkit-text-fill-color 0.3s ease, -webkit-text-stroke 0.3s ease",
         },
         ".text-outlined-hover:hover": {
           "-webkit-text-fill-color": theme("colors.foreground"),
+          "-webkit-text-stroke": `2px ${theme("colors.foreground")}`,
+        },
+        "@media (prefers-reduced-motion: reduce)": {
+          ".text-outlined-hover": {
+            "transition": "none",
+          },
         },
       };
 

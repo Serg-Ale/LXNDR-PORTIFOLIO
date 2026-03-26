@@ -1,7 +1,10 @@
+"use client"
+
 import { useEffect, useRef } from "react"
 import { Link } from "@/i18n/routing"
-import { useTheme } from "next-themes"
+import { useTranslations } from "next-intl"
 import gsap from "gsap"
+import { useReducedMotion } from "@/hooks/use-reduced-motion"
 import type { Post } from "@/lib/blog"
 
 function formatDate(dateString: string, locale: "en" | "pt-BR"): string {
@@ -21,10 +24,11 @@ interface BlogCardProps {
 
 export function BlogCard({ post, locale }: BlogCardProps) {
   const cardRef = useRef<HTMLAnchorElement>(null)
-  const { resolvedTheme } = useTheme()
+  const prefersReducedMotion = useReducedMotion()
+  const t = useTranslations("blog")
 
   useEffect(() => {
-    if (!cardRef.current) return
+    if (!cardRef.current || prefersReducedMotion) return
 
     const ctx = gsap.context(() => {
       gsap.from(cardRef.current, {
@@ -36,7 +40,7 @@ export function BlogCard({ post, locale }: BlogCardProps) {
     }, cardRef)
 
     return () => ctx.revert()
-  }, [])
+  }, [prefersReducedMotion])
 
   return (
     <Link
@@ -44,7 +48,7 @@ export function BlogCard({ post, locale }: BlogCardProps) {
       ref={cardRef}
       className="block group theme-transition-rgb"
     >
-      <article className="border-4 border-border bg-card text-card-foreground p-6 md:p-8 transition-all duration-300 hover:shadow-brutalist hover:-translate-y-2 hover:scale-[1.02] hover:rotate-[0.5deg] hover-glow hover-rotate h-full data-magnetic">
+      <article className="border-4 border-border bg-card text-card-foreground p-6 md:p-8 transition-all duration-300 hover:shadow-brutalist hover:-translate-y-1 hover-glow h-full data-magnetic focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus:outline-none">
         <div className="flex flex-wrap gap-2 mb-4">
           {post.tags.slice(0, 3).map((tag) => (
             <span
@@ -68,8 +72,8 @@ export function BlogCard({ post, locale }: BlogCardProps) {
           <time dateTime={post.date}>
             {formatDate(post.date, locale)}
           </time>
-          <span className="text-foreground">•</span>
-          <span>{post.readingTime} min read</span>
+          <span className="text-foreground" aria-hidden="true">•</span>
+          <span>{t("readingTime", { minutes: post.readingTime })}</span>
         </div>
       </article>
     </Link>

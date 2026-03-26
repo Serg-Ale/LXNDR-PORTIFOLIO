@@ -6,6 +6,7 @@ import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { ScrollTextReveal, ManifestoWord } from "@/components/shared/scroll-text-reveal"
 import { StatReveal, StatItem } from "@/components/shared/stat-reveal"
+import { BackgroundBlobs } from "@/components/shared/parallax-background"
 import { prefersReducedMotion } from "@/lib/gsap-config"
 
 gsap.registerPlugin(ScrollTrigger)
@@ -76,6 +77,7 @@ export function PortfolioIntro() {
       style: "technical",
       transform: "lowercase",
       opacity: "muted",
+      spacing: "xl",
     },
     // "SCALE" - HERO HIGHLIGHT with rotation and massive presence
     {
@@ -86,6 +88,7 @@ export function PortfolioIntro() {
       weight: "black",
       style: ["highlight-large", "rotate"],
       transform: "uppercase",
+      spacing: "xl",
     },
     // Metrics line - Technical, monospace, data aesthetic
     {
@@ -97,6 +100,7 @@ export function PortfolioIntro() {
       tracking: "wide",
       style: "technical",
       opacity: "muted",
+      spacing: "xl",
     },
   ]
 
@@ -160,13 +164,70 @@ export function PortfolioIntro() {
         ease: "power1.inOut",
       })
 
-      // Hero parallax on scroll
+      // DRAMATIC PARALLAX EFFECTS - More gradual and visible for longer
+      // Hero content with subtle parallax (stays visible longer)
       gsap.to(hero, {
         y: -100,
-        opacity: 0.6,
+        scale: 0.92,
         scrollTrigger: {
-          trigger: hero,
+          trigger: sectionRef.current,
           start: "top top",
+          end: "bottom top",
+          scrub: 1,
+        },
+      })
+
+      // Hero fade happens only in the last 30% of scroll
+      gsap.to(hero, {
+        opacity: 0.4,
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "center top",
+          end: "bottom top",
+          scrub: 1,
+        },
+      })
+
+      // First name moves with subtle parallax (slower than container)
+      gsap.to(firstName, {
+        y: -50,
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: 1,
+        },
+      })
+
+      // Last name moves slightly faster with subtle rotation
+      gsap.to(lastName, {
+        y: -70,
+        rotation: -1,
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: 1,
+        },
+      })
+
+      // Role moves with parallax (slower movement, stays visible longer)
+      gsap.to(role, {
+        y: -30,
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: 1,
+        },
+      })
+
+      // Role fade happens later (only in last portion)
+      gsap.to(role, {
+        opacity: 0.5,
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "60% top",
           end: "bottom top",
           scrub: 1,
         },
@@ -195,29 +256,26 @@ export function PortfolioIntro() {
         {/* Grain texture */}
         <div className="grain-overlay absolute inset-0 z-0" />
 
-        {/* Parallax background */}
-        <div className="absolute inset-0 z-0 opacity-10">
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-background/20 rounded-full blur-3xl" />
-          <div className="absolute bottom-1/4 right-1/4 w-[32rem] h-[32rem] bg-background/10 rounded-full blur-3xl" />
-        </div>
+        {/* Multi-layer Parallax Background */}
+        <BackgroundBlobs count={2} speed={0.2} opacity={0.15} />
 
         {/* Content */}
         <div ref={heroRef} className="relative z-10 w-full px-6 md:px-12">
           <div className="max-w-7xl mx-auto">
-            {/* Split name layout */}
-            <h1 className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 md:gap-8">
-              {/* First name - Large, left-aligned */}
+            {/* Split name layout - Two lines, same size, different fonts */}
+            <h1 className="flex flex-col gap-2 md:gap-4">
+              {/* First name - Bebas font */}
               <span
                 ref={firstNameRef}
-                className="text-[clamp(4rem,18vw,14rem)] font-black leading-[0.8] tracking-tighter font-bebas text-balance"
+                className="text-[clamp(6rem,22vw,20rem)] font-black leading-[0.85] tracking-tighter font-bebas"
               >
                 {t("firstName")}
               </span>
 
-              {/* Last name - Outlined, right-aligned */}
+              {/* Last name - Space Grotesk font with outline, same size */}
               <span
                 ref={lastNameRef}
-                className="text-[clamp(2.5rem,10vw,8rem)] font-black leading-[0.85] tracking-tight text-outlined md:text-right font-space text-balance"
+                className="text-[clamp(4rem,15vw,14rem)] font-black leading-[0.85] tracking-tight text-outlined font-space"
               >
                 {t("lastName")}
               </span>
@@ -236,16 +294,16 @@ export function PortfolioIntro() {
                 {t("location")}
               </span>
             </div>
-
-            {/* Stats - integrated with hero */}
-            <div className="mt-8 md:mt-12">
-              <StatReveal
-                stats={stats}
-                triggerOnScroll={false}
-                className="justify-start"
-              />
-            </div>
           </div>
+        </div>
+
+        {/* Stats - Centered above scroll indicator */}
+        <div className="absolute bottom-32 md:bottom-36 left-1/2 -translate-x-1/2 z-10 w-full px-6">
+          <StatReveal
+            stats={stats}
+            triggerOnScroll={false}
+            className="justify-center"
+          />
         </div>
 
         {/* Scroll indicator */}
@@ -275,7 +333,7 @@ export function PortfolioIntro() {
         <div className="grain-overlay absolute inset-0 z-0 pointer-events-none" />
         <ScrollTextReveal
           words={manifestoWords}
-          scrollLength={100}
+          scrollLength={60}
           pinned={true}
           className="relative z-10"
         />

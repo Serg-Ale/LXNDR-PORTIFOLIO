@@ -68,35 +68,64 @@ export function PortfolioJourney() {
         return
       }
 
-      // Progress bar animation
+      // DRAMATIC PARALLAX: Progress bar moves faster than scroll (1.3x speed)
       if (progress) {
-        gsap.from(progress, {
-          scaleX: 0,
-          transformOrigin: "left center",
-          ease: "none",
-          scrollTrigger: {
-            trigger: timeline,
-            start: "top center",
-            end: "bottom center",
-            scrub: 1,
-          },
-        })
+        gsap.fromTo(progress, 
+          { scaleX: 0 },
+          {
+            scaleX: 1,
+            transformOrigin: "left center",
+            ease: "none",
+            scrollTrigger: {
+              trigger: timeline,
+              start: "top center",
+              end: "bottom center",
+              scrub: 0.5, // Faster scrub for more dramatic effect
+            },
+          }
+        )
       }
 
-      // Cards stagger animation
+      // Cards with zoom and stagger parallax
       cardRefs.current.forEach((card, index) => {
         if (!card) return
 
+        // Each card zooms in from smaller scale
         gsap.from(card, {
-          y: 60,
+          y: 80,
           opacity: 0,
-          duration: 0.8,
+          scale: 0.9,
+          rotation: index % 2 === 0 ? -1 : 1,
+          duration: 1,
           ease: "power3.out",
           scrollTrigger: {
             trigger: card,
             start: "top bottom-=100",
             toggleActions: "play none none reverse",
           },
+        })
+
+        // Add hover parallax effect (subtle float)
+        card.addEventListener("mouseenter", () => {
+          if (!prefersReducedMotion()) {
+            gsap.to(card, {
+              y: -8,
+              scale: 1.02,
+              duration: 0.3,
+              ease: "power2.out",
+            })
+          }
+        })
+
+        card.addEventListener("mouseleave", () => {
+          if (!prefersReducedMotion()) {
+            gsap.to(card, {
+              y: 0,
+              scale: 1,
+              duration: 0.3,
+              ease: "power2.out",
+            })
+          }
         })
       })
     }, section)
@@ -108,10 +137,10 @@ export function PortfolioJourney() {
     <section
       ref={sectionRef}
       id="journey"
-      className="relative px-6 md:px-12 py-24 md:py-32 bg-background text-foreground overflow-hidden"
+      className="relative min-h-screen flex items-center justify-center px-6 md:px-12 py-32 md:py-48 text-foreground overflow-hidden"
       data-theme="light"
     >
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-7xl mx-auto w-full">
         {/* Title */}
         <div className="mb-16 md:mb-24">
           <SplitTextReveal
@@ -147,7 +176,7 @@ export function PortfolioJourney() {
                   ${
                     index === milestones.length - 1
                       ? "bg-foreground text-background shadow-brutalist-inverted hover:shadow-brutalist-lg"
-                      : "border-4 border-foreground shadow-brutalist hover:shadow-brutalist-lg"
+                      : "bg-background border-4 border-foreground shadow-brutalist hover:shadow-brutalist-lg"
                   }
                 `}
               >

@@ -39,6 +39,7 @@ export interface ManifestoWord {
   style?: TypographyStyle | TypographyStyle[] // Can combine styles
   transform?: "uppercase" | "lowercase" | "capitalize" | "none"
   opacity?: "full" | "muted" | "faded"
+  spacing?: "normal" | "large" | "xl" // Custom spacing before this word
   // Legacy support
   emphasis?: "normal" | "highlight" | "outlined"
 }
@@ -73,7 +74,7 @@ export function ScrollTextReveal({
       }
 
       if (isMobile) {
-        // Mobile: simpler animations without pinning
+        // Mobile: simpler animations without pinning - text stays visible once revealed
         wordsRef.current.forEach((word) => {
           if (!word) return
 
@@ -85,7 +86,7 @@ export function ScrollTextReveal({
             scrollTrigger: {
               trigger: word,
               start: "top 85%",
-              toggleActions: "play none none reverse",
+              toggleActions: "play none none none",
             },
           })
         })
@@ -99,6 +100,10 @@ export function ScrollTextReveal({
             scrub: 1,
             pin: pinned,
             anticipatePin: 1,
+            onLeave: () => {
+              // When user scrolls past, lock all words as visible
+              gsap.set(wordsRef.current, { opacity: 1, y: 0, scale: 1 })
+            },
           },
         })
 
@@ -330,6 +335,17 @@ export function ScrollTextReveal({
     }
   }
 
+  const getSpacingClass = (spacing?: string) => {
+    switch (spacing) {
+      case "large":
+        return "mt-8 md:mt-12"
+      case "xl":
+        return "mt-12 md:mt-16"
+      default:
+        return ""
+    }
+  }
+
   // Legacy emphasis support (backwards compatible)
   const getLegacyEmphasisClass = (emphasis?: string) => {
     switch (emphasis) {
@@ -345,7 +361,7 @@ export function ScrollTextReveal({
   return (
     <div
       ref={containerRef}
-      className={`min-h-screen flex flex-col justify-center px-6 md:px-12 ${className}`}
+      className={`min-h-screen flex flex-col justify-start pt-24 md:pt-32 px-6 md:px-12 ${className}`}
     >
       <div className="max-w-7xl mx-auto w-full space-y-2 md:space-y-4">
         {words.map((word, index) => {
@@ -370,6 +386,7 @@ export function ScrollTextReveal({
                 ${getStyleClasses(word.style)}
                 ${getTransformClass(word.transform)}
                 ${getOpacityClass(word.opacity)}
+                ${getSpacingClass(word.spacing)}
                 ${getLegacyEmphasisClass(word.emphasis)}
               `}
             >

@@ -585,12 +585,33 @@
       8px 8px 0 currentColor;
   }
 
+  @media (prefers-reduced-motion: reduce) {
+    .hover-glow {
+      transition: none;
+    }
+    .hover-glow:hover {
+      box-shadow: 8px 8px 0 currentColor;
+    }
+    .dark .hover-glow:hover {
+      box-shadow: 8px 8px 0 currentColor;
+    }
+  }
+
   .hover-rotate {
     transition: transform 0.3s ease;
   }
 
   .hover-rotate:hover {
     transform: rotate(1deg) scale(1.02);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hover-rotate {
+      transition: none;
+    }
+    .hover-rotate:hover {
+      transform: none;
+    }
   }
 
   .hover-border-pulse {
@@ -621,9 +642,20 @@
     50% { transform: scale(1.05); opacity: 1; }
   }
 
+  @media (prefers-reduced-motion: reduce) {
+    .hover-border-pulse::before {
+      transition: none;
+      animation: none;
+    }
+    .hover-border-pulse:hover::before {
+      animation: none;
+    }
+  }
+
   .hover-text-shimmer {
     position: relative;
     overflow: hidden;
+    transition: color 0.3s ease, background-color 0.3s ease;
   }
 
   .hover-text-shimmer::before {
@@ -636,10 +668,21 @@
     background: linear-gradient(
       90deg,
       transparent,
-      rgba(255, 255, 255, 0.8),
+      rgba(255, 255, 255, 0.3),
       transparent
     );
     transition: left 0.5s ease;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .dark .hover-text-shimmer::before {
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(0, 0, 0, 0.3),
+      transparent
+    );
   }
 
   .hover-text-shimmer:hover::before {
@@ -647,7 +690,21 @@
   }
 
   .hover-text-shimmer:hover {
-    filter: invert(1);
+    color: var(--background);
+    background-color: var(--foreground);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hover-text-shimmer::before {
+      transition: none;
+      animation: none;
+    }
+    .hover-text-shimmer:hover::before {
+      left: -100%;
+    }
+    .hover-text-shimmer {
+      transition: none;
+    }
   }
 
   .hover-magnetic-enhanced {
@@ -659,17 +716,55 @@
     box-shadow: 12px 12px 0 currentColor;
   }
 
-  /* Text color inversion utilities */
-  .text-invert-hover {
-    transition: color 0.3s ease, filter 0.3s ease;
+  @media (prefers-reduced-motion: reduce) {
+    .hover-magnetic-enhanced {
+      transition: none;
+    }
+    .hover-magnetic-enhanced:hover {
+      transform: none;
+      box-shadow: 8px 8px 0 currentColor;
+    }
   }
 
-  .text-invert-hover:hover {
-    filter: invert(1);
+  /* Text color inversion utilities - Fixed for contrast */
+  .text-invert-hover {
+    position: relative;
+    color: var(--foreground);
+    transition: color 0.3s ease;
+    text-decoration-skip-ink: auto;
+  }
+
+  /* Apply background only to the text span inside */
+  .text-invert-hover > span {
+    position: relative;
+    display: inline;
+    transition: background-color 0.3s ease, color 0.3s ease, padding 0.3s ease;
+    padding: 0;
+  }
+
+  .text-invert-hover:hover > span {
+    color: var(--background) !important;
+    background-color: var(--foreground) !important;
+    padding: 0.15em 0.3em;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .text-invert-hover,
+    .text-invert-hover > span {
+      transition: none;
+    }
   }
 
   .text-invert-magnetic {
     transition: color 0.3s ease, filter 0.3s ease;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .text-invert-magnetic {
+      transition: none;
+    }
   }
 
 /* Additional utility classes for portfolio components */
@@ -679,6 +774,15 @@
 
 .hover-distort:hover {
   transform: scale(1.02) rotate(0.5deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hover-distort {
+    transition: none;
+  }
+  .hover-distort:hover {
+    transform: none;
+  }
 }
 
 .pulse-dot {
@@ -695,6 +799,85 @@
     transform: scale(1.2);
   }
 }
+
+/* ============================================
+   PARALLAX UTILITIES
+   ============================================ */
+
+/* Base parallax layer - optimized for performance */
+.parallax-layer {
+  will-change: transform;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Parallax speed variants */
+.parallax-very-slow {
+  --parallax-speed: 0.2;
+}
+
+.parallax-slow {
+  --parallax-speed: 0.4;
+}
+
+.parallax-medium {
+  --parallax-speed: 0.6;
+}
+
+.parallax-fast {
+  --parallax-speed: 1.2;
+}
+
+.parallax-very-fast {
+  --parallax-speed: 1.5;
+}
+
+/* Smooth parallax container */
+.parallax-container {
+  position: relative;
+  overflow: hidden;
+}
+
+/* 3D perspective for depth */
+.parallax-3d {
+  perspective: 1000px;
+  perspective-origin: center center;
+}
+
+.parallax-3d-child {
+  transform-style: preserve-3d;
+}
+
+/* ============================================
+   SECTION SPACING UTILITIES
+   ============================================ */
+
+/* Full viewport height with breathing room */
+.section-full {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Extra breathing room for hero sections */
+.section-hero {
+  min-height: 100vh;
+  padding-top: 8rem;
+  padding-bottom: 8rem;
+}
+
+@media (min-width: 768px) {
+  .section-hero {
+    padding-top: 12rem;
+    padding-bottom: 12rem;
+  }
+}
+
+/* ============================================
+   END PARALLAX UTILITIES
+   ============================================ */
 
 /* Skills board enhancements */
 .skill-card {

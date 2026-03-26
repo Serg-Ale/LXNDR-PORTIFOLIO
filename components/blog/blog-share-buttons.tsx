@@ -9,6 +9,13 @@ import {
   FaFacebook,
   FaWhatsapp,
 } from "react-icons/fa"
+import type { IconType } from "react-icons"
+
+// Helper component to render IconType correctly (React 19 compatibility)
+function Icon({ icon: IconComponent, className }: { icon: IconType; className?: string }) {
+  const Comp = IconComponent as React.ComponentType<{ className?: string }>
+  return <Comp className={className} />
+}
 
 interface BlogShareButtonsProps {
   title: string
@@ -36,18 +43,20 @@ export function BlogShareButtons({ title, url }: BlogShareButtonsProps) {
     }
   }
 
+  const buttonBaseClass = "p-3 bg-foreground text-background hover:bg-foreground/80 hover:scale-110 transition-all duration-300 border-2 border-foreground shadow-brutalist-sm hover-glow motion-reduce:hover:scale-100 motion-reduce:transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-background focus-visible:ring-offset-2 focus-visible:ring-offset-foreground"
+
   return (
-    <div className="fixed bottom-8 right-8 flex flex-col gap-3 z-40">
+    <div className="fixed bottom-8 right-8 flex flex-col gap-3 z-40 pb-[env(safe-area-inset-bottom)] pr-[env(safe-area-inset-right)]">
       {/* Twitter */}
       <a
         href={shareUrls.twitter}
         target="_blank"
         rel="noopener noreferrer"
-        className="p-3 bg-foreground text-background hover:bg-foreground/80 hover:scale-110 transition-all duration-300 border-2 border-foreground shadow-brutalist-sm hover-glow hover-magnetic-enhanced"
-        aria-label="Share on Twitter"
+        className={buttonBaseClass}
+        aria-label={`${t("shareOn")} Twitter`}
         data-magnetic
       >
-        {FaTwitter({ className: "w-5 h-5" })}
+        <Icon icon={FaTwitter} className="w-5 h-5" />
       </a>
 
       {/* LinkedIn */}
@@ -55,11 +64,11 @@ export function BlogShareButtons({ title, url }: BlogShareButtonsProps) {
         href={shareUrls.linkedin}
         target="_blank"
         rel="noopener noreferrer"
-        className="p-3 bg-foreground text-background hover:bg-foreground/80 hover:scale-110 transition-all duration-300 border-2 border-foreground shadow-brutalist-sm hover-glow hover-magnetic-enhanced"
-        aria-label="Share on LinkedIn"
+        className={buttonBaseClass}
+        aria-label={`${t("shareOn")} LinkedIn`}
         data-magnetic
       >
-        {FaLinkedin({ className: "w-5 h-5" })}
+        <Icon icon={FaLinkedin} className="w-5 h-5" />
       </a>
 
       {/* Facebook */}
@@ -67,11 +76,11 @@ export function BlogShareButtons({ title, url }: BlogShareButtonsProps) {
         href={shareUrls.facebook}
         target="_blank"
         rel="noopener noreferrer"
-        className="p-3 bg-foreground text-background hover:bg-foreground/80 hover:scale-110 transition-all duration-300 border-2 border-foreground shadow-brutalist-sm hover-glow hover-magnetic-enhanced"
-        aria-label="Share on Facebook"
+        className={buttonBaseClass}
+        aria-label={`${t("shareOn")} Facebook`}
         data-magnetic
       >
-        {FaFacebook({ className: "w-5 h-5" })}
+        <Icon icon={FaFacebook} className="w-5 h-5" />
       </a>
 
       {/* WhatsApp */}
@@ -79,25 +88,22 @@ export function BlogShareButtons({ title, url }: BlogShareButtonsProps) {
         href={shareUrls.whatsapp}
         target="_blank"
         rel="noopener noreferrer"
-        className="p-3 bg-foreground text-background hover:bg-foreground/80 hover:scale-110 transition-all duration-300 border-2 border-foreground shadow-brutalist-sm hover-glow hover-magnetic-enhanced"
-        aria-label="Share on WhatsApp"
+        className={buttonBaseClass}
+        aria-label={`${t("shareOn")} WhatsApp`}
         data-magnetic
       >
-        {FaWhatsapp({ className: "w-5 h-5" })}
+        <Icon icon={FaWhatsapp} className="w-5 h-5" />
       </a>
 
       {/* Copy Link */}
       <button
         onClick={handleCopyLink}
-        className="p-3 bg-foreground text-background hover:bg-foreground/80 hover:scale-110 transition-all duration-300 border-2 border-foreground shadow-brutalist-sm hover-glow hover-magnetic-enhanced"
-        aria-label="Copy link"
+        className={buttonBaseClass}
+        aria-label={copied ? "Link copied!" : t("copyLink")}
+        aria-live="polite"
         data-magnetic
       >
-        {copied ? (
-          HiCheck({ className: "w-5 h-5" })
-        ) : (
-          HiShare({ className: "w-5 h-5" })
-        )}
+        <Icon icon={copied ? HiCheck : HiShare} className="w-5 h-5" />
       </button>
     </div>
   )

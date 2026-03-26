@@ -53,10 +53,23 @@ export function PortfolioBlogShowcase({
         },
       })
 
-      // Stagger card animations
+      // Parallax on title
+      gsap.to(titleRef.current, {
+        y: -50,
+        ease: "none",
+        scrollTrigger: {
+          trigger: titleRef.current,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: 1,
+        },
+      })
+
+      // Stagger card animations with scale
       gsap.from(cardsRef.current, {
         opacity: 0,
         y: 80,
+        scale: 0.95,
         stagger: 0.2,
         duration: 0.8,
         ease: "power3.out",
@@ -65,6 +78,22 @@ export function PortfolioBlogShowcase({
           start: "top bottom-=100",
           toggleActions: "play none none reverse",
         },
+      })
+
+      // Parallax on cards - each at different speeds
+      cardsRef.current.forEach((card, index) => {
+        if (!card) return
+        const speed = index % 2 === 0 ? 0.85 : 0.75 // Alternating speeds for visual interest
+        gsap.to(card, {
+          y: -60 * speed,
+          ease: "none",
+          scrollTrigger: {
+            trigger: card,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: 1,
+          },
+        })
       })
 
       // Animate CTA button
@@ -79,6 +108,18 @@ export function PortfolioBlogShowcase({
           toggleActions: "play none none reverse",
         },
       })
+
+      // Parallax on CTA
+      gsap.to(ctaRef.current, {
+        y: -30,
+        ease: "none",
+        scrollTrigger: {
+          trigger: ctaRef.current,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: 1,
+        },
+      })
     }, section)
 
     return () => ctx.revert()
@@ -88,7 +129,7 @@ export function PortfolioBlogShowcase({
     <section
       ref={sectionRef}
       id="blog"
-      className="relative min-h-screen px-6 md:px-12 py-24 md:py-32 bg-accent text-accent-foreground overflow-hidden"
+      className="relative min-h-screen flex items-center px-6 md:px-12 py-32 md:py-48 bg-accent text-accent-foreground overflow-hidden"
       data-theme="dark"
     >
       {/* Grain overlay for texture */}

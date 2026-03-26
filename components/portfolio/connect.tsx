@@ -47,7 +47,7 @@ export function PortfolioConnect() {
         return
       }
 
-      // Animate CTA
+      // Animate CTA with parallax
       gsap.from(cta, {
         scale: 0.8,
         opacity: 0,
@@ -60,7 +60,19 @@ export function PortfolioConnect() {
         },
       })
 
-      // Animate contact cards
+      // Parallax on CTA - slower for emphasis
+      gsap.to(cta, {
+        y: -40,
+        ease: "none",
+        scrollTrigger: {
+          trigger: cta,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: 1,
+        },
+      })
+
+      // Animate contact cards with parallax
       cardRefs.current.forEach((card, index) => {
         if (!card) return
 
@@ -75,6 +87,19 @@ export function PortfolioConnect() {
             trigger: card,
             start: "top bottom-=50",
             toggleActions: "play none none reverse",
+          },
+        })
+
+        // Parallax for each card - varying speeds
+        const speed = index < 2 ? 0.8 : 0.7 // Contact links faster, info cards slower
+        gsap.to(card, {
+          y: -50 * speed,
+          ease: "none",
+          scrollTrigger: {
+            trigger: card,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: 1,
           },
         })
       })
@@ -111,7 +136,7 @@ export function PortfolioConnect() {
     <section
       ref={sectionRef}
       id="connect"
-      className="relative min-h-screen px-6 md:px-12 py-24 md:py-32 bg-foreground text-background overflow-hidden flex items-center"
+      className="relative min-h-screen px-6 md:px-12 py-32 md:py-48 bg-foreground text-background overflow-hidden flex items-center"
       data-theme="dark"
     >
       {/* Animated gradient background */}

@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react"
 import Masonry from "react-masonry-css"
 import gsap from "gsap"
 import { BlogCard } from "./blog-card"
+import { useReducedMotion } from "@/hooks/use-reduced-motion"
 import type { Post } from "@/lib/blog"
 
 interface BlogMasonryProps {
@@ -20,9 +21,10 @@ const breakpointColumns = {
 
 export function BlogMasonry({ posts, locale }: BlogMasonryProps) {
   const containerRef = useRef<HTMLDivElement>(null)
+  const prefersReducedMotion = useReducedMotion()
 
   useEffect(() => {
-    if (!containerRef.current) return
+    if (!containerRef.current || prefersReducedMotion) return
 
     const ctx = gsap.context(() => {
       gsap.from(".blog-card-item", {
@@ -35,7 +37,7 @@ export function BlogMasonry({ posts, locale }: BlogMasonryProps) {
     }, containerRef)
 
     return () => ctx.revert()
-  }, [posts])
+  }, [posts, prefersReducedMotion])
 
   if (posts.length === 0) {
     return null

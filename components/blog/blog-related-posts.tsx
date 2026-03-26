@@ -1,3 +1,5 @@
+"use client"
+
 import { Link } from "@/i18n/routing"
 import { useTranslations } from "next-intl"
 import type { Post } from "@/lib/blog"
@@ -25,8 +27,8 @@ export function BlogRelatedPosts({ posts, locale }: BlogRelatedPostsProps) {
   }
 
   return (
-    <section className="mt-20 pt-12 border-t-4 border-foreground/20">
-      <h2 className="text-4xl md:text-6xl font-bebas font-black mb-8">
+    <section className="mt-20 pt-12 border-t-4 border-foreground/20" aria-labelledby="related-posts-heading">
+      <h2 id="related-posts-heading" className="text-4xl md:text-6xl font-bebas font-black mb-8">
         {t("relatedPosts")}
       </h2>
 
@@ -35,10 +37,10 @@ export function BlogRelatedPosts({ posts, locale }: BlogRelatedPostsProps) {
           <Link
             key={post.slug}
             href={`/blog/${post.slug}`}
-            className="block group"
+            className="block group focus:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2"
             data-magnetic
           >
-            <article className="border-4 border-foreground bg-background p-6 transition-all duration-300 hover:shadow-brutalist hover:-translate-y-2 hover:scale-[1.02] hover:rotate-[0.5deg] hover-glow hover-rotate">
+            <article className="border-4 border-foreground bg-background p-6 transition-all duration-300 hover:shadow-brutalist hover:-translate-y-1 motion-reduce:hover:translate-y-0 motion-reduce:transition-colors">
               {/* Tags */}
               <div className="flex flex-wrap gap-2 mb-4">
                 {post.tags.slice(0, 2).map((tag) => (
@@ -66,8 +68,8 @@ export function BlogRelatedPosts({ posts, locale }: BlogRelatedPostsProps) {
                 <time dateTime={post.date}>
                   {formatDate(post.date, locale)}
                 </time>
-                <span className="text-foreground">•</span>
-                <span>{post.readingTime} min read</span>
+                <span className="text-foreground" aria-hidden="true">•</span>
+                <span>{t("readingTime", { minutes: post.readingTime })}</span>
               </div>
             </article>
           </Link>

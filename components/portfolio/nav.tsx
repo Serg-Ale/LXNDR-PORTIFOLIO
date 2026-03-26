@@ -9,6 +9,7 @@ import { Link } from "@/i18n/routing"
 import { LanguageSwitcher } from "@/components/shared/language-switcher"
 import { ThemeToggle } from "@/components/shared/theme-toggle"
 import { useSectionBackground } from "@/lib/use-section-background"
+import { getContrastColor } from "@/lib/color-utils"
 
 export function PortfolioNav() {
   const t = useTranslations("nav")
@@ -23,6 +24,7 @@ export function PortfolioNav() {
   
   const sectionBg = useSectionBackground(navHeight)
   const isHomePage = pathname === "/" || pathname === ""
+  const borderColor = getContrastColor(sectionBg.backgroundColor)
 
   useEffect(() => {
     setMounted(true)
@@ -125,14 +127,12 @@ export function PortfolioNav() {
         top: `${navHeight}px`,
         backgroundColor: sectionBg.backgroundColor,
         color: sectionBg.textColor,
+        borderTopColor: borderColor,
+        borderTopWidth: '4px',
         transform: 'translateZ(0)',
         willChange: 'auto'
       }}
-      className={`fixed left-0 right-0 md:hidden border-t ${
-        sectionBg.theme === 'dark' 
-          ? 'border-white/20' 
-          : 'border-black/20'
-      } shadow-modern-lg z-40 transition-colors duration-300`}
+      className={`fixed left-0 right-0 md:hidden border-t shadow-modern-lg z-40 transition-colors duration-300`}
     >
       <div className="max-w-7xl mx-auto w-full px-6 py-4 flex flex-col gap-3">
             <button
@@ -173,13 +173,11 @@ export function PortfolioNav() {
         ref={navRef}
         style={{
           backgroundColor: sectionBg.backgroundColor,
-          color: sectionBg.textColor
+          color: sectionBg.textColor,
+          borderBottomColor: borderColor,
+          borderBottomWidth: '4px'
         }}
-        className={`fixed top-0 left-0 right-0 z-50 border-b ${
-          sectionBg.theme === 'dark' 
-            ? 'border-white/20' 
-            : 'border-black/20'
-        } ${isScrolled ? "shadow-modern-md" : ""} transition-colors duration-300`}
+        className={`fixed top-0 left-0 right-0 z-50 border-b ${isScrolled ? "shadow-modern-md" : ""} transition-colors duration-300`}
       >
         <div className="max-w-7xl mx-auto w-full px-6 md:px-12 py-4 md:py-6 flex justify-between items-center gap-4">
           <Link

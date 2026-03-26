@@ -8,6 +8,7 @@ import { BlogRelatedPosts } from "@/components/blog/blog-related-posts"
 import { PortfolioNav } from "@/components/portfolio/nav"
 import { PortfolioFooter } from "@/components/portfolio/footer"
 import { BlogArticleContainer } from "@/components/blog/blog-article-container"
+import { SkipLink } from "@/components/shared/skip-link"
 import { BASE_URL } from "@/lib/constants"
 import { Metadata } from "next"
 
@@ -159,9 +160,10 @@ export default async function BlogPostPage({ params }: PageProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify([articleSchema, breadcrumbSchema]) }}
       />
       <main className="min-h-screen bg-background">
+        <SkipLink targetId="article-content" />
         <PortfolioNav />
 
-        <article className="pt-32 pb-20 px-6 md:px-12">
+        <article id="article-content" className="pt-32 pb-20 px-6 md:px-12">
           <div className="max-w-4xl mx-auto">
             <BlogArticleContainer>
               <BlogPostHeader post={post} locale={locale} />

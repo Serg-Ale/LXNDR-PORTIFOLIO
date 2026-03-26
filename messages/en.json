@@ -1,4 +1,12 @@
 {
+  "accessibility": {
+    "skipToContent": "SKIP TO CONTENT",
+    "searchPosts": "Search blog posts",
+    "sortPosts": "Sort posts by date",
+    "filterByTag": "Filter posts by tag",
+    "closeMenu": "Close menu",
+    "removeTag": "Remove tag"
+  },
   "nav": {
     "logo": "LXNDR",
     "about": "ABOUT",
