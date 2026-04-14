@@ -19,6 +19,15 @@ export function PortfolioIntro() {
   const lastNameRef = useRef<HTMLSpanElement>(null)
   const roleRef = useRef<HTMLDivElement>(null)
   const scrollIndicatorRef = useRef<HTMLButtonElement>(null)
+  const ctaRef = useRef<HTMLDivElement>(null)
+  const monogramRef = useRef<HTMLSpanElement>(null)
+
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id)
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" })
+    }
+  }
 
   // Build manifesto words for ScrollTextReveal - EXPRESSIVE TYPOGRAPHY
   const manifestoWords: ManifestoWord[] = [
@@ -123,7 +132,7 @@ export function PortfolioIntro() {
 
     const ctx = gsap.context(() => {
       if (prefersReducedMotion()) {
-        gsap.set([firstName, lastName, role, scrollIndicator], { opacity: 1 })
+        gsap.set([firstName, lastName, role, scrollIndicator, ctaRef.current, monogramRef.current], { opacity: 1 })
         return
       }
 
@@ -131,6 +140,7 @@ export function PortfolioIntro() {
       gsap.set(firstName, { opacity: 0, x: -100 })
       gsap.set(lastName, { opacity: 0, x: 100 })
       gsap.set(role, { opacity: 0, y: 30 })
+      gsap.set(ctaRef.current, { opacity: 0, y: 30 })
 
       // Name reveal timeline
       const tl = gsap.timeline({ delay: 0.2 })
@@ -153,6 +163,12 @@ export function PortfolioIntro() {
         duration: 0.8,
         ease: "power3.out",
       }, "-=0.5")
+      .to(ctaRef.current, {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: "power3.out",
+      }, "-=0.3")
 
       // Scroll indicator pulse
       gsap.to(scrollIndicator, {
@@ -191,6 +207,17 @@ export function PortfolioIntro() {
       // First name moves with subtle parallax (slower than container)
       gsap.to(firstName, {
         y: -50,
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: 1,
+        },
+      })
+
+      // Monogram parallax - moves slightly slower for depth
+      gsap.to(monogramRef.current, {
+        y: -30,
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top top",
@@ -261,6 +288,13 @@ export function PortfolioIntro() {
 
         {/* Content */}
         <div ref={heroRef} className="relative z-10 w-full px-6 md:px-12">
+          <span
+            ref={monogramRef}
+            aria-hidden="true"
+            className="absolute right-[-2rem] md:right-[-4rem] bottom-[10%] text-[clamp(8rem,25vw,22rem)] font-black leading-none font-bebas text-outlined opacity-10 select-none pointer-events-none z-0"
+          >
+            LXNDR
+          </span>
           <div className="max-w-7xl mx-auto">
             {/* Split name layout - Two lines, same size, different fonts */}
             <h1 className="flex flex-col gap-2 md:gap-4">
@@ -294,6 +328,23 @@ export function PortfolioIntro() {
                 {t("location")}
               </span>
             </div>
+
+            <div ref={ctaRef} className="mt-8 md:mt-12 flex flex-wrap gap-4 items-center opacity-0">
+              <button
+                type="button"
+                onClick={() => scrollToSection("proof")}
+                className="px-8 py-4 bg-accent-primary text-black border-4 border-background font-black text-lg tracking-wide shadow-brutalist hover:shadow-brutalist-lg hover:translate-x-1 hover:translate-y-1 transition-all"
+              >
+                {t("ctaSeeWork")}
+              </button>
+              <a
+                href="/cv.pdf"
+                download
+                className="px-8 py-4 bg-transparent text-background border-4 border-background font-black text-lg tracking-wide shadow-brutalist hover:shadow-brutalist-lg hover:bg-background hover:text-foreground hover:translate-x-1 hover:translate-y-1 transition-all"
+              >
+                {t("ctaDownloadCV")}
+              </a>
+            </div>
           </div>
         </div>
 
@@ -308,6 +359,7 @@ export function PortfolioIntro() {
 
         {/* Scroll indicator */}
         <button
+          type="button"
           ref={scrollIndicatorRef}
           onClick={handleScrollDown}
           className="absolute bottom-8 md:bottom-12 left-1/2 -translate-x-1/2 z-10 focus-visible:ring-2 focus-visible:ring-background focus-visible:ring-offset-2 focus-visible:ring-offset-foreground"
