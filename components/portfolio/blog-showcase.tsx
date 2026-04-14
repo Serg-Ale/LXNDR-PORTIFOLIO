@@ -129,7 +129,7 @@ export function PortfolioBlogShowcase({
     <section
       ref={sectionRef}
       id="blog"
-      className="relative min-h-screen flex items-center px-6 md:px-12 py-32 md:py-48 bg-accent text-accent-foreground overflow-hidden"
+      className="relative min-h-screen flex items-center px-6 md:px-12 py-32 md:py-48 bg-foreground text-background overflow-hidden"
       data-theme="dark"
     >
       {/* Grain overlay for texture */}
