@@ -154,12 +154,12 @@
   },
   "vision": {
     "title": "A VISÃO_",
-    "quote": "Acredito em construir sistemas que não apenas funcionam — mas funcionam lindamente, escalam graciosamente e empoderam as pessoas que os usam.",
+    "quote": "Não escrevo só código que funciona. Penso em por que funciona — e se poderia funcionar do meu jeito.",
     "lookingFor": {
       "title": "O QUE ESTOU BUSCANDO",
-      "item1": "Times que valorizam o ofício sobre atalhos — onde qualidade importa.",
-      "item2": "Problemas desafiadores que me empurram a crescer como engenheiro e como pessoa.",
-      "item3": "Oportunidades de construir produtos que causam impacto real na vida das pessoas."
+      "item1": "Quero estar num lugar que enxergue quem eu sou de verdade — não só alguém que fecha ticket, mas alguém que pensa produto e constrói solução.",
+      "item2": "Procuro problemas que me irritem o bastante para eu ir até o fundo e transformar isso em sistema.",
+      "item3": "Quero trabalho em que eu possa mexer de verdade no rumo da coisa, não só cumprir etapa e passar para a próxima."
     }
   },
   "about": {
@@ -258,7 +258,7 @@
         "description": "Entrei na Union Audio para ajudar a transformar uma ideia forte em algo que as pessoas realmente pudessem usar — uma plataforma de feedback nascida dentro do universo de DJs e produtores.",
         "highlights": [
           "Desenvolveu MVP frontend com Next.js 16, React 19 e TypeScript em Turborepo",
-          "Contribuiu para mais de 100 componentes reutilizáveis na biblioteca",
+          "Ajudou a moldar a camada de componentes que sustenta a plataforma inteira",
           "Construiu sistema de UI responsivo com Tailwind CSS e Radix UI (WCAG)",
           "Colaborou com outros estagiários usando Git Flow e Bitbucket Pipelines",
           "Ajudou a montar a primeira base de testes com Jest e React Testing Library"
@@ -293,11 +293,11 @@
         "location": "REMOTO",
         "description": "Liderando desenvolvimento de produtos SaaS e contribuindo para a plataforma Union Audio.",
         "highlights": [
-          "Lidera desenvolvimento do Barber App com Next.js 16, Prisma, NextAuth",
-          "Arquitetou solução full-stack com 19.000+ linhas de código",
-          "Implementou chatbot WhatsApp via n8n para automação de agendamentos",
-          "Migrou de tRPC para React Query (TanStack)",
-          "Expandiu suíte de testes para 308 casos (98% aprovação)"
+          "Lidero o Barber App por dentro, pensando produto e execução ao mesmo tempo",
+          "Tomo as decisões de arquitetura da plataforma, do modelo de dados até a experiência na tela",
+          "Implementei o chatbot de WhatsApp com n8n para transformar conversa em agendamento",
+          "Conduzi a migração de tRPC para React Query para deixar o frontend mais respirável",
+          "Puxei uma cultura de testes mais séria conforme o produto foi ganhando corpo"
         ]
       },
       {
@@ -307,10 +307,10 @@
         "location": "REMOTO",
         "description": "Construindo uma plataforma de feedback para DJs e produtores musicais na cena de música eletrônica do Brasil.",
         "highlights": [
-          "Desenvolveu MVP frontend com Next.js 16 e React 19",
-          "Contribuiu para mais de 100 componentes reutilizáveis",
-          "Construiu UI responsiva com Tailwind CSS e Radix UI (WCAG)",
-          "Estabeleceu fundação de testes com Jest e React Testing Library"
+          "Construí o frontend do MVP com Next.js 16 e React 19 quando tudo ainda estava nascendo",
+          "Ajudei a transformar a ideia em uma plataforma que DJs e produtores realmente conseguissem usar",
+          "Montei interfaces responsivas com Tailwind CSS e Radix UI sem deixar a experiência engessada",
+          "Trabalhei junto do time para dar uma base sólida ao frontend desde o começo"
         ]
       },
       {
@@ -319,10 +319,10 @@
         "role": "TRAINEE - OPERAÇÕES E SUPORTE",
         "location": "REMOTO",
         "highlights": [
-          "Monitorou 150+ jobs batch críticos para logística Carrefour",
-          "Manteve 99,8% de disponibilidade por 10 meses consecutivos",
-          "Desenvolveu scripts de automação reduzindo intervenções manuais",
-          "Documentou procedimentos e resolveu incidentes dentro dos SLAs"
+          "Cuidei do fluxo de batches da logística do Carrefour e percebia o problema antes dele virar estrago",
+          "Mantive a logística do Carrefour rodando quando ela mais precisava ficar de pé",
+          "Criei automações para tirar trabalho repetitivo da operação",
+          "Documentei o processo e segurei os incidentes com a calma que operação exige"
         ]
       },
       {
@@ -332,7 +332,7 @@
         "location": "LONDRINA, PR",
         "highlights": [
           "Liderou equipe de 4 desenvolvedores backend em projeto capstone",
-          "Entregou aplicação 2 semanas antes do prazo",
+          "Entregou a aplicação antes do prazo sem sacrificar a qualidade",
           "Desenvolveu APIs RESTful com Spring Boot e MySQL",
           "Implementou autenticação JWT e validação de dados"
         ]
@@ -388,7 +388,7 @@
   },
   "contact": {
     "title": "CONTATO_",
-    "callToAction": "PRONTO PARA\nENTREGAR SEU\nPRÓXIMO SISTEMA?",
+    "callToAction": "VAMOS CRIAR\nALGO QUE\nVALE A PENA.",
     "location": "LOCALIZAÇÃO",
     "locationValue": "LONDRINA, PR — BRASIL",
     "english": "INGLÊS",
@@ -406,7 +406,7 @@
       "phone": "TELEFONE →"
     },
     "copyright": "TODOS OS DIREITOS RESERVADOS",
-    "madeWith": "PROJETADO & DESENVOLVIDO COM ❤️"
+    "madeWith": "FEITO DO MEU JEITO ❤️"
   },
   "blog": {
     "title": "BLOG_",

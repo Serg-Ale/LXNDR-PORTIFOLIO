@@ -154,12 +154,12 @@
   },
   "vision": {
     "title": "THE VISION_",
-    "quote": "I believe in building systems that not only work — but work beautifully, scale gracefully, and empower the people who use them.",
+    "quote": "I don't just write code that works. I think about why it works — and whether it could work my way.",
     "lookingFor": {
       "title": "WHAT I'M LOOKING FOR",
-      "item1": "Teams that value craftsmanship over shortcuts — where quality matters.",
-      "item2": "Challenging problems that push me to grow as an engineer and as a person.",
-      "item3": "Opportunities to build products that make a real impact in people's lives."
+      "item1": "A place that sees more than a developer closing tickets — I want room to think, build, and leave my fingerprint on the product.",
+      "item2": "Problems that bother me enough to make me chase the root of them until they turn into systems.",
+      "item3": "Work that feels alive: products I can shape for real, not just keep warm until the next sprint."
     }
   },
   "about": {
@@ -258,7 +258,7 @@
         "description": "I joined Union Audio to help turn a strong idea into something people could actually use — a feedback platform built inside the world of DJs and producers.",
         "highlights": [
           "Developed MVP frontend with Next.js 16, React 19, and TypeScript in Turborepo",
-          "Contributed to 100+ reusable components in component library",
+          "Helped shape the component layer that the whole platform runs on",
           "Built responsive UI system with Tailwind CSS and Radix UI (WCAG compliant)",
           "Collaborated with other interns using Git Flow and Bitbucket Pipelines",
           "Helped lay the first testing foundation with Jest and React Testing Library"
@@ -293,11 +293,11 @@
         "location": "REMOTE",
         "description": "Leading development of SaaS products and contributing to the Union Audio platform.",
         "highlights": [
-          "Leading Barber App development with Next.js 16, Prisma, NextAuth",
-          "Architected full-stack solution with 19,000+ lines of code",
-          "Implemented n8n WhatsApp chatbot for appointment automation",
-          "Migrated from tRPC to React Query (TanStack)",
-          "Expanded test suite to 308 cases (98% pass rate)"
+          "Leading Barber App from the inside out, shaping both the product and the technical direction",
+          "Making the architectural calls behind the platform, from data model to interface flow",
+          "Built the n8n WhatsApp chatbot that turns conversations into booked appointments",
+          "Moved the product from tRPC to React Query to make the frontend easier to evolve",
+          "Pushed for a more serious testing culture as the product stopped being an idea and became a real system"
         ]
       },
       {
@@ -307,10 +307,10 @@
         "location": "REMOTE",
         "description": "Building a feedback platform for DJs and music producers in Brazil's electronic music scene.",
         "highlights": [
-          "Developed MVP frontend with Next.js 16 and React 19",
-          "Contributed to 100+ reusable components",
-          "Built WCAG-compliant responsive UI with Tailwind CSS and Radix UI",
-          "Established test foundation with Jest and React Testing Library"
+          "Built the MVP frontend with Next.js 16 and React 19 when the product was still taking shape",
+          "Helped turn the first ideas into a usable platform for DJs and producers",
+          "Created responsive interfaces with Tailwind CSS and Radix UI without losing clarity",
+          "Worked side by side with the team to give the project a solid frontend foundation"
         ]
       },
       {
@@ -319,10 +319,10 @@
         "role": "TRAINEE - OPERATIONS & SUPPORT",
         "location": "REMOTE",
         "highlights": [
-          "Monitored 150+ critical batch jobs for Carrefour logistics",
-          "Maintained 99.8% availability over 10 consecutive months",
-          "Developed automation scripts reducing manual interventions",
-          "Documented procedures and resolved incidents within SLAs"
+          "Watched over the batch flow behind Carrefour logistics and caught problems before they spread",
+          "Kept Carrefour logistics running when it mattered most",
+          "Built automation scripts that took repetitive operational work off people's hands",
+          "Documented the routine clearly and handled incidents with the calm that operations demands"
         ]
       },
       {
@@ -332,7 +332,7 @@
         "location": "LONDRINA, PR",
         "highlights": [
           "Led team of 4 backend developers on capstone project",
-          "Delivered application 2 weeks ahead of deadline",
+          "Delivered the application ahead of schedule without cutting corners",
           "Developed RESTful APIs with Spring Boot and MySQL",
           "Implemented JWT authentication and data validation"
         ]
@@ -388,7 +388,7 @@
   },
   "contact": {
     "title": "CONTACT_",
-    "callToAction": "READY TO SHIP\nYOUR NEXT\nPRODUCTION SYSTEM?",
+    "callToAction": "LET'S BUILD\nSOMETHING\nWORTH BUILDING.",
     "location": "LOCATION",
     "locationValue": "LONDRINA, PR — BRASIL",
     "english": "ENGLISH",
@@ -406,7 +406,7 @@
       "phone": "PHONE →"
     },
     "copyright": "ALL RIGHTS RESERVED",
-    "madeWith": "DESIGNED & DEVELOPED WITH ❤️"
+    "madeWith": "BUILT MY WAY ❤️"
   },
   "blog": {
     "title": "BLOG_",
