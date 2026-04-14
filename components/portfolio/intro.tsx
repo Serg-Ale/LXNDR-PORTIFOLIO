@@ -265,7 +265,7 @@ export function PortfolioIntro() {
       <section
         ref={sectionRef}
         id="intro"
-        className="relative min-h-screen flex items-center justify-center overflow-hidden bg-foreground text-background"
+        className="relative min-h-screen flex flex-col overflow-hidden bg-foreground text-background"
         data-theme="dark"
       >
         {/* Grain texture */}
@@ -274,11 +274,10 @@ export function PortfolioIntro() {
         {/* Multi-layer Parallax Background */}
         <BackgroundBlobs count={2} speed={0.2} opacity={0.15} />
 
-        {/* Content */}
-        <div ref={heroRef} className="relative z-10 w-full px-6 md:px-12 pt-20 md:pt-24 pb-48 md:pb-52">
-          <div className="max-w-7xl mx-auto">
+        <div ref={heroRef} className="relative z-10 w-full flex-1 flex flex-col px-6 md:px-12 pt-[72px] pb-24">
+          <div className="max-w-7xl mx-auto w-full flex flex-col flex-1">
             {/* Split name layout - Two lines, same size, different fonts */}
-            <h1 className="flex flex-col gap-2 md:gap-4">
+            <h1 className="flex flex-col gap-2 md:gap-4 mt-8 md:mt-10">
               {/* First name - Bebas font */}
               <span
                 ref={firstNameRef}
@@ -299,7 +298,7 @@ export function PortfolioIntro() {
             {/* Role + Location */}
             <div
               ref={roleRef}
-              className="mt-8 md:mt-12 flex flex-col md:flex-row md:items-center gap-2 md:gap-6"
+              className="mt-6 md:mt-8 flex flex-col md:flex-row md:items-center gap-2 md:gap-6"
             >
               <span className="text-lg md:text-2xl font-bold tracking-widest opacity-80 font-mono">
                 {t("role")}
@@ -310,7 +309,7 @@ export function PortfolioIntro() {
               </span>
             </div>
 
-            <div ref={ctaRef} className="mt-8 md:mt-12 mb-8 md:mb-12 flex flex-wrap gap-4 items-center opacity-0">
+            <div ref={ctaRef} className="mt-8 md:mt-10 flex flex-wrap gap-4 items-center opacity-0">
               <button
                 type="button"
                 onClick={() => scrollToSection("proof")}
@@ -326,16 +325,15 @@ export function PortfolioIntro() {
                 {t("ctaDownloadCV")}
               </a>
             </div>
-          </div>
-        </div>
 
-        {/* Stats - Centered above scroll indicator */}
-        <div className="absolute bottom-44 md:bottom-48 left-1/2 -translate-x-1/2 z-10 w-full px-6">
-          <StatReveal
-            stats={stats}
-            triggerOnScroll={false}
-            className="justify-center"
-          />
+            <div className="mt-10 md:mt-12">
+              <StatReveal
+                stats={stats}
+                triggerOnScroll={false}
+                className="justify-start"
+              />
+            </div>
+          </div>
         </div>
 
         {/* Scroll indicator */}
@@ -343,7 +341,7 @@ export function PortfolioIntro() {
           type="button"
           ref={scrollIndicatorRef}
           onClick={handleScrollDown}
-          className="absolute bottom-8 md:bottom-12 left-1/2 -translate-x-1/2 z-10 focus-visible:ring-2 focus-visible:ring-background focus-visible:ring-offset-2 focus-visible:ring-offset-foreground"
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 focus-visible:ring-2 focus-visible:ring-background focus-visible:ring-offset-2 focus-visible:ring-offset-foreground"
           aria-label={t("scrollDown")}
         >
           <div className="flex flex-col items-center gap-2 group">
