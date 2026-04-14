@@ -1,0 +1,19 @@
+Deleted CSS classes and associated keyframes from app/[locale]/globals.css:
+- skill-card
+- skill-text
+- blend-exclusion
+- blend-screen
+- blend-difference
+- glitch-card
+- rgb-shift-1
+- rgb-shift-2
+- digital-noise
+- digital-noise-anim
+- scan-lines
+- scan-lines-anim
+- screen-tear
+- screen-tear-anim
+- matrix-glitch
+- matrix-flow
+- binary-overlay
+- binary-flicker
