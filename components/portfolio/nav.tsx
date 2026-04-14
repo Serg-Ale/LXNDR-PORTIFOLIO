@@ -142,7 +142,7 @@ export function PortfolioNav() {
               {t("about")}
             </button>
             <button
-              onClick={() => scrollToSection("impact")}
+              onClick={() => scrollToSection("proof")}
               className="text-lg font-semibold px-4 py-3 rounded-md transition-all text-left hover:bg-accent/10 focus-visible:ring-2 focus-visible:ring-current focus-visible:ring-offset-2 focus-visible:outline-none touch-action-manipulation"
             >
               {t("experience")}
@@ -195,7 +195,7 @@ export function PortfolioNav() {
               {t("about")}
             </button>
             <button
-              onClick={() => scrollToSection("impact")}
+              onClick={() => scrollToSection("proof")}
               className="text-lg md:text-xl font-semibold px-4 py-2 rounded-md transition-all hover:bg-accent/10 hover:scale-105 focus-visible:ring-2 focus-visible:ring-current focus-visible:ring-offset-2 focus-visible:outline-none touch-action-manipulation"
             >
               {t("experience")}
