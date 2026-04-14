@@ -25,6 +25,12 @@ module.exports = {
         "muted-foreground": "var(--muted-foreground)",
         accent: "var(--accent)",
         "accent-foreground": "var(--accent-foreground)",
+        "accent-purple": {
+          DEFAULT: "var(--color-accent-purple)",
+          light: "var(--color-accent-purple-light)",
+          dark: "var(--color-accent-purple-dark)",
+          glow: "var(--color-accent-purple-glow)",
+        },
         destructive: "var(--destructive)",
         "destructive-foreground": "var(--destructive-foreground)",
         border: "var(--border)",

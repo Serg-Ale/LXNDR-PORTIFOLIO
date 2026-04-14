@@ -113,7 +113,7 @@ export function Manifesto() {
 
             <p 
               ref={closingRef}
-              className="text-xl md:text-3xl lg:text-4xl font-bold mt-8 md:mt-12 text-accent"
+              className="text-xl md:text-3xl lg:text-4xl font-bold mt-8 md:mt-12 text-accent-purple"
             >
               {t("closing")}
             </p>
@@ -128,67 +128,67 @@ export function Manifesto() {
               xmlns="http://www.w3.org/2000/svg"
             >
               <title>Abstract geometric generative art</title>
-              <circle cx="200" cy="200" r="4" fill="var(--color-accent, #FF6600)" />
+              <circle cx="200" cy="200" r="4" fill="var(--color-accent-purple)" />
               
               <path 
                 ref={el => { pathRefs.current[0] = el }}
                 d="M 50 50 L 150 150 L 200 200" 
-                stroke="var(--color-accent, #FF6600)" 
+                stroke="var(--color-accent-purple)" 
                 strokeWidth="1.5" 
               />
               <path 
                 ref={el => { pathRefs.current[1] = el }}
                 d="M 350 50 L 250 150 L 200 200" 
-                stroke="var(--color-accent, #FF6600)" 
+                stroke="var(--color-accent-purple)" 
                 strokeWidth="1.5" 
               />
               <path 
                 ref={el => { pathRefs.current[2] = el }}
                 d="M 50 350 L 150 250 L 200 200" 
-                stroke="var(--color-accent, #FF6600)" 
+                stroke="var(--color-accent-purple)" 
                 strokeWidth="1.5" 
               />
               <path 
                 ref={el => { pathRefs.current[3] = el }}
                 d="M 350 350 L 250 250 L 200 200" 
-                stroke="var(--color-accent, #FF6600)" 
+                stroke="var(--color-accent-purple)" 
                 strokeWidth="1.5" 
               />
               <path 
                 ref={el => { pathRefs.current[4] = el }}
                 d="M 200 50 L 200 150 L 200 200" 
-                stroke="var(--color-accent, #FF6600)" 
+                stroke="var(--color-accent-purple)" 
                 strokeWidth="1.5" 
               />
               <path 
                 ref={el => { pathRefs.current[5] = el }}
                 d="M 50 200 L 150 200 L 200 200" 
-                stroke="var(--color-accent, #FF6600)" 
+                stroke="var(--color-accent-purple)" 
                 strokeWidth="1.5" 
               />
               <path 
                 ref={el => { pathRefs.current[6] = el }}
                 d="M 350 200 L 250 200 L 200 200" 
-                stroke="var(--color-accent, #FF6600)" 
+                stroke="var(--color-accent-purple)" 
                 strokeWidth="1.5" 
               />
               <path 
                 ref={el => { pathRefs.current[7] = el }}
                 d="M 100 100 L 300 100 L 300 300 L 100 300 Z" 
-                stroke="var(--color-accent, #FF6600)" 
+                stroke="var(--color-accent-purple)" 
                 strokeWidth="0.5"
                 strokeDasharray="4 4"
               />
               <path 
                 ref={el => { pathRefs.current[8] = el }}
                 d="M 150 150 L 250 150 L 250 250 L 150 250 Z" 
-                stroke="var(--color-accent, #FF6600)" 
+                stroke="var(--color-accent-purple)" 
                 strokeWidth="0.5"
               />
               <path 
                 ref={el => { pathRefs.current[9] = el }}
                 d="M 200 100 L 300 200 L 200 300 L 100 200 Z" 
-                stroke="var(--color-accent, #FF6600)" 
+                stroke="var(--color-accent-purple)" 
                 strokeWidth="0.5"
               />
             </svg>

@@ -39,7 +39,11 @@
   --neon-blue: #00ffff;
   --neon-orange: #ff6600;
   --neon-purple: #9900ff;
-  --color-accent: var(--neon-orange);
+  --color-accent-purple: #7C3AED;
+  --color-accent-purple-light: #A78BFA;
+  --color-accent-purple-dark: #5B21B6;
+  --color-accent-purple-glow: rgba(124, 58, 237, 0.3);
+  --color-accent: var(--color-accent-purple);
 }
 
 
@@ -81,7 +85,11 @@
   --neon-blue: #00ffff;
   --neon-orange: #ff6600;
   --neon-purple: #9900ff;
-  --color-accent: var(--neon-orange);
+  --color-accent-purple: #7C3AED;
+  --color-accent-purple-light: #A78BFA;
+  --color-accent-purple-dark: #5B21B6;
+  --color-accent-purple-glow: rgba(124, 58, 237, 0.3);
+  --color-accent: var(--color-accent-purple);
 }
 
 

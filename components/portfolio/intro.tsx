@@ -246,7 +246,7 @@ export function PortfolioIntro() {
               <button
                 type="button"
                 onClick={() => scrollToSection("proof")}
-                className="px-8 py-4 bg-accent-primary text-black border-4 border-background font-black text-lg tracking-wide shadow-brutalist hover:shadow-brutalist-lg hover:translate-x-1 hover:translate-y-1 transition-all"
+                className="px-8 py-4 bg-accent-purple text-black border-4 border-background font-black text-lg tracking-wide shadow-brutalist hover:shadow-brutalist-lg hover:translate-x-1 hover:translate-y-1 transition-all"
               >
                 {t("ctaSeeWork")}
               </button>
