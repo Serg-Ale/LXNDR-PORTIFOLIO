@@ -20,7 +20,6 @@ export function PortfolioIntro() {
   const roleRef = useRef<HTMLDivElement>(null)
   const scrollIndicatorRef = useRef<HTMLButtonElement>(null)
   const ctaRef = useRef<HTMLDivElement>(null)
-  const monogramRef = useRef<HTMLSpanElement>(null)
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id)
@@ -132,7 +131,7 @@ export function PortfolioIntro() {
 
     const ctx = gsap.context(() => {
       if (prefersReducedMotion()) {
-        gsap.set([firstName, lastName, role, scrollIndicator, ctaRef.current, monogramRef.current], { opacity: 1 })
+        gsap.set([firstName, lastName, role, scrollIndicator, ctaRef.current], { opacity: 1 })
         return
       }
 
@@ -215,17 +214,6 @@ export function PortfolioIntro() {
         },
       })
 
-      // Monogram parallax - moves slightly slower for depth
-      gsap.to(monogramRef.current, {
-        y: -30,
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top top",
-          end: "bottom top",
-          scrub: 1,
-        },
-      })
-
       // Last name moves slightly faster with subtle rotation
       gsap.to(lastName, {
         y: -70,
@@ -287,14 +275,7 @@ export function PortfolioIntro() {
         <BackgroundBlobs count={2} speed={0.2} opacity={0.15} />
 
         {/* Content */}
-        <div ref={heroRef} className="relative z-10 w-full px-6 md:px-12 pb-48 md:pb-52">
-          <span
-            ref={monogramRef}
-            aria-hidden="true"
-            className="absolute right-[-2rem] md:right-[-4rem] bottom-[10%] text-[clamp(8rem,25vw,22rem)] font-black leading-none font-bebas text-outlined opacity-10 select-none pointer-events-none z-0"
-          >
-            LXNDR
-          </span>
+        <div ref={heroRef} className="relative z-10 w-full px-6 md:px-12 pt-20 md:pt-24 pb-48 md:pb-52">
           <div className="max-w-7xl mx-auto">
             {/* Split name layout - Two lines, same size, different fonts */}
             <h1 className="flex flex-col gap-2 md:gap-4">
