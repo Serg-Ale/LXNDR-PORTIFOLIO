@@ -1,0 +1,17 @@
+grep -n -- "--color-accent\|::selection\|ring-accent\|text-accent\|bg-accent-primary" app/[locale]/globals.css
+42:  --color-accent: var(--neon-orange);
+86:  --color-accent: var(--neon-orange);
+93:::selection {
+94:  background-color: var(--color-accent);
+172:  .ring-accent {
+173:    --tw-ring-color: var(--color-accent);
+176:  .text-accent {
+177:    color: var(--color-accent);
+180:  .bg-accent-primary {
+181:    background-color: var(--color-accent);
+
+grep -n -- "--neon-orange" app/[locale]/globals.css
+40:  --neon-orange: #ff6600;
+42:  --color-accent: var(--neon-orange);
+84:  --neon-orange: #ff6600;
+86:  --color-accent: var(--neon-orange);

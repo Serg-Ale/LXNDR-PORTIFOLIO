@@ -39,6 +39,7 @@
   --neon-blue: #00ffff;
   --neon-orange: #ff6600;
   --neon-purple: #9900ff;
+  --color-accent: var(--neon-orange);
   --evangelion-bg: #0a0a0a;
   --evangelion-fg: #ffffff;
 }
@@ -82,8 +83,16 @@
   --neon-blue: #00ffff;
   --neon-orange: #ff6600;
   --neon-purple: #9900ff;
+  --color-accent: var(--neon-orange);
   --evangelion-bg: #0a0a0a;
   --evangelion-fg: #ffffff;
+}
+
+
+
+::selection {
+  background-color: var(--color-accent);
+  color: #000000;
 }
 
 
@@ -157,6 +166,19 @@
     color: var(--background);
     padding: 0.25em 0.5em;
     display: inline-block;
+  }
+
+  /* Accent color utilities */
+  .ring-accent {
+    --tw-ring-color: var(--color-accent);
+  }
+
+  .text-accent {
+    color: var(--color-accent);
+  }
+
+  .bg-accent-primary {
+    background-color: var(--color-accent);
   }
 
   /* Manifesto word positioning utilities */
