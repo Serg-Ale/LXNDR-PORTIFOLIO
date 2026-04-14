@@ -1,0 +1,63 @@
+{
+  "active_plan": "/home/trall/projects/personal/LXNDR-PORTIFOLIO/.sisyphus/plans/portfolio-visual-overhaul.md",
+  "started_at": "2026-04-14T12:40:21.723Z",
+  "session_ids": [
+    "ses_27411e374ffe533OJrt2HUW305",
+    "ses_273fe31fcffePQAVYL9W0C1zKp",
+    "ses_273fd01bfffe5U5F7nwuHFd6ll",
+    "ses_273fd3245ffe002hleGWqVgfMB",
+    "ses_273fcd34affeCaAzWrBHNVb1Xh",
+    "ses_273fc9da8ffe5fSdCGkUMRcDZ4",
+    "ses_273fc67baffe2roYdWX9JdJq9c",
+    "ses_273f5fb64ffemEuWSxNrW7KyXf",
+    "ses_273f5764fffeTuRojmjug0tpma",
+    "ses_273f4fe51ffe96ySqdeEhGWEKB",
+    "ses_273ef814effe02ur9paBeXm2Vt",
+    "ses_273e7f068ffe1MdiGtH6LatdE6",
+    "ses_273e79a72ffeDVuVnS0M2gmFtR",
+    "ses_273e27aabffeBFwgbHLx6fBbUV",
+    "ses_273e37b1effeh0xZZ093i2Oe1F",
+    "ses_273e32679ffevjjOH96Z1a6r3H",
+    "ses_273e6a7b5ffeUCJWO1TMRi5zzT",
+    "ses_273e72d47ffe8cbm9RL2Y6h3Z0",
+    "ses_273e2cd2fffefZL6csoat4fsZN"
+  ],
+  "plan_name": "portfolio-visual-overhaul",
+  "agent": "atlas",
+  "task_sessions": {
+    "todo:6": {
+      "task_key": "todo:6",
+      "task_label": "6",
+      "task_title": "Hero CTA buttons (See Work + Download CV)",
+      "session_id": "ses_273f5fb64ffemEuWSxNrW7KyXf",
+      "agent": "Sisyphus-Junior",
+      "category": "visual-engineering",
+      "updated_at": "2026-04-14T12:50:36.348Z"
+    },
+    "todo:11": {
+      "task_key": "todo:11",
+      "task_label": "11",
+      "task_title": "Dead CSS removal — evangelion + glitch + scattered utilities",
+      "session_id": "ses_273ef814effe02ur9paBeXm2Vt",
+      "agent": "Sisyphus-Junior",
+      "category": "unspecified-high",
+      "updated_at": "2026-04-14T13:02:57.611Z"
+    },
+    "todo:1": {
+      "task_key": "todo:1",
+      "task_label": "1",
+      "task_title": "Fix nav `scrollToSection` bug",
+      "session_id": "ses_273fe31fcffePQAVYL9W0C1zKp",
+      "updated_at": "2026-04-14T13:06:11.216Z"
+    },
+    "final-wave:f1": {
+      "task_key": "final-wave:f1",
+      "task_label": "F1",
+      "task_title": "**Plan Compliance Audit** — `oracle`",
+      "session_id": "ses_273e6a7b5ffeUCJWO1TMRi5zzT",
+      "agent": "Sisyphus-Junior",
+      "category": "deep",
+      "updated_at": "2026-04-14T13:15:10.338Z"
+    }
+  }
+}

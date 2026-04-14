@@ -1,0 +1,4 @@
+23:  const monogramRef = useRef<HTMLSpanElement>(null)
+135:        gsap.set([firstName, lastName, role, scrollIndicator, ctaRef.current, monogramRef.current], { opacity: 1 })
+219:      gsap.to(monogramRef.current, {
+292:            ref={monogramRef}

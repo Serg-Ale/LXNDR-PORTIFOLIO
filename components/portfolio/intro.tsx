@@ -287,7 +287,7 @@ export function PortfolioIntro() {
         <BackgroundBlobs count={2} speed={0.2} opacity={0.15} />
 
         {/* Content */}
-        <div ref={heroRef} className="relative z-10 w-full px-6 md:px-12">
+        <div ref={heroRef} className="relative z-10 w-full px-6 md:px-12 pb-48 md:pb-52">
           <span
             ref={monogramRef}
             aria-hidden="true"
@@ -329,7 +329,7 @@ export function PortfolioIntro() {
               </span>
             </div>
 
-            <div ref={ctaRef} className="mt-8 md:mt-12 flex flex-wrap gap-4 items-center opacity-0">
+            <div ref={ctaRef} className="mt-8 md:mt-12 mb-8 md:mb-12 flex flex-wrap gap-4 items-center opacity-0">
               <button
                 type="button"
                 onClick={() => scrollToSection("proof")}
@@ -349,7 +349,7 @@ export function PortfolioIntro() {
         </div>
 
         {/* Stats - Centered above scroll indicator */}
-        <div className="absolute bottom-32 md:bottom-36 left-1/2 -translate-x-1/2 z-10 w-full px-6">
+        <div className="absolute bottom-44 md:bottom-48 left-1/2 -translate-x-1/2 z-10 w-full px-6">
           <StatReveal
             stats={stats}
             triggerOnScroll={false}
@@ -379,13 +379,13 @@ export function PortfolioIntro() {
       {/* Section 2: Manifesto with scroll-triggered word reveal */}
       <section
         id="manifesto"
-        className="relative bg-foreground text-background overflow-hidden"
+        className="relative bg-foreground text-background overflow-hidden py-24 md:py-32"
         data-theme="dark"
       >
         <div className="grain-overlay absolute inset-0 z-0 pointer-events-none" />
         <ScrollTextReveal
           words={manifestoWords}
-          scrollLength={60}
+          scrollLength={80}
           pinned={true}
           className="relative z-10"
         />

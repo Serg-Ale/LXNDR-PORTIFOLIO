@@ -1,0 +1,17 @@
+## Task 9: Blog Showcase Dark Theme Fix
+
+**Change**: Updated blog-showcase.tsx section element (line 132)
+- OLD: className="...bg-accent text-accent-foreground overflow-hidden"
+- NEW: className="...bg-foreground text-background overflow-hidden"
+
+**Verification**: Blog section now uses dark-theme colors consistent with intro.tsx pattern
+- data-theme="dark" attribute already present
+- bg-foreground + text-background = proper dark mode visuals
+- Build passes successfully
+
+**Grep confirmation**:
+```
+components/portfolio/blog-showcase.tsx:132:      className="relative min-h-screen flex items-center px-6 md:px-12 py-32 md:py-48 bg-foreground text-background overflow-hidden"
+```
+
+✅ Complete

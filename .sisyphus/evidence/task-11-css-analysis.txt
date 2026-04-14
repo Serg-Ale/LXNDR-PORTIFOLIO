@@ -1,0 +1,42 @@
+## Task 11: CSS Dead Code Analysis
+
+### EVANGELION CLASSES - NOT DEAD
+Grep results show active usage in components:
+
+**evangelion-glitch**
+- Used by: components/shared/glitch-text.tsx (line 74, conditional rendering)
+- Used by: components/portfolio/hero.tsx, connect.tsx, vision.tsx
+- Status: LIVE - DO NOT DELETE
+
+**evangelion-bg**
+- Used by: components/portfolio/evangelion-background.tsx (line 78)
+- Used by: components/portfolio/hero.tsx (GSAP animation target line 36)
+- Status: LIVE - DO NOT DELETE
+
+**evangelion-particles**
+- Used by: components/portfolio/evangelion-background.tsx (line 81)
+- Status: LIVE - DO NOT DELETE
+
+**evangelion-shapes**
+- Used by: components/portfolio/evangelion-background.tsx (line 98)
+- Status: LIVE - DO NOT DELETE
+
+### GLITCH-TEXT CLASSES - NOT DEAD
+Grep results show active usage:
+
+**.glitch-text**
+- Used by: components/shared/glitch-text.tsx (line 74, conditional rendering when evangelionMode=false)
+- Status: LIVE - DO NOT DELETE
+
+### CRITICAL CSS CLASSES - ALL SURVIVE
+Verified present in globals.css:
+✅ grain-overlay (line 540)
+✅ text-outlined (line 147)
+✅ shadow-brutalist (lines 436, 575)
+✅ split-text (used by SplitTextReveal component)
+
+### CONCLUSION
+No dead CSS blocks found. The evangelion and glitch-text CSS is actively used by components.
+Task description may have been based on outdated information.
+
+Recommendation: Keep all CSS as-is. All classes are serving active components.

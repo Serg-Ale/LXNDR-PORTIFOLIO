@@ -1,0 +1,31 @@
+
+> my-v0-project@0.1.0 dev /home/trall/projects/personal/LXNDR-PORTIFOLIO
+> next dev
+
+ ⚠ Port 3000 is in use by an unknown process, using available port 3001 instead.
+   ▲ Next.js 16.0.10 (Turbopack)
+   - Local:         http://localhost:3001
+   - Network:       http://192.168.1.15:3001
+
+ ✓ Starting...
+[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+ ⚠ Minimum recommended TypeScript version is v5.1.0, older versions can potentially be incompatible with Next.js. Detected: 5.0.2
+ ⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+ ✓ Ready in 806ms
+ GET /en 200 in 3.8s (compile: 3.1s, proxy.ts: 63ms, render: 617ms)
+ GET /pt-BR 200 in 295ms (compile: 36ms, proxy.ts: 5ms, render: 253ms)
+ GET /icon-512.png 404 in 86ms (compile: 33ms, render: 53ms)
+ GET /en 200 in 328ms (compile: 32ms, proxy.ts: 4ms, render: 293ms)
+ GET /en 200 in 287ms (compile: 34ms, proxy.ts: 4ms, render: 248ms)
+ GET /en 200 in 344ms (compile: 39ms, proxy.ts: 3ms, render: 302ms)
+ GET /en 200 in 377ms (compile: 48ms, proxy.ts: 4ms, render: 325ms)
+ GET /icon-192.png 404 in 99ms (compile: 39ms, render: 60ms)
+ GET /en 200 in 328ms (compile: 36ms, proxy.ts: 5ms, render: 287ms)
+ GET /en 200 in 332ms (compile: 33ms, proxy.ts: 4ms, render: 295ms)
+ GET /en 200 in 401ms (compile: 44ms, proxy.ts: 4ms, render: 353ms)
+ GET /pt-BR 200 in 375ms (compile: 42ms, proxy.ts: 4ms, render: 329ms)
+ GET /en 200 in 448ms (compile: 50ms, proxy.ts: 4ms, render: 394ms)
+ GET /pt-BR 200 in 373ms (compile: 36ms, proxy.ts: 3ms, render: 334ms)
+ GET /en 200 in 351ms (compile: 45ms, proxy.ts: 5ms, render: 300ms)
+ GET /icon-192.png 404 in 90ms (compile: 34ms, render: 56ms)
+[?25h

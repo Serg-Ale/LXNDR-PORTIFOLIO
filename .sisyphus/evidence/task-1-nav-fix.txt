@@ -1,0 +1,24 @@
+TASK 1: Nav scrollToSection Bug Fix
+====================================
+
+FILE: components/portfolio/nav.tsx
+
+CHANGES MADE:
+- Line 145: scrollToSection("impact") → scrollToSection("proof") [Mobile menu]
+- Line 198: scrollToSection("impact") → scrollToSection("proof") [Desktop nav]
+
+VERIFICATION - grep output after fix:
+=====================================
+111:  const scrollToSection = (id: string) => {
+139:              onClick={() => scrollToSection("journey")}
+145:              onClick={() => scrollToSection("proof")}
+157:              onClick={() => scrollToSection("connect")}
+192:              onClick={() => scrollToSection("journey")}
+198:              onClick={() => scrollToSection("proof")}
+210:              onClick={() => scrollToSection("connect")}
+
+RESULT: ✅ PASS
+- No "impact" found in scrollToSection calls
+- Both occurrences changed to "proof"
+- Section id="proof" in proof.tsx confirmed at line 158
+- All other nav items unchanged ("journey" at 139/192, "connect" at 157/210)

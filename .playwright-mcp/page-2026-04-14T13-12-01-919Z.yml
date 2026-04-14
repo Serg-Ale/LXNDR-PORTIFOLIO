@@ -1,0 +1,360 @@
+- generic [active] [ref=e1]:
+  - link "Skip to main content" [ref=e2]:
+    - /url: "#main-content"
+  - main [ref=e3]:
+    - navigation [ref=e4]:
+      - generic [ref=e5]:
+        - link "LXNDR" [ref=e6]:
+          - /url: /en
+        - generic [ref=e7]:
+          - button "ABOUT" [ref=e8]
+          - button "EXPERIENCE" [ref=e9]
+          - link "BLOG" [ref=e10]:
+            - /url: /en/blog
+          - button "CONTACT" [ref=e11]
+          - button "Switch to Portuguese" [ref=e12]: EN
+          - button [disabled] [ref=e13]
+    - generic [ref=e17]:
+      - generic [ref=e22]:
+        - generic: LXNDR
+        - generic [ref=e23]:
+          - heading "SÉRGIO ALEXANDRE" [level=1] [ref=e24]:
+            - generic [ref=e25]: SÉRGIO
+            - generic [ref=e26]: ALEXANDRE
+          - generic [ref=e27]:
+            - generic [ref=e28]: SOFTWARE ENGINEER
+            - generic [ref=e30]: LONDRINA, BR
+          - generic [ref=e31]:
+            - button "See My Work" [ref=e32]
+            - link "Download CV" [ref=e33]:
+              - /url: /cv.pdf
+      - generic [ref=e35]:
+        - generic [ref=e36]:
+          - paragraph [ref=e37]: 3+
+          - paragraph [ref=e38]: YEARS
+        - generic [ref=e39]:
+          - paragraph [ref=e40]: 20K+
+          - paragraph [ref=e41]: LINES
+        - generic [ref=e42]:
+          - paragraph [ref=e43]: 15+
+          - paragraph [ref=e44]: PROJECTS
+        - generic [ref=e45]:
+          - paragraph [ref=e46]: 99%
+          - paragraph [ref=e47]: UPTIME
+      - button "Scroll to explore" [ref=e48]:
+        - generic [ref=e50]: SCROLL
+    - generic [ref=e55]:
+      - generic [ref=e56]: I
+      - generic [ref=e57]: build
+      - generic [ref=e58]: production
+      - generic [ref=e59]: systems
+      - generic [ref=e60]: that
+      - generic [ref=e61]: SCALE
+      - generic [ref=e62]: — 19K+ lines, 15+ projects, and counting.
+    - generic [ref=e63]:
+      - generic [ref=e65]:
+        - heading "THE ORIGIN_" [level=2] [ref=e67]
+        - generic [ref=e68]:
+          - generic [ref=e69] [cursor=pointer]:
+            - generic [ref=e70]: "01"
+            - heading "THE QUESTION" [level=3] [ref=e71]
+            - paragraph [ref=e72]: "\"How does this work behind the screen?\""
+          - generic [ref=e73] [cursor=pointer]:
+            - generic [ref=e74]: "02"
+            - heading "THE OBSESSION" [level=3] [ref=e75]
+            - paragraph [ref=e76]: "\"Not just making it work — making it right.\""
+        - generic [ref=e77] [cursor=pointer]:
+          - generic [ref=e78]: "03"
+          - heading "THE EVOLUTION" [level=3] [ref=e79]
+          - paragraph [ref=e80]: "From curiosity to craft. Every line of code I write is driven by a simple belief: good technology transforms people, processes, and ideas. I'm not here to just ship features — I'm here to build systems that last."
+        - generic [ref=e81]:
+          - generic [ref=e82]:
+            - paragraph [ref=e83]: EDUCATION
+            - paragraph [ref=e84]: Systems Analysis & Development
+            - paragraph [ref=e85]: UTFPR — Graduating 2026
+          - generic [ref=e86]:
+            - paragraph [ref=e87]: ENGLISH
+            - paragraph [ref=e88]: C2 Full Proficiency
+            - paragraph [ref=e89]: EF SET 72/100
+          - generic [ref=e90]:
+            - paragraph [ref=e91]: EXPERIENCE
+            - paragraph [ref=e92]: 3+ Years
+            - paragraph [ref=e93]: Agile & Monorepo
+      - generic [ref=e95]:
+        - heading "THE JOURNEY_" [level=2] [ref=e97]
+        - generic [ref=e101]:
+          - generic [ref=e102]:
+            - generic [ref=e103]: "2022"
+            - generic [ref=e104]:
+              - paragraph [ref=e105]: TCS
+              - heading "Development Intern" [level=3] [ref=e106]
+              - generic [ref=e107]:
+                - paragraph [ref=e108]: "4"
+                - paragraph [ref=e109]: DEVS LED
+          - generic [ref=e110]:
+            - generic [ref=e111]: "2023"
+            - generic [ref=e112]:
+              - paragraph [ref=e113]: TCS
+              - heading "Ops & Support Trainee" [level=3] [ref=e114]
+              - generic [ref=e115]:
+                - paragraph [ref=e116]: 99.8%
+                - paragraph [ref=e117]: UPTIME
+          - generic [ref=e118]:
+            - generic [ref=e119]: "2025"
+            - generic [ref=e120]:
+              - paragraph [ref=e121]: UNION
+              - heading "Software Dev Intern" [level=3] [ref=e122]
+              - generic [ref=e123]:
+                - paragraph [ref=e124]: 100+
+                - paragraph [ref=e125]: COMPONENTS
+          - generic [ref=e126]:
+            - generic [ref=e127]: NOW
+            - generic [ref=e128]:
+              - paragraph [ref=e129]: UNION
+              - heading "Software Engineer" [level=3] [ref=e130]
+              - generic [ref=e131]:
+                - paragraph [ref=e132]: 19K+
+                - paragraph [ref=e133]: LINES OF CODE
+        - paragraph [ref=e135]: "\"The evolution continues — every project is an opportunity to grow, learn, and build something meaningful.\""
+      - generic [ref=e138]:
+        - heading "THE STACK_" [level=2] [ref=e140]
+        - generic [ref=e141]:
+          - heading "CORE — WHAT I USE DAILY" [level=3] [ref=e142]
+          - generic [ref=e143]:
+            - generic [ref=e144]:
+              - img [ref=e145]
+              - generic [ref=e147]: NEXT.JS
+            - generic [ref=e148]:
+              - img [ref=e149]
+              - generic [ref=e151]: REACT
+            - generic [ref=e152]:
+              - img [ref=e153]
+              - generic [ref=e155]: TYPESCRIPT
+        - generic [ref=e156]:
+          - generic [ref=e157]:
+            - heading "ARCHITECTURE — HOW I BUILD SYSTEMS" [level=3] [ref=e158]
+            - generic [ref=e159]:
+              - generic [ref=e160]: TURBOREPO
+              - generic [ref=e161]: PRISMA ORM
+              - generic [ref=e162]: NEXTAUTH
+              - generic [ref=e163]: REACT QUERY
+              - generic [ref=e164]: TRPC
+              - generic [ref=e165]: REST APIS
+          - generic [ref=e166]:
+            - heading "TESTING — HOW I ENSURE QUALITY" [level=3] [ref=e167]
+            - generic [ref=e168]:
+              - generic [ref=e169]: JEST
+              - generic [ref=e170]: REACT TESTING LIBRARY
+              - generic [ref=e171]: TDD
+            - generic [ref=e172]:
+              - generic [ref=e173]:
+                - paragraph [ref=e174]: "308"
+                - paragraph [ref=e175]: AUTOMATED TESTS
+              - generic [ref=e176]:
+                - paragraph [ref=e177]: 98%
+                - paragraph [ref=e178]: PASS RATE
+        - generic [ref=e179]:
+          - heading "ALSO PROFICIENT" [level=3] [ref=e180]
+          - generic [ref=e181]:
+            - generic [ref=e182]: JAVA
+            - generic [ref=e183]: PYTHON
+            - generic [ref=e184]: TAILWIND CSS
+            - generic [ref=e185]: GSAP
+            - generic [ref=e186]: NODE.JS
+            - generic [ref=e187]: POSTGRESQL
+            - generic [ref=e188]: GIT FLOW
+            - generic [ref=e189]: N8N
+            - generic [ref=e190]: DOCKER
+            - generic [ref=e191]: SCRUM
+      - generic [ref=e193]:
+        - heading "THE PROOF_" [level=2] [ref=e195]
+        - generic [ref=e196]:
+          - generic [ref=e198]:
+            - generic [ref=e199]: "01"
+            - generic [ref=e200]:
+              - generic [ref=e201]:
+                - heading "UNION AUDIO" [level=3] [ref=e202]
+                - paragraph [ref=e203]: Feedback platform for DJs and music producers in Brazil's electronic scene
+              - generic [ref=e204]:
+                - generic [ref=e205]:
+                  - paragraph [ref=e206]: 100+
+                  - paragraph [ref=e207]: COMPONENTS
+                - generic [ref=e208]:
+                  - paragraph [ref=e209]: 19K+
+                  - paragraph [ref=e210]: LINES OF CODE
+                - generic [ref=e211]:
+                  - paragraph [ref=e212]: MVP
+                  - paragraph [ref=e213]: SHIPPED
+              - generic [ref=e214]:
+                - generic [ref=e215]:
+                  - generic [ref=e216]: NEXT.JS 16
+                  - generic [ref=e217]: REACT QUERY
+                  - generic [ref=e218]: TAILWIND
+                  - generic [ref=e219]: RADIX UI
+                  - generic [ref=e220]: JEST
+                - link "VIEW LIVE" [ref=e221]:
+                  - /url: https://www.unionaudio.com.br
+                  - text: VIEW LIVE
+                  - img [ref=e222]
+          - generic [ref=e225]:
+            - generic [ref=e226]: "02"
+            - generic [ref=e227]:
+              - generic [ref=e228]:
+                - heading "BARBER APP" [level=3] [ref=e229]
+                - paragraph [ref=e230]: SaaS for barbershops — scheduling, automation, and role-based auth
+              - generic [ref=e231]:
+                - generic [ref=e232]:
+                  - paragraph [ref=e233]: 19K+
+                  - paragraph [ref=e234]: LINES OF CODE
+                - generic [ref=e235]:
+                  - paragraph [ref=e236]: "308"
+                  - paragraph [ref=e237]: TESTS
+                - generic [ref=e238]:
+                  - paragraph [ref=e239]: 98%
+                  - paragraph [ref=e240]: PASS RATE
+              - generic [ref=e242]:
+                - generic [ref=e243]: NEXT.JS 16
+                - generic [ref=e244]: PRISMA
+                - generic [ref=e245]: NEXTAUTH
+                - generic [ref=e246]: N8N
+                - generic [ref=e247]: REACT QUERY
+          - generic [ref=e248]:
+            - generic [ref=e249]: META
+            - generic [ref=e250]:
+              - generic [ref=e251]: "03"
+              - generic [ref=e252]:
+                - generic [ref=e253]:
+                  - heading "THIS PORTFOLIO" [level=3] [ref=e254]
+                  - paragraph [ref=e255]: Brutalist design meets engineering — scroll animations, i18n, MDX blog
+                - generic [ref=e256]:
+                  - generic [ref=e257]:
+                    - paragraph [ref=e258]: "2"
+                    - paragraph [ref=e259]: LANGUAGES
+                  - generic [ref=e260]:
+                    - paragraph [ref=e261]: GSAP
+                    - paragraph [ref=e262]: ANIMATIONS
+                  - generic [ref=e263]:
+                    - paragraph [ref=e264]: MDX
+                    - paragraph [ref=e265]: BLOG SYSTEM
+                - generic [ref=e266]:
+                  - generic [ref=e267]:
+                    - generic [ref=e268]: NEXT.JS 16
+                    - generic [ref=e269]: REACT 19
+                    - generic [ref=e270]: GSAP
+                    - generic [ref=e271]: NEXT-INTL
+                    - generic [ref=e272]: TAILWIND V4
+                  - link "VIEW LIVE" [ref=e273]:
+                    - /url: https://lxndr-portifolio.vercel.app
+                    - text: VIEW LIVE
+                    - img [ref=e274]
+    - generic [ref=e280]:
+      - heading "THE VISION_" [level=2] [ref=e282]
+      - paragraph [ref=e284]: "\"I believe in building systems that not only work — but work beautifully, scale gracefully, and empower the people who use them.\""
+      - generic [ref=e285]:
+        - heading "WHAT I'M LOOKING FOR WHAT I'M LOOKING FOR WHAT I'M LOOKING FOR" [level=3] [ref=e286]
+        - generic [ref=e287]:
+          - generic [ref=e288]:
+            - generic [ref=e289]: "01"
+            - paragraph [ref=e290]: Teams that value craftsmanship over shortcuts — where quality matters.
+          - generic [ref=e291]:
+            - generic [ref=e292]: "02"
+            - paragraph [ref=e293]: Challenging problems that push me to grow as an engineer and as a person.
+          - generic [ref=e294]:
+            - generic [ref=e295]: "03"
+            - paragraph [ref=e296]: Opportunities to build products that make a real impact in people's lives.
+    - generic [ref=e298]:
+      - generic [ref=e299]:
+        - heading "BLOG_" [level=2] [ref=e300]
+        - paragraph [ref=e301]: THOUGHTS, IDEAS & RESEARCH
+      - generic [ref=e302]:
+        - link [ref=e304]:
+          - /url: /en/blog/matrix-rain-terminal-animation
+          - article [ref=e305]:
+            - generic [ref=e306]:
+              - generic [ref=e307]: python
+              - generic [ref=e308]: terminal
+              - generic [ref=e309]: cli
+            - heading "I Built My Own Matrix Rain Because cmatrix Wasn't Good Enough" [level=2] [ref=e310]
+            - paragraph [ref=e311]: The story of creating a cinematic terminal animation from scratch, battling Unicode rendering, terminal colors gone wrong, and achieving that perfect Matrix aesthetic
+            - generic [ref=e312]:
+              - time [ref=e313]: February 1, 2026
+              - generic [ref=e314]: •
+              - generic [ref=e315]: 6 MIN READ
+        - link [ref=e317]:
+          - /url: /en/blog/gsap-animation-mastery
+          - article [ref=e318]:
+            - generic [ref=e319]:
+              - generic [ref=e320]: gsap
+              - generic [ref=e321]: animations
+              - generic [ref=e322]: web-dev
+            - 'heading "GSAP: Mastering Web Animations" [level=2] [ref=e323]'
+            - paragraph [ref=e324]: Learn to create amazing and performant animations with GSAP, the most powerful animation library for JavaScript
+            - generic [ref=e325]:
+              - time [ref=e326]: January 21, 2026
+              - generic [ref=e327]: •
+              - generic [ref=e328]: 4 MIN READ
+      - link "VIEW ALL POSTS →" [ref=e330]:
+        - /url: /en/blog
+    - generic [ref=e333]:
+      - generic [ref=e334]:
+        - heading "READY TO SHIP" [level=2] [ref=e336]
+        - heading "YOUR NEXT" [level=2] [ref=e338]
+        - heading "PRODUCTION SYSTEM? PRODUCTION SYSTEM? PRODUCTION SYSTEM?" [level=2] [ref=e340]
+      - generic [ref=e341]:
+        - link "EMAIL sergioalexandre0716@gmail.com" [ref=e342]:
+          - /url: mailto:sergioalexandre0716@gmail.com
+          - generic [ref=e343]:
+            - generic [ref=e344]:
+              - img [ref=e345]
+              - generic [ref=e348]: EMAIL
+            - img [ref=e349]
+          - paragraph [ref=e351]: sergioalexandre0716@gmail.com
+        - link "LINKEDIN @serg-alexandre" [ref=e352]:
+          - /url: https://www.linkedin.com/in/serg-alexandre/
+          - generic [ref=e353]:
+            - generic [ref=e354]:
+              - img [ref=e355]
+              - generic [ref=e357]: LINKEDIN
+            - img [ref=e358]
+          - paragraph [ref=e360]: "@serg-alexandre"
+      - generic [ref=e361]:
+        - generic [ref=e362]:
+          - heading "LOCATION" [level=4] [ref=e363]
+          - paragraph [ref=e364]: LONDRINA, PR — BRASIL
+        - generic [ref=e365]:
+          - heading "ENGLISH" [level=4] [ref=e366]
+          - paragraph [ref=e367]: C2 PROFICIENCY (EF SET 72/100)
+        - generic [ref=e368]:
+          - heading "AVAILABILITY" [level=4] [ref=e370]
+          - paragraph [ref=e371]: OPEN TO OPPORTUNITIES
+    - generic [ref=e373]:
+      - generic [ref=e374]:
+        - generic [ref=e375]:
+          - heading "LXNDR" [level=3] [ref=e376]
+          - paragraph [ref=e377]:
+            - text: SÉRGIO ALEXANDRE
+            - text: SOFTWARE ENGINEER
+        - generic [ref=e379]:
+          - link "GitHub" [ref=e380]:
+            - /url: https://github.com/Serg-Ale
+            - img [ref=e381]
+            - generic [ref=e383]: GitHub
+          - link "LinkedIn" [ref=e384]:
+            - /url: https://linkedin.com/in/serg-alexandre
+            - img [ref=e385]
+            - generic [ref=e387]: LinkedIn
+          - link "Email" [ref=e388]:
+            - /url: mailto:sergioalexandre0716@gmail.com
+            - img [ref=e389]
+            - generic [ref=e392]: Email
+          - link "Phone" [ref=e393]:
+            - /url: tel:+5543988732020
+            - img [ref=e394]
+            - generic [ref=e396]: Phone
+      - generic [ref=e397]:
+        - paragraph [ref=e398]:
+          - generic [ref=e399]: © 2026
+          - text: ALL RIGHTS RESERVED
+        - paragraph [ref=e400]: DESIGNED & DEVELOPED WITH ❤️
+  - button "Open Next.js Dev Tools" [ref=e406] [cursor=pointer]:
+    - img [ref=e407]

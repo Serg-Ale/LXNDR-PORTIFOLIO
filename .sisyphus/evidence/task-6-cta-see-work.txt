@@ -1,0 +1,5 @@
+22:  const ctaRef = useRef<HTMLDivElement>(null)
+135:        gsap.set([firstName, lastName, role, scrollIndicator, ctaRef.current, monogramRef.current], { opacity: 1 })
+143:      gsap.set(ctaRef.current, { opacity: 0, y: 30 })
+166:      .to(ctaRef.current, {
+332:            <div ref={ctaRef} className="mt-8 md:mt-12 flex flex-wrap gap-4 items-center opacity-0">

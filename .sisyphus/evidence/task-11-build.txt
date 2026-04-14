@@ -1,0 +1,31 @@
+## Build Verification
+
+Command: pnpm build
+
+Status: ✅ SUCCESS
+
+Output (last 30 lines):
+```
+[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+ ⚠ Using edge runtime on a page currently disables static generation for that page
+   Generating static pages using 11 workers (0/15) ...
+   Generating static pages using 11 workers (3/15) 
+   Generating static pages using 11 workers (7/15) 
+   Generating static pages using 11 workers (11/15) 
+ ✓ Generating static pages using 11 workers (15/15) in 1074.3ms
+   Finalizing page optimization ...
+
+Route (app)
+┌ ○ /_not-found
+├ ƒ /[locale]
+├ ƒ /[locale]/blog
+├ ƒ /[locale]/blog/[slug]
+├ ƒ /og
+└ ○ /sitemap.xml
+
+ƒ Proxy (Middleware)
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+```
+
+Exit code: 0 (success)

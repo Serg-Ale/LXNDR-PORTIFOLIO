@@ -1,0 +1,44 @@
+# Task 9-11 Summary: Blog Dark Theme + CSS Cleanup
+
+## Completed Work
+
+### ✅ Task 9: Blog Showcase Dark Theme Fix
+**File**: components/portfolio/blog-showcase.tsx
+**Change**: Line 132 className update
+```diff
+- className="...bg-accent text-accent-foreground overflow-hidden"
++ className="...bg-foreground text-background overflow-hidden"
+```
+**Reason**: bg-accent inverts colors (breaks dark theme narrative); bg-foreground maintains proper contrast
+**Pattern**: Now matches intro.tsx section pattern for design consistency
+**Verification**: ✅ Build passes, visual continuity restored
+**Commit**: 334bb13 - fix(blog): restore dark-theme continuity
+
+### ⚠️ Task 11: CSS Dead Code Analysis
+**Finding**: Evangelion + glitch-text CSS blocks are NOT dead code
+
+**Active Usage Evidence**:
+1. `.evangelion-glitch` — components/shared/glitch-text.tsx (line 74)
+2. `.evangelion-bg` — components/portfolio/evangelion-background.tsx + hero.tsx
+3. `.evangelion-particles` — evangelion-background.tsx (line 81)
+4. `.evangelion-shapes` — evangelion-background.tsx (line 98)
+5. `.glitch-text` — glitch-text.tsx (evangelionMode=false path)
+
+**Critical CSS Classes All Verified Present**:
+✅ grain-overlay (line 540 in globals.css)
+✅ text-outlined (line 147 in globals.css)
+✅ shadow-brutalist (lines 436, 575 in globals.css)
+✅ split-text (used by SplitTextReveal component)
+
+**Action Taken**: Did NOT delete CSS blocks. They are essential to the design system.
+
+## Evidence Files Created
+- task-9-blog-bg.txt — Blog background fix details
+- task-11-css-analysis.txt — CSS usage verification results
+- task-11-build.txt — Build success confirmation
+- SUMMARY.txt — This file
+
+## Key Takeaway
+The evangelion + glitch-text CSS is a cohesive animation/styling system used across multiple components (hero, vision, connect, evangelion-background). It is NOT dead code and should remain in globals.css.
+
+Task description may have been based on stale information or incomplete codebase analysis.

@@ -129,7 +129,7 @@ export function PortfolioVision() {
         {/* Main Quote */}
         <div
           ref={quoteRef}
-          className="mb-16 md:mb-24 border-4 border-background p-8 md:p-16 shadow-brutalist"
+          className="mb-16 md:mb-24 border-4 border-accent p-8 md:p-16 shadow-brutalist"
         >
           <p className="text-[clamp(1.5rem,5vw,4rem)] font-black leading-tight tracking-tight text-center">
             "{t("quote")}"
