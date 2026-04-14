@@ -1,0 +1,31 @@
+
+> my-v0-project@0.1.0 build /home/trall/projects/personal/LXNDR-PORTIFOLIO
+> next build
+
+   ▲ Next.js 16.0.10 (Turbopack)
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully in 3.3s
+   Skipping validation of types
+   Collecting page data using 11 workers ...
+   Generating static pages using 11 workers (0/15) ...
+   Generating static pages using 11 workers (3/15) 
+   Generating static pages using 11 workers (7/15) 
+   Generating static pages using 11 workers (11/15) 
+ ✓ Generating static pages using 11 workers (15/15) in 1123.3ms
+   Finalizing page optimization ...
+
+Route (app)
+┌ ○ /_not-found
+├ ƒ /[locale]
+├ ƒ /[locale]/blog
+├ ƒ /[locale]/blog/[slug]
+├ ƒ /og
+└ ○ /sitemap.xml
+
+
+ƒ Proxy (Middleware)
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+
