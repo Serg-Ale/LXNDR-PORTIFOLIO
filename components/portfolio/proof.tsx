@@ -6,64 +6,22 @@ import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { SplitTextReveal } from "@/components/shared/split-text-reveal"
 import { prefersReducedMotion } from "@/lib/gsap-config"
-import { HiArrowTopRightOnSquare } from "react-icons/hi2"
-import { Link } from "@/i18n/routing"
+import { HiMiniArrowTopRightOnSquare } from "react-icons/hi2"
 
 gsap.registerPlugin(ScrollTrigger)
 
 interface Project {
-  number: string
   title: string
   tagline: string
-  metrics: { value: string; label: string }[]
-  stack: string[]
-  url?: string
-  isMeta?: boolean
+  tech: string[]
+  url: string | null
 }
 
 export function PortfolioProof() {
   const t = useTranslations("proof")
   const sectionRef = useRef<HTMLDivElement>(null)
   const cardRefs = useRef<(HTMLDivElement | null)[]>([])
-
-  const projects: Project[] = [
-    {
-      number: "01",
-      title: t("projects.0.title"),
-      tagline: t("projects.0.tagline"),
-      metrics: [
-        { value: "100+", label: t("projects.0.metrics.0.label") },
-        { value: "19K+", label: t("projects.0.metrics.1.label") },
-        { value: "MVP", label: t("projects.0.metrics.2.label") },
-      ],
-      stack: ["NEXT.JS 16", "REACT QUERY", "TAILWIND", "RADIX UI", "JEST"],
-      url: "https://www.unionaudio.com.br",
-    },
-    {
-      number: "02",
-      title: t("projects.1.title"),
-      tagline: t("projects.1.tagline"),
-      metrics: [
-        { value: "19K+", label: t("projects.1.metrics.0.label") },
-        { value: "308", label: t("projects.1.metrics.1.label") },
-        { value: "98%", label: t("projects.1.metrics.2.label") },
-      ],
-      stack: ["NEXT.JS 16", "PRISMA", "NEXTAUTH", "N8N", "REACT QUERY"],
-    },
-    {
-      number: "03",
-      title: t("projects.2.title"),
-      tagline: t("projects.2.tagline"),
-      metrics: [
-        { value: "2", label: t("projects.2.metrics.0.label") },
-        { value: "GSAP", label: t("projects.2.metrics.1.label") },
-        { value: "MDX", label: t("projects.2.metrics.2.label") },
-      ],
-      stack: ["NEXT.JS 16", "REACT 19", "GSAP", "NEXT-INTL", "TAILWIND V4"],
-      url: "https://lxndr-portifolio.vercel.app",
-      isMeta: true,
-    },
-  ]
+  const projects = t.raw("projects") as Project[]
 
   useEffect(() => {
     const section = sectionRef.current
@@ -123,9 +81,8 @@ export function PortfolioProof() {
         })
 
         // Parallax scroll effect - each card moves at different speed
-        const parallaxSpeed = 0.85 - index * 0.05 // 0.85, 0.80, 0.75
         gsap.to(card, {
-          y: -80,
+          y: -80 + index * 10,
           ease: "none",
           scrollTrigger: {
             trigger: card,
@@ -176,82 +133,40 @@ export function PortfolioProof() {
         <div className="space-y-8 md:space-y-12">
           {projects.map((project, index) => (
             <div
-              key={project.number}
+              key={project.title}
               ref={(el) => {
                 cardRefs.current[index] = el
               }}
-              className={`
-                relative border-4 border-foreground p-8 md:p-12
-                shadow-brutalist hover:shadow-brutalist-lg
-                transition-shadow duration-300
-                ${project.isMeta ? "bg-foreground text-background" : "bg-background"}
-              `}
+              className="relative border-4 border-foreground bg-background p-8 text-foreground shadow-brutalist transition-shadow duration-300 hover:shadow-brutalist-lg md:p-12"
               style={{ perspective: "1000px", transformStyle: "preserve-3d" }}
             >
-              {/* Meta badge for portfolio */}
-              {project.isMeta && (
-                <div className="absolute top-4 right-4 md:top-6 md:right-6">
-                  <span className="bg-background text-foreground px-3 py-1 text-xs font-black tracking-widest">
-                    META
-                  </span>
-                </div>
-              )}
-
-              <div className="grid md:grid-cols-12 gap-8 md:gap-12">
+              <div className="grid gap-8 md:grid-cols-12 md:gap-12">
                 {/* Number */}
                 <div className="md:col-span-2">
-                  <span
-                    className={`
-                    text-6xl md:text-8xl font-black tracking-tight
-                    ${project.isMeta ? "opacity-30" : "opacity-20"}
-                  `}
-                  >
-                    {project.number}
+                  <span className="text-6xl font-black tracking-tight opacity-20 md:text-8xl">
+                    {String(index + 1).padStart(2, "0")}
                   </span>
                 </div>
 
                 {/* Content */}
-                <div className="md:col-span-10 space-y-6">
+                <div className="space-y-6 md:col-span-10">
                   {/* Title + Tagline */}
                   <div>
-                    <h3 className="text-3xl md:text-5xl font-black mb-3 tracking-tight">
+                    <h3 className="mb-3 text-3xl font-black tracking-tight md:text-5xl">
                       {project.title}
                     </h3>
-                    <p className="text-lg md:text-xl font-semibold opacity-80">
+                    <p className="text-lg font-semibold opacity-80 md:text-xl">
                       {project.tagline}
                     </p>
                   </div>
 
-                  {/* Metrics */}
-                  <div className="flex flex-wrap gap-4 md:gap-6">
-                    {project.metrics.map((metric, metricIndex) => (
-                      <div
-                        key={metricIndex}
-                        className={`
-                          px-4 py-3 md:px-6 md:py-4 border-2
-                          ${project.isMeta ? "border-background/30" : "border-foreground/30"}
-                        `}
-                      >
-                        <p className="text-2xl md:text-3xl font-black tracking-tight">
-                          {metric.value}
-                        </p>
-                        <p className="text-xs font-semibold tracking-wider opacity-70">
-                          {metric.label}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
-
                   {/* Stack + Link */}
-                  <div className="flex flex-wrap items-center gap-4 pt-4 border-t-2 border-current/10">
-                    <div className="flex flex-wrap gap-2 flex-1">
-                      {project.stack.map((tech) => (
+                  <div className="flex flex-wrap items-center gap-4 border-t-2 border-current/10 pt-4">
+                    <div className="flex flex-1 flex-wrap gap-2">
+                      {project.tech.map((tech) => (
                         <span
                           key={tech}
-                          className={`
-                            text-xs font-bold tracking-wider px-2 py-1
-                            ${project.isMeta ? "bg-background/10" : "bg-foreground/10"}
-                          `}
+                          className="bg-foreground/10 px-2 py-1 text-xs font-bold tracking-wider"
                         >
                           {tech}
                         </span>
@@ -263,14 +178,10 @@ export function PortfolioProof() {
                         href={project.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className={`
-                          flex items-center gap-2 font-bold tracking-wider
-                          hover:opacity-70 transition-opacity duration-200
-                          ${project.isMeta ? "text-background" : "text-foreground"}
-                        `}
+                        className="flex items-center gap-2 font-bold tracking-wider text-foreground transition-opacity duration-200 hover:opacity-70"
                       >
                         VIEW LIVE
-                        <HiArrowTopRightOnSquare className="w-5 h-5" />
+                        {HiMiniArrowTopRightOnSquare({ className: "h-5 w-5" })}
                       </a>
                     )}
                   </div>

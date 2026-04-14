@@ -53,3 +53,15 @@
 - `components/portfolio/intro.tsx` was still coupled to legacy `hero.manifesto.word1..metrics` keys, so the hero rewrite required a component update alongside the JSON copy change.
 - `hero.stats` can be fully deleted from both locale files once the `StatReveal` block and related imports/types are removed from `intro.tsx`.
 - No `metadata` key exists in `messages/en.json` or `messages/pt-BR.json`, so Task 3 SEO copy changes were limited to visible content keys only.
+
+## 2026-04-14 Session: Task 5 About Voice Rewrite
+
+- `about`, `origin`, `journey`, and `timeline` in both locale files were structurally aligned, so the rewrite only needed value changes with no key churn.
+- The requested identity-marker grep pipeline using `grep ... | grep "about"` does not produce matches on pretty-printed JSON because the `"about"` key and paragraph values live on different lines.
+- Section-scoped grep with `-A` around `"about": {` produced the intended proof and captured `creator`/`Linux`/`criador` markers in both locales.
+
+## 2026-04-14 Session: Task 4 Projects Rewrite
+
+- `proof.tsx` was tightly coupled to the old homepage cards through an inline `projects` array and hardcoded metric values, so the content rewrite only became complete after switching the component to `t.raw("projects")`.
+- `LightSync` needs an explicit `url: null` in both locale files; keeping the key present makes the homepage and full projects list render consistently while still skipping the external link cleanly.
+- Task 6 completed: Created Manifesto component with SVG generative art. Abstract SVG networks scale nicely and are fully compatible with GSAP ScrollTrigger strokeDashoffset animations. Added translation keys.
