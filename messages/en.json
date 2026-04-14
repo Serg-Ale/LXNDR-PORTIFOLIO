@@ -19,7 +19,7 @@
     "lastName": "ALEXANDRE",
     "name": "SÉRGIO ALEXANDRE",
     "title": "SOFTWARE\nENGINEER",
-    "tagline": "I build production systems that scale — 19K+ lines of code, 308 automated tests, and counting.",
+    "tagline": "I build production systems that scale — 19K+ lines of code, 15+ shipped projects, and counting.",
     "role": "SOFTWARE ENGINEER",
     "location": "LONDRINA, BR",
     "manifesto": {
@@ -29,7 +29,7 @@
       "word4": "systems",
       "word5": "that",
       "highlight": "SCALE",
-      "metrics": "— 19K+ lines, 308 tests, and counting."
+      "metrics": "— 19K+ lines, 15+ projects, and counting."
     },
     "stats": {
       "years": "3+",
