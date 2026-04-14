@@ -1,0 +1,9 @@
+    "stats": {
+      "years": "3+",
+      "yearsLabel": "YEARS",
+      "loc": "20K+",
+      "locLabel": "LINES",
+      "tests": "15+",
+      "testsLabel": "PROJECTS",
+      "uptime": "99%",
+      "uptimeLabel": "UPTIME"

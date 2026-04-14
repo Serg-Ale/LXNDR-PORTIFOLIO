@@ -34,11 +34,11 @@
     "stats": {
       "years": "3+",
       "yearsLabel": "YEARS",
-      "loc": "19K+",
+      "loc": "20K+",
       "locLabel": "LINES",
-      "tests": "308",
-      "testsLabel": "TESTS",
-      "uptime": "99.8%",
+      "tests": "15+",
+      "testsLabel": "PROJECTS",
+      "uptime": "99%",
       "uptimeLabel": "UPTIME"
     },
     "scrollDown": "Scroll to explore"
