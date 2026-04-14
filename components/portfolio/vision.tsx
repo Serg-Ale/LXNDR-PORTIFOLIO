@@ -129,7 +129,7 @@ export function PortfolioVision() {
         {/* Main Quote */}
         <div
           ref={quoteRef}
-          className="mb-16 md:mb-24 border-4 border-background/30 p-8 md:p-16"
+          className="mb-16 md:mb-24 border-4 border-background p-8 md:p-16 shadow-brutalist"
         >
           <p className="text-[clamp(1.5rem,5vw,4rem)] font-black leading-tight tracking-tight text-center">
             "{t("quote")}"
@@ -137,28 +137,26 @@ export function PortfolioVision() {
         </div>
 
         {/* What I'm Looking For */}
-        <div className="grid md:grid-cols-2 gap-12 md:gap-16">
-          <div>
-            <GlitchText
-              as="h3"
-              className="text-2xl md:text-4xl font-black mb-8 tracking-tight"
-              delay={0.2}
-              intensity={2}
-            >
-              {t("lookingFor.title")}
-            </GlitchText>
-          </div>
+        <div>
+          <GlitchText
+            as="h3"
+            className="text-2xl md:text-4xl font-black mb-8 md:mb-12 tracking-tight"
+            delay={0.2}
+            intensity={2}
+          >
+            {t("lookingFor.title")}
+          </GlitchText>
 
-          <div ref={listRef} className="space-y-6">
+          <div ref={listRef} className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
             {lookingFor.map((item, index) => (
               <div
                 key={index}
-                className="flex items-start gap-4 md:gap-6 group"
+                className="relative border-4 border-background p-6 md:p-8 shadow-brutalist group"
               >
-                <span className="text-4xl md:text-6xl font-black opacity-30 group-hover:opacity-100 transition-opacity duration-300">
+                <span className="block text-5xl md:text-7xl font-black text-accent mb-4 leading-none">
                   {String(index + 1).padStart(2, "0")}
                 </span>
-                <p className="text-lg md:text-2xl font-semibold leading-relaxed pt-2 md:pt-4">
+                <p className="text-base md:text-lg font-semibold leading-relaxed">
                   {item}
                 </p>
               </div>
