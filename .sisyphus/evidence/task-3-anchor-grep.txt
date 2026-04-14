@@ -1,0 +1,6 @@
+messages/en.json:    "title": "CREATOR\nBUILDER",
+messages/en.json:    "role": "creator · musician · builder of tools",
+messages/en.json:      "anchor": "I am not a programmer. I am a creator.",
+messages/pt-BR.json:    "title": "CRIADOR\nCONSTRUTOR",
+messages/pt-BR.json:    "role": "criador · músico · construtor de ferramentas",
+messages/pt-BR.json:      "anchor": "Eu não sou um programador. Eu sou um criador.",

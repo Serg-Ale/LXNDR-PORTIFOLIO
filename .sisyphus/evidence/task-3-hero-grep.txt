@@ -1,0 +1,6 @@
+74:        "metricLabel": "UPTIME"
+83:        "metric": "19K+",
+84:        "metricLabel": "LINES OF CODE"
+112:          { "label": "LINES OF CODE" },
+120:          { "label": "LINES OF CODE" },
+150:    "paragraph3": "Before Union, I had intense hands-on experience at TCS — first as a development intern where I led a 4-person backend team, then as a trainee monitoring 150+ batch jobs for Carrefour logistics with 99.8% uptime. These experiences taught me that adaptability and teamwork are just as important as technical knowledge.",

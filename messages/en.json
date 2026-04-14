@@ -18,28 +18,13 @@
     "firstName": "SÉRGIO",
     "lastName": "ALEXANDRE",
     "name": "SÉRGIO ALEXANDRE",
-    "title": "SOFTWARE\nENGINEER",
-    "tagline": "I build production systems that scale — 19K+ lines of code, 15+ shipped projects, and counting.",
-    "role": "SOFTWARE ENGINEER",
+    "title": "CREATOR\nBUILDER",
+    "tagline": "I build the tools I wish existed — music, systems, and experiments.",
+    "role": "creator · musician · builder of tools",
     "location": "LONDRINA, BR",
     "manifesto": {
-      "word1": "I",
-      "word2": "build",
-      "word3": "production",
-      "word4": "systems",
-      "word5": "that",
-      "highlight": "SCALE",
-      "metrics": "— 19K+ lines, 15+ projects, and counting."
-    },
-    "stats": {
-      "years": "3+",
-      "yearsLabel": "YEARS",
-      "loc": "20K+",
-      "locLabel": "LINES",
-      "tests": "15+",
-      "testsLabel": "PROJECTS",
-      "uptime": "99%",
-      "uptimeLabel": "UPTIME"
+      "anchor": "I am not a programmer. I am a creator.",
+      "sub": "I build what I wished existed."
     },
     "scrollDown": "Scroll to explore",
     "ctaSeeWork": "See My Work",
@@ -57,7 +42,7 @@
     },
     "card3": {
       "title": "THE EVOLUTION",
-      "description": "From curiosity to craft. Every line of code I write is driven by a simple belief: good technology transforms people, processes, and ideas. I'm not here to just ship features — I'm here to build systems that last."
+      "description": "From curiosity to craft. Every tool I build was born from frustration."
     },
     "education": {
       "label": "EDUCATION",

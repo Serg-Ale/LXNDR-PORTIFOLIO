@@ -18,28 +18,13 @@
     "firstName": "SÉRGIO",
     "lastName": "ALEXANDRE",
     "name": "SÉRGIO ALEXANDRE",
-    "title": "ENGENHEIRO\nDE SOFTWARE",
-    "tagline": "Construo sistemas de produção que escalam — 19K+ linhas de código, 15+ projetos entregues, e contando.",
-    "role": "ENGENHEIRO DE SOFTWARE",
+    "title": "CRIADOR\nCONSTRUTOR",
+    "tagline": "Faço as ferramentas que eu gostaria que existissem — música, sistemas, experimentos.",
+    "role": "criador · músico · construtor de ferramentas",
     "location": "LONDRINA, BR",
     "manifesto": {
-      "word1": "Eu",
-      "word2": "construo",
-      "word3": "sistemas",
-      "word4": "de produção",
-      "word5": "que",
-      "highlight": "ESCALAM",
-      "metrics": "— 19K+ linhas, 15+ projetos, e contando."
-    },
-    "stats": {
-      "years": "3+",
-      "yearsLabel": "ANOS",
-      "loc": "20K+",
-      "locLabel": "LINHAS",
-      "tests": "15+",
-      "testsLabel": "PROJETOS",
-      "uptime": "99%",
-      "uptimeLabel": "UPTIME"
+      "anchor": "Eu não sou um programador. Eu sou um criador.",
+      "sub": "Eu construo o que eu queria que existisse."
     },
     "scrollDown": "Role para explorar",
     "ctaSeeWork": "Ver Meu Trabalho",
@@ -57,7 +42,7 @@
     },
     "card3": {
       "title": "A EVOLUÇÃO",
-      "description": "Da curiosidade ao ofício. Cada linha de código que escrevo é guiada por uma crença simples: boa tecnologia transforma pessoas, processos e ideias. Não estou aqui apenas para entregar funcionalidades — estou aqui para construir sistemas que duram."
+      "description": "Da curiosidade ao ofício. Cada ferramenta que construo nasceu de um incômodo."
     },
     "education": {
       "label": "FORMAÇÃO",

@@ -5,7 +5,6 @@ import { useTranslations } from "next-intl"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { ScrollTextReveal, ManifestoWord } from "@/components/shared/scroll-text-reveal"
-import { StatReveal, StatItem } from "@/components/shared/stat-reveal"
 import { BackgroundBlobs } from "@/components/shared/parallax-background"
 import { prefersReducedMotion } from "@/lib/gsap-config"
 
@@ -30,94 +29,28 @@ export function PortfolioIntro() {
 
   // Build manifesto words for ScrollTextReveal - EXPRESSIVE TYPOGRAPHY
   const manifestoWords: ManifestoWord[] = [
-    // "I" - Small, light, whisper-like, sets the stage
     {
-      text: t("manifesto.word1"),
+      text: t("manifesto.anchor"),
       position: "left",
-      font: "space",
-      size: "sm",
-      weight: "light",
-      tracking: "ultra-wide",
-      transform: "uppercase",
-      opacity: "muted",
-    },
-    // "build" - MASSIVE, condensed, screaming
-    {
-      text: t("manifesto.word2"),
-      position: "indent-1",
       font: "bebas",
-      size: "2xl",
+      size: "3xl",
       weight: "black",
       tracking: "tight",
       style: ["scream", "condensed"],
       transform: "uppercase",
     },
-    // "production" - Outlined, wide tracking, technical feel
     {
-      text: t("manifesto.word3"),
-      position: "center",
+      text: t("manifesto.sub"),
+      position: "indent-1",
       font: "space",
       size: "lg",
       weight: "bold",
       tracking: "wide",
       style: "outlined",
-      transform: "uppercase",
-    },
-    // "systems" - MASSIVE, bold, screaming uppercase
-    {
-      text: t("manifesto.word4"),
-      position: "indent-2",
-      font: "bebas",
-      size: "3xl",
-      weight: "black",
-      tracking: "tight",
-      style: ["scream", "condensed"],
-      transform: "uppercase",
-    },
-    // "that" - Tiny, technical, monospace whisper
-    {
-      text: t("manifesto.word5"),
-      position: "right",
-      font: "mono",
-      size: "xs",
-      weight: "normal",
-      tracking: "ultra-wide",
-      style: "technical",
-      transform: "lowercase",
+      transform: "none",
       opacity: "muted",
       spacing: "xl",
     },
-    // "SCALE" - HERO HIGHLIGHT with rotation and massive presence
-    {
-      text: t("manifesto.highlight"),
-      position: "right",
-      font: "bebas",
-      size: "3xl",
-      weight: "black",
-      style: ["highlight-large", "rotate"],
-      transform: "uppercase",
-      spacing: "xl",
-    },
-    // Metrics line - Technical, monospace, data aesthetic
-    {
-      text: t("manifesto.metrics"),
-      position: "right",
-      font: "mono",
-      size: "sm",
-      weight: "medium",
-      tracking: "wide",
-      style: "technical",
-      opacity: "muted",
-      spacing: "xl",
-    },
-  ]
-
-  // Build stats for StatReveal
-  const stats: StatItem[] = [
-    { value: t("stats.years"), label: t("stats.yearsLabel") },
-    { value: t("stats.loc"), label: t("stats.locLabel") },
-    { value: t("stats.tests"), label: t("stats.testsLabel") },
-    { value: t("stats.uptime"), label: t("stats.uptimeLabel") },
   ]
 
   useEffect(() => {
@@ -326,13 +259,6 @@ export function PortfolioIntro() {
               </a>
             </div>
 
-            <div className="mt-10 md:mt-12">
-              <StatReveal
-                stats={stats}
-                triggerOnScroll={false}
-                className="justify-start"
-              />
-            </div>
           </div>
         </div>
 
