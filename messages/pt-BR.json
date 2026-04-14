@@ -30,15 +30,25 @@
     "ctaSeeWork": "Ver Meu Trabalho",
     "ctaDownloadCV": "Baixar CV"
   },
+  "manifesto": {
+    "title": "O MANIFESTO_",
+    "lines": [
+      "Não uso tecnologia. Eu a moldo.",
+      "Se a ferramenta não me serve, eu crio outra.",
+      "O incômodo vira código. Código vira sistema.",
+      "Não é sobre linhas. É sobre como eu penso."
+    ],
+    "closing": "Eu construo o que eu gostaria que existisse."
+  },
   "origin": {
     "title": "A ORIGEM_",
     "card1": {
       "title": "A PERGUNTA",
-      "quote": "Como isso funciona por trás da tela?"
+      "quote": "Por que isso funciona desse jeito? E será que eu consigo fazer funcionar do meu jeito?"
     },
     "card2": {
       "title": "A OBSESSÃO",
-      "quote": "Não apenas fazer funcionar — fazer direito."
+      "quote": "Se a ferramenta não me serve, eu faço outra."
     },
     "card3": {
       "title": "A EVOLUÇÃO",
@@ -70,8 +80,8 @@
       },
       {
         "role": "Trainee Ops & Suporte",
-        "metric": "99,8%",
-        "metricLabel": "UPTIME"
+        "metric": "10",
+        "metricLabel": "MESES FIRME"
       },
       {
         "role": "Estagiário de Software",
@@ -80,11 +90,11 @@
       },
       {
         "role": "Engenheiro de Software",
-        "metric": "19K+",
-        "metricLabel": "LINHAS DE CÓDIGO"
+        "metric": "2",
+        "metricLabel": "PRODUTOS LIDERADOS"
       }
     ],
-    "conclusion": "A evolução continua — cada projeto é uma oportunidade de crescer, aprender e construir algo significativo."
+    "conclusion": "A melhor forma de aprender é construir algo que não existia."
   },
   "skills": {
     "title": "A STACK_",
@@ -105,31 +115,40 @@
     "title": "A PROVA_",
     "projects": [
       {
+        "title": "MATRIX RAIN",
+        "tagline": "As implementações que eu via não me serviam. Fiz a minha: Python + curses, Katakana, degradês e temas.",
+        "tech": ["PYTHON", "CURSES", "TERMINAL", "KATAKANA"],
+        "url": "https://github.com/Serg-Ale/matrix-rain"
+      },
+      {
+        "title": "LIGHTSYNC",
+        "tagline": "Queria que a luz do meu quarto acompanhasse a cor do monitor. Não existia do jeito que eu queria. Fiz o LightSync.",
+        "tech": ["HARDWARE", "SOFTWARE", "AUTOMATION"],
+        "url": null
+      },
+      {
+        "title": "THINKFLOW",
+        "tagline": "Construí o assistente que eu queria ter — um gerenciador de fluxo pessoal e ferramenta de pensamento.",
+        "tech": ["FASTAPI", "REACT", "TYPESCRIPT"],
+        "url": "https://github.com/lxndrbukin/ThinkFlow"
+      },
+      {
+        "title": "COMO-ELES-VOTARAM",
+        "tagline": "Queria saber como os políticos votavam, de forma simples e direta — então construí essa ferramenta de transparência.",
+        "tech": ["T3 STACK", "NEXT.JS", "PRISMA", "TRPC"],
+        "url": "https://github.com/Serg-Ale/Como-Eles-Votaram"
+      },
+      {
         "title": "UNION AUDIO",
-        "tagline": "Plataforma de feedback para DJs e produtores na cena eletrônica do Brasil",
-        "metrics": [
-          { "label": "COMPONENTES" },
-          { "label": "LINHAS DE CÓDIGO" },
-          { "label": "ENTREGUE" }
-        ]
+        "tagline": "Onde música e engenharia se encontram — produtos que construo enquanto componho nas horas vagas.",
+        "tech": ["NEXT.JS 16", "REACT 19", "TURBOREPO", "TAILWIND"],
+        "url": "https://www.unionaudio.com.br"
       },
       {
         "title": "BARBER APP",
-        "tagline": "SaaS para barbearias — agendamento, automação e autenticação por roles",
-        "metrics": [
-          { "label": "LINHAS DE CÓDIGO" },
-          { "label": "TESTES" },
-          { "label": "TAXA DE APROVAÇÃO" }
-        ]
-      },
-      {
-        "title": "ESTE PORTFÓLIO",
-        "tagline": "Design brutalista + engenharia — animações de scroll, i18n, blog MDX",
-        "metrics": [
-          { "label": "IDIOMAS" },
-          { "label": "ANIMAÇÕES" },
-          { "label": "SISTEMA DE BLOG" }
-        ]
+        "tagline": "Liderei o produto do zero — arquitetando a plataforma enquanto construía a equipe e os recursos.",
+        "tech": ["NEXT.JS 16", "PRISMA", "NEXTAUTH", "N8N"],
+        "url": null
       }
     ]
   },
@@ -145,13 +164,13 @@
   },
   "about": {
     "title": "SOBRE_",
-    "paragraph1": "Minha jornada na tecnologia começou com uma curiosidade insaciável de entender como as coisas funcionam por trás da tela. Enquanto estudava Análise e Desenvolvimento de Sistemas na UTFPR, comecei a mergulhar profundamente no ecossistema web — e desde então, transformar ideias em experiências digitais se tornou minha paixão.",
-    "paragraph2": "Hoje, trabalho como Engenheiro de Software na Union Audio / Union Tech. Após ser promovido de estagiário em setembro de 2025, agora lidero o desenvolvimento do Barber App, um produto SaaS que estou arquitetando com Next.js 16, Prisma ORM e NextAuth. Também contribuí para o MVP da Union Audio com mais de 19.000 linhas de código, migrando de tRPC para React Query e construindo uma suíte de testes com 308 casos automatizados.",
-    "paragraph3": "Antes da Union, tive uma experiência intensa na TCS — primeiro como estagiário de desenvolvimento onde liderei uma equipe de 4 desenvolvedores backend, depois como trainee monitorando 150+ jobs batch para logística do Carrefour com 99,8% de disponibilidade. Essas experiências me ensinaram que adaptabilidade e trabalho em equipe são tão importantes quanto conhecimento técnico.",
-    "paragraph4": "Com 3 anos de experiência em ambientes ágeis e arquiteturas monorepo, me vejo como um desenvolvedor que não apenas trabalha com confiança com Next.js, React, TypeScript e ferramentas modernas de teste, mas também entende o valor de uma comunicação clara, colaboração e fazer as perguntas certas antes de buscar qualquer resposta.",
+    "paragraph1": "Eu já fuçava tecnologia antes mesmo de saber me apresentar como desenvolvedor. O que me puxou pra isso foi a vontade de abrir as coisas, entender a lógica por baixo e torcer até ficar com a minha cara. Até hoje eu me sinto mais um criador do que alguém que só escreve código.",
+    "paragraph2": "Hoje eu trabalho como Engenheiro de Software na Union Audio / Union Tech. Lidero o desenvolvimento do Barber App — um SaaS que estou arquitetando de ponta a ponta com Next.js 16, Prisma e NextAuth. Também contribuo na Union Audio, onde ajudei a tirar o frontend do MVP do papel e dar forma ao produto pela interface.",
+    "paragraph3": "Antes da Union, passei pela TCS — primeiro construindo aplicações backend com um time pequeno, depois mantendo a logística do Carrefour rodando sem alarde. Esses meses me ensinaram que confiabilidade é uma arte silenciosa.",
+    "paragraph4": "Sou usuário Linux justamente porque gosto de poder remoldar a máquina ao meu jeito de pensar. Meu fluxo é teclado puro, cheio de atalhos e shortcuts puxados de Vim. Tenho TDAH — um pensamento muito arborizado, inquieto, associativo — então música e código viraram duas formas paralelas de compor, improvisar e construir minhas próprias ferramentas.",
     "evolutionIntro": "SE EXISTE UMA PALAVRA QUE ME DEFINE, É",
     "evolutionWord": "EVOLUÇÃO",
-    "evolutionQuote": "Estou sempre aprendendo, experimentando e refinando, porque para mim, boa tecnologia é aquela que transforma pessoas, processos e ideias.",
+    "evolutionQuote": "Não apenas acompanho a tecnologia — eu a remoldo para funcionar do jeito que eu penso.",
     "techStack": "STACK TÉCNICO",
     "education": "FORMAÇÃO",
     "educationContent": "ANÁLISE E DESENVOLVIMENTO DE SISTEMAS\nUTFPR — Formatura em 2026",
@@ -210,7 +229,7 @@
         "company": "TATA CONSULTANCY SERVICES",
         "role": "Estagiário de Desenvolvimento",
         "location": "Londrina, PR",
-        "description": "Onde tudo começou. Primeira experiência profissional construindo aplicações full-stack e descobrindo o poder do trabalho em equipe.",
+        "description": "Foi meu primeiro capítulo real em tecnologia: aprender como software nasce junto com outras pessoas, prazo correndo e código precisando existir fora da faculdade.",
         "highlights": [
           "Liderou equipe de 4 desenvolvedores backend em projeto capstone",
           "Entregou aplicação completa 2 semanas antes do prazo",
@@ -223,10 +242,10 @@
         "company": "TATA CONSULTANCY SERVICES",
         "role": "Trainee - Operações e Suporte",
         "location": "Remoto",
-        "description": "Mudou de desenvolvimento para operações, descobrindo a importância crítica da confiabilidade de sistemas em escala.",
+        "description": "Saí do desenvolvimento de features e fui para operações, onde aprendi o peso de sustentar um sistema do qual outras pessoas dependem todos os dias.",
         "highlights": [
           "Monitorou 150+ jobs batch críticos para logística Carrefour",
-          "Manteve 99,8% de disponibilidade por 10 meses consecutivos",
+          "Manteve a logística do Carrefour rodando por 10 meses seguidos sem perder um batch sequer",
           "Desenvolveu scripts de automação no Business Support Group (GAN)",
           "Documentou procedimentos operacionais e resolveu incidentes dentro dos SLAs"
         ]
@@ -236,13 +255,13 @@
         "company": "UNION AUDIO",
         "role": "Estagiário de Desenvolvimento de Software",
         "location": "Remoto",
-        "description": "Construindo o futuro da colaboração musical — uma plataforma de feedback conectando DJs e produtores na cena de música eletrônica do Brasil.",
+        "description": "Entrei na Union Audio para ajudar a transformar uma ideia forte em algo que as pessoas realmente pudessem usar — uma plataforma de feedback nascida dentro do universo de DJs e produtores.",
         "highlights": [
           "Desenvolveu MVP frontend com Next.js 16, React 19 e TypeScript em Turborepo",
           "Contribuiu para mais de 100 componentes reutilizáveis na biblioteca",
           "Construiu sistema de UI responsivo com Tailwind CSS e Radix UI (WCAG)",
           "Colaborou com outros estagiários usando Git Flow e Bitbucket Pipelines",
-          "Estabeleceu fundação de testes com Jest e React Testing Library"
+          "Ajudou a montar a primeira base de testes com Jest e React Testing Library"
         ]
       },
       {
@@ -250,13 +269,13 @@
         "company": "UNION AUDIO / UNION TECH",
         "role": "Engenheiro de Software",
         "location": "Remoto",
-        "description": "Liderando desenvolvimento de produtos SaaS e contribuindo para a plataforma Union Audio como engenheiro full-stack.",
+        "description": "Hoje divido meu tempo entre liderar um produto SaaS e ajudar a Union Audio a evoluir com a mesma cabeça de construtor que me trouxe até aqui.",
         "highlights": [
           "Lidera desenvolvimento do Barber App SaaS com Next.js 16, Prisma ORM e NextAuth",
-          "Arquitetou solução full-stack totalizando 19.000+ linhas de código",
+          "Arquitetando o produto de ponta a ponta, do modelo de dados até a interface",
           "Implementou integração n8n para automação de agendamentos via WhatsApp",
           "Migrou gerenciamento de estado de tRPC para React Query (TanStack)",
-          "Expandiu suíte de testes para 308 casos automatizados (98% taxa de aprovação)",
+          "Fortaleceu a cultura de testes conforme o produto foi amadurecendo",
           "Contribui em projetos de clientes usando metodologias Scrum e Kanban"
         ]
       }
@@ -325,43 +344,45 @@
     "list": [
       {
         "number": "01",
-        "title": "UNION AUDIO",
-        "description": "Contribuí para o frontend de uma plataforma de feedback para DJs e produtores musicais, construindo mais de 100 componentes reutilizáveis em arquitetura Turborepo com testes abrangentes.",
-        "tech": ["NEXT.JS 16", "REACT 19", "REACT QUERY", "TAILWIND", "JEST", "RTL"],
-        "url": "https://www.unionaudio.com.br"
+        "title": "MATRIX RAIN",
+        "description": "Eu gostava dos efeitos de Matrix para terminal que encontrava por aí, mas nenhum parecia realmente meu. Então reconstruí a ideia do zero em Python com curses, ajustando movimento, Katakana e cores até chegar na atmosfera que eu queria.",
+        "tech": ["PYTHON", "CURSES", "TERMINAL", "KATAKANA"],
+        "url": "https://github.com/Serg-Ale/matrix-rain"
       },
       {
         "number": "02",
-        "title": "BARBER APP (SAAS)",
-        "description": "Liderando desenvolvimento de um produto SaaS para barbearias, com agendamento de horários, automação de workflows via n8n, e autenticação baseada em roles. Solução full-stack com 19.000+ linhas de código.",
-        "tech": ["NEXT.JS 16", "PRISMA", "NEXTAUTH", "REACT QUERY", "N8N", "SHADCN/UI"],
+        "title": "LIGHTSYNC",
+        "description": "Eu queria que a iluminação do meu quarto reagisse ao que estava acontecendo na tela, em vez de ficar estática. Como não encontrei nada que funcionasse do jeito que eu imaginava, fiz o LightSync como meu próprio experimento entre hardware e software.",
+        "tech": ["HARDWARE", "SOFTWARE", "AUTOMATION"],
         "url": null
       },
       {
         "number": "03",
-        "title": "MATRIX RAIN",
-        "description": "Uma animação de chuva digital estilo Matrix para terminal, com caracteres japoneses autênticos (Katakana), gradientes de 8 tons, 7 temas de cores mais modo arco-íris, e controles ajustáveis de velocidade/densidade. Construído com Python usando a biblioteca curses.",
-        "tech": ["PYTHON", "CURSES", "CLI", "ANIMAÇÃO TERMINAL"],
-        "url": "https://github.com/Serg-Ale/matrix-rain"
+        "title": "THINKFLOW",
+        "description": "O ThinkFlow nasceu de uma necessidade pessoal: eu queria um assistente que ajudasse a organizar pensamento, ritmo e tomada de decisão sem atrapalhar o processo. Construí a ferramenta como o gerenciador de fluxo que eu queria ter no meu dia a dia.",
+        "tech": ["FASTAPI", "REACT", "TYPESCRIPT"],
+        "url": "https://github.com/lxndrbukin/ThinkFlow"
       },
       {
         "number": "04",
-        "title": "PORTFÓLIO LXNDR",
-        "description": "Um portfólio com design brutalista mostrando a interseção entre engenharia e storytelling. Construído com Next.js 16, apresentando animações de scroll com GSAP, i18n completo (en/pt-BR) e um sistema de blog MDX personalizado.",
-        "tech": ["NEXT.JS 16", "REACT 19", "GSAP", "NEXT-INTL", "MDX", "TAILWIND V4"],
-        "url": "https://lxndr-portifolio.vercel.app"
+        "title": "COMO-ELES-VOTARAM",
+        "description": "Eu queria uma forma simples de entender como os políticos realmente votavam, sem ruído e sem fricção. Esse incômodo virou uma ferramenta de transparência pensada para deixar a informação pública mais clara e mais fácil de navegar.",
+        "tech": ["T3 STACK", "NEXT.JS", "PRISMA", "TRPC"],
+        "url": "https://github.com/Serg-Ale/Como-Eles-Votaram"
       },
       {
         "number": "05",
-        "title": "SUÍTE DE AUTOMAÇÃO DE TESTES",
-        "description": "Estabeleci infraestrutura abrangente de testes com 308 casos automatizados alcançando 98% de taxa de aprovação, cobrindo testes unitários com Jest e React Testing Library.",
-        "tech": ["JEST", "REACT TESTING LIBRARY", "TDD", "CI/CD", "ESLINT"]
+        "title": "UNION AUDIO",
+        "description": "A Union Audio é onde meu lado musical e minha prática em engenharia de produto se encontram de forma natural. É um tipo de trabalho que me toca pessoalmente: construir ferramentas para um universo musical do qual eu já fazia parte, mas com a disciplina de produto que a engenharia exige.",
+        "tech": ["NEXT.JS 16", "REACT 19", "TURBOREPO", "TAILWIND"],
+        "url": "https://www.unionaudio.com.br"
       },
       {
         "number": "06",
-        "title": "AUTOMAÇÃO DE WORKFLOWS N8N",
-        "description": "Projetei e implementei soluções de automação de workflows usando n8n, conectando aplicações de negócio com APIs externas para automação de processos e integração de dados.",
-        "tech": ["N8N", "AUTOMAÇÃO DE WORKFLOWS", "REST APIS", "INTEGRAÇÕES"]
+        "title": "BARBER APP",
+        "description": "O Barber App me deu a chance de liderar desde o começo, e não apenas entrar no meio do caminho. Tenho conduzido a plataforma, a direção do produto e a entrega ao mesmo tempo, tratando o projeto como desafio técnico e também como exercício de liderança.",
+        "tech": ["NEXT.JS 16", "PRISMA", "NEXTAUTH", "N8N"],
+        "url": null
       }
     ]
   },
