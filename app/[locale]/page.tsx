@@ -1,6 +1,7 @@
 import { PortfolioNav } from "@/components/portfolio/nav";
 import { PortfolioFooter } from "@/components/portfolio/footer";
 import { PortfolioIntro } from "@/components/portfolio/intro";
+import { Manifesto } from "@/components/portfolio/manifesto";
 import { PortfolioOrigin } from "@/components/portfolio/origin";
 import { PortfolioJourney } from "@/components/portfolio/journey";
 import { PortfolioSkills } from "@/components/portfolio/skills";
@@ -114,10 +115,9 @@ export default async function Home({ params }: PageProps) {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify([personSchema, websiteSchema]),
-        }}
-      />
+      >
+        {JSON.stringify([personSchema, websiteSchema])}
+      </script>
       {/* Skip to main content link for accessibility */}
       <a
         href="#main-content"
@@ -128,19 +128,44 @@ export default async function Home({ params }: PageProps) {
       <main id="main-content" className="min-h-screen">
         <PortfolioNav />
         <ScrollProgress
-          sections={["intro", "origin", "journey", "skills", "proof", "vision", "blog", "connect"]}
+          sections={["intro", "manifesto", "proof", "origin", "journey", "skills", "vision", "blog", "connect"]}
         />
 
-        <PortfolioIntro />
+        <div data-section="intro">
+          <PortfolioIntro />
+        </div>
+
+        <div data-section="manifesto">
+          <Manifesto />
+        </div>
+
         <MatrixZone>
-          <PortfolioOrigin />
-          <PortfolioJourney />
-          <PortfolioSkills />
-          <PortfolioProof />
+          <div data-section="proof">
+            <PortfolioProof />
+          </div>
+          <div data-section="origin">
+            <PortfolioOrigin />
+          </div>
+          <div data-section="journey">
+            <PortfolioJourney />
+          </div>
+          <div data-section="skills">
+            <PortfolioSkills />
+          </div>
         </MatrixZone>
-        <PortfolioVision />
-        <PortfolioBlogShowcase posts={recentPosts} locale={locale} />
-        <PortfolioConnect />
+
+        {/* certifications: removed from new structure — content preserved in component */}
+        {/* impact: removed from new structure — content preserved in component */}
+
+        <div data-section="vision">
+          <PortfolioVision />
+        </div>
+        <div data-section="blog">
+          <PortfolioBlogShowcase posts={recentPosts} locale={locale} />
+        </div>
+        <div data-section="connect">
+          <PortfolioConnect />
+        </div>
         <PortfolioFooter />
       </main>
     </>
