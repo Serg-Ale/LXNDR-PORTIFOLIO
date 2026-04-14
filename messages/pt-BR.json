@@ -41,7 +41,9 @@
       "uptime": "99%",
       "uptimeLabel": "UPTIME"
     },
-    "scrollDown": "Role para explorar"
+    "scrollDown": "Role para explorar",
+    "ctaSeeWork": "Ver Meu Trabalho",
+    "ctaDownloadCV": "Baixar CV"
   },
   "origin": {
     "title": "A ORIGEM_",

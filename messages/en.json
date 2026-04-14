@@ -41,7 +41,9 @@
       "uptime": "99%",
       "uptimeLabel": "UPTIME"
     },
-    "scrollDown": "Scroll to explore"
+    "scrollDown": "Scroll to explore",
+    "ctaSeeWork": "See My Work",
+    "ctaDownloadCV": "Download CV"
   },
   "origin": {
     "title": "THE ORIGIN_",

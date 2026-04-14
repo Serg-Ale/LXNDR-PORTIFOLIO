@@ -1,0 +1,4 @@
+/home/trall/projects/personal/LXNDR-PORTIFOLIO/messages/en.json:45:    "ctaSeeWork": "See My Work",
+/home/trall/projects/personal/LXNDR-PORTIFOLIO/messages/en.json:46:    "ctaDownloadCV": "Download CV"
+/home/trall/projects/personal/LXNDR-PORTIFOLIO/messages/pt-BR.json:45:    "ctaSeeWork": "Ver Meu Trabalho",
+/home/trall/projects/personal/LXNDR-PORTIFOLIO/messages/pt-BR.json:46:    "ctaDownloadCV": "Baixar CV"

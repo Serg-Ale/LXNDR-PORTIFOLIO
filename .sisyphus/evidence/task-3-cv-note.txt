@@ -1,0 +1,5 @@
+CV PDF Setup Note (Task 3)
+User confirmed CV PDF is ready.
+Must be placed at /public/cv.pdf before deployment.
+Button href = /cv.pdf
+Button uses HTML download attribute for direct download.
