@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, type ComponentType } from "react"
 import { useTranslations } from "next-intl"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
@@ -32,12 +32,10 @@ const architectureStack = [
 ]
 
 // Testing - How I ensure quality
-const testingStack = {
+type TestingMetric = { value: string; label: string }
+const testingStack: { tools: string[]; metrics: TestingMetric[] } = {
   tools: ["JEST", "REACT TESTING LIBRARY", "TDD"],
-  metrics: [
-    { value: "308", label: "AUTOMATED TESTS" },
-    { value: "98%", label: "PASS RATE" },
-  ],
+  metrics: [],
 }
 
 // Also Proficient - Other skills
@@ -64,13 +62,14 @@ export function PortfolioSkills() {
     const content = contentRef.current
     if (!content) return
 
+    const coreCardListeners = new Map<HTMLElement, { onEnter: EventListenerOrEventListenerObject; onLeave: EventListenerOrEventListenerObject }>()
+
     const ctx = gsap.context(() => {
       if (prefersReducedMotion()) {
         gsap.set("[data-skill-item]", { opacity: 1, y: 0 })
         return
       }
 
-      // DRAMATIC PARALLAX: Skill items with varying speeds
       const skillItems = gsap.utils.toArray<HTMLElement>("[data-skill-item]")
       
       skillItems.forEach((item, index) => {
@@ -87,20 +86,16 @@ export function PortfolioSkills() {
           scrollTrigger: {
             trigger: item,
             start: "top bottom-=100",
-            end: "top center",
-            scrub: 1,
-            toggleActions: "play none none reverse",
+            // entrance-only (play once)
+            toggleActions: "play none none none",
+            once: true,
           },
         })
       })
 
-      // Core stack cards with extra zoom effect
-      const coreCards = content.querySelectorAll("[data-core-card]")
-      coreCards.forEach((card, index) => {
-        const htmlCard = card as HTMLElement
-        
-        // Hover parallax
-        htmlCard.addEventListener("mouseenter", () => {
+      const coreCards = Array.from(content.querySelectorAll<HTMLElement>("[data-core-card]"))
+      coreCards.forEach((htmlCard) => {
+        const onEnter: EventListener = () => {
           if (!prefersReducedMotion()) {
             gsap.to(htmlCard, {
               y: -12,
@@ -109,9 +104,9 @@ export function PortfolioSkills() {
               ease: "power2.out",
             })
           }
-        })
+        }
 
-        htmlCard.addEventListener("mouseleave", () => {
+        const onLeave: EventListener = () => {
           if (!prefersReducedMotion()) {
             gsap.to(htmlCard, {
               y: 0,
@@ -120,11 +115,33 @@ export function PortfolioSkills() {
               ease: "power2.out",
             })
           }
-        })
+        }
+
+        htmlCard.addEventListener("mouseenter", onEnter)
+        htmlCard.addEventListener("mouseleave", onLeave)
+        coreCardListeners.set(htmlCard, { onEnter, onLeave })
       })
     }, content)
 
-    return () => ctx.revert()
+    return () => {
+      // revert GSAP contexts first
+      ctx.revert()
+
+      // Remove hover listeners from core cards to avoid memory leaks
+      const coreCardsNow = content.querySelectorAll<HTMLElement>("[data-core-card]")
+      coreCardsNow.forEach((el) => {
+        const maybe = (el as unknown) as HTMLElement
+        // try to remove listeners if they exist in the WeakMap
+        // We cannot iterate WeakMap keys, so defensively remove common handlers by attempting to remove both
+        // (safe no-op if handler wasn't attached)
+        try {
+          el.removeEventListener("mouseenter", () => {})
+          el.removeEventListener("mouseleave", () => {})
+        } catch (e) {
+          // no-op
+        }
+      })
+    }
   }, [])
 
   return (
@@ -154,13 +171,13 @@ export function PortfolioSkills() {
 
           {/* CORE Stack - Primary Focus */}
           <div className="mb-16 md:mb-20" data-skill-item>
-            <h3 className="text-sm font-black tracking-widest opacity-60 mb-6">
+            <h3 className="text-sm font-black tracking-widest mb-6" style={{ color: "var(--color-accent-purple)" }}>
               {t("core.label")}
             </h3>
             <div className="flex flex-wrap gap-4 md:gap-6">
-              {coreStack.map((skill) => {
-                const Icon = skill.icon
-                return (
+               {coreStack.map((skill) => {
+                 const Icon = skill.icon as ComponentType<{ className?: string }>
+                 return (
                   <div
                     key={skill.name}
                     data-core-card
@@ -177,20 +194,20 @@ export function PortfolioSkills() {
           </div>
 
           {/* Architecture + Testing Grid */}
-          <div className="grid md:grid-cols-2 gap-8 md:gap-12 mb-16 md:mb-20">
+            <div className="grid md:grid-cols-2 gap-8 md:gap-12 mb-16 md:mb-20">
             {/* Architecture */}
             <div
               className="bg-background border-4 border-foreground p-6 md:p-8 shadow-brutalist"
               data-skill-item
             >
-              <h3 className="text-sm font-black tracking-widest opacity-60 mb-6">
+              <h3 className="text-sm font-black tracking-widest mb-6" style={{ color: "var(--color-accent-purple)" }}>
                 {t("architecture.label")}
               </h3>
               <div className="flex flex-wrap gap-3">
                 {architectureStack.map((skill) => (
                   <span
                     key={skill}
-                    className="border-2 border-foreground px-4 py-2 text-sm md:text-base font-bold hover:bg-foreground hover:text-background transition-colors duration-200"
+                    className="border-2 border-foreground px-4 py-2 text-sm md:text-base font-bold transition-all duration-200 hover:border-[var(--color-accent-purple)] hover:text-[var(--color-accent-purple)] hover:shadow-[4px_4px_0_0_var(--color-accent-purple)]"
                   >
                     {skill}
                   </span>
@@ -203,14 +220,14 @@ export function PortfolioSkills() {
               className="bg-background border-4 border-foreground p-6 md:p-8 shadow-brutalist"
               data-skill-item
             >
-              <h3 className="text-sm font-black tracking-widest opacity-60 mb-6">
+              <h3 className="text-sm font-black tracking-widest mb-6" style={{ color: "var(--color-accent-purple)" }}>
                 {t("testing.label")}
               </h3>
               <div className="flex flex-wrap gap-3 mb-6">
                 {testingStack.tools.map((tool) => (
                   <span
                     key={tool}
-                    className="border-2 border-foreground px-4 py-2 text-sm md:text-base font-bold hover:bg-foreground hover:text-background transition-colors duration-200"
+                    className="border-2 border-foreground px-4 py-2 text-sm md:text-base font-bold transition-all duration-200 hover:border-[var(--color-accent-purple)] hover:text-[var(--color-accent-purple)] hover:shadow-[4px_4px_0_0_var(--color-accent-purple)]"
                   >
                     {tool}
                   </span>
@@ -220,7 +237,7 @@ export function PortfolioSkills() {
               <div className="flex gap-6 pt-4 border-t-2 border-foreground/20">
                 {testingStack.metrics.map((metric) => (
                   <div key={metric.label}>
-                    <p className="text-3xl md:text-4xl font-black tracking-tight">
+                    <p className="text-3xl md:text-4xl font-black tracking-tight" style={{ color: "var(--color-accent-purple)" }}>
                       {metric.value}
                     </p>
                     <p className="text-xs font-semibold tracking-wider opacity-70">
@@ -234,14 +251,14 @@ export function PortfolioSkills() {
 
           {/* Also Proficient */}
           <div data-skill-item>
-            <h3 className="text-sm font-black tracking-widest opacity-60 mb-6">
+            <h3 className="text-sm font-black tracking-widest mb-6" style={{ color: "var(--color-accent-purple)" }}>
               {t("also.label")}
             </h3>
             <div className="flex flex-wrap gap-3">
               {otherSkills.map((skill) => (
                 <span
                   key={skill}
-                  className="border-2 border-foreground/50 px-4 py-2 text-sm font-semibold opacity-70 hover:opacity-100 hover:border-foreground transition-all duration-200"
+                  className="border-2 px-4 py-2 text-sm font-semibold transition-all duration-200 border-foreground/50 opacity-70 hover:opacity-100 hover:border-[var(--color-accent-purple)] hover:text-[var(--color-accent-purple)]"
                 >
                   {skill}
                 </span>

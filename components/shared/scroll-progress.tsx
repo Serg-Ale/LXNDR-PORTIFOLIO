@@ -48,7 +48,7 @@ export function ScrollProgress({ sections }: ScrollProgressProps) {
         className="h-full origin-left transition-colors duration-300"
         style={{ 
           width: `${scrollPercent}%`,
-          backgroundColor: progressColor
+          backgroundColor: "var(--color-accent-purple)"
         }}
       />
     </div>

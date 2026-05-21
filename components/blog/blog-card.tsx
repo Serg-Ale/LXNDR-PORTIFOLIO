@@ -53,7 +53,11 @@ export function BlogCard({ post, locale }: BlogCardProps) {
           {post.tags.slice(0, 3).map((tag) => (
             <span
               key={tag}
-              className="text-xs md:text-sm font-bold uppercase px-3 py-1 border-2 border-border bg-accent text-accent-foreground"
+              className="text-xs md:text-sm font-bold uppercase px-3 py-1 border-2 transition-all duration-200"
+              style={{
+                borderColor: "var(--color-accent-purple)",
+                color: "var(--color-accent-purple)",
+              }}
             >
               {tag}
             </span>

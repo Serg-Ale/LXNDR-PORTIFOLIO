@@ -62,14 +62,14 @@ export function PortfolioExperience() {
           {t("title")}
         </h2>
 
-        <div className="space-y-12">
+          <div className="space-y-12">
           {jobs.map((exp: any, index: number) => (
             <div
               key={index}
               ref={(el) => {
                 experienceRefs.current[index] = el
               }}
-              className="border-4 border-foreground p-6 md:p-8 hover:shadow-brutalist-lg transition-shadow"
+              className="border-4 border-foreground p-6 md:p-8 hover:shadow-brutalist-lg transition-all duration-300 hover:border-l-[6px] hover:border-l-[var(--color-accent-purple)]"
             >
               <div className="space-y-4">
                 <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-2">
@@ -77,7 +77,7 @@ export function PortfolioExperience() {
                     <h3 className="text-3xl md:text-4xl font-black leading-tight mb-2">
                       {exp.company}
                     </h3>
-                    <p className="text-xl md:text-2xl font-bold">
+                    <p className="text-xl md:text-2xl font-bold" style={{ color: "var(--color-accent-purple-light)" }}>
                       {exp.role}
                     </p>
                   </div>
@@ -93,12 +93,12 @@ export function PortfolioExperience() {
 
                 <div className="border-t-2 border-foreground pt-4">
                   <ul className="space-y-2">
-                    {exp.highlights.map((highlight, idx) => (
+                    {exp.highlights.map((highlight: string, idx: number) => (
                       <li
                         key={idx}
                         className="text-base md:text-lg font-semibold flex items-start gap-3"
                       >
-                        <span className="text-xl font-black mt-1">•</span>
+                        <span className="text-xl font-black mt-1" style={{ color: "var(--color-accent-purple)" }}>•</span>
                         <span>{highlight}</span>
                       </li>
                     ))}

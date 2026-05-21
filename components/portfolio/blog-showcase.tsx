@@ -53,15 +53,15 @@ export function PortfolioBlogShowcase({
         },
       })
 
-      // Parallax on title
+      // Keep title entrance-only; avoid scrub on content-owned elements
       gsap.to(titleRef.current, {
-        y: -50,
+        y: -10,
         ease: "none",
         scrollTrigger: {
           trigger: titleRef.current,
           start: "top bottom",
-          end: "bottom top",
-          scrub: 1,
+          toggleActions: "play none none none",
+          once: true,
         },
       })
 
@@ -80,22 +80,7 @@ export function PortfolioBlogShowcase({
         },
       })
 
-      // Parallax on cards - each at different speeds
-      cardsRef.current.forEach((card, index) => {
-        if (!card) return
-        const speed = index % 2 === 0 ? 0.85 : 0.75 // Alternating speeds for visual interest
-        gsap.to(card, {
-          y: -60 * speed,
-          ease: "none",
-          scrollTrigger: {
-            trigger: card,
-            start: "top bottom",
-            end: "bottom top",
-            scrub: 1,
-          },
-        })
-      })
-
+      // cards: entrance-only animations
       // Animate CTA button
       gsap.from(ctaRef.current, {
         opacity: 0,

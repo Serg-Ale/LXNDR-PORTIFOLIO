@@ -82,8 +82,8 @@ export function BlogScrollProgress({ containerRef }: BlogScrollProgressProps) {
     >
       <div className="absolute inset-0 bg-border/50" />
       <div
-        className="h-full bg-foreground origin-left"
-        style={{ width: `${scrollPercent}%` }}
+        className="h-full origin-left"
+        style={{ width: `${scrollPercent}%`, backgroundColor: "var(--color-accent-purple)" }}
       />
     </div>
   )

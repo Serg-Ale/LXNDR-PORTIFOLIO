@@ -35,7 +35,7 @@ export function PortfolioFooter() {
       <div className="max-w-7xl mx-auto px-6 md:px-12 py-12 md:py-16">
         <div className="grid md:grid-cols-2 gap-8 mb-12">
           <div>
-            <h3 className="text-4xl md:text-6xl font-black mb-4">
+            <h3 className="text-4xl md:text-6xl font-black mb-4" style={{ color: "var(--color-accent-purple)" }}>
               LXNDR
             </h3>
             <p className="text-lg md:text-xl font-bold">
@@ -55,7 +55,7 @@ export function PortfolioFooter() {
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group flex items-center gap-3 px-4 py-3 border-2 border-foreground shadow-brutalist-sm hover:shadow-brutalist hover:translate-x-1 transition-all focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:outline-none touch-action-manipulation"
+                    className="group flex items-center gap-3 px-4 py-3 border-2 border-foreground shadow-brutalist-sm hover:border-[var(--color-accent-purple)] hover:shadow-[8px_8px_0_0_var(--color-accent-purple)] hover:text-[var(--color-accent-purple)] hover:translate-x-1 transition-all focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:outline-none touch-action-manipulation"
                   >
                     <Icon className="w-6 h-6 flex-shrink-0" aria-hidden="true" />
                     <span className="text-base md:text-lg font-bold whitespace-nowrap">

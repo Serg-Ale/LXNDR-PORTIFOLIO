@@ -444,6 +444,133 @@
   .shadow-brutalist-lg {
     box-shadow: 12px 12px 0 0 currentColor;
   }
+
+  /* ============================================
+     PURPLE ACCENT UTILITIES
+     ============================================ */
+
+  /* Purple shadow variants */
+  .shadow-brutalist-purple {
+    box-shadow: 8px 8px 0 0 var(--color-accent-purple);
+  }
+
+  .shadow-brutalist-purple-lg {
+    box-shadow: 12px 12px 0 0 var(--color-accent-purple);
+  }
+
+  .shadow-brutalist-purple-sm {
+    box-shadow: 4px 4px 0 0 var(--color-accent-purple);
+  }
+
+  /* Purple glow effects */
+  .glow-purple {
+    box-shadow:
+      0 0 20px var(--color-accent-purple-glow),
+      0 0 40px var(--color-accent-purple-glow);
+  }
+
+  .glow-purple-sm {
+    box-shadow: 0 0 12px var(--color-accent-purple-glow);
+  }
+
+  /* Purple text utilities */
+  .text-accent-purple {
+    color: var(--color-accent-purple);
+  }
+
+  .text-accent-purple-light {
+    color: var(--color-accent-purple-light);
+  }
+
+  .text-accent-purple-dark {
+    color: var(--color-accent-purple-dark);
+  }
+
+  /* Purple background utilities */
+  .bg-accent-purple {
+    background-color: var(--color-accent-purple);
+  }
+
+  .bg-accent-purple-light {
+    background-color: var(--color-accent-purple-light);
+  }
+
+  .bg-accent-purple-dark {
+    background-color: var(--color-accent-purple-dark);
+  }
+
+  .bg-accent-purple-glow {
+    background-color: var(--color-accent-purple-glow);
+  }
+
+  /* Purple border utilities */
+  .border-accent-purple {
+    border-color: var(--color-accent-purple);
+  }
+
+  .border-accent-purple-light {
+    border-color: var(--color-accent-purple-light);
+  }
+
+  /* Purple underline — link/heading accent */
+  .underline-purple {
+    text-decoration: underline;
+    text-decoration-color: var(--color-accent-purple);
+    text-decoration-thickness: 3px;
+    text-underline-offset: 0.2em;
+  }
+
+  /* Purple left-border accent (for cards, timeline items) */
+  .border-l-purple {
+    border-left: 4px solid var(--color-accent-purple);
+  }
+
+  /* Hover: purple shadow brutalist */
+  .hover\:shadow-brutalist-purple:hover {
+    box-shadow: 8px 8px 0 0 var(--color-accent-purple);
+  }
+
+  .hover\:shadow-brutalist-purple-lg:hover {
+    box-shadow: 12px 12px 0 0 var(--color-accent-purple);
+  }
+
+  /* Hover: purple glow */
+  .hover\:glow-purple:hover {
+    box-shadow:
+      0 0 20px var(--color-accent-purple-glow),
+      0 0 40px var(--color-accent-purple-glow);
+  }
+
+  /* Hover: purple border */
+  .hover\:border-accent-purple:hover {
+    border-color: var(--color-accent-purple);
+  }
+
+  /* Hover: purple text */
+  .hover\:text-accent-purple:hover {
+    color: var(--color-accent-purple);
+  }
+
+  /* Nav link — underline grow on hover */
+  .nav-link-purple {
+    position: relative;
+  }
+
+  .nav-link-purple::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background-color: var(--color-accent-purple);
+    transition: width 0.25s ease;
+  }
+
+  .nav-link-purple:hover::after,
+  .nav-link-purple:focus-visible::after {
+    width: 100%;
+  }
   
   /* Hide scrollbar but keep functionality */
   .scrollbar-hide {

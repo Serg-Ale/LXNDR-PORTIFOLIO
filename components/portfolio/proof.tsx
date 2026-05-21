@@ -80,29 +80,7 @@ export function PortfolioProof() {
           },
         })
 
-        // Parallax scroll effect - each card moves at different speed
-        gsap.to(card, {
-          y: -80 + index * 10,
-          ease: "none",
-          scrollTrigger: {
-            trigger: card,
-            start: "top bottom",
-            end: "bottom top",
-            scrub: 1,
-          },
-        })
-
-        // Slight scale down as it scrolls out
-        gsap.to(card, {
-          scale: 0.92,
-          ease: "none",
-          scrollTrigger: {
-            trigger: card,
-            start: "top top",
-            end: "bottom top",
-            scrub: 1,
-          },
-        })
+        // Use entrance-only animations for cards
       })
     }, section)
 

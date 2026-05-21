@@ -195,7 +195,7 @@ export function PortfolioConnect() {
                 data-magnetic
                 onMouseEnter={(e) => handleCardHover(index, e.currentTarget)}
                 onMouseLeave={(e) => handleCardLeave(e.currentTarget)}
-                className="group bg-background text-foreground p-8 border-4 border-background hover:shadow-brutalist-inverted transition-shadow cursor-pointer relative focus-visible:ring-2 focus-visible:ring-background focus-visible:ring-offset-2 focus-visible:ring-offset-foreground focus-visible:outline-none touch-action-manipulation"
+                className="group bg-background text-foreground p-8 border-4 border-background transition-all duration-300 cursor-pointer relative focus-visible:ring-2 focus-visible:ring-background focus-visible:ring-offset-2 focus-visible:ring-offset-foreground focus-visible:outline-none touch-action-manipulation hover:border-[var(--color-accent-purple)] hover:shadow-[8px_8px_0_0_var(--color-accent-purple)]"
               >
                 <div className="flex items-start justify-between mb-6">
                   <div className="flex items-center gap-4">

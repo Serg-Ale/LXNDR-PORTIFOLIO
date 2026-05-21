@@ -65,3 +65,16 @@
 - `proof.tsx` was tightly coupled to the old homepage cards through an inline `projects` array and hardcoded metric values, so the content rewrite only became complete after switching the component to `t.raw("projects")`.
 - `LightSync` needs an explicit `url: null` in both locale files; keeping the key present makes the homepage and full projects list render consistently while still skipping the external link cleanly.
 - Task 6 completed: Created Manifesto component with SVG generative art. Abstract SVG networks scale nicely and are fully compatible with GSAP ScrollTrigger strokeDashoffset animations. Added translation keys.
+
+## [2026-04-14] Task 9: Purple Tokens
+- Added `accent-purple` to `tailwind.config.js` with `DEFAULT`, `light`, `dark`, and `glow` variants.
+- Added `--color-accent-purple`, `--color-accent-purple-light`, `--color-accent-purple-dark`, and `--color-accent-purple-glow` CSS variables to `globals.css` in both `:root` and `.dark`.
+- Updated `--color-accent` to map to `var(--neon-purple)` (from `neon-orange`) inside `globals.css`. Wait! I mapped it to `var(--neon-orange)`! Let me fix that.
+
+## 2026-04-14 Session: Final Wave Quality Review (F2)
+
+- `pnpm build` passed on retry; the first failure was a transient `.next/lock` acquisition issue, not a persistent build regression.
+- `pnpm tsc --noEmit` still fails only in previously known untouched files: `app/[locale]/blog/[slug]/page.tsx`, `components/portfolio/connect.tsx`, `components/portfolio/experience.tsx`, `components/portfolio/footer.tsx`, `components/portfolio/skills.tsx`, `components/shared/toast.tsx`, and `e2e.spec.ts`.
+- `components/portfolio/manifesto.tsx` meets the requested audit bar: has `"use client"`, uses `gsap.context()` with `ctx.revert()`, respects reduced motion, uses typed refs, and contains no `as any`, `@ts-ignore`, or `console.log`.
+- `app/[locale]/page.tsx` composes sections in the requested order: Intro → Manifesto → Proof → Origin → Journey → Skills → Vision → Blog → Connect.
+- LSP diagnostics were clean for `components/portfolio/manifesto.tsx`, `components/portfolio/intro.tsx`, `components/portfolio/proof.tsx`, and `app/[locale]/page.tsx`.

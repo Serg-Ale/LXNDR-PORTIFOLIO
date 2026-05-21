@@ -28,3 +28,11 @@ next-env.d.ts
 
 # syntax highlighting cache
 /.cache/
+
+# playwright mcp artifacts
+/.playwright-mcp/
+
+# sisyphus runtime artifacts
+/.sisyphus/evidence/
+/.sisyphus/drafts/
+/.crush.json
