@@ -1,4 +1,111 @@
 {
+  "portal": {
+    "title": "SÉRGIO ALEXANDRE",
+    "choose": "CHOOSE YOUR PATH",
+    "dev": {
+      "label": "SOFTWARE ENGINEER",
+      "sub": "Full-stack · Next.js · TypeScript",
+      "cta": "ENTER"
+    },
+    "lxndr": {
+      "label": "LXNDR",
+      "sub": "Techno · Psytrance · Sonic Ritual",
+      "cta": "ENTER"
+    },
+    "noise": "RAW SIGNAL / TRANSMISSION"
+  },
+  "lxndr": {
+    "nav": {
+      "listen": "OUVIR",
+      "releases": "LANÇAMENTOS",
+      "booking": "BOOKING",
+      "backToPortal": "← PORTAL"
+    },
+    "hero": {
+      "name": "LXNDR",
+      "role": "DJ / Produtor / Artista eletrônico",
+      "genres": "Techno · Psytrance · Industrial · Ritual sônico",
+      "tagline": "Música física, psíquica e filosófica. Raw signal from Paraná.",
+      "signal": "transmission started / Paraná / BR",
+      "listenCta": "Ouvir no SoundCloud",
+      "followCta": "Seguir no Instagram",
+      "bookingCta": "Booking / Collab",
+      "scrollDown": "SCROLL"
+    },
+    "manifesto": {
+      "eyebrow": "raw signal / manifesto",
+      "line1": "CAOS, CORPO",
+      "line2": "RUÍDO E TENSÃO",
+      "line3": "VIRAM",
+      "line4": "FREQUÊNCIA.",
+      "sub": "Interferência entra como sinal bruto. O corpo processa. A pista devolve matéria sônica — física, psíquica e ritual.",
+      "sideNote": "Interferência é matéria. Ganho vira pressão. Ruído vira forma. Forma vira ritual.",
+      "directive1": "CAPTAR.",
+      "directive2": "DISTORCER.",
+      "directive3": "ORGANIZAR.",
+      "directive4": "PROPAGAR."
+    },
+    "sound": {
+      "title": "O SOM",
+      "intro": "O som do LXNDR parte da pista, mas não se limita a ela. É construído com pressão, repetição, ruído e camadas atmosféricas, buscando um estado entre corpo, transe e interferência.",
+      "block1": "Ritmos rápidos",
+      "block2": "Atmosferas densas",
+      "block3": "Tensão progressiva",
+      "block4": "Texturas instáveis",
+      "tags": "BODY / TRANCE / PRESSURE / EXPANSION"
+    },
+    "releases": {
+      "title": "LANÇAMENTOS",
+      "listenOn": "Ouvir no SoundCloud",
+      "embedSlot": "Espaço para embed SoundCloud",
+      "bpm": "BPM",
+      "track1": {
+        "title": "Flow With Me",
+        "artists": "Bunn1, LXNDR",
+        "label": "raw signal",
+        "genre": "Techno",
+        "bpm": "140",
+        "description": "Flow With Me é uma peça de techno para corpos em estado de interferência.",
+        "body": "O som não tenta explicar. Ele atravessa. Camadas, pulsos e ruídos se acumulam como dados corrompidos até virarem organismo: uma máquina sensorial onde o caos não é erro — é matéria-prima."
+      },
+      "track2": {
+        "title": "Track 000",
+        "artists": "LXNDR",
+        "label": "hello world as LXNDR",
+        "genre": "Experimental",
+        "bpm": "—",
+        "description": "O primeiro sinal bruto do projeto.",
+        "body": "Ainda nascendo. Ainda pulsando."
+      }
+    },
+    "visual": {
+      "title": "MUNDO VISUAL",
+      "intro": "O sistema visual do LXNDR nasce do contraste: escuridão industrial, cor sintética, tipografia fraturada, geometria ritual, ruído e fragmentos técnicos.",
+      "elements": [
+        "Matéria preta",
+        "Interferência neon",
+        "Geometria ritual",
+        "Waveforms como símbolos",
+        "Ruído como textura",
+        "Corpo fragmentado"
+      ]
+    },
+    "scene": {
+      "title": "A CENA",
+      "origin": "Paraná, Brasil",
+      "between": "Entre Londrina e Ponta Grossa.",
+      "connected": "Entre Londrina e Ponta Grossa, LXNDR nasce do contato com a cena eletrônica regional, da vivência com a AEON Audio e das conexões que começam a se formar ao redor da pista, do estúdio e da criação coletiva.",
+      "signal": "Um sinal bruto do sul."
+    },
+    "booking": {
+      "title": "TRANSMIT.",
+      "sub": "Para bookings, collabs, sets, releases e trocas de sinal.",
+      "alt": "Sinal aberto para pista, estúdio e criação coletiva.",
+      "instagram": "Instagram",
+      "soundcloud": "SoundCloud",
+      "email": "Email"
+    }
+  },
   "accessibility": {
     "skipToContent": "SKIP TO CONTENT",
     "searchPosts": "Search blog posts",
@@ -10,8 +117,9 @@
   "nav": {
     "logo": "LXNDR",
     "about": "ABOUT",
-    "experience": "EXPERIENCE",
-    "blog": "BLOG",
+    "projects": "PROJECTS",
+    "essays": "ESSAYS",
+    "laboratory": "LABORATORY",
     "contact": "CONTACT"
   },
   "hero": {
@@ -432,5 +540,55 @@
     "relatedPosts": "RELATED POSTS",
     "recentPosts": "RECENT POSTS",
     "viewAllPosts": "VIEW ALL POSTS"
+  },
+  "essays": {
+    "title": "ESSAYS_",
+    "subtitle": "ANALYSES, RANTS & LONG-FORM THINKING",
+    "search": "SEARCH ESSAYS...",
+    "filterByTag": "FILTER BY TAG",
+    "sortBy": "SORT BY",
+    "newest": "NEWEST",
+    "oldest": "OLDEST",
+    "clearFilters": "CLEAR FILTERS",
+    "resultsCount": "{count} ESSAYS FOUND",
+    "readingTime": "{minutes} MIN READ",
+    "publishedOn": "PUBLISHED ON",
+    "tags": "TAGS",
+    "shareOn": "SHARE ON",
+    "copyLink": "COPY LINK",
+    "tableOfContents": "TABLE OF CONTENTS",
+    "backToBlog": "← BACK TO ESSAYS",
+    "notFound": "ESSAY NOT FOUND",
+    "noPosts": "NO ESSAYS YET",
+    "noResults": "NO ESSAYS MATCH YOUR SEARCH",
+    "allTags": "ALL TAGS",
+    "relatedPosts": "RELATED ESSAYS",
+    "recentPosts": "RECENT ESSAYS",
+    "viewAllPosts": "VIEW ALL ESSAYS"
+  },
+  "laboratory": {
+    "title": "LABORATORY_",
+    "subtitle": "EXPERIMENTS, AUTOMATIONS & IDEAS IN PROGRESS",
+    "search": "SEARCH EXPERIMENTS...",
+    "filterByTag": "FILTER BY TAG",
+    "sortBy": "SORT BY",
+    "newest": "NEWEST",
+    "oldest": "OLDEST",
+    "clearFilters": "CLEAR FILTERS",
+    "resultsCount": "{count} EXPERIMENTS FOUND",
+    "readingTime": "{minutes} MIN READ",
+    "publishedOn": "PUBLISHED ON",
+    "tags": "TAGS",
+    "shareOn": "SHARE ON",
+    "copyLink": "COPY LINK",
+    "tableOfContents": "TABLE OF CONTENTS",
+    "backToBlog": "← BACK TO LABORATORY",
+    "notFound": "ENTRY NOT FOUND",
+    "noPosts": "NO EXPERIMENTS YET",
+    "noResults": "NO EXPERIMENTS MATCH YOUR SEARCH",
+    "allTags": "ALL TAGS",
+    "relatedPosts": "RELATED ENTRIES",
+    "recentPosts": "RECENT ENTRIES",
+    "viewAllPosts": "VIEW ALL ENTRIES"
   }
 }

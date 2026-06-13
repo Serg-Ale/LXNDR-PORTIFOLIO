@@ -20,6 +20,8 @@ interface BlogFiltersProps {
   sortBy: "newest" | "oldest"
   onSortChange: (sort: "newest" | "oldest") => void
   resultCount: number
+  translationNamespace?: string
+  sortInputId?: string
 }
 
 export function BlogFilters({
@@ -31,8 +33,10 @@ export function BlogFilters({
   sortBy,
   onSortChange,
   resultCount,
+  translationNamespace = "blog",
+  sortInputId = "blog-sort",
 }: BlogFiltersProps) {
-  const t = useTranslations("blog")
+  const t = useTranslations(translationNamespace)
   const tA11y = useTranslations("accessibility")
   const [isTagsOpen, setIsTagsOpen] = useState(false)
   const [focusedTagIndex, setFocusedTagIndex] = useState(-1)
@@ -40,13 +44,13 @@ export function BlogFilters({
   const tagButtonRef = useRef<HTMLButtonElement>(null)
   const tagListRef = useRef<HTMLDivElement>(null)
 
-  const toggleTag = (tag: string) => {
+  const toggleTag = useCallback((tag: string) => {
     if (selectedTags.includes(tag)) {
       onTagsChange(selectedTags.filter((t) => t !== tag))
     } else {
       onTagsChange([...selectedTags, tag])
     }
-  }
+  }, [onTagsChange, selectedTags])
 
   const clearFilters = () => {
     onTagsChange([])
@@ -144,6 +148,7 @@ export function BlogFilters({
         {/* Tag Filter Dropdown */}
         <div className="relative" ref={dropdownRef}>
           <button
+            type="button"
             ref={tagButtonRef}
             onClick={() => setIsTagsOpen(!isTagsOpen)}
             onKeyDown={handleDropdownKeyDown}
@@ -198,7 +203,7 @@ export function BlogFilters({
                     aria-hidden="true"
                   >
                     {selectedTags.includes(tag) && (
-                      <svg className="w-3 h-3 text-background" fill="currentColor" viewBox="0 0 20 20">
+                      <svg className="w-3 h-3 text-background" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
                         <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                       </svg>
                     )}
@@ -212,11 +217,11 @@ export function BlogFilters({
 
         {/* Sort Select with Label */}
         <div>
-          <label htmlFor="blog-sort" className="sr-only">
+          <label htmlFor={sortInputId} className="sr-only">
             {tA11y("sortPosts")}
           </label>
           <select
-            id="blog-sort"
+            id={sortInputId}
             value={sortBy}
             onChange={(e) => onSortChange(e.target.value as "newest" | "oldest")}
             className="px-6 py-3 border-4 border-border bg-card text-card-foreground font-bold text-sm md:text-base hover:shadow-brutalist-sm transition-shadow cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2"
@@ -229,6 +234,7 @@ export function BlogFilters({
         {/* Clear Filters Button */}
         {hasFilters && (
           <button
+            type="button"
             onClick={clearFilters}
             className="px-6 py-3 border-4 border-border bg-accent text-accent-foreground font-bold text-sm md:text-base hover:bg-accent/80 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2"
           >
@@ -248,19 +254,21 @@ export function BlogFilters({
 
       {/* Selected Tags */}
       {selectedTags.length > 0 && (
-        <div className="flex flex-wrap gap-2" role="list" aria-label={t("tags")}>
+        <ul className="flex flex-wrap gap-2" aria-label={t("tags")}>
           {selectedTags.map((tag) => (
-            <button
-              key={tag}
-              onClick={() => toggleTag(tag)}
-              aria-label={`${tA11y("removeTag")}: ${tag}`}
-              className="px-4 py-2 border-2 border-border bg-accent text-accent-foreground font-bold text-xs md:text-sm uppercase hover:bg-accent/80 transition-colors flex items-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2"
-            >
-              {tag}
-              <Icon icon={HiXMark} className="w-3 h-3" />
-            </button>
+            <li key={tag}>
+              <button
+                type="button"
+                onClick={() => toggleTag(tag)}
+                aria-label={`${tA11y("removeTag")}: ${tag}`}
+                className="px-4 py-2 border-2 border-border bg-accent text-accent-foreground font-bold text-xs md:text-sm uppercase hover:bg-accent/80 transition-colors flex items-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2"
+              >
+                {tag}
+                <Icon icon={HiXMark} className="w-3 h-3" />
+              </button>
+            </li>
           ))}
-        </div>
+        </ul>
       )}
     </div>
   )

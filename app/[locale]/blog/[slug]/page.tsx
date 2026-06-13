@@ -1,5 +1,4 @@
 import { notFound } from "next/navigation"
-import { getTranslations } from "next-intl/server"
 import { getAllPosts, getPostBySlug, getRelatedPosts } from "@/lib/blog/server"
 import { BlogPostHeader } from "@/components/blog/blog-post-header"
 import { BlogPostContent } from "@/components/blog/blog-post-content"
@@ -42,8 +41,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       title: "Post Not Found",
     }
   }
-
-  const t = await getTranslations({ locale, namespace: "blog" })
 
   return {
     title: post.title,
@@ -95,6 +92,7 @@ export default async function BlogPostPage({ params }: PageProps) {
 
   const allPosts = await getAllPosts(locale, false)
   const relatedPosts = getRelatedPosts(post, allPosts, 3)
+  const postContent = await BlogPostContent({ content: post.content })
 
   const postUrl = `${BASE_URL}/${locale}/blog/${slug}`
 
@@ -157,8 +155,9 @@ export default async function BlogPostPage({ params }: PageProps) {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify([articleSchema, breadcrumbSchema]) }}
-      />
+      >
+        {JSON.stringify([articleSchema, breadcrumbSchema])}
+      </script>
       <main className="min-h-screen bg-background">
         <SkipLink targetId="article-content" />
         <PortfolioNav />
@@ -167,7 +166,7 @@ export default async function BlogPostPage({ params }: PageProps) {
           <div className="max-w-4xl mx-auto">
             <BlogArticleContainer>
               <BlogPostHeader post={post} locale={locale} />
-              <BlogPostContent content={post.content} />
+              {postContent}
               <BlogRelatedPosts posts={relatedPosts} locale={locale} />
             </BlogArticleContainer>
           </div>

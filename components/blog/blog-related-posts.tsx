@@ -7,6 +7,8 @@ import type { Post } from "@/lib/blog"
 interface BlogRelatedPostsProps {
   posts: Post[]
   locale: "en" | "pt-BR"
+  basePath?: string
+  translationNamespace?: string
 }
 
 function formatDate(dateString: string, locale: "en" | "pt-BR"): string {
@@ -19,8 +21,13 @@ function formatDate(dateString: string, locale: "en" | "pt-BR"): string {
   }).format(date)
 }
 
-export function BlogRelatedPosts({ posts, locale }: BlogRelatedPostsProps) {
-  const t = useTranslations("blog")
+export function BlogRelatedPosts({
+  posts,
+  locale,
+  basePath = "/blog",
+  translationNamespace = "blog",
+}: BlogRelatedPostsProps) {
+  const t = useTranslations(translationNamespace)
 
   if (posts.length === 0) {
     return null
@@ -36,7 +43,7 @@ export function BlogRelatedPosts({ posts, locale }: BlogRelatedPostsProps) {
         {posts.map((post) => (
           <Link
             key={post.slug}
-            href={`/blog/${post.slug}`}
+            href={`${basePath}/${post.slug}`}
             className="block group focus:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2"
             data-magnetic
           >

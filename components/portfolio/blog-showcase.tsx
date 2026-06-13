@@ -154,7 +154,7 @@ export function PortfolioBlogShowcase({
         <div className="text-center">
           <Link
             ref={ctaRef}
-            href="/blog"
+            href="/ensaios"
             className="inline-block text-lg md:text-2xl font-black px-8 md:px-12 py-4 md:py-6 bg-background text-foreground border-4 border-foreground shadow-brutalist hover:shadow-brutalist-lg hover:translate-x-1 hover:translate-y-1 transition-all"
           >
             {t("viewAllPosts")} →

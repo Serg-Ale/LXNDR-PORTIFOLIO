@@ -1,39 +1,23 @@
-import { PortfolioNav } from "@/components/portfolio/nav";
-import { PortfolioFooter } from "@/components/portfolio/footer";
-import { PortfolioIntro } from "@/components/portfolio/intro";
-import { Manifesto } from "@/components/portfolio/manifesto";
-import { PortfolioOrigin } from "@/components/portfolio/origin";
-import { PortfolioJourney } from "@/components/portfolio/journey";
-import { PortfolioSkills } from "@/components/portfolio/skills";
-import { PortfolioProof } from "@/components/portfolio/proof";
-import { PortfolioVision } from "@/components/portfolio/vision";
-import { PortfolioBlogShowcase } from "@/components/portfolio/blog-showcase";
-import { PortfolioConnect } from "@/components/portfolio/connect";
-import { ScrollProgress } from "@/components/shared/scroll-progress";
-import { MatrixZone } from "@/components/shared/matrix-zone";
-import { getAllPosts } from "@/lib/blog/server";
-import { BASE_URL } from "@/lib/constants";
-import { Metadata } from "next";
+import { PortalPage } from "@/components/portal/portal-page"
+import { BASE_URL } from "@/lib/constants"
+import type { Metadata } from "next"
 
 interface PageProps {
-  params: Promise<{ locale: "en" | "pt-BR" }>;
+  params: Promise<{ locale: "en" | "pt-BR" }>
 }
 
-export async function generateMetadata({
-  params,
-}: PageProps): Promise<Metadata> {
-  const { locale } = await params;
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { locale } = await params
 
   const titles: Record<string, string> = {
-    en: "Sérgio Alexandre — Full-Stack Software Engineer",
-    "pt-BR": "Sérgio Alexandre — Engenheiro de Software Full-Stack",
-  };
+    en: "Sérgio Alexandre — Software Engineer & LXNDR",
+    "pt-BR": "Sérgio Alexandre — Engenheiro de Software & LXNDR",
+  }
 
   const descriptions: Record<string, string> = {
-    en: "Full-Stack Software Engineer specializing in Next.js, React, TypeScript. Building digital experiences that transform at Union. Open for opportunities.",
-    "pt-BR":
-      "Engenheiro de Software Full-Stack especializado em Next.js, React, TypeScript. Construindo experiências digitais que transformam na Union. Aberto a oportunidades.",
-  };
+    en: "Software Engineer and electronic music artist LXNDR. Choose your path.",
+    "pt-BR": "Engenheiro de Software e artista de música eletrônica LXNDR. Escolha seu caminho.",
+  }
 
   return {
     title: titles[locale],
@@ -52,122 +36,19 @@ export async function generateMetadata({
       description: descriptions[locale],
       images: ["/og-default.png"],
     },
-  };
+  }
 }
 
-export default async function Home({ params }: PageProps) {
-  const { locale } = await params;
-
-  // Fetch 2 most recent blog posts
-  const allPosts = await getAllPosts(locale, false);
-  const recentPosts = allPosts.slice(0, 2);
-
-  const personSchema = {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    name: "Sérgio Alexandre",
-    jobTitle: "Full-Stack Software Engineer",
-    url: BASE_URL,
-    sameAs: [
-      "https://github.com/lxndr",
-      "https://x.com/OAlexandreSerg",
-      "https://linkedin.com/in/lxndr",
-    ],
-    worksFor: {
-      "@type": "Organization",
-      name: "Union",
-      url: "https://union.dev",
-    },
-    alumniOf: {
-      "@type": "EducationalOrganization",
-      name: "UTFPR",
-    },
-    knowsAbout: [
-      "Next.js",
-      "React",
-      "TypeScript",
-      "Node.js",
-      "Tailwind CSS",
-      "tRPC",
-      "Prisma",
-      "PostgreSQL",
-    ],
-    nationality: {
-      "@type": "Country",
-      name: "Brazil",
-    },
-    speakingLanguages: ["en", "pt-BR"],
-  };
-
-  const websiteSchema = {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    name: "LXNDR Portfolio",
-    url: BASE_URL,
-    description: "Portfolio of Sérgio Alexandre, Full-Stack Software Engineer",
-    author: {
-      "@type": "Person",
-      name: "Sérgio Alexandre",
-    },
-  };
-
+export default function Portal() {
   return (
     <>
-      <script
-        type="application/ld+json"
-      >
-        {JSON.stringify([personSchema, websiteSchema])}
-      </script>
-      {/* Skip to main content link for accessibility */}
       <a
         href="#main-content"
-        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-foreground focus:text-background focus:font-bold focus:border-2 focus:border-background"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-white focus:text-black focus:font-bold focus:border-2 focus:border-black"
       >
         Skip to main content
       </a>
-      <main id="main-content" className="min-h-screen">
-        <PortfolioNav />
-        <ScrollProgress
-          sections={["intro", "manifesto", "proof", "origin", "journey", "skills", "vision", "blog", "connect"]}
-        />
-
-        <div data-section="intro">
-          <PortfolioIntro />
-        </div>
-
-        <div data-section="manifesto">
-          <Manifesto />
-        </div>
-
-        <MatrixZone>
-          <div data-section="proof">
-            <PortfolioProof />
-          </div>
-          <div data-section="origin">
-            <PortfolioOrigin />
-          </div>
-          <div data-section="journey">
-            <PortfolioJourney />
-          </div>
-          <div data-section="skills">
-            <PortfolioSkills />
-          </div>
-        </MatrixZone>
-
-        {/* certifications: removed from new structure — content preserved in component */}
-        {/* impact: removed from new structure — content preserved in component */}
-
-        <div data-section="vision">
-          <PortfolioVision />
-        </div>
-        <div data-section="blog">
-          <PortfolioBlogShowcase posts={recentPosts} locale={locale} />
-        </div>
-        <div data-section="connect">
-          <PortfolioConnect />
-        </div>
-        <PortfolioFooter />
-      </main>
+      <PortalPage />
     </>
-  );
+  )
 }

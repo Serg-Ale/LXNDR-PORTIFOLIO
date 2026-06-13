@@ -20,9 +20,10 @@ function formatDate(dateString: string, locale: "en" | "pt-BR"): string {
 interface BlogCardProps {
   post: Post
   locale: "en" | "pt-BR"
+  basePath?: string
 }
 
-export function BlogCard({ post, locale }: BlogCardProps) {
+export function BlogCard({ post, locale, basePath = "/blog" }: BlogCardProps) {
   const cardRef = useRef<HTMLAnchorElement>(null)
   const prefersReducedMotion = useReducedMotion()
   const t = useTranslations("blog")
@@ -44,7 +45,7 @@ export function BlogCard({ post, locale }: BlogCardProps) {
 
   return (
     <Link
-      href={`/blog/${post.slug}`}
+      href={`${basePath}/${post.slug}`}
       ref={cardRef}
       className="block group theme-transition-rgb"
     >

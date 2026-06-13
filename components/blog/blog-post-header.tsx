@@ -8,6 +8,8 @@ import { BrutalistBadge, BrutalistBadgeGroup } from "./brutalist-badge"
 interface BlogPostHeaderProps {
   post: Post
   locale: "en" | "pt-BR"
+  backHref?: string
+  translationNamespace?: string
 }
 
 function formatDate(dateString: string, locale: "en" | "pt-BR"): string {
@@ -20,13 +22,18 @@ function formatDate(dateString: string, locale: "en" | "pt-BR"): string {
   }).format(date)
 }
 
-export function BlogPostHeader({ post, locale }: BlogPostHeaderProps) {
-  const t = useTranslations("blog")
+export function BlogPostHeader({
+  post,
+  locale,
+  backHref = "/blog",
+  translationNamespace = "blog",
+}: BlogPostHeaderProps) {
+  const t = useTranslations(translationNamespace)
 
   return (
     <header className="mb-12 md:mb-16 theme-transition-rgb">
       <Link
-        href="/blog"
+        href={backHref}
         className="inline-flex items-center gap-2 text-sm md:text-base font-bold mb-8 hover:opacity-70 transition-opacity"
         data-magnetic
       >

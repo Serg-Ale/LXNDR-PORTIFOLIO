@@ -10,6 +10,7 @@ import type { Post } from "@/lib/blog"
 interface BlogMasonryProps {
   posts: Post[]
   locale: "en" | "pt-BR"
+  basePath?: string
 }
 
 const breakpointColumns = {
@@ -19,7 +20,7 @@ const breakpointColumns = {
   768: 1,
 }
 
-export function BlogMasonry({ posts, locale }: BlogMasonryProps) {
+export function BlogMasonry({ posts, locale, basePath = "/blog" }: BlogMasonryProps) {
   const containerRef = useRef<HTMLDivElement>(null)
   const prefersReducedMotion = useReducedMotion()
 
@@ -37,7 +38,7 @@ export function BlogMasonry({ posts, locale }: BlogMasonryProps) {
     }, containerRef)
 
     return () => ctx.revert()
-  }, [posts, prefersReducedMotion])
+  }, [prefersReducedMotion])
 
   if (posts.length === 0) {
     return null
@@ -52,7 +53,7 @@ export function BlogMasonry({ posts, locale }: BlogMasonryProps) {
       >
         {posts.map((post) => (
           <div key={post.slug} className="blog-card-item mb-6">
-            <BlogCard post={post} locale={locale} />
+            <BlogCard post={post} locale={locale} basePath={basePath} />
           </div>
         ))}
       </Masonry>

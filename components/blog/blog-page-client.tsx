@@ -14,10 +14,19 @@ import type { Post } from "@/lib/blog"
 interface BlogPageClientProps {
   initialPosts: Post[]
   allTags: string[]
+  basePath?: string
+  contentId?: string
+  translationNamespace?: string
 }
 
-export function BlogPageClient({ initialPosts, allTags }: BlogPageClientProps) {
-  const t = useTranslations("blog")
+export function BlogPageClient({
+  initialPosts,
+  allTags,
+  basePath = "/blog",
+  contentId = "blog-content",
+  translationNamespace = "blog",
+}: BlogPageClientProps) {
+  const t = useTranslations(translationNamespace)
   const locale = useLocale() as "en" | "pt-BR"
   const searchParams = useSearchParams()
   const router = useRouter()
@@ -35,6 +44,9 @@ export function BlogPageClient({ initialPosts, allTags }: BlogPageClientProps) {
     const sortParam = searchParams.get("sort")
     return sortParam === "oldest" ? "oldest" : "newest"
   })
+
+  const sectionIdPrefix = contentId.replace(/[^a-zA-Z0-9]/g, "-")
+  const sortInputId = `${sectionIdPrefix}-sort`
 
   // Update URL when filters change
   const updateURL = useCallback((
@@ -110,11 +122,11 @@ export function BlogPageClient({ initialPosts, allTags }: BlogPageClientProps) {
 
   return (
     <main className="min-h-screen bg-background">
-      <SkipLink targetId="blog-content" />
+      <SkipLink targetId={contentId} />
       <PortfolioNav />
       <ScrollProgress />
 
-      <section id="blog-content" className="pt-32 pb-20 px-6 md:px-12">
+      <section id={contentId} className="pt-32 pb-20 px-6 md:px-12">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
           <header className="mb-16">
@@ -136,11 +148,13 @@ export function BlogPageClient({ initialPosts, allTags }: BlogPageClientProps) {
             sortBy={sortBy}
             onSortChange={handleSortChange}
             resultCount={filteredPosts.length}
+            translationNamespace={translationNamespace}
+            sortInputId={sortInputId}
           />
 
           {/* Posts Grid */}
           {filteredPosts.length > 0 ? (
-            <BlogMasonry posts={filteredPosts} locale={locale} />
+            <BlogMasonry posts={filteredPosts} locale={locale} basePath={basePath} />
           ) : (
             <div className="text-center py-20" role="status">
               <p className="text-2xl md:text-4xl font-bebas font-bold text-muted-foreground">

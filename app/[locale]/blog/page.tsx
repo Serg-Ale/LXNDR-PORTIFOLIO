@@ -1,4 +1,3 @@
-import { getTranslations } from "next-intl/server"
 import { getAllPosts, getAllTags } from "@/lib/blog/server"
 import { BlogPageClient } from "@/components/blog/blog-page-client"
 import { BASE_URL, BLOG_DESCRIPTIONS } from "@/lib/constants"
@@ -69,9 +68,10 @@ export default async function BlogPage({ params }: PageProps) {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogSchema) }}
-      />
-      <BlogPageClient initialPosts={posts} allTags={tags} />
+      >
+        {JSON.stringify(blogSchema)}
+      </script>
+      <BlogPageClient initialPosts={posts} allTags={tags} translationNamespace="blog" />
     </>
   )
 }

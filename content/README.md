@@ -1,68 +1,81 @@
-# Blog Content Structure
+# Editorial Content Structure
 
-## Published Posts
+This repository now uses an **editorial-first** model with two distinct content roots:
 
-Each post lives in its own folder under `content/posts/`:
+- `content/essays/` for long-form authorial essays (`ensaios`)
+- `content/laboratory/` for experimental and iterative pieces (`laboratorio`)
 
-```
-content/posts/
-├── post-name/
-│   ├── index.en.mdx
+Legacy technical blog posts remain in `content/posts/` during migration, but new editorial publication should target the roots above.
+
+## 1) Essays (`content/essays/`)
+
+Each essay lives in its own slug folder:
+
+```txt
+content/essays/
+├── essay-slug/
 │   ├── index.pt-BR.mdx
-│   └── images/
-│       └── (optional assets for the post)
+│   ├── index.en.mdx        # optional
+│   └── images/             # optional
 ```
 
-### Frontmatter Format
+## 2) Laboratory (`content/laboratory/`)
+
+Each laboratory entry also lives in its own slug folder:
+
+```txt
+content/laboratory/
+├── experiment-slug/
+│   ├── index.pt-BR.mdx
+│   ├── index.en.mdx        # optional
+│   └── images/             # optional
+```
+
+## 3) Drafts
+
+Work-in-progress entries stay under `content/drafts/` and are only intended for development visibility.
+
+```txt
+content/drafts/
+├── some-entry/
+│   ├── index.pt-BR.mdx
+│   └── index.en.mdx        # optional
+```
+
+## Frontmatter Contract
 
 ```yaml
 ---
-title: "Post Title"
-date: "2024-01-22"
-description: "Brief description for SEO and card previews"
+title: "Entry title"
+description: "Brief description for SEO and cards"
+date: "2026-05-21"
 tags: ["tag1", "tag2"]
+author: "Sérgio Alexandre"
+locale: "pt-BR" # or "en"
+slug: "entry-slug"
+contentType: "essay" # or "lab"
 draft: false
 ---
 ```
 
-## Drafts
+### Optional frontmatter
 
-Work-in-progress posts live in `content/drafts/`:
+- `image`
+- `coverImage`
+- `readingTime`
 
-```
-content/drafts/
-├── draft-post/
-│   ├── index.en.mdx
-│   └── index.pt-BR.mdx
-```
+## PT-BR-first Publication Rule
 
-Drafts are only visible in development mode (`NODE_ENV=development`).
-Move posts from `drafts/` to `posts/` when both language versions are complete.
+PT-BR is allowed as the primary publication language.
 
-## Adding Images
+- `index.pt-BR.mdx` can be published without `index.en.mdx`
+- `index.en.mdx` can be added later as a translation
+- Missing EN versions should use loader-level fallback behavior rather than hard 404 where applicable
 
-Place images in the post's `images/` folder:
+## Images
 
-```
-content/posts/react-hooks-deep-dive/
-├── index.en.mdx
-├── index.pt-BR.mdx
-└── images/
-    ├── diagram.png
-    └── code-example.png
-```
-
-Reference in MDX:
+Place images in the entry-local `images/` folder and reference them from MDX.
 
 ```markdown
 ![Description](/images/diagram.png)
 ```
-
-## Bilingual Content
-
-Each post must have both versions:
-
-- `index.en.mdx` - English version
-- `index.pt-BR.mdx` - Brazilian Portuguese version
-
-Both files should have matching frontmatter (except `title` and `description` which can be translated).

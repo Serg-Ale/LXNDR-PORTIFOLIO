@@ -2,8 +2,7 @@
 
 import { useEffect, useRef, useState } from "react"
 import { createPortal } from "react-dom"
-import { useTranslations, useLocale } from "next-intl"
-import { usePathname } from "@/i18n/routing"
+import { useTranslations } from "next-intl"
 import gsap from "gsap"
 import { Link } from "@/i18n/routing"
 import { LanguageSwitcher } from "@/components/shared/language-switcher"
@@ -13,8 +12,6 @@ import { getContrastColor } from "@/lib/color-utils"
 
 export function PortfolioNav() {
   const t = useTranslations("nav")
-  const locale = useLocale()
-  const pathname = usePathname()
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [navHeight, setNavHeight] = useState(0)
@@ -23,7 +20,6 @@ export function PortfolioNav() {
   const mobileMenuRef = useRef<HTMLDivElement>(null)
   
   const sectionBg = useSectionBackground(navHeight)
-  const isHomePage = pathname === "/" || pathname === ""
   const borderColor = getContrastColor(sectionBg.backgroundColor)
 
   useEffect(() => {
@@ -108,16 +104,8 @@ export function PortfolioNav() {
     }
   }, [])
 
-  const scrollToSection = (id: string) => {
-    if (isHomePage) {
-      const element = document.getElementById(id)
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" })
-        setIsMobileMenuOpen(false)
-      }
-    } else {
-      window.location.href = `/${locale}#${id}`
-    }
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false)
   }
 
   const mobileMenu = mounted && isMobileMenuOpen && (
@@ -135,30 +123,41 @@ export function PortfolioNav() {
       className={`fixed left-0 right-0 md:hidden border-t shadow-modern-lg z-40 transition-colors duration-300`}
     >
       <div className="max-w-7xl mx-auto w-full px-6 py-4 flex flex-col gap-3">
-            <button
-              onClick={() => scrollToSection("journey")}
-              className="nav-link-purple text-lg font-semibold px-4 py-3 transition-all text-left hover:text-accent-purple focus-visible:ring-2 focus-visible:ring-current focus-visible:ring-offset-2 focus-visible:outline-none touch-action-manipulation"
-            >
-              {t("about")}
-            </button>
-            <button
-              onClick={() => scrollToSection("proof")}
-              className="nav-link-purple text-lg font-semibold px-4 py-3 transition-all text-left hover:text-accent-purple focus-visible:ring-2 focus-visible:ring-current focus-visible:ring-offset-2 focus-visible:outline-none touch-action-manipulation"
-            >
-              {t("experience")}
-            </button>
             <Link
-              href="/blog"
+              href="/ensaios"
+              onClick={closeMobileMenu}
               className="nav-link-purple text-lg font-semibold px-4 py-3 transition-all text-left block hover:text-accent-purple focus-visible:ring-2 focus-visible:ring-current focus-visible:ring-offset-2 focus-visible:outline-none touch-action-manipulation"
             >
-              {t("blog")}
+              {t("essays")}
             </Link>
-            <button
-              onClick={() => scrollToSection("connect")}
-              className="nav-link-purple text-lg font-semibold px-4 py-3 transition-all text-left hover:text-accent-purple focus-visible:ring-2 focus-visible:ring-current focus-visible:ring-offset-2 focus-visible:outline-none touch-action-manipulation"
+            <Link
+              href="/laboratorio"
+              onClick={closeMobileMenu}
+              className="nav-link-purple text-lg font-semibold px-4 py-3 transition-all text-left block hover:text-accent-purple focus-visible:ring-2 focus-visible:ring-current focus-visible:ring-offset-2 focus-visible:outline-none touch-action-manipulation"
+            >
+              {t("laboratory")}
+            </Link>
+            <Link
+              href="/projetos"
+              onClick={closeMobileMenu}
+              className="nav-link-purple text-lg font-semibold px-4 py-3 transition-all text-left block hover:text-accent-purple focus-visible:ring-2 focus-visible:ring-current focus-visible:ring-offset-2 focus-visible:outline-none touch-action-manipulation"
+            >
+              {t("projects")}
+            </Link>
+            <Link
+              href="/sobre"
+              onClick={closeMobileMenu}
+              className="nav-link-purple text-lg font-semibold px-4 py-3 transition-all text-left block hover:text-accent-purple focus-visible:ring-2 focus-visible:ring-current focus-visible:ring-offset-2 focus-visible:outline-none touch-action-manipulation"
+            >
+              {t("about")}
+            </Link>
+            <Link
+              href="/contato"
+              onClick={closeMobileMenu}
+              className="nav-link-purple text-lg font-semibold px-4 py-3 transition-all text-left block hover:text-accent-purple focus-visible:ring-2 focus-visible:ring-current focus-visible:ring-offset-2 focus-visible:outline-none touch-action-manipulation"
             >
               {t("contact")}
-            </button>
+            </Link>
         <div className="px-4 py-2 flex items-center gap-4">
           <LanguageSwitcher />
           <ThemeToggle className="w-10 h-10 md:w-12 md:h-12" />
@@ -188,35 +187,42 @@ export function PortfolioNav() {
           </Link>
 
           <div className="hidden md:flex gap-4 md:gap-8 flex-shrink-0 items-center">
-            <button
-              onClick={() => scrollToSection("journey")}
+            <Link
+              href="/ensaios"
+              className="nav-link-purple text-lg md:text-xl font-semibold px-4 py-2 transition-all hover:text-accent-purple focus-visible:ring-2 focus-visible:ring-current focus-visible:ring-offset-2 focus-visible:outline-none touch-action-manipulation"
+            >
+              {t("essays")}
+            </Link>
+            <Link
+              href="/laboratorio"
+              className="nav-link-purple text-lg md:text-xl font-semibold px-4 py-2 transition-all hover:text-accent-purple focus-visible:ring-2 focus-visible:ring-current focus-visible:ring-offset-2 focus-visible:outline-none touch-action-manipulation"
+            >
+              {t("laboratory")}
+            </Link>
+            <Link
+              href="/projetos"
+              className="nav-link-purple text-lg md:text-xl font-semibold px-4 py-2 transition-all hover:text-accent-purple focus-visible:ring-2 focus-visible:ring-current focus-visible:ring-offset-2 focus-visible:outline-none touch-action-manipulation"
+            >
+              {t("projects")}
+            </Link>
+            <Link
+              href="/sobre"
               className="nav-link-purple text-lg md:text-xl font-semibold px-4 py-2 transition-all hover:text-accent-purple focus-visible:ring-2 focus-visible:ring-current focus-visible:ring-offset-2 focus-visible:outline-none touch-action-manipulation"
             >
               {t("about")}
-            </button>
-            <button
-              onClick={() => scrollToSection("proof")}
-              className="nav-link-purple text-lg md:text-xl font-semibold px-4 py-2 transition-all hover:text-accent-purple focus-visible:ring-2 focus-visible:ring-current focus-visible:ring-offset-2 focus-visible:outline-none touch-action-manipulation"
-            >
-              {t("experience")}
-            </button>
-            <Link
-              href="/blog"
-              className="nav-link-purple text-lg md:text-xl font-semibold px-4 py-2 transition-all hover:text-accent-purple focus-visible:ring-2 focus-visible:ring-current focus-visible:ring-offset-2 focus-visible:outline-none touch-action-manipulation"
-            >
-              {t("blog")}
             </Link>
-            <button
-              onClick={() => scrollToSection("connect")}
+            <Link
+              href="/contato"
               className="nav-link-purple text-lg md:text-xl font-semibold px-4 py-2 transition-all hover:text-accent-purple focus-visible:ring-2 focus-visible:ring-current focus-visible:ring-offset-2 focus-visible:outline-none touch-action-manipulation"
             >
               {t("contact")}
-            </button>
+            </Link>
             <LanguageSwitcher />
             <ThemeToggle />
           </div>
 
           <button
+            type="button"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="md:hidden flex flex-col gap-1.5 p-2 flex-shrink-0 focus-visible:ring-2 focus-visible:ring-current focus-visible:ring-offset-2 focus-visible:outline-none touch-action-manipulation"
             aria-label="Toggle menu"
