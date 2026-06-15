@@ -17,45 +17,46 @@
   "lxndr": {
     "nav": {
       "listen": "OUVIR",
-      "releases": "LANÇAMENTOS",
-      "booking": "BOOKING",
+      "releases": "REGISTROS",
+      "booking": "CHAMAR",
       "backToPortal": "← PORTAL"
     },
     "hero": {
       "name": "LXNDR",
-      "role": "DJ / Produtor / Artista eletrônico",
-      "genres": "Techno · Psytrance · Industrial · Ritual sônico",
-      "tagline": "Música física, psíquica e filosófica. Raw signal from Paraná.",
-      "signal": "transmission started / Paraná / BR",
+      "role": "DJ / Open Format / Assinatura Eletrônica",
+      "genres": "LONDRINA / PR / OPEN FORMAT / ELECTRONIC / TECH HOUSE / FUNK / POP / TRAP / BRASILIDADES / WARM-UP / AFTER / BAR / FESTA",
+      "tagline": "DJ de Londrina criando pista entre open format, eletrônica, groove e energia noturna.",
+      "signal": "transmission started / Londrina / PR",
       "listenCta": "Ouvir no SoundCloud",
       "followCta": "Seguir no Instagram",
-      "bookingCta": "Booking / Collab",
+      "bookingCta": "Chamar pra tocar",
       "scrollDown": "SCROLL"
     },
     "manifesto": {
-      "eyebrow": "raw signal / manifesto",
-      "line1": "CAOS, CORPO",
-      "line2": "RUÍDO E TENSÃO",
+      "eyebrow": "raw signal / processo",
+      "line1": "PISTA, GROOVE,",
+      "line2": "CORPO E SINAL",
       "line3": "VIRAM",
-      "line4": "FREQUÊNCIA.",
-      "sub": "Interferência entra como sinal bruto. O corpo processa. A pista devolve matéria sônica — física, psíquica e ritual.",
-      "sideNote": "Interferência é matéria. Ganho vira pressão. Ruído vira forma. Forma vira ritual.",
-      "directive1": "CAPTAR.",
-      "directive2": "DISTORCER.",
-      "directive3": "ORGANIZAR.",
-      "directive4": "PROPAGAR."
+      "line4": "MOVIMENTO.",
+      "sub": "O som entra como repertório. A pista responde. O set se adapta, dobra o clima e transforma energia em movimento.",
+      "sideNote": "A leitura vem antes do drop. O groove conduz. A virada muda o ar. A pista devolve o sinal.",
+      "directive1": "LER A PISTA.",
+      "directive2": "CONSTRUIR GROOVE.",
+      "directive3": "VIRAR O CLIMA.",
+      "directive4": "ENTREGAR ENERGIA."
     },
     "sound": {
       "title": "O SOM",
-      "intro": "O som do LXNDR parte da pista, mas não se limita a ela. É construído com pressão, repetição, ruído e camadas atmosféricas, buscando um estado entre corpo, transe e interferência.",
-      "block1": "Ritmos rápidos",
-      "block2": "Atmosferas densas",
-      "block3": "Tensão progressiva",
-      "block4": "Texturas instáveis",
-      "tags": "BODY / TRANCE / PRESSURE / EXPANSION"
+      "intro": "O som do LXNDR parte da pista. Sets abertos, com leitura de ambiente, misturando funk, pop, trap, brasilidades e eletrônica com uma assinatura voltada para groove, tensão, drops e energia noturna.",
+      "block1": "Open format",
+      "block2": "Groove eletrônico",
+      "block3": "Brasilidades / Remixes",
+      "block4": "Tech house / Techno",
+      "tags": "OPEN FORMAT / GROOVE / DROP / NIGHT ENERGY / ELECTRONIC SIGNATURE"
     },
     "releases": {
-      "title": "LANÇAMENTOS",
+      "title": "PRIMEIROS REGISTROS",
+      "sectionIntro": "Tracks, colaborações e experimentos que marcam o início da pesquisa sonora do LXNDR — entre produção eletrônica, pista e identidade em construção.",
       "listenOn": "Ouvir no SoundCloud",
       "embedSlot": "Espaço para embed SoundCloud",
       "bpm": "BPM",
@@ -63,10 +64,10 @@
         "title": "Flow With Me",
         "artists": "Bunn1, LXNDR",
         "label": "raw signal",
-        "genre": "Techno",
+        "genre": "Eletrônico",
         "bpm": "140",
-        "description": "Flow With Me é uma peça de techno para corpos em estado de interferência.",
-        "body": "O som não tenta explicar. Ele atravessa. Camadas, pulsos e ruídos se acumulam como dados corrompidos até virarem organismo: uma máquina sensorial onde o caos não é erro — é matéria-prima."
+        "description": "Um dos primeiros registros do LXNDR em colaboração com Bunn1: uma faixa eletrônica de 140 BPM construída com pulsos, tensão e energia de pista.",
+        "body": "O som não tenta explicar. Ele atravessa. Pulsos e camadas se acumulam até virarem organismo — uma máquina sensorial construída para a pista."
       },
       "track2": {
         "title": "Track 000",
@@ -78,13 +79,30 @@
         "body": "Ainda nascendo. Ainda pulsando."
       }
     },
+    "jornada": {
+      "eyebrow": "jornada musical",
+      "headline1": "COMEÇANDO NA",
+      "headline2": "CARREIRA DE DJ,",
+      "headline3": "NÃO COMEÇANDO",
+      "headline4": "NA MÚSICA.",
+      "intro": "Antes da pista, veio a música. Da flauta transversal à orquestra, do piano à composição em partitura, LXNDR nasce de uma escuta construída na prática.",
+      "body": "Agora, essa bagagem chega às CDJs, aos grooves, aos drops e à noite — não como teoria, mas como instinto treinado.",
+      "steps": [
+        { "label": "Flauta transversal", "tag": "INSTRUMENTO" },
+        { "label": "Orquestra / Igreja", "tag": "PRÁTICA" },
+        { "label": "Piano e harmonia", "tag": "TEORIA" },
+        { "label": "Composição em partitura", "tag": "CRIAÇÃO" },
+        { "label": "Produção eletrônica", "tag": "PRODUÇÃO" },
+        { "label": "CDJ / pista / noite", "tag": "AGORA" }
+      ]
+    },
     "visual": {
       "title": "MUNDO VISUAL",
-      "intro": "O sistema visual do LXNDR nasce do contraste: escuridão industrial, cor sintética, tipografia fraturada, geometria ritual, ruído e fragmentos técnicos.",
+      "intro": "O visual do LXNDR nasce da mesma lógica dos sets: contraste, pressão, fragmento e movimento. Preto absoluto, neon sintético, tipografia brutalista — um sistema visual construído como uma identidade de pista.",
       "elements": [
         "Matéria preta",
         "Interferência neon",
-        "Geometria ritual",
+        "Geometria de pista",
         "Waveforms como símbolos",
         "Ruído como textura",
         "Corpo fragmentado"
@@ -92,15 +110,16 @@
     },
     "scene": {
       "title": "A CENA",
-      "origin": "Paraná, Brasil",
-      "between": "Entre Londrina e Ponta Grossa.",
-      "connected": "Entre Londrina e Ponta Grossa, LXNDR nasce do contato com a cena eletrônica regional, da vivência com a AEON Audio e das conexões que começam a se formar ao redor da pista, do estúdio e da criação coletiva.",
-      "signal": "Um sinal bruto do sul."
+      "origin": "Londrina, PR",
+      "between": "Norte do Paraná — ponto de partida.",
+      "connected": "Londrina é o ponto de partida. LXNDR começa em movimento, buscando presença real na noite, bares e festas da cidade e da região. A AEON Audio e as conexões com Ponta Grossa ficam no contexto formativo — o passo seguinte é a pista de Londrina.",
+      "signal": "Um sinal bruto de Londrina."
     },
     "booking": {
-      "title": "TRANSMIT.",
-      "sub": "Para bookings, collabs, sets, releases e trocas de sinal.",
-      "alt": "Sinal aberto para pista, estúdio e criação coletiva.",
+      "title": "CHAMAR.",
+      "sub": "Disponível para festas universitárias, bares, warm-ups, afters e noites com proposta open format/eletrônica.",
+      "alt": "Sets versáteis, com leitura de pista, groove e assinatura eletrônica.",
+      "whatsapp": "Chamar no WhatsApp",
       "instagram": "Instagram",
       "soundcloud": "SoundCloud",
       "email": "Email"

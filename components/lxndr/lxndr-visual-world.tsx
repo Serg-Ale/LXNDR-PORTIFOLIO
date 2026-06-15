@@ -91,7 +91,7 @@ export function LxndrVisualWorld() {
           >
             <span className="h-px w-5 bg-[var(--lxndr-pink)]" />
             <span className="font-mono text-[10px] uppercase tracking-[0.42em] text-[var(--lxndr-pink)]/75">
-              04 / sistema visual
+              06 / sistema visual
             </span>
             <div className="h-px flex-1 bg-white/10" />
             <span className="font-mono text-[10px] uppercase tracking-[0.28em] text-white/20">

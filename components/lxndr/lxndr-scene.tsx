@@ -19,7 +19,7 @@ const SCENE_DATA = [
   { id: "sd-01", label: "COLETIVO", value: "AEON AUDIO" },
   { id: "sd-02", label: "DESDE", value: "2024+" },
   { id: "sd-03", label: "REGIÃO", value: "PR — BR" },
-  { id: "sd-04", label: "CENA", value: "TECHNO / PSY" },
+  { id: "sd-04", label: "CENA", value: "OPEN FORMAT" },
 ] as const
 
 export function LxndrScene() {
@@ -126,11 +126,11 @@ export function LxndrScene() {
         >
           <span className="h-px w-5 bg-[var(--lxndr-cyan)]" />
           <span className="font-mono text-[10px] uppercase tracking-[0.42em] text-[var(--lxndr-cyan)]/70">
-            05 / a cena
+            07 / a cena
           </span>
           <div className="h-px flex-1 bg-white/8" />
           <span className="font-mono text-[10px] uppercase tracking-[0.28em] text-white/20">
-            signal.south
+            signal.norte
           </span>
         </div>
 

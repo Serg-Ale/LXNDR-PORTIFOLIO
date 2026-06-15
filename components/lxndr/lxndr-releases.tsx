@@ -10,13 +10,23 @@ import { useLxndrScrollMotion } from "@/components/lxndr/use-lxndr-scroll-motion
 
 gsap.registerPlugin(ScrollTrigger)
 
-const RELEASES = [
+type Release = {
+  id: string
+  number: string
+  trackKey: string
+  borderClass: string
+  href: string
+  embedUrl: string | null
+}
+
+const RELEASES: Release[] = [
   {
     id: "track-001",
     number: "01",
     trackKey: "track1",
     borderClass: "border-[var(--lxndr-pink)]",
     href: lxndrLinks.soundcloud,
+    embedUrl: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%3Atracks%3A2336769371%3Fsecret_token%3Ds-n7JFuYK7T30&color=%23ff0aa8&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=true",
   },
   {
     id: "track-002",
@@ -24,8 +34,9 @@ const RELEASES = [
     trackKey: "track2",
     borderClass: "border-[var(--lxndr-cyan)]",
     href: lxndrLinks.soundcloud,
+    embedUrl: null,
   },
-] as const
+]
 
 export function LxndrReleases() {
   const t = useTranslations("lxndr.releases")
@@ -85,13 +96,17 @@ export function LxndrReleases() {
           </p>
         </div>
 
+        <p data-anim className="mt-2 max-w-2xl font-space text-base leading-relaxed text-white/55 md:text-lg">
+          {t("sectionIntro")}
+        </p>
+
         <div
           data-lxndr-drift
           data-lxndr-drift-x="72"
           data-lxndr-drift-y="46"
           className="grid grid-cols-1 gap-5 lg:grid-cols-2"
         >
-          {RELEASES.map(({ id, number, trackKey, borderClass, href }) => (
+          {RELEASES.map(({ id, number, trackKey, borderClass, href, embedUrl }) => (
             <article
               key={id}
               data-anim
@@ -136,21 +151,35 @@ export function LxndrReleases() {
                   {t(`${trackKey}.body`)}
                 </p>
 
-                <div className="mt-auto border border-dashed border-white/12 bg-white/[0.015] px-4 py-5">
-                  <div className="flex items-center justify-between gap-4 font-mono text-[10px] uppercase tracking-[0.28em] text-white/35">
-                    <span>{t("embedSlot")}</span>
-                    <span>soundcloud</span>
+                {embedUrl ? (
+                  <div className="mt-auto overflow-hidden border border-white/10 bg-black">
+                    <iframe
+                      width="100%"
+                      height="166"
+                      allow="autoplay; encrypted-media"
+                      loading="lazy"
+                      src={embedUrl}
+                      title={`SoundCloud — ${t(`${trackKey}.title`)}`}
+                      style={{ display: "block", border: "none" }}
+                    />
                   </div>
-                  <div className="mt-4 flex h-8 items-end gap-[3px] opacity-25" aria-hidden="true">
-                    {[10, 22, 14, 30, 18, 26, 12, 20, 28, 16, 8, 24].map((height, index) => (
-                      <span
-                        key={`${id}-embed-${height}-${index}`}
-                        className="flex-1 bg-white"
-                        style={{ height }}
-                      />
-                    ))}
+                ) : (
+                  <div className="mt-auto border border-dashed border-white/12 bg-white/[0.015] px-4 py-5">
+                    <div className="flex items-center justify-between gap-4 font-mono text-[10px] uppercase tracking-[0.28em] text-white/35">
+                      <span>{t("embedSlot")}</span>
+                      <span>soundcloud</span>
+                    </div>
+                    <div className="mt-4 flex h-8 items-end gap-[3px] opacity-25" aria-hidden="true">
+                      {[10, 22, 14, 30, 18, 26, 12, 20, 28, 16, 8, 24].map((height) => (
+                        <span
+                          key={`${id}-embed-${height}`}
+                          className="flex-1 bg-white"
+                          style={{ height }}
+                        />
+                      ))}
+                    </div>
                   </div>
-                </div>
+                )}
 
                 <a
                   href={href}
