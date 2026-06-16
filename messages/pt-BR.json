@@ -40,10 +40,10 @@
       "line4": "MOVIMENTO.",
       "sub": "O som entra como repertório. A pista responde. O set se adapta, dobra o clima e transforma energia em movimento.",
       "sideNote": "A leitura vem antes do drop. O groove conduz. A virada muda o ar. A pista devolve o sinal.",
-      "directive1": "LER A PISTA.",
-      "directive2": "CONSTRUIR GROOVE.",
-      "directive3": "VIRAR O CLIMA.",
-      "directive4": "ENTREGAR ENERGIA."
+    "directive1": "OUVIR A FREQUÊNCIA.",
+    "directive2": "ARTICULAR O TEMPO.",
+    "directive3": "PRESSIONAR O ESPAÇO.",
+    "directive4": "SOLTAR O MOMENTO."
     },
     "sound": {
       "title": "O SOM",
@@ -52,31 +52,61 @@
       "block2": "Groove eletrônico",
       "block3": "Brasilidades / Remixes",
       "block4": "Tech house / Techno",
-      "tags": "OPEN FORMAT / GROOVE / DROP / NIGHT ENERGY / ELECTRONIC SIGNATURE"
+      "tags": "128–145 BPM / BASS-LED / BUILDS & DROPS / PISTA PRIMEIRO / SINAL BRUTO"
     },
     "releases": {
       "title": "PRIMEIROS REGISTROS",
-      "sectionIntro": "Tracks, colaborações e experimentos que marcam o início da pesquisa sonora do LXNDR — entre produção eletrônica, pista e identidade em construção.",
+      "sectionIntro": "Tracks, colaborações e experimentos que marcam a pesquisa sonora do LXNDR — da composição em partitura à produção eletrônica, da colaboração à identidade solo em construção.",
       "listenOn": "Ouvir no SoundCloud",
       "embedSlot": "Espaço para embed SoundCloud",
       "bpm": "BPM",
       "track1": {
         "title": "Flow With Me",
         "artists": "Bunn1, LXNDR",
-        "label": "raw signal",
         "genre": "Eletrônico",
         "bpm": "140",
         "description": "Um dos primeiros registros do LXNDR em colaboração com Bunn1: uma faixa eletrônica de 140 BPM construída com pulsos, tensão e energia de pista.",
         "body": "O som não tenta explicar. Ele atravessa. Pulsos e camadas se acumulam até virarem organismo — uma máquina sensorial construída para a pista."
       },
       "track2": {
-        "title": "Track 000",
-        "artists": "LXNDR",
-        "label": "hello world as LXNDR",
-        "genre": "Experimental",
+        "title": "Reality Isn't Real",
+        "artists": "Bunn1, LXNDR",
+        "genre": "Eletrônico",
         "bpm": "—",
-        "description": "O primeiro sinal bruto do projeto.",
-        "body": "Ainda nascendo. Ainda pulsando."
+        "description": "Faixa colaborativa com Bunn1 da fase de formação do LXNDR — uma imersão em texturas eletrônicas densas e atmosferas noturnas.",
+        "body": "Duas mentes, uma frequência. O som se dobra sobre si mesmo até que a realidade se dissolva na pista."
+      },
+      "track3": {
+        "title": "Requiem (Original Mix)",
+        "artists": "Bunn1, LXNDR",
+        "genre": "Eletrônico",
+        "bpm": "—",
+        "description": "Um réquiem eletrônico construído em parceria com Bunn1, onde camadas sintéticas e tensão progressiva criam uma narrativa sonora de perda e elevação.",
+        "body": "O luto encontra o groove. Melodia e distorção se fundem em um hino para o fim — e para o que vem depois."
+      },
+      "track4": {
+        "title": "Throes",
+        "artists": "Bunn1, LXNDR",
+        "genre": "Eletrônico",
+        "bpm": "—",
+        "description": "Colaboração com Bunn1 que captura o momento de transição entre a agonia e a libertação — pulsos eletrônicos que apertam e soltam o ar da pista.",
+        "body": "A agonia do nascimento. Espasmos rítmicos que constroem e destroem o groove num ciclo infinito."
+      },
+      "track5": {
+        "title": "Agony For Shortness Of Breath",
+        "artists": "LXNDR",
+        "genre": "Piano / Clássico Contemporâneo",
+        "bpm": "—",
+        "description": "Obra para piano composta há mais de 4 anos, quando LXNDR atuava como compositor de partitura. Uma sonata não escrita — angústia e transcendência em teclas.",
+        "body": "Respiração em crise, beleza em luta. Arpejos que bebem da grandiosidade de Beethoven enquanto contam uma história que nunca se encerra."
+      },
+      "track6": {
+        "title": "Les Choix: Larmes, Souffrance et Liberté",
+        "artists": "LXNDR",
+        "genre": "Piano / Clássico Contemporâneo",
+        "bpm": "—",
+        "description": "Obra para piano solo composta por LXNDR, onde cada nota é uma decisão e cada silêncio, um caminho não escolhido. Uma peça que transita entre lágrimas, dor e liberdade.",
+        "body": "Harmonias sutis e mudanças melódicas que guiam o ouvinte por fases emocionais distintas — o instante exato em que a dúvida vira decisão e a dor, liberdade."
       }
     },
     "jornada": {

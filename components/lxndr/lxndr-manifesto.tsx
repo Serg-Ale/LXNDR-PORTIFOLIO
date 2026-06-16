@@ -266,6 +266,15 @@ export function LxndrManifesto() {
       </div>
 
       <div ref={contentRef} className="relative z-10 mx-auto flex min-h-[calc(100vh-8rem)] max-w-[1280px] flex-col justify-between gap-7">
+        <div className="flex items-center gap-3 border-b border-white/10 pb-5">
+          <span className="h-px w-5 bg-[var(--lxndr-pink)]" />
+          <span className="font-mono text-xs uppercase tracking-[0.42em] text-[var(--lxndr-pink)]">
+            02 / manifesto
+          </span>
+          <div className="h-px flex-1 bg-white/10" />
+          <span className="font-mono text-[10px] uppercase tracking-[0.28em] text-white/30">raw.signal</span>
+        </div>
+
         <div className="relative flex flex-1 items-center">
           <div
             data-lxndr-drift

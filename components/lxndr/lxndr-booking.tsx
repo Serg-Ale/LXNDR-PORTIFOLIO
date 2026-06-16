@@ -125,7 +125,7 @@ export function LxndrBooking() {
           className="mb-8 flex items-center gap-3"
         >
           <span className="h-px w-8 bg-[var(--lxndr-pink)]/60" />
-          <span className="font-mono text-[10px] uppercase tracking-[0.44em] text-[var(--lxndr-pink)]/70">
+          <span className="font-mono text-xs uppercase tracking-[0.44em] text-[var(--lxndr-pink)]">
             08 / chamar
           </span>
           <span className="h-px w-8 bg-[var(--lxndr-pink)]/60" />

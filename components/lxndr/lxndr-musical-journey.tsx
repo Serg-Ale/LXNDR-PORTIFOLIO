@@ -26,20 +26,11 @@ const NOTE_ZONES: Record<NoteKey, [number, number]> = {
 
 const NOTE_ORDER: NoteKey[] = ["F3", "A3", "C4", "E4", "B4"]
 
-function sameNotes(a: Set<NoteKey>, b: Set<NoteKey>) {
-  if (a.size !== b.size) return false
-  for (const note of a) {
-    if (!b.has(note)) return false
-  }
-  return true
-}
-
 export function LxndrMusicalJourney() {
   const t = useTranslations("lxndr.jornada")
   const sectionRef = useRef<HTMLElement>(null)
   const contentRef = useRef<HTMLDivElement>(null)
   const prevActiveRef = useRef<Set<NoteKey>>(new Set())
-  const prevAudioEnabledRef = useRef(false)
   const pendingUnmuteRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const [activeNotes, setActiveNotes] = useState<Set<NoteKey>>(new Set())
   const [scrollProgress, setScrollProgress] = useState(0)
@@ -68,19 +59,6 @@ export function LxndrMusicalJourney() {
       }
     }
   }, [cleanup])
-
-  useEffect(() => {
-    if (!audioEnabled || prevAudioEnabledRef.current) {
-      prevAudioEnabledRef.current = audioEnabled
-      return
-    }
-
-    activeNotes.forEach((note) => {
-      activateNote(note)
-    })
-
-    prevAudioEnabledRef.current = audioEnabled
-  }, [audioEnabled, activateNote, activeNotes])
 
   useEffect(() => {
     const root = contentRef.current
@@ -247,7 +225,7 @@ export function LxndrMusicalJourney() {
           className="flex items-center gap-3 border-b border-white/8 px-6 py-5 md:px-12"
         >
           <span className="h-px w-5 bg-[var(--lxndr-pink)]" />
-          <span className="font-mono text-[10px] uppercase tracking-[0.42em] text-[var(--lxndr-pink)]/70">
+          <span className="font-mono text-xs uppercase tracking-[0.42em] text-[var(--lxndr-pink)]">
             04 / jornada musical
           </span>
           <div className="h-px flex-1 bg-white/8" />

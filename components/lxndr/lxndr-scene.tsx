@@ -125,7 +125,7 @@ export function LxndrScene() {
           className="flex items-center gap-3 border-b border-white/8 px-6 py-5 md:px-12"
         >
           <span className="h-px w-5 bg-[var(--lxndr-cyan)]" />
-          <span className="font-mono text-[10px] uppercase tracking-[0.42em] text-[var(--lxndr-cyan)]/70">
+          <span className="font-mono text-xs uppercase tracking-[0.42em] text-[var(--lxndr-cyan)]">
             07 / a cena
           </span>
           <div className="h-px flex-1 bg-white/8" />

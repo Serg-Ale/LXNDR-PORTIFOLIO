@@ -17,6 +17,7 @@ export const NOTE_KEYS: NoteKey[] = ["F3", "A3", "C4", "E4", "B4"]
 const NOTE_MAX_GAIN = 0.05
 const FADE_IN_TIME = 0.2
 const FADE_OUT_TIME = 0.3
+const ACTIVATION_FADE_TIME = 2.2
 
 type NoteNode = {
   oscillator: OscillatorNode
@@ -137,16 +138,22 @@ export function useScrollChordAudio(): UseScrollChordAudioResult {
     void audioCtx.resume().catch(() => undefined)
 
     const now = audioCtx.currentTime
+    const noteCount = activeNotesRef.current.size
+    const activeFadeTime = noteCount > 0 ? ACTIVATION_FADE_TIME : FADE_IN_TIME
+
     activeNotesRef.current.forEach((note) => {
       const node = noteNodesRef.current[note]
       if (!node) return
       node.gain.gain.cancelScheduledValues(now)
       node.gain.gain.setValueAtTime(0, now)
-      node.gain.gain.linearRampToValueAtTime(NOTE_MAX_GAIN, now + FADE_IN_TIME)
+      node.gain.gain.linearRampToValueAtTime(NOTE_MAX_GAIN, now + activeFadeTime)
     })
 
-    syncMasterGain()
-  }, [syncMasterGain])
+    const masterTarget = isMutedRef.current ? 0 : NOTE_MAX_GAIN * noteCount
+    masterGain.gain.cancelScheduledValues(now)
+    masterGain.gain.setValueAtTime(0, now)
+    masterGain.gain.linearRampToValueAtTime(masterTarget, now + activeFadeTime)
+  }, [])
 
   const toggleMute = useCallback(() => {
     if (!isEnabledRef.current) return

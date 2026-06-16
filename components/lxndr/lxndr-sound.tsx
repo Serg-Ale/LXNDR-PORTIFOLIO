@@ -168,6 +168,15 @@ export function LxndrSound() {
         data-lxndr-drift-y="56"
         className="relative z-10 mx-auto flex min-h-[calc(100vh-8rem)] max-w-7xl flex-col gap-10"
       >
+        <div className="flex items-center gap-3 border-b border-white/10 pb-5">
+          <span className="h-px w-5 bg-[var(--lxndr-cyan)]" />
+          <span className="font-mono text-xs uppercase tracking-[0.42em] text-[var(--lxndr-cyan)]">
+            03 / o som
+          </span>
+          <div className="h-px flex-1 bg-white/10" />
+          <span className="font-mono text-[10px] uppercase tracking-[0.28em] text-white/30">sound.design</span>
+        </div>
+
         <div
           data-lxndr-drift
           data-lxndr-drift-x="36"

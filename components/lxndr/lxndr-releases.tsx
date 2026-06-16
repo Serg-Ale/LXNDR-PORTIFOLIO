@@ -5,7 +5,6 @@ import { useTranslations } from "next-intl"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { prefersReducedMotion } from "@/lib/gsap-config"
-import { lxndrLinks } from "@/components/lxndr/lxndr-links"
 import { useLxndrScrollMotion } from "@/components/lxndr/use-lxndr-scroll-motion"
 
 gsap.registerPlugin(ScrollTrigger)
@@ -25,16 +24,48 @@ const RELEASES: Release[] = [
     number: "01",
     trackKey: "track1",
     borderClass: "border-[var(--lxndr-pink)]",
-    href: lxndrLinks.soundcloud,
+    href: "https://soundcloud.com/lxndr_serg",
     embedUrl: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%3Atracks%3A2336769371%3Fsecret_token%3Ds-n7JFuYK7T30&color=%23ff0aa8&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=true",
   },
   {
     id: "track-002",
     number: "02",
     trackKey: "track2",
+    borderClass: "border-[var(--lxndr-green)]",
+    href: "https://soundcloud.com/lxndr_serg/lxndr-bunn1-reality-isnt-real/s-h8TrlZ7afgK",
+    embedUrl: "https://w.soundcloud.com/player/?visual=true&url=https%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F2340626198&show_artwork=true&secret_token=s-h8TrlZ7afgK&color=%23ff0aa8&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false",
+  },
+  {
+    id: "track-003",
+    number: "03",
+    trackKey: "track3",
+    borderClass: "border-[var(--lxndr-blue)]",
+    href: "https://soundcloud.com/lxndr_serg/lxndr-bunn1-requiem-original/s-TPc7nyTAb9a",
+    embedUrl: "https://w.soundcloud.com/player/?visual=true&url=https%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F2340623324&show_artwork=true&secret_token=s-TPc7nyTAb9a&color=%23ff0aa8&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false",
+  },
+  {
+    id: "track-004",
+    number: "04",
+    trackKey: "track4",
+    borderClass: "border-[var(--lxndr-pink)]",
+    href: "https://soundcloud.com/lxndr_serg/lxndr-bunn1-throes/s-4s8CoJewCEq",
+    embedUrl: "https://w.soundcloud.com/player/?visual=true&url=https%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F2340620486&show_artwork=true&secret_token=s-4s8CoJewCEq&color=%23ff0aa8&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false",
+  },
+  {
+    id: "track-005",
+    number: "05",
+    trackKey: "track5",
     borderClass: "border-[var(--lxndr-cyan)]",
-    href: lxndrLinks.soundcloud,
-    embedUrl: null,
+    href: "https://soundcloud.com/lxndr_serg/agony-for-shortness-of-breath",
+    embedUrl: "https://w.soundcloud.com/player/?visual=true&url=https%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F1234264873&show_artwork=true&color=%23ff0aa8&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false",
+  },
+  {
+    id: "track-006",
+    number: "06",
+    trackKey: "track6",
+    borderClass: "border-[var(--lxndr-green)]",
+    href: "https://soundcloud.com/lxndr_serg/les-choix-larmes-souffrance-et-liberte",
+    embedUrl: "https://w.soundcloud.com/player/?visual=true&url=https%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F1233334432&show_artwork=true&color=%23ff0aa8&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false",
   },
 ]
 
@@ -82,6 +113,15 @@ export function LxndrReleases() {
       <div className="absolute inset-0 border-y border-white/8" />
 
       <div ref={contentRef} className="relative z-10 mx-auto flex max-w-7xl flex-col gap-10">
+        <div className="flex items-center gap-3 border-b border-white/10 pb-5">
+          <span className="h-px w-5 bg-[var(--lxndr-green)]" />
+          <span className="font-mono text-xs uppercase tracking-[0.42em] text-[var(--lxndr-green)]">
+            05 / registros
+          </span>
+          <div className="h-px flex-1 bg-white/10" />
+          <span className="font-mono text-[10px] uppercase tracking-[0.28em] text-white/30">concrete.signal</span>
+        </div>
+
         <div
           data-lxndr-drift
           data-lxndr-drift-x="42"
@@ -91,9 +131,6 @@ export function LxndrReleases() {
           <h2 data-anim className="font-bebas text-[clamp(3rem,8vw,7rem)] leading-none tracking-tight text-white">
             {t("title")}
           </h2>
-          <p data-anim className="font-mono text-[10px] uppercase tracking-[0.35em] text-[var(--lxndr-steel)]">
-            concrete signal / listen
-          </p>
         </div>
 
         <p data-anim className="mt-2 max-w-2xl font-space text-base leading-relaxed text-white/55 md:text-lg">
@@ -132,15 +169,9 @@ export function LxndrReleases() {
                   </p>
                 </div>
 
-                <div className="grid grid-cols-2 gap-4 border-y border-white/10 py-4 font-mono text-xs uppercase tracking-[0.2em] text-white/70">
-                  <div className="space-y-1">
-                    <p className="text-[var(--lxndr-steel)]">Label</p>
-                    <p>{t(`${trackKey}.label`)}</p>
-                  </div>
-                  <div className="space-y-1">
-                    <p className="text-[var(--lxndr-steel)]">{t("bpm")}</p>
-                    <p>{t(`${trackKey}.bpm`)}</p>
-                  </div>
+                <div className="border-y border-white/10 py-4 font-mono text-xs uppercase tracking-[0.2em] text-white/70">
+                  <p className="text-[var(--lxndr-steel)]">{t("bpm")}</p>
+                  <p>{t(`${trackKey}.bpm`)}</p>
                 </div>
 
                 <p className="max-w-md font-space text-base leading-relaxed text-white/72">
@@ -155,7 +186,7 @@ export function LxndrReleases() {
                   <div className="mt-auto overflow-hidden border border-white/10 bg-black">
                     <iframe
                       width="100%"
-                      height="166"
+                      height="400"
                       allow="autoplay; encrypted-media"
                       loading="lazy"
                       src={embedUrl}
