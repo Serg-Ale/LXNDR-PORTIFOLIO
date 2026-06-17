@@ -14,6 +14,7 @@ type Release = {
   number: string
   trackKey: string
   borderClass: string
+  featured?: boolean
   href: string
   embedUrl: string | null
 }
@@ -24,6 +25,7 @@ const RELEASES: Release[] = [
     number: "01",
     trackKey: "track1",
     borderClass: "border-[var(--lxndr-pink)]",
+    featured: true,
     href: "https://soundcloud.com/lxndr_serg",
     embedUrl: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%3Atracks%3A2336769371%3Fsecret_token%3Ds-n7JFuYK7T30&color=%23ff0aa8&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=true",
   },
@@ -40,6 +42,7 @@ const RELEASES: Release[] = [
     number: "03",
     trackKey: "track3",
     borderClass: "border-[var(--lxndr-blue)]",
+    featured: true,
     href: "https://soundcloud.com/lxndr_serg/lxndr-bunn1-requiem-original/s-TPc7nyTAb9a",
     embedUrl: "https://w.soundcloud.com/player/?visual=true&url=https%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F2340623324&show_artwork=true&secret_token=s-TPc7nyTAb9a&color=%23ff0aa8&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false",
   },
@@ -108,7 +111,7 @@ export function LxndrReleases() {
     <section
       ref={sectionRef}
       id="releases"
-      className="relative overflow-hidden bg-[var(--lxndr-black)] px-6 py-28 md:px-12 md:py-36"
+      className="relative overflow-hidden bg-[var(--lxndr-black)] px-3 py-24 sm:px-6 md:px-12 md:py-36"
     >
       <div className="absolute inset-0 border-y border-white/8" />
 
@@ -143,59 +146,66 @@ export function LxndrReleases() {
           data-lxndr-drift-y="46"
           className="grid grid-cols-1 gap-5 lg:grid-cols-2"
         >
-          {RELEASES.map(({ id, number, trackKey, borderClass, href, embedUrl }) => (
+          {RELEASES.map(({ id, number, trackKey, borderClass, featured, href, embedUrl }) => (
             <article
               key={id}
               data-anim
               data-release-card
-              className={`relative overflow-hidden border border-white/10 border-l-[6px] bg-black/30 p-6 md:p-8 ${borderClass}`}
+              className={`relative overflow-hidden border border-white/10 border-l-[6px] bg-black/30 md:p-8 ${borderClass} ${featured ? "shadow-[0_0_56px_rgba(255,10,168,0.1)]" : "hidden md:block"}`}
             >
-              <div className="flex h-full flex-col gap-6">
-                <div className="flex items-start justify-between gap-6">
+              {featured && (
+                <div className="pointer-events-none absolute right-4 top-4 z-10 border border-[var(--lxndr-pink)]/45 bg-black/70 px-2.5 py-1 font-mono text-[9px] uppercase tracking-[0.24em] text-[var(--lxndr-pink)] backdrop-blur-sm">
+                  destaque
+                </div>
+              )}
+
+              <div className="flex h-full flex-col gap-5 md:gap-6">
+                <div className="flex items-start justify-between gap-4 px-5 pt-5 md:px-0 md:pt-0">
                   <span className="font-mono text-[11px] uppercase tracking-[0.35em] text-[var(--lxndr-steel)]">
                     {number}
                   </span>
-                  <span className="border border-white/15 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.24em] text-white/80">
+                  <span className="border border-white/15 px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-white/80 md:px-3 md:text-[11px] md:tracking-[0.24em]">
                     {t(`${trackKey}.genre`)}
                   </span>
                 </div>
 
-                <div className="space-y-3">
-                  <h3 className="font-bebas text-[clamp(2.5rem,5vw,4.5rem)] leading-none tracking-tight text-white">
+                <div className="space-y-2 px-5 md:space-y-3 md:px-0">
+                  <h3 className="font-bebas text-[clamp(3rem,18vw,4.5rem)] leading-none tracking-tight text-white md:text-[clamp(2.5rem,5vw,4.5rem)]">
                     {t(`${trackKey}.title`)}
                   </h3>
-                  <p className="font-mono text-sm uppercase tracking-[0.25em] text-[var(--lxndr-steel)]">
+                  <p className="font-mono text-xs uppercase tracking-[0.22em] text-[var(--lxndr-steel)] md:text-sm md:tracking-[0.25em]">
                     {t(`${trackKey}.artists`)}
                   </p>
                 </div>
 
-                <div className="border-y border-white/10 py-4 font-mono text-xs uppercase tracking-[0.2em] text-white/70">
+                <div className="mx-5 border-y border-white/10 py-3 font-mono text-xs uppercase tracking-[0.2em] text-white/70 md:mx-0 md:py-4">
                   <p className="text-[var(--lxndr-steel)]">{t("bpm")}</p>
                   <p>{t(`${trackKey}.bpm`)}</p>
                 </div>
 
-                <p className="max-w-md font-space text-base leading-relaxed text-white/72">
+                <p className="max-w-none px-5 font-space text-base leading-relaxed text-white/72 md:max-w-md md:px-0">
                   {t(`${trackKey}.description`)}
                 </p>
 
-                <p className="max-w-xl font-space text-sm leading-relaxed text-white/48">
+                <p className="hidden max-w-xl font-space text-sm leading-relaxed text-white/48 sm:block">
                   {t(`${trackKey}.body`)}
                 </p>
 
                 {embedUrl ? (
-                  <div className="mt-auto overflow-hidden border border-white/10 bg-black">
+                  <div className="order-[-1] overflow-hidden border-b border-white/10 bg-black shadow-[0_0_42px_rgba(255,10,168,0.08)] md:order-none md:mt-auto md:border md:shadow-none">
                     <iframe
                       width="100%"
-                      height="400"
+                      height="520"
                       allow="autoplay; encrypted-media"
                       loading="lazy"
                       src={embedUrl}
                       title={`SoundCloud — ${t(`${trackKey}.title`)}`}
-                      style={{ display: "block", border: "none" }}
+                      className="block h-[min(540px,118vw)] w-full md:h-[400px]"
+                      style={{ border: "none" }}
                     />
                   </div>
                 ) : (
-                  <div className="mt-auto border border-dashed border-white/12 bg-white/[0.015] px-4 py-5">
+                  <div className="order-[-1] border-b border-dashed border-white/12 bg-white/[0.015] px-4 py-5 md:order-none md:mt-auto md:border">
                     <div className="flex items-center justify-between gap-4 font-mono text-[10px] uppercase tracking-[0.28em] text-white/35">
                       <span>{t("embedSlot")}</span>
                       <span>soundcloud</span>
@@ -216,15 +226,25 @@ export function LxndrReleases() {
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.24em] text-white transition-colors hover:text-[var(--lxndr-pink)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2"
+                  className={`${featured ? "border border-[var(--lxndr-pink)]/55 bg-[var(--lxndr-pink)]/10 px-4 py-3 text-[var(--lxndr-pink)] hover:border-[var(--lxndr-pink)] hover:bg-[var(--lxndr-pink)]/16" : "text-white hover:text-[var(--lxndr-pink)]"} mx-5 mb-5 inline-flex items-center justify-center gap-2 font-mono text-xs uppercase tracking-[0.24em] transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2 md:mx-0 md:mb-0 md:w-fit`}
                 >
-                  {t("listenOn")}
+                  {featured ? "Ouvir no SoundCloud" : t("listenOn")}
                   <span aria-hidden="true">→</span>
                 </a>
               </div>
             </article>
           ))}
         </div>
+
+        <a
+          href="https://soundcloud.com/lxndr_serg"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center justify-center border border-[var(--lxndr-pink)] bg-[var(--lxndr-pink)]/12 px-5 py-4 font-mono text-xs uppercase tracking-[0.24em] text-[var(--lxndr-pink)] transition-colors hover:bg-[var(--lxndr-pink)]/18 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--lxndr-pink)] focus-visible:outline-offset-2 md:hidden"
+        >
+          Ouvir mais no SoundCloud
+          <span className="ml-2" aria-hidden="true">→</span>
+        </a>
       </div>
     </section>
   )
