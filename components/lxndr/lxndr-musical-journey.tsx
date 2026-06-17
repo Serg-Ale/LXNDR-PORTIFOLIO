@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react"
 import { useTranslations } from "next-intl"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
+import { Volume2 } from "lucide-react"
 import { prefersReducedMotion } from "@/lib/gsap-config"
 import { useLxndrScrollMotion } from "@/components/lxndr/use-lxndr-scroll-motion"
 import {
@@ -17,14 +18,14 @@ gsap.registerPlugin(ScrollTrigger)
 type JornadaStep = { label: string; tag: string }
 
 const NOTE_ZONES: Record<NoteKey, [number, number]> = {
-  F3: [0.02, 0.98],
-  A3: [0.14, 0.98],
-  C4: [0.26, 0.98],
-  E4: [0.38, 0.98],
-  B4: [0.50, 0.98],
+  C4: [0.08, 0.98],
+  E4: [0.28, 0.98],
+  G4: [0.46, 0.98],
+  C5: [0.64, 0.98],
+  E5: [0.82, 0.98],
 }
 
-const NOTE_ORDER: NoteKey[] = ["F3", "A3", "C4", "E4", "B4"]
+const NOTE_ORDER: NoteKey[] = ["C4", "E4", "G4", "C5", "E5"]
 
 export function LxndrMusicalJourney() {
   const t = useTranslations("lxndr.jornada")
@@ -40,9 +41,15 @@ export function LxndrMusicalJourney() {
     isMuted,
     analyserNode,
     oscillatorType,
+    outputLevel,
+    filterCutoff,
+    detuneAmount,
     activateAudio,
     toggleMute,
     setWaveType,
+    setOutputLevel,
+    setFilterCutoff,
+    setDetuneAmount,
     activateNote,
     deactivateNote,
     deactivateAll,
@@ -235,30 +242,33 @@ export function LxndrMusicalJourney() {
         </div>
 
         {!audioEnabled && (
-          <div className="flex items-center justify-between gap-4 border-b border-[var(--lxndr-pink)]/20 bg-[var(--lxndr-pink)]/[0.04] px-6 py-3 md:px-12">
+          <div className="flex flex-col items-start gap-3 border-b border-[var(--lxndr-pink)]/20 bg-[var(--lxndr-pink)]/[0.04] px-6 py-3 sm:flex-row sm:items-center sm:justify-between md:px-12">
             <div className="flex items-center gap-3">
               <span className="h-1.5 w-1.5 animate-pulse bg-[var(--lxndr-pink)]/60" aria-hidden="true" />
               <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-white/40">
-                ative o som para experiência completa
+                ative o som. role pra montar o acorde
               </span>
             </div>
             <button
               type="button"
               onClick={handleActivateAudio}
               aria-label="Ativar áudio do sequenciador de acordes"
-              className="shrink-0 border border-[var(--lxndr-pink)]/40 px-4 py-2 font-mono text-[10px] uppercase tracking-[0.3em] text-[var(--lxndr-pink)]/80 transition-colors duration-200 hover:border-[var(--lxndr-pink)] hover:text-[var(--lxndr-pink)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--lxndr-pink)] focus-visible:outline-offset-2"
+              className="group shrink-0 border border-[var(--lxndr-pink)]/50 px-4 py-2 font-mono text-[10px] uppercase tracking-[0.3em] text-[var(--lxndr-pink)]/90 transition-colors duration-200 hover:border-[var(--lxndr-pink)] hover:bg-[var(--lxndr-pink)]/10 hover:text-[var(--lxndr-pink)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--lxndr-pink)] focus-visible:outline-offset-2"
             >
-              ATIVAR SOM
+              <span className="inline-flex items-center gap-2">
+                <Volume2 className="h-4 w-4 transition-transform duration-200 group-hover:scale-110" aria-hidden="true" />
+                ATIVAR SOM
+              </span>
             </button>
           </div>
         )}
 
-        <div className="grid grid-cols-1 gap-0 lg:grid-cols-[1fr_280px]">
+        <div className="grid grid-cols-1 gap-0 lg:grid-cols-[minmax(0,1fr)_360px] xl:grid-cols-[minmax(0,1fr)_420px]">
           <div
             data-jornada-sequencer
-            className="border-b border-white/8 px-6 py-6 md:px-12 lg:col-start-2 lg:row-span-2 lg:border-b-0 lg:border-l lg:border-white/8 lg:px-0 lg:py-8"
+            className="order-2 border-b border-white/8 px-4 py-5 sm:px-6 md:px-12 lg:col-start-2 lg:row-span-2 lg:border-b-0 lg:border-l lg:border-white/8 lg:px-0 lg:py-10"
           >
-            <div className="lg:sticky lg:top-8 lg:p-8">
+            <div className="mx-auto max-w-[430px] lg:sticky lg:top-6 lg:max-w-none lg:p-6 xl:p-8">
               <SideChordSequencer
                 activeNotes={activeNotes}
                 audioEnabled={audioEnabled}
@@ -266,13 +276,20 @@ export function LxndrMusicalJourney() {
                 scrollProgress={scrollProgress}
                 analyserNode={analyserNode}
                 oscillatorType={oscillatorType}
+                outputLevel={outputLevel}
+                filterCutoff={filterCutoff}
+                detuneAmount={detuneAmount}
                 onToggleMute={handleToggleMute}
+                onActivateAudio={handleActivateAudio}
                 onSetWaveType={handleSetWaveType}
+                onSetOutputLevel={setOutputLevel}
+                onSetFilterCutoff={setFilterCutoff}
+                onSetDetuneAmount={setDetuneAmount}
               />
             </div>
           </div>
 
-          <div className="flex flex-col justify-center border-b border-white/8 px-6 py-16 md:px-12 md:py-20 lg:col-start-1 lg:row-start-1 lg:border-b-0 lg:border-r lg:border-white/8">
+          <div className="order-1 flex flex-col justify-center border-b border-white/8 px-6 py-12 md:px-12 md:py-20 lg:col-start-1 lg:row-start-1 lg:border-b-0 lg:border-r lg:border-white/8">
             <p
               data-anim
               data-jornada-header
@@ -281,7 +298,7 @@ export function LxndrMusicalJourney() {
               {t("eyebrow")}
             </p>
 
-            <h2 className="font-bebas text-[clamp(3.5rem,7vw,6.5rem)] leading-[0.88] tracking-tight text-white">
+            <h2 className="font-bebas text-[clamp(3.25rem,14vw,6.5rem)] leading-[0.88] tracking-tight text-white">
               <span data-anim data-jornada-headline className="block">
                 {t("headline1")}
               </span>
@@ -315,7 +332,7 @@ export function LxndrMusicalJourney() {
             </p>
           </div>
 
-          <div className="flex flex-col justify-center px-6 py-16 md:px-12 md:py-20 lg:col-start-1 lg:row-start-2">
+          <div className="order-3 flex flex-col justify-center px-6 py-12 md:px-12 md:py-20 lg:col-start-1 lg:row-start-2">
             <div className="flex flex-col gap-0 divide-y divide-white/8">
               {steps.map((step, index) => {
                 const isLast = index === steps.length - 1
@@ -325,7 +342,7 @@ export function LxndrMusicalJourney() {
                     key={step.label}
                     data-anim
                     data-jornada-step
-                    className="flex items-center gap-5 py-5 transition-colors duration-200 hover:bg-white/[0.02]"
+                    className="flex items-center gap-4 py-4 transition-colors duration-200 hover:bg-white/[0.02] md:gap-5 md:py-5"
                   >
                     <span
                       className={`w-8 font-mono text-xs tracking-[0.3em] ${isLast ? "text-[var(--lxndr-pink)]" : "text-white/22"}`}
@@ -339,7 +356,7 @@ export function LxndrMusicalJourney() {
                         {step.label}
                       </span>
                       <span
-                        className={`shrink-0 border px-2.5 py-1 font-mono text-[9px] uppercase tracking-[0.28em] ${isLast ? "border-[var(--lxndr-pink)]/50 text-[var(--lxndr-pink)]/80" : "border-white/12 text-white/28"}`}
+                        className={`hidden shrink-0 border px-2.5 py-1 font-mono text-[9px] uppercase tracking-[0.28em] sm:inline ${isLast ? "border-[var(--lxndr-pink)]/50 text-[var(--lxndr-pink)]/80" : "border-white/12 text-white/28"}`}
                       >
                         {step.tag}
                       </span>

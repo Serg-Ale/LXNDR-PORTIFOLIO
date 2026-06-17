@@ -24,8 +24,8 @@
     "hero": {
       "name": "LXNDR",
       "role": "DJ / Open Format / Assinatura Eletrônica",
-      "genres": "LONDRINA / PR / OPEN FORMAT / ELECTRONIC / TECH HOUSE / FUNK / POP / TRAP / BRASILIDADES / WARM-UP / AFTER / BAR / FESTA",
-      "tagline": "DJ de Londrina criando pista entre open format, eletrônica, groove e energia noturna.",
+      "genres": "LONDRINA / PR / DJ SETS / NOITE / BAR / FESTA / WARM-UP / AFTER",
+      "tagline": "Identidade de pista com leitura de ambiente, repertório aberto e assinatura eletrônica.",
       "signal": "transmission started / Londrina / PR",
       "listenCta": "Ouvir no SoundCloud",
       "followCta": "Seguir no Instagram",
@@ -40,14 +40,14 @@
       "line4": "MOVIMENTO.",
       "sub": "O som entra como repertório. A pista responde. O set se adapta, dobra o clima e transforma energia em movimento.",
       "sideNote": "A leitura vem antes do drop. O groove conduz. A virada muda o ar. A pista devolve o sinal.",
-    "directive1": "OUVIR A FREQUÊNCIA.",
-    "directive2": "ARTICULAR O TEMPO.",
-    "directive3": "PRESSIONAR O ESPAÇO.",
-    "directive4": "SOLTAR O MOMENTO."
+      "directive1": "LER A PISTA.",
+      "directive2": "CONSTRUIR GROOVE.",
+      "directive3": "VIRAR O CLIMA.",
+      "directive4": "ENTREGAR ENERGIA."
     },
     "sound": {
       "title": "O SOM",
-      "intro": "O som do LXNDR parte da pista. Sets abertos, com leitura de ambiente, misturando funk, pop, trap, brasilidades e eletrônica com uma assinatura voltada para groove, tensão, drops e energia noturna.",
+      "intro": "O repertório se organiza em quatro frentes: open format para circulação, groove eletrônico para corpo, brasilidades e remixes para conexão, tech house e techno para pressão.",
       "block1": "Open format",
       "block2": "Groove eletrônico",
       "block3": "Brasilidades / Remixes",
