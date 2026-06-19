@@ -37,14 +37,14 @@
 
 ---
 
-## 🔥 FEATURED PROJECT: LXNDR PORTFOLIO
+## 🔥 FEATURED PROJECT: SAERIX PORTFOLIO
 
 > **A brutalist, scroll-driven portfolio showcasing cutting-edge web technologies**
 
 <div align="center">
 
 [![Live Demo](https://img.shields.io/badge/LIVE_DEMO-lxndr--portifolio.vercel.app-00D9FF?style=for-the-badge&logo=vercel)](https://lxndr-portifolio.vercel.app/)
-[![Repository](https://img.shields.io/badge/SOURCE_CODE-GitHub-181717?style=for-the-badge&logo=github)](https://github.com/serg-alexandre/LXNDR-PORTIFOLIO)
+[![Repository](https://img.shields.io/badge/SOURCE_CODE-GitHub-181717?style=for-the-badge&logo=github)](https://github.com/Serg-Ale/SAERIX-PORTFOLIO)
 
 </div>
 

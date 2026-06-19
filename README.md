@@ -1,4 +1,4 @@
-# LXNDR Portfolio
+# SAERIX Portfolio
 
 [![Next.js](https://img.shields.io/badge/Next.js-16.0.10-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
 [![React](https://img.shields.io/badge/React-19.2.0-61DAFB?style=for-the-badge&logo=react)](https://reactjs.org/)
@@ -128,8 +128,8 @@ Full internationalization support with:
 ### Installation
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/lxndr-portifolio.git
-cd lxndr-portifolio
+git clone https://github.com/Serg-Ale/SAERIX-PORTFOLIO.git
+cd SAERIX-PORTFOLIO
 
 # Install dependencies
 pnpm install

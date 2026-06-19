@@ -1,4 +1,4 @@
-# Style Files Snapshot — LXNDR Portfolio
+# Style Files Snapshot — SAERIX Portfolio
 
 > Conteúdo literal dos arquivos críticos de estilo compactado em um único arquivo.
 > Use como contexto completo para mudanças visuais sem precisar abrir múltiplos arquivos.

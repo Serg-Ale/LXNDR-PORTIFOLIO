@@ -1,5 +1,5 @@
 # VISÃO DO ARTISTA — Documento de Revisão de Cenas
-**LXNDR Portfolio · Sérgio Alexandre**  
+**SAERIX Portfolio · Sérgio Alexandre**
 *Última atualização: Jun 2026*
 
 ---

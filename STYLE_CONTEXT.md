@@ -1,4 +1,4 @@
-# Style Context — LXNDR Portfolio
+# Style Context — SAERIX Portfolio
 
 > Compact reference for anyone overhauling the visual identity of this app.
 > Generated from codebase inspection. Keep updated after major style changes.
