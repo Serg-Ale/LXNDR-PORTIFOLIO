@@ -52,7 +52,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       title: post.title,
       description: post.description,
       url: `${BASE_URL}/${canonicalLocale}/ensaios/${slug}`,
-      siteName: "LXNDR",
+      siteName: "SAERIX",
       type: "article",
       locale: canonicalLocale === "pt-BR" ? "pt_BR" : "en_US",
       publishedTime: post.date,

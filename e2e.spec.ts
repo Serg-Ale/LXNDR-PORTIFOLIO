@@ -25,7 +25,7 @@ test('QA Portfolio', async ({ page }) => {
   // 4. Monogram
   const hasMonogram = await page.evaluate(() => {
     const hero = document.querySelector('section');
-    return hero && (hero.innerText.includes('LXNDR') || hero.querySelector('svg') !== null || hero.querySelector('.monogram') !== null);
+    return hero && (hero.innerText.includes('SAERIX') || hero.querySelector('svg') !== null || hero.querySelector('.monogram') !== null);
   });
 
   // 5. Vision Section

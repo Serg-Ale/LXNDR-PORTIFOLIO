@@ -89,7 +89,7 @@ export function LxndrHero() {
         className="absolute left-4 top-7 z-10 flex items-center gap-2 font-bebas text-2xl tracking-wider text-white/82 md:left-8"
       >
         <span className="h-px w-5 bg-[var(--lxndr-pink)]" />
-        LXNDR
+        SAERIX
       </div>
 
       <div
@@ -213,12 +213,12 @@ export function LxndrHero() {
           >
             <img
               src="/assets/lxndr/lxndr-hero.jpg"
-              alt="LXNDR — Feel Every Frequency"
+              alt="SAERIX — Feel Every Frequency"
               className="h-full w-full object-cover opacity-82 grayscale-[0.15]"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/20" />
             <div className="absolute left-5 top-5 font-mono text-[10px] uppercase tracking-[0.28em] text-white/70">
-              {"LXNDR // raw signal"}
+              {"SAERIX // raw signal"}
             </div>
             <div
               data-lxndr-parallax

@@ -5,7 +5,7 @@
 :root {
   /* Brutalist Portfolio Theme */
   --background: #fafafa;
-  /* LXNDR Artist Color Tokens */
+  /* SAERIX Artist Color Tokens */
   --lxndr-pink: #ff0aa8;
   --lxndr-pink-glow: rgba(255, 10, 168, 0.35);
   --lxndr-blue: #005bff;
@@ -1432,11 +1432,11 @@ pre code,
 }
 
 /* ============================================
-   LXNDR ARTIST UTILITIES
+   SAERIX ARTIST UTILITIES
    ============================================ */
 
 @layer utilities {
-  /* LXNDR color utilities */
+  /* SAERIX color utilities */
   .text-lxndr-pink   { color: var(--lxndr-pink); }
   .text-lxndr-cyan   { color: var(--lxndr-cyan); }
   .text-lxndr-green  { color: var(--lxndr-green); }
@@ -1450,7 +1450,7 @@ pre code,
   .border-lxndr-green { border-color: var(--lxndr-green); }
   .border-lxndr-steel { border-color: var(--lxndr-steel); }
 
-  /* LXNDR glow effects */
+  /* SAERIX glow effects */
   .glow-lxndr-pink {
     box-shadow:
       0 0 16px var(--lxndr-pink-glow),
@@ -1481,7 +1481,7 @@ pre code,
       0 0 30px var(--lxndr-cyan-glow);
   }
 
-  /* LXNDR brutalist shadow variants */
+  /* SAERIX brutalist shadow variants */
   .shadow-lxndr-pink  { box-shadow: 8px 8px 0 0 var(--lxndr-pink); }
   .shadow-lxndr-cyan  { box-shadow: 8px 8px 0 0 var(--lxndr-cyan); }
   .shadow-lxndr-green { box-shadow: 8px 8px 0 0 var(--lxndr-green); }
@@ -1516,7 +1516,7 @@ pre code,
   .hover\:border-lxndr-cyan:hover  { border-color: var(--lxndr-cyan); }
 }
 
-/* LXNDR scanline effect */
+/* SAERIX scanline effect */
 .lxndr-scanlines {
   position: relative;
   overflow: hidden;
@@ -1537,7 +1537,7 @@ pre code,
   z-index: 1;
 }
 
-/* LXNDR interference / noise overlay — stronger than portfolio grain */
+/* SAERIX interference / noise overlay — stronger than portfolio grain */
 .lxndr-noise {
   position: relative;
   overflow: hidden;
@@ -1554,7 +1554,7 @@ pre code,
   animation: grain 6s steps(8) infinite;
 }
 
-/* LXNDR technical frame — thin border with corner accents */
+/* SAERIX technical frame — thin border with corner accents */
 .lxndr-frame {
   position: relative;
   border: 1px solid rgba(255, 255, 255, 0.12);

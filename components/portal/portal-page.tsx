@@ -104,7 +104,7 @@ export function PortalPage() {
 
             <div data-portal-card="lxndr">
               <Link
-                href="/lxndr"
+                href="/saerix"
                 className="portal-card-lxndr group relative flex flex-col justify-between p-8 md:p-10 border-t-4 border-t-[var(--lxndr-pink)] border border-white/10 bg-black/40 hover:bg-[#050303] transition-all duration-300 hover:border-white/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--lxndr-pink)] focus-visible:outline-offset-4 min-h-[260px] md:min-h-[320px] block"
               >
                 <div>
@@ -152,4 +152,3 @@ export function PortalPage() {
     </div>
   )
 }
-

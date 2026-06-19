@@ -186,7 +186,7 @@ export function LxndrBooking() {
           >
             ← Voltar ao Portal
           </Link>
-          <span>© {year} LXNDR</span>
+          <span>© {year} SAERIX</span>
         </div>
       </div>
     </section>

@@ -38,11 +38,11 @@ export function LxndrNav() {
       }`}
     >
       <Link
-        href="/lxndr"
+        href="/saerix"
         className="font-bebas text-xl md:text-2xl tracking-widest text-white hover:text-[var(--lxndr-pink)] transition-colors duration-200"
-        aria-label="LXNDR"
+        aria-label="SAERIX"
       >
-        LXNDR
+        SAERIX
       </Link>
 
       <div className="flex items-center gap-6 md:gap-8">

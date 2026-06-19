@@ -8,7 +8,7 @@
       "cta": "ENTER"
     },
     "lxndr": {
-      "label": "LXNDR",
+      "label": "SAERIX",
       "sub": "Techno · Psytrance · Sonic Ritual",
       "cta": "ENTER"
     },
@@ -22,7 +22,7 @@
       "backToPortal": "← PORTAL"
     },
     "hero": {
-      "name": "LXNDR",
+      "name": "SAERIX",
       "role": "DJ / Open Format / Assinatura Eletrônica",
       "genres": "LONDRINA / PR / DJ SETS / NOITE / BAR / FESTA / WARM-UP / AFTER",
       "tagline": "Identidade de pista com leitura de ambiente, repertório aberto e assinatura eletrônica.",
@@ -56,29 +56,29 @@
     },
     "releases": {
       "title": "PRIMEIROS REGISTROS",
-      "sectionIntro": "Tracks, colaborações e experimentos que marcam a pesquisa sonora do LXNDR — da composição em partitura à produção eletrônica, da colaboração à identidade solo em construção.",
+      "sectionIntro": "Tracks, colaborações e experimentos que marcam a pesquisa sonora do SAERIX — da composição em partitura à produção eletrônica, da colaboração à identidade solo em construção.",
       "listenOn": "Ouvir no SoundCloud",
       "embedSlot": "Espaço para embed SoundCloud",
       "bpm": "BPM",
       "track1": {
         "title": "Flow With Me",
-        "artists": "Bunn1, LXNDR",
+        "artists": "Bunn1, SAERIX",
         "genre": "Eletrônico",
         "bpm": "140",
-        "description": "Um dos primeiros registros do LXNDR em colaboração com Bunn1: uma faixa eletrônica de 140 BPM construída com pulsos, tensão e energia de pista.",
+        "description": "Um dos primeiros registros do SAERIX em colaboração com Bunn1: uma faixa eletrônica de 140 BPM construída com pulsos, tensão e energia de pista.",
         "body": "O som não tenta explicar. Ele atravessa. Pulsos e camadas se acumulam até virarem organismo — uma máquina sensorial construída para a pista."
       },
       "track2": {
         "title": "Reality Isn't Real",
-        "artists": "Bunn1, LXNDR",
+        "artists": "Bunn1, SAERIX",
         "genre": "Eletrônico",
         "bpm": "—",
-        "description": "Faixa colaborativa com Bunn1 da fase de formação do LXNDR — uma imersão em texturas eletrônicas densas e atmosferas noturnas.",
+        "description": "Faixa colaborativa com Bunn1 da fase de formação do SAERIX — uma imersão em texturas eletrônicas densas e atmosferas noturnas.",
         "body": "Duas mentes, uma frequência. O som se dobra sobre si mesmo até que a realidade se dissolva na pista."
       },
       "track3": {
         "title": "Requiem (Original Mix)",
-        "artists": "Bunn1, LXNDR",
+        "artists": "Bunn1, SAERIX",
         "genre": "Eletrônico",
         "bpm": "—",
         "description": "Um réquiem eletrônico construído em parceria com Bunn1, onde camadas sintéticas e tensão progressiva criam uma narrativa sonora de perda e elevação.",
@@ -86,7 +86,7 @@
       },
       "track4": {
         "title": "Throes",
-        "artists": "Bunn1, LXNDR",
+        "artists": "Bunn1, SAERIX",
         "genre": "Eletrônico",
         "bpm": "—",
         "description": "Colaboração com Bunn1 que captura o momento de transição entre a agonia e a libertação — pulsos eletrônicos que apertam e soltam o ar da pista.",
@@ -94,18 +94,18 @@
       },
       "track5": {
         "title": "Agony For Shortness Of Breath",
-        "artists": "LXNDR",
+        "artists": "SAERIX",
         "genre": "Piano / Clássico Contemporâneo",
         "bpm": "—",
-        "description": "Obra para piano composta há mais de 4 anos, quando LXNDR atuava como compositor de partitura. Uma sonata não escrita — angústia e transcendência em teclas.",
+        "description": "Obra para piano composta há mais de 4 anos, quando SAERIX atuava como compositor de partitura. Uma sonata não escrita — angústia e transcendência em teclas.",
         "body": "Respiração em crise, beleza em luta. Arpejos que bebem da grandiosidade de Beethoven enquanto contam uma história que nunca se encerra."
       },
       "track6": {
         "title": "Les Choix: Larmes, Souffrance et Liberté",
-        "artists": "LXNDR",
+        "artists": "SAERIX",
         "genre": "Piano / Clássico Contemporâneo",
         "bpm": "—",
-        "description": "Obra para piano solo composta por LXNDR, onde cada nota é uma decisão e cada silêncio, um caminho não escolhido. Uma peça que transita entre lágrimas, dor e liberdade.",
+        "description": "Obra para piano solo composta por SAERIX, onde cada nota é uma decisão e cada silêncio, um caminho não escolhido. Uma peça que transita entre lágrimas, dor e liberdade.",
         "body": "Harmonias sutis e mudanças melódicas que guiam o ouvinte por fases emocionais distintas — o instante exato em que a dúvida vira decisão e a dor, liberdade."
       }
     },
@@ -115,7 +115,7 @@
       "headline2": "CARREIRA DE DJ,",
       "headline3": "NÃO COMEÇANDO",
       "headline4": "NA MÚSICA.",
-      "intro": "Antes da pista, veio a música. Da flauta transversal à orquestra, do piano à composição em partitura, LXNDR nasce de uma escuta construída na prática.",
+      "intro": "Antes da pista, veio a música. Da flauta transversal à orquestra, do piano à composição em partitura, SAERIX nasce de uma escuta construída na prática.",
       "body": "Agora, essa bagagem chega às CDJs, aos grooves, aos drops e à noite — não como teoria, mas como instinto treinado.",
       "steps": [
         { "label": "Flauta transversal", "tag": "INSTRUMENTO" },
@@ -128,7 +128,7 @@
     },
     "visual": {
       "title": "MUNDO VISUAL",
-      "intro": "O visual do LXNDR nasce da mesma lógica dos sets: contraste, pressão, fragmento e movimento. Preto absoluto, neon sintético, tipografia brutalista — um sistema visual construído como uma identidade de pista.",
+      "intro": "O visual do SAERIX nasce da mesma lógica dos sets: contraste, pressão, fragmento e movimento. Preto absoluto, neon sintético, tipografia brutalista — um sistema visual construído como uma identidade de pista.",
       "elements": [
         "Matéria preta",
         "Interferência neon",
@@ -142,7 +142,7 @@
       "title": "A CENA",
       "origin": "Londrina, PR",
       "between": "Norte do Paraná — ponto de partida.",
-      "connected": "Londrina é o ponto de partida. LXNDR começa em movimento, buscando presença real na noite, bares e festas da cidade e da região. A AEON Audio e as conexões com Ponta Grossa ficam no contexto formativo — o passo seguinte é a pista de Londrina.",
+      "connected": "Londrina é o ponto de partida. SAERIX começa em movimento, buscando presença real na noite, bares e festas da cidade e da região. A AEON Audio e as conexões com Ponta Grossa ficam no contexto formativo — o passo seguinte é a pista de Londrina.",
       "signal": "Um sinal bruto de Londrina."
     },
     "booking": {
@@ -164,7 +164,7 @@
     "removeTag": "Remove tag"
   },
   "nav": {
-    "logo": "LXNDR",
+    "logo": "SAERIX",
     "about": "ABOUT",
     "projects": "PROJECTS",
     "essays": "ESSAYS",

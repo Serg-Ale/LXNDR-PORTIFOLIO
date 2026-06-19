@@ -40,7 +40,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       title: titles[locale],
       description: descriptions[locale],
       url: `${BASE_URL}/${locale}/dev`,
-      siteName: "LXNDR Portfolio",
+      siteName: "SAERIX Portfolio",
       type: "website",
       images: [{ url: "/og-default.png", width: 1200, height: 630 }],
     },

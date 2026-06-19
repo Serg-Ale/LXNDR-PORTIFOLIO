@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       title: titles[locale],
       description: BLOG_DESCRIPTIONS[locale],
       url: `${BASE_URL}/${locale}/blog`,
-      siteName: "LXNDR Portfolio",
+      siteName: "SAERIX Portfolio",
       type: "website",
       images: [{ url: "/og-default.png", width: 1200, height: 630 }],
     },
@@ -54,7 +54,7 @@ export default async function BlogPage({ params }: PageProps) {
   const blogSchema = {
     "@context": "https://schema.org",
     "@type": "Blog",
-    name: "LXNDR Blog",
+    name: "SAERIX Blog",
     description: BLOG_DESCRIPTIONS[locale],
     url: `${BASE_URL}/${locale}/blog`,
     author: {

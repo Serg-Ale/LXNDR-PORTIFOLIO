@@ -50,7 +50,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       title: post.title,
       description: post.description,
       url: `${BASE_URL}/${locale}/blog/${slug}`,
-      siteName: "LXNDR Portfolio",
+      siteName: "SAERIX Portfolio",
       type: "article",
       locale: locale === "pt-BR" ? "pt_BR" : "en_US",
       publishedTime: post.date,

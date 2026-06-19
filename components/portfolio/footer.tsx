@@ -36,7 +36,7 @@ export function PortfolioFooter() {
         <div className="grid md:grid-cols-2 gap-8 mb-12">
           <div>
             <h3 className="text-4xl md:text-6xl font-black mb-4" style={{ color: "var(--color-accent-purple)" }}>
-              LXNDR
+              SAERIX
             </h3>
             <p className="text-lg md:text-xl font-bold">
               {t("name")}

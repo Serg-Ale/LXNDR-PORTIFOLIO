@@ -10,13 +10,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { locale } = await params
 
   const titles: Record<string, string> = {
-    en: "Sérgio Alexandre — Software Engineer & LXNDR",
-    "pt-BR": "Sérgio Alexandre — Engenheiro de Software & LXNDR",
+    en: "Sérgio Alexandre — Software Engineer & SAERIX",
+    "pt-BR": "Sérgio Alexandre — Engenheiro de Software & SAERIX",
   }
 
   const descriptions: Record<string, string> = {
-    en: "Software Engineer and electronic music artist LXNDR. Choose your path.",
-    "pt-BR": "Engenheiro de Software e artista de música eletrônica LXNDR. Escolha seu caminho.",
+    en: "Software Engineer and electronic music artist SAERIX. Choose your path.",
+    "pt-BR": "Engenheiro de Software e artista de música eletrônica SAERIX. Escolha seu caminho.",
   }
 
   return {
@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       title: titles[locale],
       description: descriptions[locale],
       url: `${BASE_URL}/${locale}`,
-      siteName: "LXNDR Portfolio",
+      siteName: "SAERIX Portfolio",
       type: "website",
       images: [{ url: "/og-default.png", width: 1200, height: 630 }],
     },

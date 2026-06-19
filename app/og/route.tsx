@@ -5,7 +5,7 @@ export const runtime = "edge"
 
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url)
-  const title = searchParams.get("title") || "LXNDR"
+  const title = searchParams.get("title") || "SAERIX"
   const type = searchParams.get("type") || "default"
 
   const fontBebas = await fetch(
@@ -118,7 +118,7 @@ export async function GET(request: NextRequest) {
                   opacity: 0.8,
                 }}
               >
-                lxndr.dev/blog
+                SAERIX / blog
               </span>
               <div
                 style={{

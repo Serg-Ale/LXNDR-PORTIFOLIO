@@ -103,7 +103,7 @@ export async function generateMetadata({
       },
     },
     openGraph: {
-      siteName: "LXNDR Portfolio",
+      siteName: "SAERIX Portfolio",
       title: titles[locale as keyof typeof titles] || titles.en,
       description: descriptions[locale as keyof typeof descriptions] || descriptions.en,
       url: `${BASE_URL}/${locale}`,
@@ -184,4 +184,3 @@ export default async function RootLayout({
     </html>
   )
 }
-

@@ -132,7 +132,7 @@ export function LxndrVisualWorld() {
             >
               <img
                 src="/assets/lxndr/lxndr-art-03.jpg"
-                alt="LXNDR — Visual Identity"
+                alt="SAERIX — Visual Identity"
                 className="h-full w-full object-cover opacity-88 transition-transform duration-700 ease-out group-hover:scale-[1.03]"
               />
               <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/80" />
@@ -189,7 +189,7 @@ export function LxndrVisualWorld() {
             >
               <img
                 src="/assets/lxndr/lxndr-art-01.png"
-                alt="LXNDR — Sonic Ritual"
+                alt="SAERIX — Sonic Ritual"
                 className="h-full w-full object-cover opacity-78 transition-transform duration-700 ease-out group-hover:scale-[1.03]"
               />
               <div className="absolute inset-0 bg-gradient-to-r from-black/55 via-transparent to-black/30" />
@@ -236,7 +236,7 @@ export function LxndrVisualWorld() {
             >
               <img
                 src="/assets/lxndr/lxndr-art-04.jpg"
-                alt="LXNDR — Brutalist Design System"
+                alt="SAERIX — Brutalist Design System"
                 className="h-full w-full object-cover opacity-85 transition-transform duration-700 ease-out group-hover:scale-[1.03]"
               />
               <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/75" />
@@ -273,7 +273,7 @@ export function LxndrVisualWorld() {
                 data-anim
                 className="absolute right-5 top-5 font-mono text-[10px] uppercase tracking-[0.28em] text-white/40"
               >
-                lxndr / raw signal
+                SAERIX / raw signal
               </div>
             </div>
 
@@ -287,7 +287,7 @@ export function LxndrVisualWorld() {
             >
               <img
                 src="/assets/lxndr/lxndr-art-02.png"
-                alt="LXNDR — Interference Neon"
+                alt="SAERIX — Interference Neon"
                 className="h-full w-full object-cover opacity-72 transition-transform duration-700 ease-out group-hover:scale-[1.03]"
                 style={{ filter: "saturate(0.9) contrast(1.05)" }}
               />
@@ -346,7 +346,7 @@ export function LxndrVisualWorld() {
 
         <div className="flex items-center justify-between border-t border-white/8 px-6 py-3.5 md:px-12">
           <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-white/18">
-            mundo visual / sistema lxndr
+            mundo visual / sistema SAERIX
           </span>
           <div className="flex items-center gap-2">
             <div className="h-1 w-1 rounded-full bg-[var(--lxndr-pink)] opacity-50" />

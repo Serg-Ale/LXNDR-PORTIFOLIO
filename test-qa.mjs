@@ -34,10 +34,10 @@ import fs from 'fs';
   const hasDownloadCV = buttonTexts.some(t => t.includes('download cv') || t.includes('resume'));
 
   // 5. Monogram
-  // Check if "LXNDR" text exists in the hero, or geometric SVG element in hero
+  // Check if "SAERIX" text exists in the hero, or geometric SVG element in hero
   const hasMonogram = await page.evaluate(() => {
     const hero = document.querySelector('section');
-    return hero && (hero.innerText.includes('LXNDR') || hero.querySelector('svg') !== null || hero.querySelector('.monogram') !== null);
+    return hero && (hero.innerText.includes('SAERIX') || hero.querySelector('svg') !== null || hero.querySelector('.monogram') !== null);
   });
 
   // 6. Nav Links smooth scroll (simulate click and wait to see scroll Y change)

@@ -1,4 +1,4 @@
-# LXNDR Portfolio - Robots.txt
+# SAERIX Portfolio - Robots.txt
 # https://lxndr.dev
 
 User-agent: *
