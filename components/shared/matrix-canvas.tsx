@@ -51,19 +51,29 @@ interface MatrixColumn {
 interface MatrixCanvasProps {
   /** 0 = fully hidden, 1 = fully visible */
   clipProgress: number
+  /** CSS opacity on the canvas itself — lets a caller use the rain as a
+   * quiet background texture instead of a full-strength effect. Defaults
+   * to 1 so existing production usage (the /dev Matrix zone) is unchanged. */
+  opacity?: number
+  /** Override the site-wide light/dark palette for this instance, independent
+   * of the next-themes toggle — for callers with a fixed local background
+   * (e.g. a permanently black section) that need "dark" chars regardless of
+   * the visitor's theme preference. Defaults to following useTheme(). */
+  forceTheme?: "light" | "dark"
 }
 
-export function MatrixCanvas({ clipProgress }: MatrixCanvasProps) {
+export function MatrixCanvas({ clipProgress, opacity = 1, forceTheme }: MatrixCanvasProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const animationRef = useRef<number>(0)
-  
+
   // Grids stored as refs to avoid re-renders
   const columnsRef = useRef<MatrixColumn[]>([])
   const charGridRef = useRef<string[][]>([])
   const brightnessGridRef = useRef<number[][]>([])
   const dimensionsRef = useRef({ width: 0, height: 0, cols: 0, rows: 0 })
-  
-  const { theme } = useTheme()
+
+  const { theme: siteTheme } = useTheme()
+  const theme = forceTheme ?? siteTheme
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
@@ -276,9 +286,10 @@ export function MatrixCanvas({ clipProgress }: MatrixCanvasProps) {
     <canvas
       ref={canvasRef}
       className="fixed inset-0 z-0 pointer-events-none"
-      style={{ 
+      style={{
         clipPath,
         WebkitClipPath: clipPath,
+        opacity,
         transition: "clip-path 0.3s ease-in-out",
       }}
       aria-hidden="true"

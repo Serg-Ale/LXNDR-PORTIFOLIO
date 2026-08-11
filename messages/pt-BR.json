@@ -639,5 +639,75 @@
     "relatedPosts": "ENTRADAS RELACIONADAS",
     "recentPosts": "ENTRADAS RECENTES",
     "viewAllPosts": "VER TODAS AS ENTRADAS"
+  },
+  "devLanding": {
+    "activeStatus": "Ativo",
+    "experienceLabel": "EXPERIÊNCIA_",
+    "selectedWorkLabel": "TRABALHOS SELECIONADOS_",
+    "stackLabel": "stack",
+    "alsoLabel": "também —",
+    "educationLabel": "formação",
+    "languagesLabel": "idiomas",
+    "projectSuffix": "/ projeto",
+    "downloadResumeLabel": "Baixar Currículo ↓",
+    "role": "Engenheiro de Software",
+    "roleLine": "TypeScript, Next.js e Desenvolvimento Aplicado a IA",
+    "location": "Londrina, PR — Brasil",
+    "status": "Atualmente construindo dois produtos de ponta a ponta na Aeon Audio, e tocando a Kaizen como sócio técnico.",
+    "bioFragments": [
+      "Desenvolvedor com base sólida em TypeScript e Next.js — atuando em dois produtos na Aeon Audio, e como sócio técnico em uma segunda empresa.",
+      "Combino execução técnica com maturidade de produto: liderei a reconstrução de um SaaS do zero, desenhei toda a interação cliente-produto de ponta a ponta, e mentoro um estagiário.",
+      "Sou naturalmente curioso. Quando algo não parece certo, eu construo uma solução melhor em vez de contornar o problema."
+    ],
+    "experience": [
+      {
+        "role": "Engenheiro de Software",
+        "period": "Jan 2025 — Presente",
+        "location": "Ponta Grossa, PR (Remoto)",
+        "bullets": [
+          "Um dos desenvolvedores líderes, full-stack, num time de 4 a 5 pessoas, em dois produtos.",
+          "Liderei a reconstrução do MVP da plataforma de DJs/produtores em TypeScript/Next.js depois que um ciclo anterior travou antes de ir ao ar — agora em produção.",
+          "Desenhei e construí integrações n8n para o Corta Aí, incluindo chatbots de IA generativa e WhatsApp lidando com fluxos reais de agendamento.",
+          "Incorporo IA no próprio ciclo de desenvolvimento — revisão, prototipagem, produtividade do dia a dia.",
+          "Mentoro um estagiário, acompanhando seu crescimento técnico e autonomia."
+        ]
+      },
+      {
+        "role": "Desenvolvedor / Sócio Técnico",
+        "period": "Mai 2026 — Presente",
+        "location": "Remoto",
+        "bullets": [
+          "Empresa/sociedade própria, separada da Aeon Audio — automação residencial e de portões via WhatsApp integrada a equipamentos físicos de controle de acesso.",
+          "Responsável principal por toda a interação com o cliente: UI/UX, fluxo de WhatsApp, backoffice e identidade visual do produto."
+        ]
+      },
+      {
+        "role": "Trainee e Estagiário",
+        "period": "Jun 2022 — Nov 2023",
+        "location": "Londrina, PR",
+        "bullets": [
+          "Comecei em desenvolvimento (de frontend a backend), depois migrei para suporte de infraestrutura crítica.",
+          "Liderei um time no projeto de conclusão de curso."
+        ]
+      }
+    ],
+    "projectTaglines": [
+      "Plataforma de transparência política: como os deputados brasileiros realmente votam versus o que prometem.",
+      "Plataforma de feedback para DJs/produtores — o produto que lidero no meu trabalho principal.",
+      "O site que você está olhando agora."
+    ],
+    "education": {
+      "degree": "Análise e Desenvolvimento de Sistemas",
+      "period": "Jul 2022 — Dez 2025"
+    },
+    "languages": [
+      { "name": "Português", "level": "Nativo" },
+      { "name": "Inglês", "level": "C2, Proficiência Plena (EF SET, certificado verificável)" }
+    ],
+    "lookingForFragments": [
+      "Buscando o próximo passo.",
+      "Uma vaga remota num time internacional, entregando produtos reais de ponta a ponta.",
+      "Não só entregar — continuar por perto pra melhorar depois que estiver no ar."
+    ]
   }
 }

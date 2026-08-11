@@ -639,5 +639,75 @@
     "relatedPosts": "RELATED ENTRIES",
     "recentPosts": "RECENT ENTRIES",
     "viewAllPosts": "VIEW ALL ENTRIES"
+  },
+  "devLanding": {
+    "activeStatus": "Active",
+    "experienceLabel": "EXPERIENCE_",
+    "selectedWorkLabel": "SELECTED WORK_",
+    "stackLabel": "stack",
+    "alsoLabel": "also —",
+    "educationLabel": "education",
+    "languagesLabel": "languages",
+    "projectSuffix": "/ project",
+    "downloadResumeLabel": "Download Résumé ↓",
+    "role": "Software Engineer",
+    "roleLine": "TypeScript, Next.js & AI-Applied Development",
+    "location": "Londrina, PR — Brazil",
+    "status": "Currently building two products end-to-end at Aeon Audio, and running Kaizen as a technical partner.",
+    "bioFragments": [
+      "Developer with a solid foundation in TypeScript and Next.js — working across two products at Aeon Audio, and as a technical partner at a second company.",
+      "I combine technical execution with product maturity: I've led a ground-up SaaS rebuild, designed a full client-product interaction end to end, and mentor an intern.",
+      "I'm naturally curious. When something doesn't feel right, I build a better solution instead of working around it."
+    ],
+    "experience": [
+      {
+        "role": "Software Engineer",
+        "period": "Jan 2025 — Present",
+        "location": "Ponta Grossa, PR (Remote)",
+        "bullets": [
+          "One of the lead developers, full-stack, on a 4–5 person team, across two products.",
+          "Led the MVP rebuild of the DJ/producer platform in TypeScript/Next.js after a prior cycle stalled before shipping — now live in production.",
+          "Designed and built n8n integrations for Corta Aí, including generative-AI and WhatsApp chatbots handling real booking flows.",
+          "Embeds AI into the development cycle itself — review, prototyping, day-to-day productivity.",
+          "Mentors an intern, tracking their technical growth and autonomy."
+        ]
+      },
+      {
+        "role": "Developer / Technical Partner",
+        "period": "May 2026 — Present",
+        "location": "Remote",
+        "bullets": [
+          "Own company/partnership, separate from Aeon Audio — home and gate automation via WhatsApp integrated with physical access-control equipment.",
+          "Primary owner of the full customer interaction: UI/UX, WhatsApp flow, backoffice, and the product's visual identity."
+        ]
+      },
+      {
+        "role": "Trainee & Intern",
+        "period": "Jun 2022 — Nov 2023",
+        "location": "Londrina, PR",
+        "bullets": [
+          "Started in development (frontend to backend), then moved into critical infrastructure support.",
+          "Led a team on a capstone project."
+        ]
+      }
+    ],
+    "projectTaglines": [
+      "Political transparency platform: how Brazilian congresspeople actually vote vs. what they promise.",
+      "DJ/producer feedback platform — the product I lead at my day job.",
+      "The site you're looking at right now."
+    ],
+    "education": {
+      "degree": "Systems Analysis and Development",
+      "period": "Jul 2022 — Dec 2025"
+    },
+    "languages": [
+      { "name": "Portuguese", "level": "Native" },
+      { "name": "English", "level": "C2, Full Proficiency (EF SET, verifiable certificate)" }
+    ],
+    "lookingForFragments": [
+      "Looking for what's next.",
+      "A remote role on an international team, shipping real products end to end.",
+      "Not just shipping it — sticking around to make it better once it's live."
+    ]
   }
 }
