@@ -1,16 +1,6 @@
 import { PortfolioNav } from "@/components/portfolio/nav"
 import { PortfolioFooter } from "@/components/portfolio/footer"
-import { PortfolioIntro } from "@/components/portfolio/intro"
-import { Manifesto } from "@/components/portfolio/manifesto"
-import { PortfolioOrigin } from "@/components/portfolio/origin"
-import { PortfolioJourney } from "@/components/portfolio/journey"
-import { PortfolioSkills } from "@/components/portfolio/skills"
-import { PortfolioProof } from "@/components/portfolio/proof"
-import { PortfolioVision } from "@/components/portfolio/vision"
-import { PortfolioBlogShowcase } from "@/components/portfolio/blog-showcase"
-import { PortfolioConnect } from "@/components/portfolio/connect"
-import { ScrollProgress } from "@/components/shared/scroll-progress"
-import { MatrixZone } from "@/components/shared/matrix-zone"
+import { VariantB1aMagazineSpread } from "@/components/portfolio/prototype/variant-b1a-magazine-spread"
 import { getAllEssays } from "@/lib/blog/server"
 import { BASE_URL } from "@/lib/constants"
 import { Metadata } from "next"
@@ -28,9 +18,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
 
   const descriptions: Record<string, string> = {
-    en: "Full-Stack Software Engineer specializing in Next.js, React, TypeScript. Building digital experiences that transform at Union. Open for opportunities.",
+    en: "Full-stack software engineer with 4+ years owning architecture end-to-end and shipping AI-powered automation at Aeon Tech and Kaizen. Open to the next opportunity.",
     "pt-BR":
-      "Engenheiro de Software Full-Stack especializado em Next.js, React, TypeScript. Construindo experiências digitais que transformam na Union. Aberto a oportunidades.",
+      "Engenheiro de software full-stack com 4+ anos de experiência, responsável por arquitetura de ponta a ponta e automações com IA na Aeon Tech e na Kaizen. Aberto à próxima oportunidade.",
   }
 
   return {
@@ -66,15 +56,20 @@ export default async function DevPortfolio({ params }: PageProps) {
     jobTitle: "Full-Stack Software Engineer",
     url: BASE_URL,
     sameAs: [
-      "https://github.com/lxndr",
+      "https://github.com/Serg-Ale",
       "https://x.com/OAlexandreSerg",
-      "https://linkedin.com/in/lxndr",
+      "https://linkedin.com/in/serg-alexandre",
     ],
-    worksFor: {
-      "@type": "Organization",
-      name: "Union",
-      url: "https://union.dev",
-    },
+    worksFor: [
+      {
+        "@type": "Organization",
+        name: "Aeon Tech",
+      },
+      {
+        "@type": "Organization",
+        name: "Kaizen",
+      },
+    ],
     alumniOf: {
       "@type": "EducationalOrganization",
       name: "UTFPR",
@@ -83,11 +78,14 @@ export default async function DevPortfolio({ params }: PageProps) {
       "Next.js",
       "React",
       "TypeScript",
+      "NestJS",
+      "FastAPI",
       "Node.js",
-      "Tailwind CSS",
-      "tRPC",
-      "Prisma",
       "PostgreSQL",
+      "tRPC",
+      "n8n",
+      "AI Agent Orchestration",
+      "WhatsApp API",
     ],
     nationality: {
       "@type": "Country",
@@ -107,46 +105,9 @@ export default async function DevPortfolio({ params }: PageProps) {
       >
         Skip to main content
       </a>
-      <main id="main-content" className="min-h-screen">
-        <PortfolioNav />
-        <ScrollProgress
-          sections={["intro", "manifesto", "proof", "origin", "journey", "skills", "vision", "blog", "connect"]}
-        />
-
-        <div data-section="intro">
-          <PortfolioIntro />
-        </div>
-
-        <div data-section="manifesto">
-          <Manifesto />
-        </div>
-
-        <MatrixZone>
-          <div data-section="proof">
-            <PortfolioProof />
-          </div>
-          <div data-section="origin">
-            <PortfolioOrigin />
-          </div>
-          <div data-section="journey">
-            <PortfolioJourney />
-          </div>
-          <div data-section="skills">
-            <PortfolioSkills />
-          </div>
-        </MatrixZone>
-
-        <div data-section="vision">
-          <PortfolioVision />
-        </div>
-        <div data-section="blog">
-          <PortfolioBlogShowcase posts={recentPosts} locale={locale} />
-        </div>
-        <div data-section="connect">
-          <PortfolioConnect />
-        </div>
-        <PortfolioFooter />
-      </main>
+      <PortfolioNav />
+      <VariantB1aMagazineSpread locale={locale} posts={recentPosts} />
+      <PortfolioFooter />
     </>
   )
 }

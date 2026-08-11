@@ -12,10 +12,11 @@
 "use client"
 
 import { useEffect, useRef } from "react"
+import { useTranslations } from "next-intl"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { prefersReducedMotion } from "@/lib/gsap-config"
-import { devResumeData as d } from "./dev-resume-data"
+import { devFacts } from "./dev-resume-data"
 import { PhotoPlaceholder } from "./photo-placeholder"
 import { SplitTextReveal } from "@/components/shared/split-text-reveal"
 import { useLoopWhileVisible } from "./use-loop-while-visible"
@@ -23,6 +24,8 @@ import { useLoopWhileVisible } from "./use-loop-while-visible"
 gsap.registerPlugin(ScrollTrigger)
 
 export function VariantB1aHero() {
+  const t = useTranslations("devLanding")
+  const [firstName, lastName] = devFacts.name.split(" ")
   const sectionRef = useRef<HTMLElement>(null)
   const nameGroupRef = useRef<HTMLDivElement>(null)
   const photoRef = useRef<HTMLDivElement>(null)
@@ -140,22 +143,22 @@ export function VariantB1aHero() {
           delay={0.55}
           className="font-bebas text-[clamp(4.5rem,15vw,13rem)] leading-[0.78] tracking-tight"
         >
-          {d.name.split(" ")[0]}
+          {firstName}
         </SplitTextReveal>
         <SplitTextReveal
           as="p"
           delay={0.68}
           className="font-bebas text-[clamp(4.5rem,15vw,13rem)] leading-[0.78] tracking-tight text-black/15"
         >
-          {d.name.split(" ")[1]}
+          {lastName}
         </SplitTextReveal>
       </div>
       <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-[1fr_auto_220px] md:items-end">
         <p className="max-w-md font-mono text-[11px] uppercase leading-relaxed tracking-[0.2em] text-black/55">
-          {d.role}<br />{d.roleLine}<br />{d.location}
+          {t("role")}<br />{t("roleLine")}<br />{t("location")}
         </p>
         <p className="max-w-xs self-end font-space text-sm leading-relaxed text-black/75">
-          {d.status}
+          {t("status")}
         </p>
         <div ref={photoRef} className="w-full max-w-[220px] justify-self-end">
           <div ref={photoFrameRef} className="relative">
@@ -168,7 +171,7 @@ export function VariantB1aHero() {
             <div className="pointer-events-none absolute bottom-2 left-2 flex items-center gap-1.5 bg-white/85 px-1.5 py-1">
               <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-accent-purple)] pulse-dot" />
               <span className="font-mono text-[9px] uppercase tracking-[0.25em] text-black/60">
-                Active
+                {t("activeStatus")}
               </span>
             </div>
           </div>
