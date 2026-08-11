@@ -954,6 +954,14 @@
   animation: pulse-dot-anim 2s ease-in-out infinite;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .pulse-dot {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
 @keyframes pulse-dot-anim {
   0%, 100% {
     opacity: 0.4;

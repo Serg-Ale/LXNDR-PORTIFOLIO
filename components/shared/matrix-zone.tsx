@@ -9,15 +9,56 @@ gsap.registerPlugin(ScrollTrigger)
 
 interface MatrixZoneProps {
   children: React.ReactNode
+  /** Forwarded to MatrixCanvas — see its prop docs. */
+  canvasOpacity?: number
+  canvasForceTheme?: "light" | "dark"
+  /**
+   * "reveal" (default) — the production behaviour: a dramatic clip-path
+   * sweep gated to the first/last 15% of scroll *through* the zone. Reads
+   * well on a tall, multi-section zone (Proof+Timeline+Skills) where that
+   * 15% is still an early moment; on a short zone it delays the rain until
+   * the visitor is most of the way through.
+   * "ambient" — the rain is on once the zone actually dominates the
+   * viewport, off once it's scrolled past. Gated on scroll position (zone's
+   * top crossing well into the viewport), not mere intersection — the
+   * canvas is a full-viewport fixed layer, so "any pixel of the zone
+   * visible" would snap it on while the zone is still just barely peeking
+   * in at the bottom, painting rain over whatever section is still mostly
+   * on screen above it. Use this for a zone that should read as a constant
+   * background texture once it's the thing you're looking at.
+   */
+  mode?: "reveal" | "ambient"
 }
 
-export function MatrixZone({ children }: MatrixZoneProps) {
+export function MatrixZone({ children, canvasOpacity, canvasForceTheme, mode = "reveal" }: MatrixZoneProps) {
   const zoneRef = useRef<HTMLDivElement>(null)
   const [clipProgress, setClipProgress] = useState(0)
 
   useEffect(() => {
     const zone = zoneRef.current
     if (!zone) return
+
+    if (mode === "ambient") {
+      const show = () => setClipProgress(1)
+      const hide = () => setClipProgress(0)
+      const trigger = ScrollTrigger.create({
+        trigger: zone,
+        // "top top" (not e.g. "top 15%"): the canvas is a full-viewport
+        // fixed layer with no partial clip in ambient mode (clipProgress is
+        // binary here), so it must only switch on once the zone's top edge
+        // has reached the very top of the viewport — the point at which the
+        // dark zone genuinely fills 100% of what's visible. Any earlier
+        // threshold leaves a sliver of the section above still on screen
+        // while the canvas paints black+rain over the whole viewport.
+        start: "top top",
+        end: "bottom top",
+        onEnter: show,
+        onEnterBack: show,
+        onLeave: hide,
+        onLeaveBack: hide,
+      })
+      return () => trigger.kill()
+    }
 
     // Get nav height for offset (header is ~80px)
     const navHeight = 80
@@ -64,12 +105,12 @@ export function MatrixZone({ children }: MatrixZoneProps) {
     return () => {
       trigger.kill()
     }
-  }, [])
+  }, [mode])
 
   return (
     <>
       {/* Fixed canvas that covers viewport */}
-      <MatrixCanvas clipProgress={clipProgress} />
+      <MatrixCanvas clipProgress={clipProgress} opacity={canvasOpacity} forceTheme={canvasForceTheme} />
       
       {/* Content zone - scrolls normally */}
       <div ref={zoneRef} className="relative z-10">
